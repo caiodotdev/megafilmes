@@ -1,0 +1,154 @@
+﻿{% extends 'base.html' %}
+{% load static %}
+{% load form_utils %}
+{% block content %}
+    <div id="top" class="row">
+        <div class="col-sm-3">
+            <h2> {{ model_name_plural }}</h2>
+        </div>
+        <div class="col-sm-9">
+            <button id="get_movies" type="button" class="btn btn-info pull-right h2"><i
+                    class="fa fa-rocket"></i> Get Movies
+            </button>
+            <a href="{% url 'MOVIE_create' %}" class="btn btn-primary pull-right h2"><i
+                    class="fa fa-plus"></i> Add Movie
+            </a>
+            <a href="{% url 'delete_all_movies' %}" class="btn btn-danger pull-right h2"><i
+                    class="fa fa-trash"></i> Delete All
+            </a>
+        </div>
+    </div> <!-- /#top -->
+    <hr/>
+    <form id="advancedForm" method="get" action="{% url 'MOVIE_list' %}">
+        {% csrf_token %}
+        <div class="row">
+            <div class="col-sm-12">
+
+                {{ filter.form.as_p }}
+                <button type="button" class="btn btn-default" id="clear"><i class="fa fa-close"></i> Clear</button>
+
+
+            </div>
+        </div>
+        <hr/>
+        <div id="list" class="row">
+            <div class="col-md-12">
+                <table id="table" class="table table-striped" cellspacing="0" cellpadding="0">
+                    <thead>
+                    <tr>
+                        <th>ID</th>
+                        <th>TITLE</th>
+                        <th>YEAR</th>
+                        <th>RATING</th>
+                        <th>IMAGE</th>
+                        <th>URL</th>
+
+                        <th class="actions">Actions</th>
+                    </tr>
+                    </thead>
+                    <tbody>
+                    </tbody>
+                </table>
+            </div>
+
+        </div> <!-- /#list -->
+    </form>
+    <script type="text/javascript">
+
+        $(document).ready(function () {
+
+            function getData() {
+                var formData = $('#advancedForm').serializeArray().reduce(function (obj, item) {
+                    obj[item.name] = item.value;
+                    return obj;
+                }, {});
+                return formData;
+            }
+
+            $('#get_movies').click(function () {
+                $('#loading').show();
+                $.get("{% url 'get_movies' %}", function (data) {
+                    console.log('Getting movies ...');
+                }).done(function (data) {
+                    $('#loading').hide();
+                    window.location.href = '';
+                    console.log(data);
+                }).fail(function () {
+                    $('#loading').hide();
+                });
+            });
+
+            $('#movie_link').addClass('active');
+            var table = $('#table').DataTable({
+                "processing": true,
+                "serverSide": true,
+                "ajax": {
+                    "url": "{% url 'MOVIE_list_json' %}",
+                    "data": function (d) {
+                        return $.extend({}, d, getData());
+                    }
+                },
+                columnDefs: [
+                    {
+                        targets: 4,
+                        data: 'image',
+                        "render": function (data, type, row, meta) {
+                            return '<img class="img-thumbnail" src="' + row[4] + '"/>';
+                        }
+                    },
+                    {
+                        targets: 5,
+                        data: 'url',
+                        "render": function (data, type, row, meta) {
+                            return '<a href="'+row[5]+'" target="_blank">' + row[5] + '</a>';
+                        }
+                    },
+                    {
+                        targets: -1,
+                        data: 'id',
+                        "render": function (data, type, row, meta) {
+                            return '<a href="/movie/' + row[0] + '/"><i\n' +
+                                '                                    class="fa fa-eye"></i></a>&nbsp;&nbsp;' +
+                                '<a href="/movie/' + row[0] + '/delete/"> <i\n' +
+                                '                                    class="fa fa-close"></i></a>';
+                        }
+                    }
+                ],
+                order: [[0, "desc"]],
+                "language": {
+                    "lengthMenu": "Exibir _MENU_ registros por página",
+                    "zeroRecords": "Nenhum item encontrado",
+                    "info": "Mostrando página _PAGE_ de _PAGES_",
+                    "infoEmpty": "Nenhum registro disponível",
+                    "emptyTable": "Sem dados disponíveis na tabela",
+                    "infoFiltered": "(filtrado do total de _MAX_ registros)",
+                    "thousands": ".",
+                    "loadingRecords": "Carregando...",
+                    "processing": "Processando...",
+                    "search": "Buscar:",
+                    "paginate": {
+                        "first": "Primeiro",
+                        "last": "Último",
+                        "next": "Próximo",
+                        "previous": "Anterior"
+                    },
+                    "aria": {
+                        "sortAscending": ": ativar para classificar a coluna ascendente",
+                        "sortDescending": ": ativar para classificar a coluna descendente"
+                    }
+                }
+            });
+
+            $('input').on('keyup', function () {
+                table.search('').draw();
+            });
+
+            $('#clear').click(function () {
+                $("form")[0].reset();
+                table.search('').draw();
+            });
+
+        });
+    </script>
+
+{% endblock %}

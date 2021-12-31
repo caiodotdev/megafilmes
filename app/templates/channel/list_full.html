@@ -1,0 +1,170 @@
+﻿{% extends 'base.html' %}
+{% load my_tags %}
+{% load static %}
+{% load form_utils %}
+{% block content %}
+    <div id="top" class="row">
+        <div class="col-sm-3">
+            <h2> {{ model_name_plural }}</h2>
+        </div>
+        <div class="col-sm-3 col-sm-offset-6">
+            <a href="{% url 'CHANNEL_create' %}" class="btn btn-primary pull-right h2"><i
+                    class="fa fa-plus"></i> Add Channel
+            </a>
+        </div>
+    </div> <!-- /#top -->
+    <hr/>
+    <form id="advancedForm" method="get" action="{% url 'CHANNEL_list_full' %}">
+        {% csrf_token %}
+        <div class="row">
+            <div class="col-sm-12">
+
+                {{ filter.form.as_p }}
+                <button type="submit" class="btn btn-primary" id="search_btn">
+                    <i class="fa fa-search"></i> Search
+                </button>
+                <button type="button" class="btn btn-default" id="clear">
+                    <i class="fa fa-close"></i> Clear
+                </button>
+
+            </div>
+        </div>
+        <hr/>
+        <div id="list" class="row">
+            <div class="col-md-12">
+                <header>
+                    <div class="form-group form-inline pull-right">
+                        <input type="text" class="hidden" name="ordering" id="ordering" value="{{ ordering }}"/>
+                        <label>Search:</label>
+                        <input type="text" id="search" name="search" placeholder="" value="{{ search }}"/>
+                        <button class="btn btn-primary" type="submit"><i class="fa fa-search"></i></button>
+                    </div>
+                </header>
+                <table id="table" class="table table-striped" cellspacing="0" cellpadding="0">
+                    <thead>
+                        <tr>
+                             <th>ID</th> 
+ <th>TITLE</th> 
+ <th>IMAGE</th> 
+ <th>URL</th> 
+
+                            <th class="actions">Actions</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                    {% for channel in object_list %}
+                        <tr>
+                             <td>{{ channel.id }}</td> 
+ <td>{{ channel.title }}</td> 
+ <td>{{ channel.image }}</td> 
+ <td>{{ channel.url }}</td> 
+ <td><a href="{% url 'CHANNEL_detail' channel.id %}"><i class="fa fa-eye"></i></a>&nbsp;&nbsp;<a href="{% url 'CHANNEL_delete' channel.id %}"><i class="fa fa-close"></i></a></td> 
+
+                        </tr>
+                    {% endfor %}
+                    </tbody>
+                </table>
+                <div class="row">
+                    <div class="col-sm-12">
+                        <span class="current pull-left">
+                            Página {{ page_obj.number }} de {{ page_obj.paginator.num_pages }}. ({{ page_obj.start_index }}—{{ page_obj.end_index }})
+                        </span>
+                        {% if is_paginated %}
+                            <ul class="pagination pagination-flat pull-right">
+                                {% if page_obj.has_previous %}
+                                    <li class="page-item"><a class="page-link"
+                                                             href="?{% param_replace page=page_obj.previous_page_number %}">&laquo;</a>
+                                    </li>
+                                {% else %}
+                                    <li class="page-item disabled"><span>&laquo;</span></li>
+                                {% endif %}
+                                {% if page_obj.number|add:'-4' > 1 %}
+                                    <li><a href="?{% param_replace page=page_obj.number|add:'-5' %}">&hellip;</a></li>
+                                {% endif %}
+
+                                {% for i in page_obj.paginator.page_range %}
+                                    {% if page_obj.number == i %}
+                                        <li class="page-item active"><span>{{ i }} <span
+                                                class="sr-only">(current)</span></span>
+                                        </li>
+                                    {% elif i > page_obj.number|add:'-5' and i < page_obj.number|add:'5' %}
+                                        <li class="page-item"><a class="page-link"
+                                                                 href="?{% param_replace page=i %}">{{ i }}</a></li>
+                                    {% endif %}
+                                {% endfor %}
+
+                                {% if page_obj.paginator.num_pages > page_obj.number|add:'4' %}
+                                    <li class="page-item"><a class="page-link"
+                                                             href="?{% param_replace page=page_obj.number|add:'5' %}">&hellip;</a>
+                                    </li>
+                                {% endif %}
+                                {% if page_obj.has_next %}
+                                    <li class="page-item"><a class="page-link"
+                                                             href="?{% param_replace page=page_obj.next_page_number %}">&raquo;</a>
+                                    </li>
+                                {% else %}
+                                    <li class="page-item disabled"><span>&raquo;</span></li>
+                                {% endif %}
+                            </ul>
+                        {% endif %}
+                    </div>
+
+                </div>
+            </div>
+
+        </div> <!-- /#list -->
+    </form>
+    <script type="text/javascript">
+
+    $(document).ready(function () {
+            $('#channel_link').addClass('active');
+
+            $('#clear').click(function () {
+                $("form")[0].reset();
+                $('input,select,textarea').val('');
+                $("form").submit();
+            });
+
+            function generate_icon(element, text, column) {
+                if (text.includes('-')) {
+                    $(element).empty();
+                    $(element).append(
+                        column.toUpperCase() + '<i class="fa fa-angle-up"></i>'
+                    );
+                } else {
+                    $(element).empty();
+                    $(element).append(
+                        column.toUpperCase() + '<i class="fa fa-angle-down"></i>'
+                    );
+                }
+            }
+
+            var column_ordering = '{{ ordering }}';
+            var previous_column = '{{ ordering }}'.replace('-', '');
+            function initialize_ordering(){
+                var elem = $('th:contains("'+previous_column.toUpperCase()+'")');
+                generate_icon(elem, column_ordering, previous_column);
+            }
+            initialize_ordering();
+
+            $('th').click(function () {
+                var text = $(this).text();
+                //console.log('text', text);
+                if (text !== 'Actions') {
+                    var column = text.toLowerCase();
+                    //console.log(column_ordering === column);
+                    if (column_ordering === column) {
+                        column_ordering = '-' + column
+                    } else {
+                        column_ordering = column
+                    }
+                    //console.log(column_ordering);
+                    $('[name="ordering"]').val(column_ordering.trim());
+                    $("form").submit();
+                }
+            });
+
+        });
+    </script>
+
+{% endblock %}

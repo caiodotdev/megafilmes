@@ -1,0 +1,28 @@
+{% extends 'base.html' %}
+{% load static %}
+{% load form_utils %}
+{% block content %}
+    <h3 class="page-header">Delete Serie</h3>
+
+    <form action="" method="post">{% csrf_token %}
+        <div class="row">
+            <div class="text-center">
+                <h3>Do you want delete "{{ object }}" ?</h3>
+            </div>
+        </div>
+        <hr/>
+        <div id="actions" class="row">
+            <div class="col-sm-6">
+                <button type="submit" class="btn btn-danger btn-lg btn-block">Yes, delete</button>
+            </div>
+            <div class="col-sm-6">
+                <a href="{% url 'SERIE_list' %}" class="btn btn-default btn-lg btn-block">Back</a>
+            </div>
+        </div>
+    </form>
+    <script type="text/javascript">
+        $(document).ready(function () {
+            $('#serie_link').addClass('active');
+        });
+    </script>
+{% endblock %}
