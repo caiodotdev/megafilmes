@@ -1,6 +1,6 @@
 #!/usr/bin/env python
 # -*- coding: utf-8 -*-
-
+import requests
 from django.contrib import messages
 from django.contrib.admin.utils import NestedObjects
 from django.contrib.auth.mixins import LoginRequiredMixin, PermissionRequiredMixin
@@ -290,12 +290,23 @@ def get_series(request):
         return Serie.objects.filter(title=title).exists()
 
     def save_serie(title, rating, image, data_lancamento, url_serie):
-        serie = Serie()
-        serie.title = title
-        serie.rating = rating
-        serie.image = image
-        serie.year = data_lancamento
-        serie.url = url_serie
-        serie.save()
+        # serie = Serie()
+        # serie.title = title
+        # serie.rating = rating
+        # serie.image = image
+        # serie.year = data_lancamento
+        # serie.url = url_serie
+        # serie.save()
+        data = {
+            "title": title,
+            "year": data_lancamento,
+            "rating": rating,
+            "image": image,
+            "url": url_serie
+        }
+        req = requests.post('https://megafilmes.herokuapp.com/api/serie/', data=data)
+        if req.status_code != 201:
+            print(req.status_code)
+            print('---- erro ao inserir serie')
 
     return get_articles(url_series, 48, {'id': 'archive-content'}, save_serie, title_exists)

@@ -200,3 +200,25 @@ def get_articles(url_get, pages, div_principal, method, check_article):
         except(Exception,):
             print('---- Nao conseguiu capturar a page.')
     return JsonResponse(data={'success': 'OK'})
+
+
+def find_program(channel_title):
+    URL_BASE = 'https://meuguia.tv'
+    page = get_page(URL_BASE, {})
+    for category in page.findAll('li'):
+        url_category = URL_BASE + str(category.find('a')['href'])
+        page_category = get_page(url_category, {})
+        for channel in page_category.findAll('li'):
+            h2_title = channel.find('h2')
+            if h2_title:
+                title = str(h2_title.text)
+                if title.lower() == str(channel_title).lower():
+                    url_channel = URL_BASE + str(channel.find('a')['href'])
+                    logo = str(channel.find('div', {'class': 'logo'})['class'][-1])
+                    return url_channel, logo
+    return None, None
+
+
+def get_program_content(url):
+    page = get_page(url, {})
+    return str(page.find('ul', {'class':'mw'}))

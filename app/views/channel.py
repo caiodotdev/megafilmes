@@ -1,11 +1,12 @@
 #!/usr/bin/env python
 # -*- coding: utf-8 -*-
-
+import requests
 from django.contrib import messages
 from django.contrib.admin.utils import NestedObjects
 from django.contrib.auth.mixins import LoginRequiredMixin, PermissionRequiredMixin
 from django.core.exceptions import FieldDoesNotExist
 from django.db import transaction
+from django.http import JsonResponse
 from django.shortcuts import redirect
 from django.views.generic.detail import DetailView
 from django.views.generic.edit import (
@@ -20,14 +21,14 @@ try:
 except ImportError:
     from django.urls import reverse_lazy, reverse
 
-from app.models import Channel
+from app.models import Channel, Program
 from app.forms import ChannelForm
 from app.mixins import ChannelMixin
 from app.conf import CHANNEL_DETAIL_URL_NAME, CHANNEL_LIST_URL_NAME
 
 from django_datatables_view.base_datatable_view import BaseDatatableView
 
-from app.utils import upload_image, upload_file, get_articles
+from app.utils import upload_image, upload_file, get_articles, find_program, get_program_content
 
 import django_filters
 
@@ -265,9 +266,24 @@ class Delete(LoginRequiredMixin, ChannelMixin, PermissionRequiredMixin, DeleteVi
 
 class ChannelListJson(BaseDatatableView):
     model = Channel
-    columns = ("id", "title", "image", "url")
+    columns = ("id", "title", "image", "url", "program")
     order_columns = ["id", "title", "image", "url"]
     max_display_length = 500
+
+    def render_column(self, row, column):
+        if column == 'program':
+            if row.program:
+                return row.program.url
+            url, logo = find_program(row.title)
+            prog = Program()
+            prog.title = row.title
+            prog.url = url
+            prog.save()
+            row.program = prog
+            row.save()
+            return url
+        else:
+            return super(ChannelListJson, self).render_column(row, column)
 
     def filter_queryset(self, qs):
         search = self.request.GET.get('search[value]', None)
@@ -290,10 +306,25 @@ def get_channels(request):
         return Channel.objects.filter(title=title).exists()
 
     def save_channel(title, rating, image, data_lancamento, url_serie):
-        channel = Channel()
-        channel.title = title
-        channel.image = image
-        channel.url = url_serie
-        channel.save()
+        data = {
+            "title": title,
+            "image": image,
+            "url": url_serie
+        }
+        req = requests.post('https://megafilmes.herokuapp.com/api/channel/', data=data)
+        if req.status_code != 201:
+            print(req.status_code)
+            print('---- erro ao inserir channel')
+        # channel = Channel()
+        # channel.title = title
+        # channel.image = image
+        # channel.url = url_serie
+        # channel.save()
 
     return get_articles(url_channels, 5, {'class': 'items'}, save_channel, title_exists)
+
+
+def get_content_url(request):
+    id = request.GET['id']
+    channel = Channel.objects.get(id=id)
+    return JsonResponse({'content': get_program_content(channel.program.url)})

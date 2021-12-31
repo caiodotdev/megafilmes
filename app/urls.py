@@ -6,8 +6,6 @@ from app.urls_api import api_urlpatterns
 
 urlpatterns = []
 
-urlpatterns += api_urlpatterns
-
 urlpatterns += [
     path('', include('rest_auth.urls')),
     path('registration/', include('rest_auth.registration.urls'))
@@ -18,7 +16,7 @@ from app.views import movie
 urlpatterns += [
     # movie
     path(
-        'movie/',
+        '',
         movie.List.as_view(),
         name=conf.MOVIE_LIST_URL_NAME
     ),
@@ -163,5 +161,12 @@ urlpatterns += [
         'delete-channels',
         channel.delete_all_channels,
         name='delete_all_channels'
+    ),
+    path(
+        'get-content-url',
+        channel.get_content_url,
+        name='get_content_url'
     )
 ]
+
+urlpatterns += api_urlpatterns

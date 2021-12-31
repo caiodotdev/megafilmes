@@ -292,12 +292,23 @@ def get_movies(request):
         return Movie.objects.filter(title=title).exists()
 
     def save_movie(title, rating, image, data_lancamento, url_movie):
-        movie = Movie()
-        movie.title = title
-        movie.rating = rating
-        movie.image = image
-        movie.year = data_lancamento
-        movie.url = url_movie
-        movie.save()
+        # movie = Movie()
+        # movie.title = title
+        # movie.rating = rating
+        # movie.image = image
+        # movie.year = data_lancamento
+        # movie.url = url_movie
+        # movie.save()
+        data = {
+            "title": title,
+            "year": data_lancamento,
+            "rating": rating,
+            "image": image,
+            "url": url_movie
+        }
+        req = requests.post('https://megafilmes.herokuapp.com/api/movie/', data=data)
+        if req.status_code != 201:
+            print(req.status_code)
+            print('---- erro ao inserir movie')
 
     return get_articles(url_movies, 270, {'id': 'archive-content'}, save_movie, title_exists)
