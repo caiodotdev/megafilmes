@@ -1,0 +1,52 @@
+{% extends 'base.html' %}
+{% load static %}
+{% load form_utils %}
+{% block content %}
+    <h3 class="page-header">Add Item</h3>
+
+    <form action="" method="post">
+        {% csrf_token %}
+        {{ form.as_p }}
+        <hr/>
+        <div id="actions" class="row">
+            <div class="col-md-12">
+                <button id="btn_salvar" class="btn btn-primary" type="submit">
+                    Add
+                </button>
+                <a href="{{ list_reversed_url }}" class="btn btn-default">Back</a>
+            </div>
+        </div>
+    </form>
+    <script type="text/javascript">
+        $(document).ready(function () {
+            $('#model').addClass('active');
+            $('#model-create').addClass('active');
+
+            tour = new Tour({
+                name: 'model_create',
+                backdrop: true,
+                template: "<div class='popover tour'><div class='arrow'></div><h3 class='popover-title'></h3><div class='popover-content'></div><div class='popover-navigation'><button class='btn btn-default' data-role='prev'>« Anterior</button><span data-role='separator'>|</span><button id='prox' class='btn btn-default' data-role='next'>Próximo »</button><button id='fim' class='btn btn-default hidden' data-role='end'>Finalizar</button> </div></div>",
+                steps: [
+                    {
+                        element: "#btn_salvar",
+                        title: "Salvar",
+                        placement: "left",
+                        content: "Utilize este botão para criar o novo item.",
+                        onShow: function (tour) {
+                            var timeOut = setTimeout(function () {
+                                $('#fim').removeClass('hidden');
+                                $('#prox').addClass('hidden');
+                                timeOut = setTimeout(function () {
+                                    $('#fim').removeClass('hidden');
+                                    clearTimeout(timeOut);
+                                }, 500);
+                            }, 500);
+
+                        }
+                    }
+
+                ]
+            });
+        });
+    </script>
+{% endblock %}

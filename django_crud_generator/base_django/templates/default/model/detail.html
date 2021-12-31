@@ -1,0 +1,32 @@
+{% extends 'base.html' %}
+{% load static %}
+{% load form_utils %}
+{% block content %}
+    <h3 class="page-header">View Item</h3>
+
+    <div class="row">
+        {% for key, val in object|get_fields %}
+            <div class="col-md-4">
+                <p><strong>{{ key }}</strong></p>
+                <p>{{ val }}</p>
+            </div>
+        {% endfor %}
+    </div>
+    <hr/>
+    <div id="actions" class="row">
+        <div class="col-md-12">
+            {% if update_object_reversed_url %}
+                <a class="btn btn-primary" href="{{ update_object_reversed_url }}">
+                    Edit
+                </a>
+            {% endif %}
+            <a href="{{ list_reversed_url }}" class="btn btn-default">Back</a>
+        </div>
+    </div>
+    <script type="text/javascript">
+        $(document).ready(function () {
+            $('#model').addClass('active');
+            $('#model-list').addClass('active');
+        });
+    </script>
+{% endblock %}
