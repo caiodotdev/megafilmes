@@ -1,1 +1,1 @@
-web: gunicorn quickwebds.wsgi --log-file -
+web: gunicorn megafilmes.wsgi --log-file -
