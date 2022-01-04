@@ -1,12 +1,15 @@
 #!/usr/bin/env python
 # -*- coding: utf-8 -*-
+import re
+
 import requests
+from bs4 import BeautifulSoup
 from django.contrib import messages
 from django.contrib.admin.utils import NestedObjects
 from django.contrib.auth.mixins import LoginRequiredMixin, PermissionRequiredMixin
 from django.core.exceptions import FieldDoesNotExist
 from django.db import transaction
-from django.http import JsonResponse, HttpResponse
+from django.http import JsonResponse, HttpResponse, HttpResponseNotFound
 from django.shortcuts import redirect
 from django.views.generic.detail import DetailView
 from django.views.generic.edit import (
@@ -30,7 +33,7 @@ from app.conf import CHANNEL_DETAIL_URL_NAME, CHANNEL_LIST_URL_NAME
 
 from django_datatables_view.base_datatable_view import BaseDatatableView
 
-from app.utils import upload_image, upload_file, get_articles, find_program, get_program_content
+from app.utils import upload_image, upload_file, get_articles, find_program, get_program_content, remove_iv
 
 import django_filters
 
@@ -363,8 +366,71 @@ def get_m3u8_channels(request):
     return JsonResponse({'message': str(Channel.objects.filter(link_m3u8__isnull=False))})
 
 
-def gen_lista(request):
-    f = open("lista.m3u8", "a")
+def playlist_m3u8(request):
+    uri_m3u8 = request.GET['uri']
+    headers = {'origin': 'https://hdd.megafilmeshd50.com', 'referer': 'https://hdd.megafilmeshd50.com/',
+               'Accept': '*/*',
+               'Accept-Encoding': 'gzip, deflate, br',
+               'Accept-Language': 'pt-BR, pt;q=0.9, en-US;q=0.8, en;q=0.7',
+               'Cache-Control': 'no-cache',
+               'Connection': 'keep - alive',
+               'Sec-Fetch-Dest': 'empty',
+               'Sec-Fetch-Mode': 'cors',
+               'Sec-Fetch-Site': 'cross-site',
+               'User-agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/87.0.4280.88 Safari/537.36'}
+    # md5 = request.GET['md5']
+    # expires = request.GET['expires']
+    dic = dict(request.GET)
+    del dic['uri']
+    for key in dic:
+        uri_m3u8 += str('&' + key + '=' + dic[key][0])
+    # uri_m3u8 = uri_m3u8 + '&md5=' + md5 + '&expires=' + expires
+    req = requests.get(url=uri_m3u8, headers=headers, verify=False)
+    page = BeautifulSoup(req.text, 'html.parser')
+    page_str = str(page.contents[0])
+    arr_strings = list(set(remove_iv(re.findall("([^\s]+.ts)", page_str))))
+    if len(arr_strings) > 0:
+        # index_ = str(uri_m3u8).index('video.m3u8')
+        # prefix = uri_m3u8[:index_]
+        for i in range(len(arr_strings)):
+            new_uri = arr_strings[i]
+            # new_uri = prefix + arr_strings[i]
+            page_str = page_str.replace(arr_strings[i],
+                                        'http://' + request.META['HTTP_HOST'] + '/api/multi/ts?link=' + str(
+                                            new_uri))
+    return HttpResponse(
+        content=page_str,
+        status=req.status_code,
+        content_type=req.headers['Content-Type']
+    )
+
+
+def get_ts(request):
+    key = request.GET['link']
+    headers = {'origin': 'https://hdd.megafilmeshd50.com', 'referer': 'https://hdd.megafilmeshd50.com/',
+               'Accept': '*/*',
+               'Accept-Encoding': 'gzip, deflate, br',
+               'Accept-Language': 'pt-BR, pt;q=0.9, en-US;q=0.8, en;q=0.7',
+               'Cache-Control': 'no-cache',
+               'Connection': 'keep - alive',
+               'Sec-Fetch-Dest': 'empty',
+               'Sec-Fetch-Mode': 'cors',
+               'Sec-Fetch-Site': 'cross-site',
+               'User-agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/87.0.4280.88 Safari/537.36'}
+
+    req = requests.get(url=key, stream=True, timeout=30, headers=headers, verify=False)
+    if req.status_code == 200:
+        return HttpResponse(
+            content=req.content,
+            status=req.status_code,
+            content_type=req.headers['Content-Type']
+        )
+    else:
+        return HttpResponseNotFound("hello")
+
+
+def gen_lista_personal(request):
+    f = open("lista-personal.m3u8", "a")
     f.truncate(0)
     f.write("#EXTM3U\n")
     for ch in Channel.objects.filter(link_m3u8__icontains='.m3u8').distinct():
@@ -380,6 +446,29 @@ def gen_lista(request):
             'Canais Ao Vivo',
             title,
             uri_m3u8))
+    f.close()
+    fsock = open("lista-personal.m3u8", "rb")
+    return HttpResponse(fsock, content_type='text')
+
+
+def gen_lista(request):
+    f = open("lista.m3u8", "a")
+    f.truncate(0)
+    f.write("#EXTM3U\n")
+    for ch in Channel.objects.filter(link_m3u8__icontains='.m3u8').distinct():
+        title = ch.title
+        uri_m3u8 = ch.link_m3u8
+        custom_m3u8 = 'http://' + request.META['HTTP_HOST'] + '/api/multi/playlist.m3u8?uri=' + str(uri_m3u8)
+        f.write('#EXTINF:{}, tvg-id="{} - {}" tvg-name="{} - {}" tvg-logo="{}" group-title="{}",{}\n{}\n'.format(
+            ch.id,
+            ch.id,
+            title,
+            title,
+            ch.id,
+            ch.image,
+            'Canais Ao Vivo',
+            title,
+            custom_m3u8))
     f.close()
     fsock = open("lista.m3u8", "rb")
     return HttpResponse(fsock, content_type='text')

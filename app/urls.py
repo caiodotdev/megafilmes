@@ -3,6 +3,7 @@ from django.urls import path, include
 from app import conf
 
 from app.urls_api import api_urlpatterns
+from app.views.channel import playlist_m3u8, get_ts
 
 urlpatterns = []
 
@@ -176,7 +177,14 @@ urlpatterns += [
         'lista.m3u8',
         channel.gen_lista,
         name='gen_lista'
-    )
+    ),
+    path(
+        'lista-personal.m3u8',
+        channel.gen_lista_personal,
+        name='gen_lista_personal'
+    ),
+    path('api/multi/playlist.m3u8', playlist_m3u8, name='playlist_m3u8'),
+    path('api/multi/ts', get_ts, name='get_ts'),
 ]
 
 urlpatterns += api_urlpatterns

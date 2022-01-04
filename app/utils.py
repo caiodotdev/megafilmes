@@ -221,4 +221,13 @@ def find_program(channel_title):
 
 def get_program_content(url):
     page = get_page(url, {})
-    return str(page.find('ul', {'class':'mw'}))
+    return str(page.find('ul', {'class': 'mw'}))
+
+
+def remove_iv(array_uri):
+    for i in range(len(array_uri)):
+        if '",IV' in str(array_uri[i]):
+            index_iv = str(array_uri[i]).index('",IV=')
+            if index_iv >= 0:
+                array_uri[i] = str(array_uri[i])[:index_iv]
+    return array_uri
