@@ -387,6 +387,8 @@ def playlist_m3u8(request):
     # uri_m3u8 = uri_m3u8 + '&md5=' + md5 + '&expires=' + expires
     print(uri_m3u8)
     req = requests.get(url=uri_m3u8, headers=headers, verify=False)
+    print(req.status_code)
+    print(req.text)
     page = BeautifulSoup(req.text, 'html.parser')
     page_str = str(page.contents[0])
     arr_strings = list(set(remove_iv(re.findall("([^\s]+.ts)", page_str))))
