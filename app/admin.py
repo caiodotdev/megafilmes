@@ -51,7 +51,7 @@ class ChannelAdmin(admin.ModelAdmin):
         'id',
     )
     inlines = []
-    list_display = ("id", "title", "image", "url", 'link_m3u8')
+    list_display = ("id", "title", "image", "url", "link_m3u8")
 
 
 admin.site.register(Channel, ChannelAdmin)

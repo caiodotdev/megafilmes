@@ -6,6 +6,7 @@ from . import (
     models
 )
 
+
 class BaseForm(forms.Form):
     def __init__(self, *args, **kwargs):
         super(BaseForm, self).__init__(*args, **kwargs)
@@ -37,7 +38,6 @@ class MovieFormToInline(BaseForm, ModelForm):
         super(MovieFormToInline, self).__init__(*args, **kwargs)
 
 
-
 class SerieForm(BaseForm, ModelForm):
     class Meta:
         model = models.Serie
@@ -58,11 +58,10 @@ class SerieFormToInline(BaseForm, ModelForm):
         super(SerieFormToInline, self).__init__(*args, **kwargs)
 
 
-
 class ChannelForm(BaseForm, ModelForm):
     class Meta:
         model = models.Channel
-        fields = ("id", "title", "image", "url")
+        fields = ("id", "title", "image", "url", "link_m3u8")
         widgets = generate_bootstrap_widgets_for_all_fields(models.Channel)
 
     def __init__(self, *args, **kwargs):
@@ -72,9 +71,8 @@ class ChannelForm(BaseForm, ModelForm):
 class ChannelFormToInline(BaseForm, ModelForm):
     class Meta:
         model = models.Channel
-        fields = ("id", "title", "image", "url")
+        fields = ("id", "title", "image", "url", "link_m3u8")
         widgets = generate_bootstrap_widgets_for_all_fields(models.Channel)
 
     def __init__(self, *args, **kwargs):
         super(ChannelFormToInline, self).__init__(*args, **kwargs)
-
