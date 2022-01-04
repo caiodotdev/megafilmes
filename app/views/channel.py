@@ -385,6 +385,7 @@ def playlist_m3u8(request):
     for key in dic:
         uri_m3u8 += str('&' + key + '=' + dic[key][0])
     # uri_m3u8 = uri_m3u8 + '&md5=' + md5 + '&expires=' + expires
+    print(uri_m3u8)
     req = requests.get(url=uri_m3u8, headers=headers, verify=False)
     page = BeautifulSoup(req.text, 'html.parser')
     page_str = str(page.contents[0])
@@ -396,7 +397,7 @@ def playlist_m3u8(request):
             new_uri = arr_strings[i]
             # new_uri = prefix + arr_strings[i]
             page_str = page_str.replace(arr_strings[i],
-                                        'http://' + request.META['HTTP_HOST'] + '/api/multi/ts?link=' + str(
+                                        'http://' + request.META['HTTP_HOST'] + '/multi/ts?link=' + str(
                                             new_uri))
     return HttpResponse(
         content=page_str,
@@ -458,7 +459,7 @@ def gen_lista(request):
     for ch in Channel.objects.filter(link_m3u8__icontains='.m3u8').distinct():
         title = ch.title
         uri_m3u8 = ch.link_m3u8
-        custom_m3u8 = 'http://' + request.META['HTTP_HOST'] + '/api/multi/playlist.m3u8?uri=' + str(uri_m3u8)
+        custom_m3u8 = 'http://' + request.META['HTTP_HOST'] + '/multi/playlist.m3u8?uri=' + str(uri_m3u8)
         f.write('#EXTINF:{}, tvg-id="{} - {}" tvg-name="{} - {}" tvg-logo="{}" group-title="{}",{}\n{}\n'.format(
             ch.id,
             ch.id,
