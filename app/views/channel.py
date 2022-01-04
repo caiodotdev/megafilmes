@@ -350,7 +350,7 @@ def get_m3u8_channels(request):
                 data = {
                     "link_m3u8": m3u8,
                 }
-                req = requests.put('https://megafilmes.herokuapp.com/api/channel/{}'.format(chan['id']), data=data)
+                req = requests.put('https://megafilmes.herokuapp.com/api/channel/{}/'.format(chan['id']), data=data)
                 if req.status_code != 200:
                     print(req.status_code)
                     print('---- erro ao inserir channel')

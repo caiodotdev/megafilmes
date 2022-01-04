@@ -3,7 +3,9 @@
 {% load form_utils %}
 {% block content %}
 
-    <script src="//cdn.jsdelivr.net/npm/clappr@latest/dist/clappr.min.js"></script>
+    <script src="//cdn.jsdelivr.net/npm/hls.js@latest"></script>
+    <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/@clappr/player@latest/dist/clappr.min.js"></script>
+
     <script src='//cdn.jsdelivr.net/npm/@clappr/hlsjs-playback@latest/dist/hlsjs-playback.min.js'></script>
     <script type="text/javascript"
             src="//cdn.jsdelivr.net/gh/clappr/clappr-level-selector-plugin@latest/dist/level-selector.min.js"></script>
@@ -61,26 +63,10 @@
     </script>
     <script>
 
-        function getSecondsString(fileSizeInBytes) {
-            return fileSizeInBytes.toFixed(1) + ' s';
-        };
-
-        function getReadableFileSizeString(fileSizeInBytes) {
-
-            var i = -1;
-            var byteUnits = [' kbps', ' Mbps', ' Gbps', ' Tbps', 'Pbps', 'Ebps', 'Zbps', 'Ybps'];
-            do {
-                fileSizeInBytes = fileSizeInBytes / 1024;
-                i++;
-            } while (fileSizeInBytes > 1024);
-
-            return Math.max(fileSizeInBytes, 0.1).toFixed(1) + byteUnits[i];
-        };
-
         var player = new Clappr.Player({
             parentId: "#Player",
-            autoPlay: true,
             source: "{{ object.link_m3u8|safe }}",
+            plugins: [HlsjsPlayback],
             width: '640px',
             height: "360px",
             mediacontrol: {seekbar: "#900", buttons: "#FFFFFF"}
