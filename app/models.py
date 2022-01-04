@@ -52,10 +52,23 @@ class Program(TimeStamp):
         return self.title
 
 
+class LinkChannel(TimeStamp):
+    url = models.TextField(blank=True, null=True)
+    m3u8 = models.TextField(blank=True, null=True)
+    done = models.BooleanField(default=False)
+
+    def __str__(self):
+        return "%s" % self.url
+
+    def __unicode__(self):
+        return "%s" % self.url
+
+
 class Channel(TimeStamp):
     title = models.CharField(max_length=255, blank=True, null=True)
     image = models.URLField(blank=True, null=True)
     url = models.URLField(blank=True, null=True)
+    link_m3u8 = models.TextField(blank=True, null=True)
     program = models.ForeignKey(Program, blank=True, null=True, on_delete=models.CASCADE)
 
     def __str__(self):

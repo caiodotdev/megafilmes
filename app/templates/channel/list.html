@@ -11,6 +11,9 @@
             <button id="get_channels" type="button" class="btn btn-info pull-right h2"><i
                     class="fa fa-rocket"></i> Get Channels
             </button>
+             <button id="get_m3u8" type="button" class="btn btn-info pull-right h2"><i
+                    class="fa fa-tv"></i> Get M3U8
+            </button>
             <a href="{% url 'CHANNEL_create' %}" class="btn btn-primary pull-right h2"><i
                     class="fa fa-plus"></i> Add Channel
             </a>
@@ -87,6 +90,19 @@
                 $('#loading').show();
                 $.get("{% url 'get_channels' %}", function (data) {
                     console.log('Getting channels ...');
+                }).done(function (data) {
+                    $('#loading').hide();
+                    window.location.href = '';
+                    console.log(data);
+                }).fail(function () {
+                    $('#loading').hide();
+                });
+            });
+
+            $('#get_m3u8').click(function () {
+                $('#loading').show();
+                $.get("{% url 'get_channels_m3u8' %}", function (data) {
+                    console.log('Getting channels m3u8 for all ...');
                 }).done(function (data) {
                     $('#loading').hide();
                     window.location.href = '';

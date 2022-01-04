@@ -17,6 +17,8 @@ from django.views.generic.list import ListView
 
 from django.db.models import Q
 
+from app.views.link import MegaPack
+
 try:
     from django.core.urlresolvers import reverse_lazy
 except ImportError:
@@ -199,6 +201,9 @@ class Detail(LoginRequiredMixin, MovieMixin, DetailView):
 
     def get_context_data(self, **kwargs):
         context = super(Detail, self).get_context_data(**kwargs)
+        mega = MegaPack(self.object.url)
+        link = mega.get_info()
+        context['m3u8'] = link
         return context
 
 
@@ -292,23 +297,23 @@ def get_movies(request):
         return Movie.objects.filter(title=title).exists()
 
     def save_movie(title, rating, image, data_lancamento, url_movie):
-        # movie = Movie()
-        # movie.title = title
-        # movie.rating = rating
-        # movie.image = image
-        # movie.year = data_lancamento
-        # movie.url = url_movie
-        # movie.save()
-        data = {
-            "title": title,
-            "year": data_lancamento,
-            "rating": rating,
-            "image": image,
-            "url": url_movie
-        }
-        req = requests.post('https://megafilmes.herokuapp.com/api/movie/', data=data)
-        if req.status_code != 201:
-            print(req.status_code)
-            print('---- erro ao inserir movie')
+        movie = Movie()
+        movie.title = title
+        movie.rating = rating
+        movie.image = image
+        movie.year = data_lancamento
+        movie.url = url_movie
+        movie.save()
+        # data = {
+        #     "title": title,
+        #     "year": data_lancamento,
+        #     "rating": rating,
+        #     "image": image,
+        #     "url": url_movie
+        # }
+        # req = requests.post('https://megafilmes.herokuapp.com/api/movie/', data=data)
+        # if req.status_code != 201:
+        #     print(req.status_code)
+        #     print('---- erro ao inserir movie')
 
     return get_articles(url_movies, 270, {'id': 'archive-content'}, save_movie, title_exists)

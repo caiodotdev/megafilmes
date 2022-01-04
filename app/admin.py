@@ -29,6 +29,7 @@ class MovieAdmin(admin.ModelAdmin):
     inlines = []
     list_display = ("id", "title", "year", "rating", "image", "url")
 
+
 admin.site.register(Movie, MovieAdmin)
 
 
@@ -40,6 +41,7 @@ class SerieAdmin(admin.ModelAdmin):
     inlines = []
     list_display = ("id", "title", "year", "rating", "image", "url")
 
+
 admin.site.register(Serie, SerieAdmin)
 
 
@@ -49,6 +51,14 @@ class ChannelAdmin(admin.ModelAdmin):
         'id',
     )
     inlines = []
-    list_display = ("id", "title", "image", "url")
+    list_display = ("id", "title", "image", "url", 'link_m3u8')
+
 
 admin.site.register(Channel, ChannelAdmin)
+
+
+class LinkAdmin(admin.ModelAdmin):
+    list_display = ['id', 'm3u8', 'url']
+
+
+admin.site.register(LinkChannel, LinkAdmin)

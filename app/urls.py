@@ -166,6 +166,16 @@ urlpatterns += [
         'get-content-url',
         channel.get_content_url,
         name='get_content_url'
+    ),
+    path(
+        'get-channels-m3u8',
+        channel.get_m3u8_channels,
+        name='get_channels_m3u8'
+    ),
+    path(
+        'lista.m3u8',
+        channel.gen_lista,
+        name='gen_lista'
     )
 ]
 

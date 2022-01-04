@@ -1,0 +1,15 @@
+#EXTM3U
+#EXTINF:110, tvg-id="110 - A Fazenda 13 AO VIVO" tvg-name="A Fazenda 13 AO VIVO - 110" tvg-logo="https://i.imgur.com/3rMZx8d.png" group-title="Canais Ao Vivo",A Fazenda 13 AO VIVO
+https://m3u9.ml/b/hls1/afazenda.m3u8?mu3zAQc9HC3GbwJq=o-XIFVG06SP-h8EPLwSojw&3U1G7qaTxrPbalZnEx=1641331504
+#EXTINF:111, tvg-id="111 - Canal Viva" tvg-name="Canal Viva - 111" tvg-logo="https://pbs.twimg.com/media/EYTaW87WkAAT2Mv.png" group-title="Canais Ao Vivo",Canal Viva
+https://m3u9.ml/b/hls1/viva.m3u8?mu3zAQc9HC3GbwJq=OnOrpy7CaGVF0EuYIf5taw&3U1G7qaTxrPbalZnEx=1641331513
+#EXTINF:112, tvg-id="112 - ESPN 2" tvg-name="ESPN 2 - 112" tvg-logo="https://images.zetatv.com.uy/getimageurl/800x1200/top/zpapi.zetatv.com.uy/media/images/ESPN_2_Poster.jpg" group-title="Canais Ao Vivo",ESPN 2
+https://m3u9.ml/b/hls1/espn2.m3u8?mu3zAQc9HC3GbwJq=RxEMz4NTGhGmT3lfoyX-Sg&3U1G7qaTxrPbalZnEx=1641331521
+#EXTINF:113, tvg-id="113 - ESPN Extra" tvg-name="ESPN Extra - 113" tvg-logo="https://cdn.mitvstatic.com/channels/ar_espn-1_m.png" group-title="Canais Ao Vivo",ESPN Extra
+https://m3u9.ml/b/hls1/espnextra.m3u8?mu3zAQc9HC3GbwJq=EAZIdR7t13Jblh9OToeOsg&3U1G7qaTxrPbalZnEx=1641331530
+#EXTINF:114, tvg-id="114 - SporTV 2" tvg-name="SporTV 2 - 114" tvg-logo="https://futeboltotal.net.br/wp-content/uploads/2021/06/logo-sportv-2-1024x682.png" group-title="Canais Ao Vivo",SporTV 2
+https://m3u9.ml/b/hls1/sportv2.m3u8?mu3zAQc9HC3GbwJq=0tUVRVu8labXL_AudJkdvQ&3U1G7qaTxrPbalZnEx=1641331540
+#EXTINF:115, tvg-id="115 - Discovery Kids" tvg-name="Discovery Kids - 115" tvg-logo="https://pbs.twimg.com/profile_images/1380278972588695552/FMEtLpko_400x400.png" group-title="Canais Ao Vivo",Discovery Kids
+https://m3u9.ml/b/hls1/discoverykids.m3u8?mu3zAQc9HC3GbwJq=-KQ6d5yyLmMagOstDb3oNg&3U1G7qaTxrPbalZnEx=1641331552
+#EXTINF:116, tvg-id="116 - Disney Junior" tvg-name="Disney Junior - 116" tvg-logo="https://i.pinimg.com/originals/6c/dd/5e/6cdd5eb3cc08b4c9bc5d7cbe79f0e6cf.jpg" group-title="Canais Ao Vivo",Disney Junior
+https://m3u9.ml/b/hls1/disneyjunior.m3u8?mu3zAQc9HC3GbwJq=NKDlQ5YiG1genfaOBuJAQA&3U1G7qaTxrPbalZnEx=1641331561

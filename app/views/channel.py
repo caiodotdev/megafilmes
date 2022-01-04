@@ -6,7 +6,7 @@ from django.contrib.admin.utils import NestedObjects
 from django.contrib.auth.mixins import LoginRequiredMixin, PermissionRequiredMixin
 from django.core.exceptions import FieldDoesNotExist
 from django.db import transaction
-from django.http import JsonResponse
+from django.http import JsonResponse, HttpResponse
 from django.shortcuts import redirect
 from django.views.generic.detail import DetailView
 from django.views.generic.edit import (
@@ -15,6 +15,8 @@ from django.views.generic.edit import (
 from django.views.generic.list import ListView
 
 from django.db.models import Q
+
+from app.views.link import MegaPack
 
 try:
     from django.core.urlresolvers import reverse_lazy
@@ -328,3 +330,56 @@ def get_content_url(request):
     id = request.GET['id']
     channel = Channel.objects.get(id=id)
     return JsonResponse({'content': get_program_content(channel.program.url)})
+
+
+def get_id(channel):
+    req = requests.get('https://megafilmes.herokuapp.com/api/channel/?title={}'.format(channel.title))
+    if req.status_code == 200:
+        return req.json()
+    return None
+
+
+def get_m3u8_channels(request):
+    channels = Channel.objects.all()
+    for channel in channels:
+        try:
+            chan = get_id(channel)[0]
+            if id:
+                mega = MegaPack(chan['url'])
+                m3u8 = mega.get_info()
+                data = {
+                    "link_m3u8": m3u8,
+                }
+                req = requests.put('https://megafilmes.herokuapp.com/api/channel/{}'.format(chan['id']), data=data)
+                if req.status_code != 200:
+                    print(req.status_code)
+                    print('---- erro ao inserir channel')
+            # channel.link_m3u8 = m3u8
+            # channel.save()
+        except (Exception,):
+            # channel.link_m3u8 = None
+            # channel.save()
+            print('--- err ao coletar link m3u8: ' + str(channel.title))
+    return JsonResponse({'message': str(Channel.objects.filter(link_m3u8__isnull=False))})
+
+
+def gen_lista(request):
+    f = open("lista.m3u8", "a")
+    f.truncate(0)
+    f.write("#EXTM3U\n")
+    for ch in Channel.objects.filter(link_m3u8__icontains='.m3u8').distinct():
+        title = ch.title
+        uri_m3u8 = ch.link_m3u8
+        f.write('#EXTINF:{}, tvg-id="{} - {}" tvg-name="{} - {}" tvg-logo="{}" group-title="{}",{}\n{}\n'.format(
+            ch.id,
+            ch.id,
+            title,
+            title,
+            ch.id,
+            ch.image,
+            'Canais Ao Vivo',
+            title,
+            uri_m3u8))
+    f.close()
+    fsock = open("lista.m3u8", "rb")
+    return HttpResponse(fsock, content_type='text')
