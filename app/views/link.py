@@ -32,6 +32,8 @@ class MegaPack(EngineModel):
         frame = self.get_frame(self.browser.find_elements(By.CLASS_NAME, "rptss"))
         if frame:
             self.browser.switch_to.frame(frame)
+        else:
+            print('Nao encontrou o frame de video.')
         html = self.browser.page_source
         soup = BeautifulSoup(html, 'html.parser')
         try:
@@ -39,9 +41,9 @@ class MegaPack(EngineModel):
             if player.has_attr('baixar'):
                 link_baixar = player['baixar']
                 link_baixar = self.cut_url(link_baixar)
+                self.browser.close()
+                self.browser.quit()
                 return self.create_link(link_baixar)
-            self.browser.close()
-            self.browser.quit()
         except (Exception,):
             print('--- Nao encontrou div#instructions')
         return None
