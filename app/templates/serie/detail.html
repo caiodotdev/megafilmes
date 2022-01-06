@@ -5,41 +5,41 @@
     <h3 class="page-header">View Serie</h3>
 
     <div class="row">
-        <div class="col-xs-4"> 
- <div class="form-group"> 
- <label>Title:</label> 
+        <div class="col-xs-4">
+            <div class="form-group">
+                <label>Title:</label>
 
-{{ object.title }} 
- </div> 
- </div> 
-<div class="col-xs-4"> 
- <div class="form-group"> 
- <label>Year:</label> 
+                {{ object.title }}
+            </div>
+        </div>
+        <div class="col-xs-4">
+            <div class="form-group">
+                <label>Year:</label>
 
-{{ object.year }} 
- </div> 
- </div> 
-<div class="col-xs-4"> 
- <div class="form-group"> 
- <label>Rating:</label> 
+                {{ object.year }}
+            </div>
+        </div>
+        <div class="col-xs-4">
+            <div class="form-group">
+                <label>Rating:</label>
 
-{{ object.rating }} 
- </div> 
- </div> 
-<div class="col-xs-4"> 
- <div class="form-group"> 
- <label>Image:</label> 
+                {{ object.rating }}
+            </div>
+        </div>
+        <div class="col-xs-4">
+            <div class="form-group">
+                <label>Image:</label>
 
-{{ object.image }} 
- </div> 
- </div> 
-<div class="col-xs-4"> 
- <div class="form-group"> 
- <label>Url:</label> 
+                {{ object.image }}
+            </div>
+        </div>
+        <div class="col-xs-4">
+            <div class="form-group">
+                <label>Url:</label>
 
-{{ object.url }} 
- </div> 
- </div> 
+                {{ object.url }}
+            </div>
+        </div>
 
     </div>
     <hr/>
@@ -50,6 +50,32 @@
             </a>
             <a href="{% url 'SERIE_list' %}" class="btn btn-default">Back</a>
         </div>
+    </div>
+    <br/>
+    <div class="row">
+        {% for episodio in episodios %}
+            <div class="col-md-3">
+                <div class="panel panel-default">
+                    <div class="panel-title">
+                        <h3>{{ episodio.number }}: {{ episodio.title }}</h3>
+                    </div>
+                    <div class="panel-body">
+                        <img class="img-thumbnail img-responsive"
+                             src="{{ episodio.image }}"/>
+
+
+                    </div>
+                    <div class="panel-footer">
+                        <p>{{ episodio.date }}</p>
+                        <p>
+                            <a class="btn btn-primary" href="{% url 'SERIE_episode' %}?link={{ episodio.link }}">
+                                Assistir
+                            </a>
+                        </p>
+                    </div>
+                </div>
+            </div>
+        {% endfor %}
     </div>
     <script type="text/javascript">
         $(document).ready(function () {

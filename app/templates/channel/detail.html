@@ -4,13 +4,9 @@
 {% block content %}
 
     <script src="//cdn.jsdelivr.net/npm/hls.js@latest"></script>
-    <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/@clappr/player@latest/dist/clappr.min.js"></script>
 
-    <script src='//cdn.jsdelivr.net/npm/@clappr/hlsjs-playback@latest/dist/hlsjs-playback.min.js'></script>
-    <script type="text/javascript"
-            src="//cdn.jsdelivr.net/gh/clappr/clappr-level-selector-plugin@latest/dist/level-selector.min.js"></script>
-    <script src="https://cdn.jsdelivr.net/npm/@clappr/stats-plugin@latest/dist/clappr-stats.min.js"
-            type="text/javascript"></script>
+    <script src="https://cdn.jsdelivr.net/npm/clappr@latest/dist/clappr.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/clappr-chromecast-plugin@latest/dist/clappr-chromecast-plugin.min.js"></script>
 
     <h3 class="page-header">View Channel</h3>
 
@@ -36,6 +32,21 @@
                 {{ object.url }}
             </div>
         </div>
+        <div class="col-xs-4">
+            <div class="form-group">
+                <label>m3u8:</label>
+
+                {{ object.link_m3u8 }}
+            </div>
+        </div>
+
+        <div class="col-xs-4">
+            <div class="form-group">
+                <label>Prazo:</label>
+
+                {{ object.link_m3u8|calc_prazo }}h
+            </div>
+        </div>
 
     </div>
     <hr/>
@@ -44,6 +55,9 @@
             <a class="btn btn-primary" href="{% url 'CHANNEL_update' channel.pk %}">
                 Edit
             </a>
+            <button type="button" class="btn btn-primary" id="get_m3u8">
+                Update M3u8
+            </button>
             <a href="{% url 'CHANNEL_list' %}" class="btn btn-default">Back</a>
         </div>
     </div>
@@ -60,14 +74,33 @@
     <script type="text/javascript">
         $(document).ready(function () {
             $('#channel_link').addClass('active');
+
+            $('#get_m3u8').click(function () {
+                $('#loading').show();
+                $.get("{% url 'get_m3u8_channel' object.id %}", function (data) {
+                    console.log('Getting channel m3u8...');
+                }).done(function (data) {
+                    $('#loading').hide();
+                    window.location.href = '';
+                    console.log(data);
+                }).fail(function () {
+                    $('#loading').hide();
+                });
+            });
         });
     </script>
     <script>
 
         var player = new Clappr.Player({
-            parentId: "#Player",
             source: window.location.origin + "{% url 'playlist_m3u8' %}?uri=" + "{{ object.link_m3u8|safe }}",
-            plugins: [HlsjsPlayback],
+            plugins: [ChromecastPlugin],
+            parentId: "#Player",
+            chromecast: {
+                appId: '9DFB77C0',
+                media: {
+                    type: ChromecastPlugin.None,
+                }
+            },
             width: '640px',
             height: "360px",
             mediacontrol: {seekbar: "#900", buttons: "#FFFFFF"}

@@ -25,16 +25,6 @@
     <hr/>
     <form id="advancedForm" method="get" action="{% url 'CHANNEL_list' %}">
         {% csrf_token %}
-        <div class="row">
-            <div class="col-sm-12">
-
-                {{ filter.form.as_p }}
-                <button type="button" class="btn btn-default" id="clear"><i class="fa fa-close"></i> Clear</button>
-
-
-            </div>
-        </div>
-        <hr/>
         <div id="list" class="row">
             <div class="col-md-12">
                 <table id="table" class="table table-striped" cellspacing="0" cellpadding="0">
@@ -42,6 +32,7 @@
                     <tr>
                         <th>ID</th>
                         <th>TITLE</th>
+                        <th>HOURS</th>
                         <th>IMAGE</th>
                         <th>URL</th>
                         <th>PROGRAM</th>
@@ -124,21 +115,21 @@
                 },
                 columnDefs: [
                     {
-                        targets: 2,
+                        targets: 3,
                         data: 'image',
                         "render": function (data, type, row, meta) {
                             return '<img class="img-thumbnail" src="' + row[2] + '"/>';
                         }
                     },
                     {
-                        targets: 3,
+                        targets: 4,
                         data: 'url',
                         "render": function (data, type, row, meta) {
                             return '<a href="' + row[3] + '" target="_blank">' + row[3] + '</a>';
                         }
                     },
                     {
-                        targets: 4,
+                        targets: 5,
                         data: 'program',
                         "render": function (data, type, row, meta) {
                             return '<button type="button" class="btn btn-primary mods" data-id="' + row[0] + '" data-toggle="modal" data-target="#modal">Program</button>';

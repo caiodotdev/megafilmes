@@ -1,15 +1,191 @@
 #EXTM3U
-#EXTINF:110, tvg-id="110 - A Fazenda 13 AO VIVO" tvg-name="A Fazenda 13 AO VIVO - 110" tvg-logo="https://i.imgur.com/3rMZx8d.png" group-title="Canais Ao Vivo",A Fazenda 13 AO VIVO
-https://m3u9.ml/b/hls1/afazenda.m3u8?mu3zAQc9HC3GbwJq=o-XIFVG06SP-h8EPLwSojw&3U1G7qaTxrPbalZnEx=1641331504
-#EXTINF:111, tvg-id="111 - Canal Viva" tvg-name="Canal Viva - 111" tvg-logo="https://pbs.twimg.com/media/EYTaW87WkAAT2Mv.png" group-title="Canais Ao Vivo",Canal Viva
-https://m3u9.ml/b/hls1/viva.m3u8?mu3zAQc9HC3GbwJq=OnOrpy7CaGVF0EuYIf5taw&3U1G7qaTxrPbalZnEx=1641331513
-#EXTINF:112, tvg-id="112 - ESPN 2" tvg-name="ESPN 2 - 112" tvg-logo="https://images.zetatv.com.uy/getimageurl/800x1200/top/zpapi.zetatv.com.uy/media/images/ESPN_2_Poster.jpg" group-title="Canais Ao Vivo",ESPN 2
-https://m3u9.ml/b/hls1/espn2.m3u8?mu3zAQc9HC3GbwJq=RxEMz4NTGhGmT3lfoyX-Sg&3U1G7qaTxrPbalZnEx=1641331521
-#EXTINF:113, tvg-id="113 - ESPN Extra" tvg-name="ESPN Extra - 113" tvg-logo="https://cdn.mitvstatic.com/channels/ar_espn-1_m.png" group-title="Canais Ao Vivo",ESPN Extra
-https://m3u9.ml/b/hls1/espnextra.m3u8?mu3zAQc9HC3GbwJq=EAZIdR7t13Jblh9OToeOsg&3U1G7qaTxrPbalZnEx=1641331530
-#EXTINF:114, tvg-id="114 - SporTV 2" tvg-name="SporTV 2 - 114" tvg-logo="https://futeboltotal.net.br/wp-content/uploads/2021/06/logo-sportv-2-1024x682.png" group-title="Canais Ao Vivo",SporTV 2
-https://m3u9.ml/b/hls1/sportv2.m3u8?mu3zAQc9HC3GbwJq=0tUVRVu8labXL_AudJkdvQ&3U1G7qaTxrPbalZnEx=1641331540
-#EXTINF:115, tvg-id="115 - Discovery Kids" tvg-name="Discovery Kids - 115" tvg-logo="https://pbs.twimg.com/profile_images/1380278972588695552/FMEtLpko_400x400.png" group-title="Canais Ao Vivo",Discovery Kids
-https://m3u9.ml/b/hls1/discoverykids.m3u8?mu3zAQc9HC3GbwJq=-KQ6d5yyLmMagOstDb3oNg&3U1G7qaTxrPbalZnEx=1641331552
-#EXTINF:116, tvg-id="116 - Disney Junior" tvg-name="Disney Junior - 116" tvg-logo="https://i.pinimg.com/originals/6c/dd/5e/6cdd5eb3cc08b4c9bc5d7cbe79f0e6cf.jpg" group-title="Canais Ao Vivo",Disney Junior
-https://m3u9.ml/b/hls1/disneyjunior.m3u8?mu3zAQc9HC3GbwJq=NKDlQ5YiG1genfaOBuJAQA&3U1G7qaTxrPbalZnEx=1641331561
+#EXTINF:218, tvg-id="218 - Canal Viva" tvg-name="Canal Viva - 218" tvg-logo="https://pbs.twimg.com/media/EYTaW87WkAAT2Mv.png" group-title="Canais Ao Vivo",Canal Viva
+https://m3u9.ml/b/hls1/viva.m3u8?mu3zAQc9HC3GbwJq=C46nQq4oTGp7aUnBCDiJHw&3U1G7qaTxrPbalZnEx=1641408850
+#EXTINF:219, tvg-id="219 - ESPN 2" tvg-name="ESPN 2 - 219" tvg-logo="https://images.zetatv.com.uy/getimageurl/800x1200/top/zpapi.zetatv.com.uy/media/images/ESPN_2_Poster.jpg" group-title="Canais Ao Vivo",ESPN 2
+https://m3u9.ml/b/hls1/espn2.m3u8?mu3zAQc9HC3GbwJq=yqqTspUV0t6FgAajiFDlPA&3U1G7qaTxrPbalZnEx=1641408856
+#EXTINF:220, tvg-id="220 - ESPN Extra" tvg-name="ESPN Extra - 220" tvg-logo="https://cdn.mitvstatic.com/channels/ar_espn-1_m.png" group-title="Canais Ao Vivo",ESPN Extra
+https://m3u9.ml/b/hls1/espnextra.m3u8?mu3zAQc9HC3GbwJq=Envefq1lhwDyKOVHgW3t7A&3U1G7qaTxrPbalZnEx=1641408864
+#EXTINF:221, tvg-id="221 - SporTV 2" tvg-name="SporTV 2 - 221" tvg-logo="https://futeboltotal.net.br/wp-content/uploads/2021/06/logo-sportv-2-1024x682.png" group-title="Canais Ao Vivo",SporTV 2
+https://m3u9.ml/b/hls1/sportv2.m3u8?mu3zAQc9HC3GbwJq=NMOJkfkIj0x7dAxk9Fk8nA&3U1G7qaTxrPbalZnEx=1641408870
+#EXTINF:222, tvg-id="222 - Discovery Kids" tvg-name="Discovery Kids - 222" tvg-logo="https://pbs.twimg.com/profile_images/1380278972588695552/FMEtLpko_400x400.png" group-title="Canais Ao Vivo",Discovery Kids
+https://m3u9.ml/b/hls1/discoverykids.m3u8?mu3zAQc9HC3GbwJq=W7BMbmEtwdKRrmvnssxMVw&3U1G7qaTxrPbalZnEx=1641408877
+#EXTINF:223, tvg-id="223 - Disney Junior" tvg-name="Disney Junior - 223" tvg-logo="https://i.pinimg.com/originals/6c/dd/5e/6cdd5eb3cc08b4c9bc5d7cbe79f0e6cf.jpg" group-title="Canais Ao Vivo",Disney Junior
+https://m3u9.ml/b/hls1/disneyjunior.m3u8?mu3zAQc9HC3GbwJq=F_7H2vCI8fLacCzvG9J2Fg&3U1G7qaTxrPbalZnEx=1641408893
+#EXTINF:224, tvg-id="224 - Tooncast" tvg-name="Tooncast - 224" tvg-logo="https://multiplaytelecom.com.br/wp-content/uploads/canais/TOC.jpg" group-title="Canais Ao Vivo",Tooncast
+https://m3u9.ml/b/hls1/tooncast.m3u8?mu3zAQc9HC3GbwJq=NoCoBri9fiyMPd9nx9yJ-g&3U1G7qaTxrPbalZnEx=1641408901
+#EXTINF:225, tvg-id="225 - HGTV" tvg-name="HGTV - 225" tvg-logo="https://images-na.ssl-images-amazon.com/images/I/41kdE02UjwL.png" group-title="Canais Ao Vivo",HGTV
+https://m3u9.ml/b/hls1/hgtv.m3u8?mu3zAQc9HC3GbwJq=vW1iyRbQugWLQexoc5Ca2g&3U1G7qaTxrPbalZnEx=1641408908
+#EXTINF:226, tvg-id="226 - Discovery Science" tvg-name="Discovery Science - 226" tvg-logo="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTRrW_KhZ5Quz5Aqi4AVjUttrNzJNYpvt-zU9-vjqYZu5To_1u_Fx_5CBZaB1_r0lbku6Y&usqp=CAU" group-title="Canais Ao Vivo",Discovery Science
+https://m3u9.ml/b/hls1/discoverysience.m3u8?mu3zAQc9HC3GbwJq=sRMUVyG7sYtQ1CGrRzjNsg&3U1G7qaTxrPbalZnEx=1641408915
+#EXTINF:227, tvg-id="227 - Premiere 8" tvg-name="Premiere 8 - 227" tvg-logo="https://play-lh.googleusercontent.com/ibgef_YvMpb3I0yHgRbtp78AXJI9YQi56j-RolGp3IhIK1bfLmhmVbllxFnBVj-ka6d7" group-title="Canais Ao Vivo",Premiere 8
+https://m3u9.ml/b/hls1/premiere8.m3u8?mu3zAQc9HC3GbwJq=fGXNIqiBkZDmp3H69LNN2Q&3U1G7qaTxrPbalZnEx=1641408923
+#EXTINF:228, tvg-id="228 - HBO" tvg-name="HBO - 228" tvg-logo="https://i.pinimg.com/originals/b0/ee/73/b0ee7386cd697a8772b62dfd9933736a.jpg" group-title="Canais Ao Vivo",HBO
+https://m3u9.ml/b/hls1/hbo.m3u8?mu3zAQc9HC3GbwJq=Cf2iPHHcz0JGPUNSK3Gn9w&3U1G7qaTxrPbalZnEx=1641408941
+#EXTINF:229, tvg-id="229 - TCM" tvg-name="TCM - 229" tvg-logo="https://static.wikia.nocookie.net/tvpediabrasil/images/d/dc/Tcm.jpg/revision/latest?cb=20190207160240&path-prefix=pt-br" group-title="Canais Ao Vivo",TCM
+https://m3u9.ml/b/hls1/tcm.m3u8?mu3zAQc9HC3GbwJq=O-WdS-y052HgzhB1vz_HBA&3U1G7qaTxrPbalZnEx=1641408949
+#EXTINF:231, tvg-id="231 - Arte 1" tvg-name="Arte 1 - 231" tvg-logo="https://upload.wikimedia.org/wikipedia/commons/thumb/3/31/Arte_1_logo.svg/1200px-Arte_1_logo.svg.png" group-title="Canais Ao Vivo",Arte 1
+https://m3u9.ml/b/hls1/arte1.m3u8?mu3zAQc9HC3GbwJq=l6AfdTnaPBNttopGp1pa3A&3U1G7qaTxrPbalZnEx=1641408956
+#EXTINF:232, tvg-id="232 - Canal Bis" tvg-name="Canal Bis - 232" tvg-logo="https://pbs.twimg.com/profile_images/1080522229492998144/Eckl0Y2H_400x400.jpg" group-title="Canais Ao Vivo",Canal Bis
+https://m3u9.ml/b/hls1/bis.m3u8?mu3zAQc9HC3GbwJq=OzO8VofSi8Uenc3mWltXKg&3U1G7qaTxrPbalZnEx=1641408963
+#EXTINF:233, tvg-id="233 - Discovery Home & Health" tvg-name="Discovery Home & Health - 233" tvg-logo="https://pbs.twimg.com/profile_images/1032703404328538112/6rYEqx6g_400x400.jpg" group-title="Canais Ao Vivo",Discovery Home & Health
+https://m3u9.ml/b/hls1/discoveryhomeihealth.m3u8?mu3zAQc9HC3GbwJq=cWjan6tU-_J9uhlK4wn3RQ&3U1G7qaTxrPbalZnEx=1641408970
+#EXTINF:234, tvg-id="234 - Fish TV" tvg-name="Fish TV - 234" tvg-logo="https://yt3.ggpht.com/ytc/AKedOLRo76jCYcaYbRBvh9db3l9RBVwicZSfH5-5MLRlNA=s900-c-k-c0x00ffffff-no-rj" group-title="Canais Ao Vivo",Fish TV
+https://m3u9.ml/b/hls1/fishtv.m3u8?mu3zAQc9HC3GbwJq=bocGr44UTM6T1Hu_qZsM-g&3U1G7qaTxrPbalZnEx=1641408979
+#EXTINF:235, tvg-id="235 - Paramount Channel" tvg-name="Paramount Channel - 235" tvg-logo="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTXNCMzowhDsJbHF7AeOFwox4t4G9fnlbKWcQ&usqp=CAU" group-title="Canais Ao Vivo",Paramount Channel
+https://m3u9.ml/b/hls1/paramount.m3u8?mu3zAQc9HC3GbwJq=2cxd8o2T62bttjNJVTWFJg&3U1G7qaTxrPbalZnEx=1641408999
+#EXTINF:237, tvg-id="237 - Canal Brasil" tvg-name="Canal Brasil - 237" tvg-logo="https://portalaltadefinicao.com/wp-content/uploads/2020/09/Canal-Brasil.jpg" group-title="Canais Ao Vivo",Canal Brasil
+https://m3u9.ml/b/hls1/canalbrasil.m3u8?mu3zAQc9HC3GbwJq=uTxJM00-pzL-ZvIF1ooOlA&3U1G7qaTxrPbalZnEx=1641409006
+#EXTINF:238, tvg-id="238 - CNN Brasil" tvg-name="CNN Brasil - 238" tvg-logo="https://www.anfip.org.br/wp-content/uploads/2020/06/CNNBrasil.jpg" group-title="Canais Ao Vivo",CNN Brasil
+https://m3u9.ml/b/hls1/cnnbrasil.m3u8?mu3zAQc9HC3GbwJq=1mIGnSMYy0ET56KlY4I-Xg&3U1G7qaTxrPbalZnEx=1641409014
+#EXTINF:239, tvg-id="239 - Baby TV" tvg-name="Baby TV - 239" tvg-logo="https://www.logolynx.com/images/logolynx/2c/2c660238ffec78dde85554a81a5b3274.jpeg" group-title="Canais Ao Vivo",Baby TV
+https://m3u9.ml/b/hls1/babytv.m3u8?mu3zAQc9HC3GbwJq=q5yGKsL-Vdzia6GlBw8woQ&3U1G7qaTxrPbalZnEx=1641409025
+#EXTINF:240, tvg-id="240 - MTV Live" tvg-name="MTV Live - 240" tvg-logo="https://pbs.twimg.com/profile_images/1345399606071406599/Jdg89Hil_400x400.jpg" group-title="Canais Ao Vivo",MTV Live
+https://m3u9.ml/b/hls1/mtvlive.m3u8?mu3zAQc9HC3GbwJq=eHn8Lo6qPBR_o_te1nlIEw&3U1G7qaTxrPbalZnEx=1641409048
+#EXTINF:241, tvg-id="241 - TBS" tvg-name="TBS - 241" tvg-logo="https://i.pinimg.com/originals/5c/cd/85/5ccd85034f877c90684cae61b1359067.png" group-title="Canais Ao Vivo",TBS
+https://m3u9.ml/b/hls1/tbs.m3u8?mu3zAQc9HC3GbwJq=YyF9P03OS0GojVl2OIeifg&3U1G7qaTxrPbalZnEx=1641409065
+#EXTINF:242, tvg-id="242 - Gloobinho" tvg-name="Gloobinho - 242" tvg-logo="https://voxnews.com.br/wp-content/uploads/2016/03/logo_gloob_quadrada.jpg" group-title="Canais Ao Vivo",Gloobinho
+https://m3u9.ml/b/hls1/gloobinho.m3u8?mu3zAQc9HC3GbwJq=nw7-THE5HmtjztyvIszrOg&3U1G7qaTxrPbalZnEx=1641409072
+#EXTINF:243, tvg-id="243 - HBO Mundi" tvg-name="HBO Mundi - 243" tvg-logo="https://megafilmeshdd.org/wp-content/uploads/2021/05/hbo-mundi-logo-236F04C9B4-seeklogo.com_-185x278.png" group-title="Canais Ao Vivo",HBO Mundi
+https://m3u9.ml/b/hls1/hbomundi.m3u8?mu3zAQc9HC3GbwJq=_9wGtLVOkvncqubqeVl8Ig&3U1G7qaTxrPbalZnEx=1641409079
+#EXTINF:244, tvg-id="244 - HBO Pop" tvg-name="HBO Pop - 244" tvg-logo="https://megafilmeshdd.org/wp-content/uploads/2021/05/maxresdefault-185x278.jpg" group-title="Canais Ao Vivo",HBO Pop
+https://m3u9.ml/b/hls1/hbopop.m3u8?mu3zAQc9HC3GbwJq=fibLwLezwsdCQYpb0Jv5ZA&3U1G7qaTxrPbalZnEx=1641409088
+#EXTINF:245, tvg-id="245 - HBO Xtreme" tvg-name="HBO Xtreme - 245" tvg-logo="https://megafilmeshdd.org/wp-content/uploads/2021/05/Hboxtreme-185x278.png" group-title="Canais Ao Vivo",HBO Xtreme
+https://m3u9.ml/b/hls1/hboxtreme.m3u8?mu3zAQc9HC3GbwJq=kwBxe8NMNlIlKKZIOqpGbA&3U1G7qaTxrPbalZnEx=1641409096
+#EXTINF:246, tvg-id="246 - Fox Sports 2" tvg-name="Fox Sports 2 - 246" tvg-logo="https://megafilmeshd50.com/wp-content/uploads/2018/10/4O2uOlP-214x300.jpg" group-title="Canais Ao Vivo",Fox Sports 2
+https://m3u9.ml/b/hls1/foxsports2.m3u8?mu3zAQc9HC3GbwJq=5r3CJrVIb7IUXnLU2-2CeA&3U1G7qaTxrPbalZnEx=1641409104
+#EXTINF:247, tvg-id="247 - Fox Sports" tvg-name="Fox Sports - 247" tvg-logo="https://megafilmeshdd.org/wp-content/uploads/2021/05/5b86de45173e2-185x278.png" group-title="Canais Ao Vivo",Fox Sports
+https://m3u9.ml/b/hls1/foxsports1.m3u8?mu3zAQc9HC3GbwJq=PPc3LI457xpgyo7iLdKQdw&3U1G7qaTxrPbalZnEx=1641409133
+#EXTINF:249, tvg-id="249 - Band Sports" tvg-name="Band Sports - 249" tvg-logo="https://megafilmeshd50.com/wp-content/uploads/2018/04/VbQ502l-214x300.png" group-title="Canais Ao Vivo",Band Sports
+https://m3u9.ml/b/hls1/bandsports.m3u8?mu3zAQc9HC3GbwJq=df9V49Ss8aJ4nywbXVSv6g&3U1G7qaTxrPbalZnEx=1641409139
+#EXTINF:250, tvg-id="250 - Boomerang" tvg-name="Boomerang - 250" tvg-logo="https://megafilmeshd50.com/wp-content/uploads/2018/04/SCNsUVF-214x300.jpg" group-title="Canais Ao Vivo",Boomerang
+https://m3u9.ml/b/hls1/boomerang.m3u8?mu3zAQc9HC3GbwJq=h5V-5qWhCoBRKHclh3uSog&3U1G7qaTxrPbalZnEx=1641409146
+#EXTINF:251, tvg-id="251 - Canal Sony" tvg-name="Canal Sony - 251" tvg-logo="https://megafilmeshd50.com/wp-content/uploads/2018/04/Dai8AOP-1.png" group-title="Canais Ao Vivo",Canal Sony
+https://m3u9.ml/b/hls1/sony.m3u8?mu3zAQc9HC3GbwJq=8WYIMSaIwf8C9GS--0dHQA&3U1G7qaTxrPbalZnEx=1641409154
+#EXTINF:252, tvg-id="252 - Discovery Theater" tvg-name="Discovery Theater - 252" tvg-logo="https://megafilmeshd50.com/wp-content/uploads/2018/04/bRasmCs.png" group-title="Canais Ao Vivo",Discovery Theater
+https://m3u9.ml/b/hls1/discoverytheater.m3u8?mu3zAQc9HC3GbwJq=hFAM6soEa-u22HKN2Ts69w&3U1G7qaTxrPbalZnEx=1641409162
+#EXTINF:253, tvg-id="253 - E! Entertainment" tvg-name="E! Entertainment - 253" tvg-logo="https://megafilmeshdd.org/wp-content/uploads/2021/05/unnamed-185x278.jpg" group-title="Canais Ao Vivo",E! Entertainment
+https://m3u9.ml/b/hls1/canale.m3u8?mu3zAQc9HC3GbwJq=ZgR_USVjoyBAxB9EiSIfEg&3U1G7qaTxrPbalZnEx=1641409179
+#EXTINF:254, tvg-id="254 - ESPN Brasil" tvg-name="ESPN Brasil - 254" tvg-logo="https://megafilmeshd50.com/wp-content/uploads/2018/04/9av4Hd1-214x300.png" group-title="Canais Ao Vivo",ESPN Brasil
+https://m3u9.ml/b/hls1/espnbrasil.m3u8?mu3zAQc9HC3GbwJq=vySIUonKPdt2sqIJbKvVkw&3U1G7qaTxrPbalZnEx=1641409186
+#EXTINF:255, tvg-id="255 - ESPN" tvg-name="ESPN - 255" tvg-logo="https://futuremedicalnow.com/wp-content/uploads/2021/02/ESPN.png" group-title="Canais Ao Vivo",ESPN
+https://m3u9.ml/b/hls1/espn.m3u8?mu3zAQc9HC3GbwJq=aOl4tdodxkFbIE47cL3Dog&3U1G7qaTxrPbalZnEx=1641409214
+#EXTINF:256, tvg-id="256 - Food Network" tvg-name="Food Network - 256" tvg-logo="https://megafilmeshd50.com/wp-content/uploads/2018/04/jPT7iqr.png" group-title="Canais Ao Vivo",Food Network
+https://m3u9.ml/b/hls1/foodnetwork.m3u8?mu3zAQc9HC3GbwJq=6_17pwf2gnnARep46z2_HQ&3U1G7qaTxrPbalZnEx=1641409238
+#EXTINF:257, tvg-id="257 - Fox Life" tvg-name="Fox Life - 257" tvg-logo="https://yt3.ggpht.com/ytc/AKedOLREQmwdQRm01m4cltiqVu-IIRWon7RYDFFcTdHI=s900-c-k-c0x00ffffff-no-rj" group-title="Canais Ao Vivo",Fox Life
+https://m3u9.ml/b/hls1/foxlife.m3u8?mu3zAQc9HC3GbwJq=IuNk8boaY4upkIIRKiZpNw&3U1G7qaTxrPbalZnEx=1641409246
+#EXTINF:258, tvg-id="258 - Fox Premium 1" tvg-name="Fox Premium 1 - 258" tvg-logo="https://megafilmeshd50.com/wp-content/uploads/2018/04/PhFoVsJ-214x300.jpg" group-title="Canais Ao Vivo",Fox Premium 1
+https://m3u9.ml/b/hls1/FoxPremium1.m3u8?mu3zAQc9HC3GbwJq=limShW-pEQDN3DVwXrjUFw&3U1G7qaTxrPbalZnEx=1641409254
+#EXTINF:259, tvg-id="259 - Fox Premium 2" tvg-name="Fox Premium 2 - 259" tvg-logo="https://megafilmeshd50.com/wp-content/uploads/2018/04/tVrlvCv-214x300.jpg" group-title="Canais Ao Vivo",Fox Premium 2
+https://m3u9.ml/b/hls1/foxpremium2.m3u8?mu3zAQc9HC3GbwJq=Hjzpv3gxLMDHWg3m_Ylv1A&3U1G7qaTxrPbalZnEx=1641409273
+#EXTINF:263, tvg-id="263 - GNT" tvg-name="GNT - 263" tvg-logo="https://megafilmeshd50.com/wp-content/uploads/2018/04/OMyuNZj-214x300.png" group-title="Canais Ao Vivo",GNT
+https://m3u9.ml/b/hls1/gnt.m3u8?mu3zAQc9HC3GbwJq=PwSNbInQ8s75FDwBkb3NrA&3U1G7qaTxrPbalZnEx=1641409296
+#EXTINF:264, tvg-id="264 - HBO Signature" tvg-name="HBO Signature - 264" tvg-logo="https://megafilmeshd50.com/wp-content/uploads/2018/04/QfDFbTY-214x300.jpg" group-title="Canais Ao Vivo",HBO Signature
+https://m3u9.ml/b/hls1/hbosignature.m3u8?mu3zAQc9HC3GbwJq=dhe3btU9982zxfiqkISZVQ&3U1G7qaTxrPbalZnEx=1641409302
+#EXTINF:265, tvg-id="265 - Lifetime" tvg-name="Lifetime - 265" tvg-logo="https://megafilmeshd50.com/wp-content/uploads/2018/04/hBSXks4-214x300.png" group-title="Canais Ao Vivo",Lifetime
+https://m3u9.ml/b/hls1/lifetime.m3u8?mu3zAQc9HC3GbwJq=sVH9gGz9XkbrG_UcCKBspg&3U1G7qaTxrPbalZnEx=1641409326
+#EXTINF:267, tvg-id="267 - Nat Geo Kids" tvg-name="Nat Geo Kids - 267" tvg-logo="https://megafilmeshd50.com/wp-content/uploads/2018/04/Y3hNyqX.png" group-title="Canais Ao Vivo",Nat Geo Kids
+https://m3u9.ml/b/hls1/natgeokids.m3u8?mu3zAQc9HC3GbwJq=mpxCxch-ltII6mQgLl3phg&3U1G7qaTxrPbalZnEx=1641409336
+#EXTINF:268, tvg-id="268 - Nat Geo Wild" tvg-name="Nat Geo Wild - 268" tvg-logo="https://megafilmeshd50.com/wp-content/uploads/2018/04/oSdhcbi-214x300.jpg" group-title="Canais Ao Vivo",Nat Geo Wild
+https://m3u9.ml/b/hls1/natgeowild.m3u8?mu3zAQc9HC3GbwJq=aKOBVgg7hHJbh0z0vEuMcA&3U1G7qaTxrPbalZnEx=1641409353
+#EXTINF:269, tvg-id="269 - Canal Off" tvg-name="Canal Off - 269" tvg-logo="https://megafilmeshd50.com/wp-content/uploads/2018/04/Yw63R6F-214x300.png" group-title="Canais Ao Vivo",Canal Off
+https://m3u9.ml/b/hls1/off.m3u8?mu3zAQc9HC3GbwJq=qNCu-sZOFk8zt7nimYRkxQ&3U1G7qaTxrPbalZnEx=1641409376
+#EXTINF:271, tvg-id="271 - Band News" tvg-name="Band News - 271" tvg-logo="https://pbs.twimg.com/profile_images/1368930542058635270/ddfsL_BV.jpg" group-title="Canais Ao Vivo",Band News
+https://m3u9.ml/b/hls1/bandnews.m3u8?mu3zAQc9HC3GbwJq=P23VJtEAkm6iNW8xXKWSKQ&3U1G7qaTxrPbalZnEx=1641409384
+#EXTINF:272, tvg-id="272 - Premiere 7" tvg-name="Premiere 7 - 272" tvg-logo="https://megafilmeshd50.com/wp-content/uploads/2018/04/93B2eT7-214x300.png" group-title="Canais Ao Vivo",Premiere 7
+https://m3u9.ml/b/hls1/premiere7.m3u8?mu3zAQc9HC3GbwJq=YnzkmokCc4YHHFIooT_y_A&3U1G7qaTxrPbalZnEx=1641409395
+#EXTINF:273, tvg-id="273 - Premiere 6" tvg-name="Premiere 6 - 273" tvg-logo="https://megafilmeshd50.com/wp-content/uploads/2018/04/FaaQeVw-214x300.png" group-title="Canais Ao Vivo",Premiere 6
+https://m3u9.ml/b/hls1/premiere6.m3u8?mu3zAQc9HC3GbwJq=W2nEfgT5AJ59QggFpgZG4A&3U1G7qaTxrPbalZnEx=1641409402
+#EXTINF:274, tvg-id="274 - Premiere 5" tvg-name="Premiere 5 - 274" tvg-logo="https://megafilmeshd50.com/wp-content/uploads/2018/04/vZhcLMh-214x300.png" group-title="Canais Ao Vivo",Premiere 5
+https://m3u9.ml/b/hls1/premiere5.m3u8?mu3zAQc9HC3GbwJq=-lv4t5joLTDuH5GY9ColLg&3U1G7qaTxrPbalZnEx=1641409410
+#EXTINF:275, tvg-id="275 - Premiere 4" tvg-name="Premiere 4 - 275" tvg-logo="https://megafilmeshd50.com/wp-content/uploads/2018/04/BbqMUEr-214x300.png" group-title="Canais Ao Vivo",Premiere 4
+https://m3u9.ml/b/hls1/premiere4.m3u8?mu3zAQc9HC3GbwJq=wuP0OM7rBn7vPJPPLe2i4g&3U1G7qaTxrPbalZnEx=1641409444
+#EXTINF:276, tvg-id="276 - Premiere 3" tvg-name="Premiere 3 - 276" tvg-logo="https://megafilmeshd50.com/wp-content/uploads/2018/04/Zmjqf5I-214x300.png" group-title="Canais Ao Vivo",Premiere 3
+https://m3u9.ml/b/hls1/premiere3.m3u8?mu3zAQc9HC3GbwJq=kD1yyjD3e5HMGLwK533_iA&3U1G7qaTxrPbalZnEx=1641409451
+#EXTINF:277, tvg-id="277 - Premiere 2" tvg-name="Premiere 2 - 277" tvg-logo="https://megafilmeshd50.com/wp-content/uploads/2018/04/qRkaFYB-1-214x300.png" group-title="Canais Ao Vivo",Premiere 2
+https://m3u9.ml/b/hls1/premiere2.m3u8?mu3zAQc9HC3GbwJq=OdR8c5-xW_YcLcBakaLTGA&3U1G7qaTxrPbalZnEx=1641409459
+#EXTINF:278, tvg-id="278 - Premiere Clubes" tvg-name="Premiere Clubes - 278" tvg-logo="https://megafilmeshd50.com/wp-content/uploads/2018/04/4IDIPpE-214x300.png" group-title="Canais Ao Vivo",Premiere Clubes
+https://m3u9.ml/b/hls1/premiereclubes.m3u8?mu3zAQc9HC3GbwJq=iZqkVNiB0gQb6cgwSN4C0Q&3U1G7qaTxrPbalZnEx=1641409466
+#EXTINF:279, tvg-id="279 - Space" tvg-name="Space - 279" tvg-logo="https://megafilmeshd50.com/wp-content/uploads/2018/04/Ndj7tEj.png" group-title="Canais Ao Vivo",Space
+https://m3u9.ml/b/hls1/space.m3u8?mu3zAQc9HC3GbwJq=kMDXpealNaE00XT3ohD6VQ&3U1G7qaTxrPbalZnEx=1641409474
+#EXTINF:280, tvg-id="280 - Studio Universal / Universal Studio" tvg-name="Studio Universal / Universal Studio - 280" tvg-logo="https://megafilmeshd50.com/wp-content/uploads/2018/04/Nib3llF-214x300.jpg" group-title="Canais Ao Vivo",Studio Universal / Universal Studio
+https://m3u9.ml/b/hls1/studiouniversal.m3u8?mu3zAQc9HC3GbwJq=mjxsBfQRHttkwfj7SNbSGg&3U1G7qaTxrPbalZnEx=1641409493
+#EXTINF:281, tvg-id="281 - Syfy" tvg-name="Syfy - 281" tvg-logo="https://seeklogo.com/images/S/syfy-logo-EDF3AAB208-seeklogo.com.png" group-title="Canais Ao Vivo",Syfy
+https://m3u9.ml/b/hls1/syfy.m3u8?mu3zAQc9HC3GbwJq=uLbYOmOR7AY5n781_Ri4Lw&3U1G7qaTxrPbalZnEx=1641409501
+#EXTINF:282, tvg-id="282 - TLC" tvg-name="TLC - 282" tvg-logo="https://pbs.twimg.com/profile_images/522918169208320002/kxI0xI78_400x400.png" group-title="Canais Ao Vivo",TLC
+https://m3u9.ml/b/hls1/tlc.m3u8?mu3zAQc9HC3GbwJq=lyXCCLx6Iyj0sCND-VuprA&3U1G7qaTxrPbalZnEx=1641409509
+#EXTINF:283, tvg-id="283 - TNT" tvg-name="TNT - 283" tvg-logo="https://seeklogo.com/images/T/TNT-logo-4C39A19650-seeklogo.com.png" group-title="Canais Ao Vivo",TNT
+https://m3u9.ml/b/hls1/tnt.m3u8?mu3zAQc9HC3GbwJq=MCubC-LHQjrDDwRGbFFAsQ&3U1G7qaTxrPbalZnEx=1641409519
+#EXTINF:284, tvg-id="284 - TNT Series" tvg-name="TNT Series - 284" tvg-logo="https://megafilmeshd50.com/wp-content/uploads/2018/04/3aDhkZT-1.png" group-title="Canais Ao Vivo",TNT Series
+https://m3u9.ml/b/hls1/tntseries.m3u8?mu3zAQc9HC3GbwJq=91t4KBqW2v0wEpYKmeA6mA&3U1G7qaTxrPbalZnEx=1641409528
+#EXTINF:285, tvg-id="285 - MTV" tvg-name="MTV - 285" tvg-logo="https://megafilmeshd50.com/wp-content/uploads/2018/04/rLvIWfe-214x300.png" group-title="Canais Ao Vivo",MTV
+https://m3u9.ml/b/hls1/mtv.m3u8?mu3zAQc9HC3GbwJq=uIzBIntekDJyG90hlY99gA&3U1G7qaTxrPbalZnEx=1641409537
+#EXTINF:286, tvg-id="286 - National Geographic Channel" tvg-name="National Geographic Channel - 286" tvg-logo="https://megafilmeshd50.com/wp-content/uploads/2018/04/UBbAlxe-214x300.jpg" group-title="Canais Ao Vivo",National Geographic Channel
+https://m3u9.ml/b/hls1/natgeo.m3u8?mu3zAQc9HC3GbwJq=D9fqLJF8ACW6IAXIYiP1nQ&3U1G7qaTxrPbalZnEx=1641409556
+#EXTINF:287, tvg-id="287 - Nick Jr." tvg-name="Nick Jr. - 287" tvg-logo="https://megafilmeshd50.com/wp-content/uploads/2018/04/H9FUdPb-214x300.jpg" group-title="Canais Ao Vivo",Nick Jr.
+https://m3u9.ml/b/hls1/nickjr.m3u8?mu3zAQc9HC3GbwJq=Z_1DLeNpDNEztq77hG0hZA&3U1G7qaTxrPbalZnEx=1641409565
+#EXTINF:289, tvg-id="289 - Comedy Central" tvg-name="Comedy Central - 289" tvg-logo="https://megafilmeshd50.com/wp-content/uploads/2018/04/vjkkjym.png" group-title="Canais Ao Vivo",Comedy Central
+https://m3u9.ml/b/hls1/comedycentral.m3u8?mu3zAQc9HC3GbwJq=p5Sd1q33ditJQQQLrnXRkA&3U1G7qaTxrPbalZnEx=1641409573
+#EXTINF:290, tvg-id="290 - History 2" tvg-name="History 2 - 290" tvg-logo="https://redecanaistv.com/imgs-videos/Canais/history2.jpg" group-title="Canais Ao Vivo",History 2
+https://m3u9.ml/b/hls1/history2.m3u8?mu3zAQc9HC3GbwJq=0jjRVdlysT4GcYyKJJyf0g&3U1G7qaTxrPbalZnEx=1641409582
+#EXTINF:291, tvg-id="291 - Warner Bros / Warner Channel" tvg-name="Warner Bros / Warner Channel - 291" tvg-logo="https://megafilmeshd50.com/wp-content/uploads/2018/04/cropped-Warner-channel-not1-300x169.png" group-title="Canais Ao Vivo",Warner Bros / Warner Channel
+https://m3u9.ml/b/hls1/warner.m3u8?mu3zAQc9HC3GbwJq=5dauyhMx-__tK3EYvGYWzg&3U1G7qaTxrPbalZnEx=1641409592
+#EXTINF:292, tvg-id="292 - SporTV 3" tvg-name="SporTV 3 - 292" tvg-logo="https://megafilmeshd50.com/wp-content/uploads/2018/04/lJp4oRN-214x300.jpg" group-title="Canais Ao Vivo",SporTV 3
+https://m3u9.ml/b/hls1/sportv3.m3u8?mu3zAQc9HC3GbwJq=IDtvGyev37MqTOvX4ynkuA&3U1G7qaTxrPbalZnEx=1641409610
+#EXTINF:293, tvg-id="293 - SporTV" tvg-name="SporTV - 293" tvg-logo="https://observatoriodatv.uol.com.br/wp-content/uploads/2019/12/sportv-logo.jpg" group-title="Canais Ao Vivo",SporTV
+https://m3u9.ml/b/hls1/sportv1.m3u8?mu3zAQc9HC3GbwJq=xiu1zQTgmd8SNk0wfWeGRw&3U1G7qaTxrPbalZnEx=1641409619
+#EXTINF:294, tvg-id="294 - Combate" tvg-name="Combate - 294" tvg-logo="https://megafilmeshd50.com/wp-content/uploads/2018/03/4BNOqKM-214x300.png" group-title="Canais Ao Vivo",Combate
+https://m3u9.ml/b/hls1/combate.m3u8?mu3zAQc9HC3GbwJq=ko5wVGTJ-cHjFjLAJeEkng&3U1G7qaTxrPbalZnEx=1641409629
+#EXTINF:295, tvg-id="295 - Discovery Turbo" tvg-name="Discovery Turbo - 295" tvg-logo="https://megafilmeshd50.com/wp-content/uploads/2017/10/eKD1C9I-214x300.png" group-title="Canais Ao Vivo",Discovery Turbo
+https://m3u9.ml/b/hls1/discoveryturbo.m3u8?mu3zAQc9HC3GbwJq=Lq4grgBDCYniMseWgqdMcw&3U1G7qaTxrPbalZnEx=1641409639
+#EXTINF:296, tvg-id="296 - Telecine Touch" tvg-name="Telecine Touch - 296" tvg-logo="https://megafilmeshd50.com/wp-content/uploads/2017/10/jrVyNpa-214x300.jpg" group-title="Canais Ao Vivo",Telecine Touch
+https://m3u9.ml/b/hls1/telecinetouch.m3u8?mu3zAQc9HC3GbwJq=O7LR2pdT1FaZ3jE4crumqg&3U1G7qaTxrPbalZnEx=1641409651
+#EXTINF:297, tvg-id="297 - Telecine Premium" tvg-name="Telecine Premium - 297" tvg-logo="https://megafilmeshd50.com/wp-content/uploads/2017/10/iexsQdl-214x300.jpg" group-title="Canais Ao Vivo",Telecine Premium
+https://m3u9.ml/b/hls1/telecinepremium.m3u8?mu3zAQc9HC3GbwJq=PNi_zQ0EwBFDOJNL5-U4Cw&3U1G7qaTxrPbalZnEx=1641409660
+#EXTINF:298, tvg-id="298 - Telecine Cult" tvg-name="Telecine Cult - 298" tvg-logo="https://megafilmeshd50.com/wp-content/uploads/2017/10/CKH0RdW-214x300.jpg" group-title="Canais Ao Vivo",Telecine Cult
+https://m3u9.ml/b/hls1/telecinecult.m3u8?mu3zAQc9HC3GbwJq=FyNAxycvkIpkuQGh_ov97A&3U1G7qaTxrPbalZnEx=1641409704
+#EXTINF:299, tvg-id="299 - MegaPix" tvg-name="MegaPix - 299" tvg-logo="https://megafilmeshd50.com/wp-content/uploads/2017/10/5uaCjZO.png" group-title="Canais Ao Vivo",MegaPix
+https://m3u9.ml/b/hls1/megapix.m3u8?mu3zAQc9HC3GbwJq=1axwGIk-SsQBcw_wvbMu5g&3U1G7qaTxrPbalZnEx=1641409713
+#EXTINF:300, tvg-id="300 - Investigação Discovery" tvg-name="Investigação Discovery - 300" tvg-logo="https://megafilmeshd50.com/wp-content/uploads/2017/10/rQMuQOJ-214x300.png" group-title="Canais Ao Vivo",Investigação Discovery
+https://m3u9.ml/b/hls1/investigacaodiscovery.m3u8?mu3zAQc9HC3GbwJq=atxZgL1GH8JBPwygYHyHXg&3U1G7qaTxrPbalZnEx=1641409723
+#EXTINF:301, tvg-id="301 - FX" tvg-name="FX - 301" tvg-logo="https://megafilmeshd50.com/wp-content/uploads/2017/10/xdra50K-214x300.jpg" group-title="Canais Ao Vivo",FX
+https://m3u9.ml/b/hls1/fx.m3u8?mu3zAQc9HC3GbwJq=oNQhX7RumNexkqoa5lNP2Q&3U1G7qaTxrPbalZnEx=1641409733
+#EXTINF:302, tvg-id="302 - Telecine Fun" tvg-name="Telecine Fun - 302" tvg-logo="https://megafilmeshd50.com/wp-content/uploads/2017/10/F61kGMo-214x300.jpg" group-title="Canais Ao Vivo",Telecine Fun
+https://m3u9.ml/b/hls1/telecinefun.m3u8?mu3zAQc9HC3GbwJq=6RanwusEmB98JncTphhysA&3U1G7qaTxrPbalZnEx=1641409742
+#EXTINF:303, tvg-id="303 - Disney XD" tvg-name="Disney XD - 303" tvg-logo="https://megafilmeshd50.com/wp-content/uploads/2017/10/RJlqx8o-214x300.jpg" group-title="Canais Ao Vivo",Disney XD
+https://m3u9.ml/b/hls1/disneyxd.m3u8?mu3zAQc9HC3GbwJq=N6jKJYNQt1_gSI9bgp0rZg&3U1G7qaTxrPbalZnEx=1641409762
+#EXTINF:304, tvg-id="304 - Disney Channel" tvg-name="Disney Channel - 304" tvg-logo="https://pbs.twimg.com/profile_images/1322225014771507209/eTayTjCS_400x400.jpg" group-title="Canais Ao Vivo",Disney Channel
+https://m3u9.ml/b/hls1/disney.m3u8?mu3zAQc9HC3GbwJq=1HYHCoI8n8AsHnumQkTA1g&3U1G7qaTxrPbalZnEx=1641409772
+#EXTINF:305, tvg-id="305 - Discovery Channel" tvg-name="Discovery Channel - 305" tvg-logo="https://megafilmeshd50.com/wp-content/uploads/2017/10/m3ypvzV-214x300.jpg" group-title="Canais Ao Vivo",Discovery Channel
+https://m3u9.ml/b/hls1/discovery.m3u8?mu3zAQc9HC3GbwJq=XAJ43VYd6OMtNIjKBImwsQ&3U1G7qaTxrPbalZnEx=1641409781
+#EXTINF:306, tvg-id="306 - Cinemax" tvg-name="Cinemax - 306" tvg-logo="https://megafilmeshd50.com/wp-content/uploads/2017/10/byg1bwa-214x300.jpg" group-title="Canais Ao Vivo",Cinemax
+https://m3u9.ml/b/hls1/cinemax.m3u8?mu3zAQc9HC3GbwJq=_NySjGhBsXIVVfcNDJA1qw&3U1G7qaTxrPbalZnEx=1641409792
+#EXTINF:307, tvg-id="307 - Cartoon Network" tvg-name="Cartoon Network - 307" tvg-logo="https://megafilmeshd50.com/wp-content/uploads/2017/10/C4G5Jl4-214x300.jpg" group-title="Canais Ao Vivo",Cartoon Network
+https://m3u9.ml/b/hls1/cartoon.m3u8?mu3zAQc9HC3GbwJq=mwAi8cV43FYc7hHHvy3j8w&3U1G7qaTxrPbalZnEx=1641409816
+#EXTINF:308, tvg-id="308 - AXN" tvg-name="AXN - 308" tvg-logo="https://megafilmeshd50.com/wp-content/uploads/2017/10/Jkv8gp7.png" group-title="Canais Ao Vivo",AXN
+https://m3u9.ml/b/hls1/axn.m3u8?mu3zAQc9HC3GbwJq=Zr5vSHTF2AdGZkMNHD1QQw&3U1G7qaTxrPbalZnEx=1641409830
+#EXTINF:309, tvg-id="309 - Telecine Action" tvg-name="Telecine Action - 309" tvg-logo="https://megafilmeshd50.com/wp-content/uploads/2017/10/8veKc6Z-1-214x300.jpg" group-title="Canais Ao Vivo",Telecine Action
+https://m3u9.ml/b/hls1/telecineaction.m3u8?mu3zAQc9HC3GbwJq=L5ZwDmjdgJprcIbfzY95OQ&3U1G7qaTxrPbalZnEx=1641409853
+#EXTINF:310, tvg-id="310 - A&E / AeE" tvg-name="A&E / AeE - 310" tvg-logo="https://megafilmeshd50.com/wp-content/uploads/2017/10/DDkJypz.png" group-title="Canais Ao Vivo",A&E / AeE
+https://m3u9.ml/b/hls1/aie.m3u8?mu3zAQc9HC3GbwJq=iJyztomKPE6PukafZOsfoA&3U1G7qaTxrPbalZnEx=1641409865
+#EXTINF:311, tvg-id="311 - Animal Planet" tvg-name="Animal Planet - 311" tvg-logo="https://megafilmeshd50.com/wp-content/uploads/2017/10/IpL0Rbx.png" group-title="Canais Ao Vivo",Animal Planet
+https://m3u9.ml/b/hls1/animalplanet.m3u8?mu3zAQc9HC3GbwJq=r0tvSgwp7aKs_BwjJ3z2BA&3U1G7qaTxrPbalZnEx=1641409876
+#EXTINF:312, tvg-id="312 - AMC" tvg-name="AMC - 312" tvg-logo="https://megafilmeshd50.com/wp-content/uploads/2017/10/vEbWeuF.png" group-title="Canais Ao Vivo",AMC
+https://m3u9.ml/b/hls1/amc.m3u8?mu3zAQc9HC3GbwJq=p9JI1RZRgJtYjFlSmBUnAg&3U1G7qaTxrPbalZnEx=1641409890
+#EXTINF:313, tvg-id="313 - Telecine Pipoca" tvg-name="Telecine Pipoca - 313" tvg-logo="https://megafilmeshd50.com/wp-content/uploads/2017/10/uC2vjWQ-214x300.jpg" group-title="Canais Ao Vivo",Telecine Pipoca
+https://m3u9.ml/b/hls1/telecinepipoca.m3u8?mu3zAQc9HC3GbwJq=3wliO6DegmlPgcxIh3M44g&3U1G7qaTxrPbalZnEx=1641409900
+#EXTINF:314, tvg-id="314 - Nickelodeon / Nick" tvg-name="Nickelodeon / Nick - 314" tvg-logo="https://megafilmeshd50.com/wp-content/uploads/2017/10/CHPVbr4-214x300.jpg" group-title="Canais Ao Vivo",Nickelodeon / Nick
+https://m3u9.ml/b/hls1/nick.m3u8?mu3zAQc9HC3GbwJq=_qML6o4so_5bf58VNVsWAQ&3U1G7qaTxrPbalZnEx=1641409932
+#EXTINF:315, tvg-id="315 - Fox Channel" tvg-name="Fox Channel - 315" tvg-logo="https://megafilmeshd50.com/wp-content/uploads/2017/10/khWqFgm-214x300.jpg" group-title="Canais Ao Vivo",Fox Channel
+https://m3u9.ml/b/hls1/fox.m3u8?mu3zAQc9HC3GbwJq=8A9IWs69hVUcqzMWlWppKg&3U1G7qaTxrPbalZnEx=1641409957
+#EXTINF:316, tvg-id="316 - Multishow" tvg-name="Multishow - 316" tvg-logo="https://megafilmeshd50.com/wp-content/uploads/2017/10/iMNCHls.png" group-title="Canais Ao Vivo",Multishow
+https://m3u9.ml/b/hls1/multishow.m3u8?mu3zAQc9HC3GbwJq=WUGdCszhXSg551OOdJGJNA&3U1G7qaTxrPbalZnEx=1641409968
+#EXTINF:317, tvg-id="317 - History Channel" tvg-name="History Channel - 317" tvg-logo="https://megafilmeshdd.org/wp-content/uploads/2021/05/hqdefault-185x278.jpg" group-title="Canais Ao Vivo",History Channel
+https://m3u9.ml/b/hls1/history.m3u8?mu3zAQc9HC3GbwJq=6SL0smzIbm4IIt7RRvuxXQ&3U1G7qaTxrPbalZnEx=1641409983
+#EXTINF:318, tvg-id="318 - HBO Plus" tvg-name="HBO Plus - 318" tvg-logo="https://megafilmeshd50.com/wp-content/uploads/2017/10/qCqRFb9.png" group-title="Canais Ao Vivo",HBO Plus
+https://m3u9.ml/b/hls1/hboplus.m3u8?mu3zAQc9HC3GbwJq=S70tlo899vhLbM1hg9pHKg&3U1G7qaTxrPbalZnEx=1641410008
+#EXTINF:319, tvg-id="319 - HBO Family" tvg-name="HBO Family - 319" tvg-logo="https://megafilmeshd50.com/wp-content/uploads/2017/10/26byU1y-214x300.jpg" group-title="Canais Ao Vivo",HBO Family
+https://m3u9.ml/b/hls1/hbofamily.m3u8?mu3zAQc9HC3GbwJq=xQ3jUoLN2bbRsQNuiPgIrw&3U1G7qaTxrPbalZnEx=1641410029
+#EXTINF:320, tvg-id="320 - HBO 2" tvg-name="HBO 2 - 320" tvg-logo="https://megafilmeshd50.com/wp-content/uploads/2017/10/OIcd0Hh.png" group-title="Canais Ao Vivo",HBO 2
+https://m3u9.ml/b/hls1/hbo2.m3u8?mu3zAQc9HC3GbwJq=1JirpVnDAuSL93_jZZtS3g&3U1G7qaTxrPbalZnEx=1641410040
+#EXTINF:321, tvg-id="321 - Universal Channel" tvg-name="Universal Channel - 321" tvg-logo="https://megafilmeshd50.com/wp-content/uploads/2017/09/HImP62Z.png" group-title="Canais Ao Vivo",Universal Channel
+https://m3u9.ml/b/hls1/universal.m3u8?mu3zAQc9HC3GbwJq=gPZ4Tjk2nncQ32lfyIttJQ&3U1G7qaTxrPbalZnEx=1641410052

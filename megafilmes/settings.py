@@ -122,7 +122,11 @@ STATIC_URL = '/static/'
  
 import os
  
-INSTALLED_APPS += ['rest_framework', 'rest_framework.authtoken', 'django.contrib.sites', 'allauth', 'allauth.account', 'allauth.socialaccount', 'rest_auth', 'rest_auth.registration', 'corsheaders', 'app', 'django_crud_generator', 'django_filters']
+INSTALLED_APPS += ['rest_framework', 'rest_framework.authtoken',
+                   'django.contrib.sites', 'allauth', 'allauth.account',
+                   'allauth.socialaccount', 'rest_auth', 'rest_auth.registration',
+                   'corsheaders', 'app', 'django_crud_generator', 'django_filters',
+                   'django_cron',]
  
 SITE_ID = 1
  
@@ -150,3 +154,7 @@ LOGIN_REDIRECT_URL = '/'
 FILTERS_DEFAULT_LOOKUP_EXPR = 'icontains'
  
 REST_FRAMEWORK = {'DEFAULT_FILTER_BACKENDS': ('django_filters.rest_framework.DjangoFilterBackend',),}
+
+CRON_CLASSES = [
+    "app.cron.MyCronJob",
+]

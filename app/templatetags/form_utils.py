@@ -1,3 +1,6 @@
+import datetime
+import urllib
+
 from django import template
 from django.template.loader import get_template
 
@@ -34,3 +37,15 @@ def add_formset_element_js(formset):
 @register.simple_tag(name="formset_js")
 def formset_js():
     return get_template("base/add_formset_underscore_js.html").render()
+
+
+@register.filter()
+def calc_prazo(link):
+    dic = urllib.parse.parse_qs(link)
+    for key in dic.keys():
+        if 'http' not in key:
+            time = datetime.datetime.fromtimestamp(int(dic[key][0]))
+            now = datetime.datetime.now()
+            if time > now:
+                return round((time - now).seconds / 60 / 60, 2)
+    return ''

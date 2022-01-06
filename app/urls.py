@@ -88,6 +88,11 @@ urlpatterns += [
         name=conf.SERIE_DETAIL_URL_NAME
     ),
     path(
+        'serie/episode/',
+        serie.Episode.as_view(),
+        name='SERIE_episode'
+    ),
+    path(
         'serie/<int:pk>/update/',
         serie.Update.as_view(),
         name=conf.SERIE_UPDATE_URL_NAME
@@ -172,6 +177,11 @@ urlpatterns += [
         'get-channels-m3u8',
         channel.get_m3u8_channels,
         name='get_channels_m3u8'
+    ),
+    path(
+        'get-m3u8-channel/<int:id>/',
+        channel.update_m3u8_channel,
+        name='get_m3u8_channel'
     ),
     path(
         'lista.m3u8',

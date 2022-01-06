@@ -7,6 +7,7 @@ from django.contrib.auth.mixins import LoginRequiredMixin, PermissionRequiredMix
 from django.core.exceptions import FieldDoesNotExist
 from django.db import transaction
 from django.shortcuts import redirect
+from django.views.generic import TemplateView
 from django.views.generic.detail import DetailView
 from django.views.generic.edit import (
     CreateView, DeleteView, UpdateView
@@ -14,6 +15,8 @@ from django.views.generic.edit import (
 from django.views.generic.list import ListView
 
 from django.db.models import Q
+
+from app.views.link import MegaPack
 
 try:
     from django.core.urlresolvers import reverse_lazy
@@ -27,7 +30,7 @@ from app.conf import SERIE_DETAIL_URL_NAME, SERIE_LIST_URL_NAME
 
 from django_datatables_view.base_datatable_view import BaseDatatableView
 
-from app.utils import upload_image, upload_file, get_articles
+from app.utils import upload_image, upload_file, get_articles, get_page
 
 import django_filters
 
@@ -195,8 +198,46 @@ class Detail(LoginRequiredMixin, SerieMixin, DetailView):
     template_name = 'serie/detail.html'
     context_object_name = 'serie'
 
+    def get_episodes(self):
+        result = []
+        page = get_page(self.object.url, {})
+        if page:
+            episodios = page.findAll('ul', {'class': 'episodios'})
+            for temp in episodios:
+                try:
+                    list = temp.findAll('li')
+                    if len(list) > 0:
+                        for li in temp.findAll('li'):
+                            result.append({
+                                'image': li.find('div', {'class': 'imagen'}).find('img')['src'],
+                                'number': li.find('div', {'class': 'numerando'}).text,
+                                'title': li.find('div', {'class': 'episodiotitle'}).find('a').text,
+                                'link': li.find('div', {'class': 'episodiotitle'}).find('a')['href'],
+                                'date': li.find('div', {'class': 'episodiotitle'}).find('span').text
+                            })
+                except (Exception,):
+                    print('--')
+        return result
+
     def get_context_data(self, **kwargs):
         context = super(Detail, self).get_context_data(**kwargs)
+        context['episodios'] = self.get_episodes()
+        return context
+
+
+class Episode(LoginRequiredMixin, TemplateView):
+    """
+    Detail of a Serie
+    """
+    login_url = '/admin/login/'
+    template_name = 'serie/episode.html'
+
+    def get_context_data(self, **kwargs):
+        context = super(Episode, self).get_context_data(**kwargs)
+        link = self.request.GET['link']
+        mega = MegaPack(link)
+        link = mega.get_info()
+        context['m3u8'] = link
         return context
 
 
@@ -290,23 +331,23 @@ def get_series(request):
         return Serie.objects.filter(title=title).exists()
 
     def save_serie(title, rating, image, data_lancamento, url_serie):
-        # serie = Serie()
-        # serie.title = title
-        # serie.rating = rating
-        # serie.image = image
-        # serie.year = data_lancamento
-        # serie.url = url_serie
-        # serie.save()
-        data = {
-            "title": title,
-            "year": data_lancamento,
-            "rating": rating,
-            "image": image,
-            "url": url_serie
-        }
-        req = requests.post('https://megafilmes.herokuapp.com/api/serie/', data=data)
-        if req.status_code != 201:
-            print(req.status_code)
-            print('---- erro ao inserir serie')
+        serie = Serie()
+        serie.title = title
+        serie.rating = rating
+        serie.image = image
+        serie.year = data_lancamento
+        serie.url = url_serie
+        serie.save()
+        # data = {
+        #     "title": title,
+        #     "year": data_lancamento,
+        #     "rating": rating,
+        #     "image": image,
+        #     "url": url_serie
+        # }
+        # req = requests.post('https://megafilmes.herokuapp.com/api/serie/', data=data)
+        # if req.status_code != 201:
+        #     print(req.status_code)
+        #     print('---- erro ao inserir serie')
 
     return get_articles(url_series, 48, {'id': 'archive-content'}, save_serie, title_exists)

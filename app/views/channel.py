@@ -19,6 +19,7 @@ from django.views.generic.list import ListView
 
 from django.db.models import Q
 
+from app.templatetags.form_utils import calc_prazo
 from app.views.link import MegaPack
 
 try:
@@ -271,11 +272,13 @@ class Delete(LoginRequiredMixin, ChannelMixin, PermissionRequiredMixin, DeleteVi
 
 class ChannelListJson(BaseDatatableView):
     model = Channel
-    columns = ("id", "title", "image", "url", "program")
+    columns = ("id", "title", "hours", "image", "url", "program")
     order_columns = ["id", "title", "image", "url"]
     max_display_length = 500
 
     def render_column(self, row, column):
+        if column == 'hours':
+            return calc_prazo(row.link_m3u8)
         if column == 'program':
             if row.program:
                 return row.program.url
@@ -311,20 +314,20 @@ def get_channels(request):
         return Channel.objects.filter(title=title).exists()
 
     def save_channel(title, rating, image, data_lancamento, url_serie):
-        data = {
-            "title": title,
-            "image": image,
-            "url": url_serie
-        }
-        req = requests.post('https://megafilmes.herokuapp.com/api/channel/', data=data)
-        if req.status_code != 201:
-            print(req.status_code)
-            print('---- erro ao inserir channel')
-        # channel = Channel()
-        # channel.title = title
-        # channel.image = image
-        # channel.url = url_serie
-        # channel.save()
+        # data = {
+        #     "title": title,
+        #     "image": image,
+        #     "url": url_serie
+        # }
+        # req = requests.post('https://megafilmes.herokuapp.com/api/channel/', data=data)
+        # if req.status_code != 201:
+        #     print(req.status_code)
+        #     print('---- erro ao inserir channel')
+        channel = Channel()
+        channel.title = title
+        channel.image = image
+        channel.url = url_serie
+        channel.save()
 
     return get_articles(url_channels, 5, {'class': 'items'}, save_channel, title_exists)
 
@@ -346,24 +349,38 @@ def get_m3u8_channels(request):
     channels = Channel.objects.all()
     for channel in channels:
         try:
-            chan = get_id(channel)[0]
-            if id:
-                mega = MegaPack(chan['url'])
-                m3u8 = mega.get_info()
-                data = {
-                    "link_m3u8": m3u8,
-                }
-                req = requests.put('https://megafilmes.herokuapp.com/api/channel/{}/'.format(chan['id']), data=data)
-                if req.status_code != 200:
-                    print(req.status_code)
-                    print('---- erro ao inserir channel')
-            # channel.link_m3u8 = m3u8
-            # channel.save()
+            # chan = get_id(channel)[0]
+            # if id:
+            mega = MegaPack(channel.url)
+            m3u8 = mega.get_info()
+            # data = {
+            #     "link_m3u8": m3u8,
+            # }
+            # req = requests.put('https://megafilmes.herokuapp.com/api/channel/{}/'.format(chan['id']), data=data)
+            # if req.status_code != 200:
+            #     print(req.status_code)
+            #     print('---- erro ao inserir channel')
+            channel.link_m3u8 = m3u8
+            channel.save()
         except (Exception,):
-            # channel.link_m3u8 = None
-            # channel.save()
+            channel.link_m3u8 = None
+            channel.save()
             print('--- err ao coletar link m3u8: ' + str(channel.title))
     return JsonResponse({'message': str(Channel.objects.filter(link_m3u8__isnull=False))})
+
+
+def update_m3u8_channel(request, id):
+    channel = Channel.objects.get(id=id)
+    try:
+        mega = MegaPack(channel.url)
+        m3u8 = mega.get_info()
+        channel.link_m3u8 = m3u8
+        channel.save()
+    except (Exception,):
+        channel.link_m3u8 = None
+        channel.save()
+        print('--- err ao coletar link m3u8: ' + str(channel.title))
+    return JsonResponse({'message': 'updated'})
 
 
 def playlist_m3u8(request):
@@ -387,8 +404,6 @@ def playlist_m3u8(request):
     # uri_m3u8 = uri_m3u8 + '&md5=' + md5 + '&expires=' + expires
     print(uri_m3u8)
     req = requests.get(url=uri_m3u8, headers=headers, verify=False)
-    print(req.status_code)
-    print(req.text)
     page = BeautifulSoup(req.text, 'html.parser')
     page_str = str(page.contents[0])
     arr_strings = list(set(remove_iv(re.findall("([^\s]+.ts)", page_str))))

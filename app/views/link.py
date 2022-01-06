@@ -2,6 +2,7 @@ import time
 from html import unescape
 
 from bs4 import BeautifulSoup
+from selenium.webdriver.common.by import By
 
 from app.views.core import EngineModel
 
@@ -11,19 +12,38 @@ class MegaPack(EngineModel):
         super(MegaPack, self).__init__()
         self.url = url
 
+    def get_frame(self, list):
+        NOT_ALLOWED = ['youtube']
+        for iframe in list:
+            src = iframe.get_attribute('src')
+            if not any(domain in src for domain in NOT_ALLOWED):
+                return iframe
+        return None
+
+    def create_link(self, text):
+        if 'http' not in text:
+            return 'http://' + text
+        return text
+
     def get_info(self):
         print('Start GET_INFO')
         print('Search in: {}'.format(self.url))
         self.browser.get(self.url)
-        self.browser.switch_to.frame(self.browser.find_element_by_class_name("rptss"))
+        frame = self.get_frame(self.browser.find_elements(By.CLASS_NAME, "rptss"))
+        if frame:
+            self.browser.switch_to.frame(frame)
         html = self.browser.page_source
         soup = BeautifulSoup(html, 'html.parser')
-        player = soup.find('div', {'id': 'instructions'}).find('div', {'id': 'RedeCanaisPlayer'})
-        if player.has_attr('baixar'):
-            link_baixar = player['baixar']
-            link_baixar = self.cut_url(link_baixar)
-            return link_baixar
-        self.browser.switch_to.default_content()
+        try:
+            player = soup.find('div', {'id': 'instructions'}).find('div', {'id': 'RedeCanaisPlayer'})
+            if player.has_attr('baixar'):
+                link_baixar = player['baixar']
+                link_baixar = self.cut_url(link_baixar)
+                return self.create_link(link_baixar)
+            self.browser.close()
+            self.browser.quit()
+        except (Exception,):
+            print('--- Nao encontrou div#instructions')
         return None
 
     def cut_url(self, url: str):
