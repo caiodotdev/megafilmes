@@ -272,8 +272,8 @@ class Delete(LoginRequiredMixin, ChannelMixin, PermissionRequiredMixin, DeleteVi
 
 class ChannelListJson(BaseDatatableView):
     model = Channel
-    columns = ("id", "title", "hours", "image", "url", "program")
-    order_columns = ["id", "title", "image", "url"]
+    columns = ("id", "title", "hours", "url", "program")
+    order_columns = ["id", "title", "url"]
     max_display_length = 500
 
     def render_column(self, row, column):

@@ -33,7 +33,6 @@
                         <th>ID</th>
                         <th>TITLE</th>
                         <th>HOURS</th>
-                        <th>IMAGE</th>
                         <th>URL</th>
                         <th>PROGRAM</th>
                         <th class="actions">Actions</th>
@@ -116,33 +115,24 @@
                 columnDefs: [
                     {
                         targets: 3,
-                        data: 'image',
-                        "render": function (data, type, row, meta) {
-                            return '<img class="img-thumbnail" src="' + row[2] + '"/>';
-                        }
-                    },
-                    {
-                        targets: 4,
                         data: 'url',
                         "render": function (data, type, row, meta) {
                             return '<a href="' + row[3] + '" target="_blank">' + row[3] + '</a>';
                         }
                     },
                     {
-                        targets: 5,
+                        targets: 4,
                         data: 'program',
                         "render": function (data, type, row, meta) {
-                            return '<button type="button" class="btn btn-primary mods" data-id="' + row[0] + '" data-toggle="modal" data-target="#modal">Program</button>';
+                            return '<button type="button" class="btn btn-primary mods" data-id="' + row[0] + '" data-toggle="modal" data-target="#modal"><i class="fa fa-tv"></i></button>';
                         }
                     },
                     {
                         targets: -1,
                         data: 'id',
                         "render": function (data, type, row, meta) {
-                            return '<a href="/channel/' + row[0] + '/"><i\n' +
-                                '                                    class="fa fa-eye"></i></a>&nbsp;&nbsp;' +
-                                '<a href="/channel/' + row[0] + '/delete/"> <i\n' +
-                                '                                    class="fa fa-close"></i></a>';
+                            return '<a href="/channel/' + row[0] + '/" class="btn btn-info"><i\n' +
+                                '                                    class="fa fa-eye"></i> Assistir</a>&nbsp;&nbsp;' ;
                         }
                     }
                 ],
