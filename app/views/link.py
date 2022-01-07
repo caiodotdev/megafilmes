@@ -51,5 +51,5 @@ class MegaPack(EngineModel):
     def cut_url(self, url: str):
         word = 'download.php?vid='
         index = url.index(word) + len(word)
-        url = url[index:]
+        url = str(url[index:])
         return url

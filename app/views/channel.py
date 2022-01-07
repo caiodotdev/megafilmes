@@ -397,29 +397,34 @@ def playlist_m3u8(request):
                'User-agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/87.0.4280.88 Safari/537.36'}
     # md5 = request.GET['md5']
     # expires = request.GET['expires']
-    dic = dict(request.GET)
-    del dic['uri']
-    for key in dic:
-        uri_m3u8 += str('&' + key + '=' + dic[key][0])
-    # uri_m3u8 = uri_m3u8 + '&md5=' + md5 + '&expires=' + expires
-    print(uri_m3u8)
-    req = requests.get(url=uri_m3u8, headers=headers, verify=False)
-    page = BeautifulSoup(req.text, 'html.parser')
-    page_str = str(page.contents[0])
-    arr_strings = list(set(remove_iv(re.findall("([^\s]+.ts)", page_str))))
-    if len(arr_strings) > 0:
-        # index_ = str(uri_m3u8).index('video.m3u8')
-        # prefix = uri_m3u8[:index_]
-        for i in range(len(arr_strings)):
-            new_uri = arr_strings[i]
-            # new_uri = prefix + arr_strings[i]
-            page_str = page_str.replace(arr_strings[i],
-                                        'http://' + request.META['HTTP_HOST'] + '/multi/ts?link=' + str(
-                                            new_uri))
+    if 'http' in uri_m3u8:
+        dic = dict(request.GET)
+        del dic['uri']
+        for key in dic:
+            uri_m3u8 += str('&' + key + '=' + dic[key][0])
+        # uri_m3u8 = uri_m3u8 + '&md5=' + md5 + '&expires=' + expires
+        print(uri_m3u8)
+        req = requests.get(url=uri_m3u8, headers=headers, verify=False, timeout=(1, 27))
+        page = BeautifulSoup(req.text, 'html.parser')
+        page_str = str(page.contents[0])
+        arr_strings = list(set(remove_iv(re.findall("([^\s]+.ts)", page_str))))
+        if len(arr_strings) > 0:
+            # index_ = str(uri_m3u8).index('video.m3u8')
+            # prefix = uri_m3u8[:index_]
+            for i in range(len(arr_strings)):
+                new_uri = arr_strings[i]
+                # new_uri = prefix + arr_strings[i]
+                page_str = page_str.replace(arr_strings[i],
+                                            'http://' + request.META['HTTP_HOST'] + '/multi/ts?link=' + str(
+                                                new_uri))
+        return HttpResponse(
+            content=page_str,
+            status=req.status_code,
+            content_type=req.headers['Content-Type']
+        )
     return HttpResponse(
-        content=page_str,
-        status=req.status_code,
-        content_type=req.headers['Content-Type']
+        content='',
+        status=200
     )
 
 
@@ -436,7 +441,7 @@ def get_ts(request):
                'Sec-Fetch-Site': 'cross-site',
                'User-agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/87.0.4280.88 Safari/537.36'}
 
-    req = requests.get(url=key, stream=True, timeout=30, headers=headers, verify=False)
+    req = requests.get(url=key, stream=True, timeout=(1, 27), headers=headers, verify=False)
     if req.status_code == 200:
         return HttpResponse(
             content=req.content,
