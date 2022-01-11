@@ -189,6 +189,14 @@ class Create(LoginRequiredMixin, SerieMixin, PermissionRequiredMixin, SerieFormS
         return super(Create, self).form_invalid(form)
 
 
+def check_url_assistido(serie, url):
+    for p in serie.playlist_set.all():
+        for u in p.urlplaylist_set.all():
+            if u.url == url:
+                return True
+    return False
+
+
 class Detail(LoginRequiredMixin, SerieMixin, DetailView):
     """
     Detail of a Serie
@@ -200,6 +208,7 @@ class Detail(LoginRequiredMixin, SerieMixin, DetailView):
 
     def get_episodes(self):
         result = []
+        object = self.get_object()
         page = get_page(self.object.url, {})
         if page:
             episodios = page.findAll('ul', {'class': 'episodios'})
@@ -208,15 +217,17 @@ class Detail(LoginRequiredMixin, SerieMixin, DetailView):
                     list = temp.findAll('li')
                     if len(list) > 0:
                         for li in temp.findAll('li'):
+                            link_url = li.find('div', {'class': 'episodiotitle'}).find('a')['href']
                             result.append({
                                 'image': li.find('div', {'class': 'imagen'}).find('img')['src'],
                                 'number': li.find('div', {'class': 'numerando'}).text,
                                 'title': li.find('div', {'class': 'episodiotitle'}).find('a').text,
-                                'link': li.find('div', {'class': 'episodiotitle'}).find('a')['href'],
-                                'date': li.find('div', {'class': 'episodiotitle'}).find('span').text
+                                'link': link_url,
+                                'date': li.find('div', {'class': 'episodiotitle'}).find('span').text,
+                                'assistido': check_url_assistido(object, link_url)
                             })
                 except (Exception,):
-                    print('--')
+                    print('-- nao foi possivel preencher os episodios desta serie')
         return result
 
     def get_context_data(self, **kwargs):
@@ -240,13 +251,21 @@ class Episode(LoginRequiredMixin, TemplateView):
 
     def get_context_data(self, **kwargs):
         context = super(Episode, self).get_context_data(**kwargs)
+        serie = Serie.objects.get(id=self.request.GET['serie'])
         if 'link' in self.request.GET:
             url_playlist = self.request.GET['link']
+            playlist = Playlist()
+            playlist.serie = serie
+            playlist.titulos = self.get_title(url_playlist)
+            playlist.save()
+            urlp = UrlPlaylist()
+            urlp.url = url_playlist
+            urlp.playlist = playlist
+            urlp.save()
             mega = MegaPack(url_playlist)
             url_playlist = mega.get_info()
             context['m3u8'] = url_playlist
             return context
-        serie = Serie.objects.get(id=self.request.GET['serie'])
         if 'links' in self.request.GET:
             links = self.request.GET.getlist('links')
             playlist = Playlist()
@@ -373,16 +392,5 @@ def get_series(request):
         serie.year = data_lancamento
         serie.url = url_serie
         serie.save()
-        # data = {
-        #     "title": title,
-        #     "year": data_lancamento,
-        #     "rating": rating,
-        #     "image": image,
-        #     "url": url_serie
-        # }
-        # req = requests.post('https://megafilmes.herokuapp.com/api/serie/', data=data)
-        # if req.status_code != 201:
-        #     print(req.status_code)
-        #     print('---- erro ao inserir serie')
 
     return get_articles(url_series, 48, {'id': 'archive-content'}, save_serie, title_exists)

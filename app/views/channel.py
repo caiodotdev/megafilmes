@@ -398,7 +398,6 @@ def playlist_m3u8(request):
     id = dic['id'][0]
     channel = Channel.objects.get(id=id)
     uri_m3u8 = check_m3u8(channel)
-    print(uri_m3u8)
     req = requests.get(url=uri_m3u8, headers=headers, verify=False, timeout=(1, 27))
     page = BeautifulSoup(req.text, 'html.parser')
     page_str = str(page.contents[0])

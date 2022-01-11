@@ -67,6 +67,10 @@
                         <div class="panel-title">
                             <img class="img-responsive"
                                  src="{{ episodio.image }}"/>
+                            {% if episodio.assistido %}
+                                <span class="pull-right"> Assistido <i class="fa fa-check-circle"
+                                                            style="color: greenyellow;"></i> </span>
+                            {% endif %}
                         </div>
                         <div class="panel-body">
                             <p class="text-center">
@@ -80,7 +84,8 @@
                             </p>
                         </div>
                         <div class="panel-footer text-center">
-                            <a class="btn btn-primary" href="{% url 'SERIE_episode' %}?serie={{ object.id }}&link={{ episodio.link }}">
+                            <a class="btn btn-primary"
+                               href="{% url 'SERIE_episode' %}?serie={{ object.id }}&link={{ episodio.link }}">
                                 Assistir
                             </a>
                         </div>
