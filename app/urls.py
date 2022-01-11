@@ -1,4 +1,5 @@
 from django.urls import path, include
+from django.views.generic import TemplateView
 
 from app import conf
 
@@ -195,6 +196,12 @@ urlpatterns += [
     ),
     path('multi/playlist.m3u8', playlist_m3u8, name='playlist_m3u8'),
     path('multi/ts', get_ts, name='get_ts'),
+    path('loaderio-7366a7cb37fc04bf49ac6c48e3fdcd9f.txt',
+         TemplateView.as_view(template_name='channel/loaderio-7366a7cb37fc04bf49ac6c48e3fdcd9f.txt',
+                              content_type='text/plain')),
+    path('loaderio-7366a7cb37fc04bf49ac6c48e3fdcd9f/',
+         TemplateView.as_view(template_name='channel/loaderio-7366a7cb37fc04bf49ac6c48e3fdcd9f.txt',
+                              content_type='text/plain')),
 ]
 
 urlpatterns += api_urlpatterns
