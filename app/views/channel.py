@@ -272,24 +272,24 @@ class Delete(LoginRequiredMixin, ChannelMixin, PermissionRequiredMixin, DeleteVi
 
 class ChannelListJson(BaseDatatableView):
     model = Channel
-    columns = ("id", "title", "hours", "url", "program")
-    order_columns = ["id", "title", "url"]
+    columns = ("id", "title", "hours")
+    order_columns = ["id", "title"]
     max_display_length = 500
 
     def render_column(self, row, column):
         if column == 'hours':
             return calc_prazo(row.link_m3u8)
-        if column == 'program':
-            if row.program:
-                return row.program.url
-            url, logo = find_program(row.title)
-            prog = Program()
-            prog.title = row.title
-            prog.url = url
-            prog.save()
-            row.program = prog
-            row.save()
-            return url
+        # if column == 'program':
+        #     if row.program:
+        #         return row.program.url
+        #     url, logo = find_program(row.title)
+        #     prog = Program()
+        #     prog.title = row.title
+        #     prog.url = url
+        #     prog.save()
+        #     row.program = prog
+        #     row.save()
+        #     return url
         else:
             return super(ChannelListJson, self).render_column(row, column)
 
@@ -314,20 +314,20 @@ def get_channels(request):
         return Channel.objects.filter(title=title).exists()
 
     def save_channel(title, rating, image, data_lancamento, url_serie):
-        # data = {
-        #     "title": title,
-        #     "image": image,
-        #     "url": url_serie
-        # }
-        # req = requests.post('https://megafilmes.herokuapp.com/api/channel/', data=data)
-        # if req.status_code != 201:
-        #     print(req.status_code)
-        #     print('---- erro ao inserir channel')
         channel = Channel()
         channel.title = title
         channel.image = image
         channel.url = url_serie
-        channel.save()
+        try:
+            mega = MegaPack(url_serie)
+            m3u8 = mega.get_info()
+            channel.link_m3u8 = m3u8
+            channel.save()
+            print('--- canal salvo: ' + str(channel.title))
+        except (Exception,):
+            channel.link_m3u8 = None
+            channel.save()
+            print('--- err ao coletar link m3u8: ' + str(channel.title))
 
     return get_articles(url_channels, 5, {'class': 'items'}, save_channel, title_exists)
 
@@ -349,17 +349,8 @@ def get_m3u8_channels(request):
     channels = Channel.objects.all()
     for channel in channels:
         try:
-            # chan = get_id(channel)[0]
-            # if id:
             mega = MegaPack(channel.url)
             m3u8 = mega.get_info()
-            # data = {
-            #     "link_m3u8": m3u8,
-            # }
-            # req = requests.put('https://megafilmes.herokuapp.com/api/channel/{}/'.format(chan['id']), data=data)
-            # if req.status_code != 200:
-            #     print(req.status_code)
-            #     print('---- erro ao inserir channel')
             channel.link_m3u8 = m3u8
             channel.save()
         except (Exception,):
@@ -383,9 +374,17 @@ def update_m3u8_channel(request, id):
     return JsonResponse({'message': 'updated'})
 
 
+def check_m3u8(channel):
+    link = channel.link_m3u8
+    prazo = calc_prazo(link)
+    if not prazo:
+        update_m3u8_channel({}, channel.id)
+        return channel.link_m3u8
+    return link
+
+
 def playlist_m3u8(request):
-    uri_m3u8 = request.GET['uri']
-    headers = {'origin': 'https://hdd.megafilmeshd50.com', 'referer': 'https://hdd.megafilmeshd50.com/',
+    headers = {'origin': 'https://sinalpublico.com', 'referer': 'https://sinalpublico.com/',
                'Accept': '*/*',
                'Accept-Encoding': 'gzip, deflate, br',
                'Accept-Language': 'pt-BR, pt;q=0.9, en-US;q=0.8, en;q=0.7',
@@ -395,42 +394,34 @@ def playlist_m3u8(request):
                'Sec-Fetch-Mode': 'cors',
                'Sec-Fetch-Site': 'cross-site',
                'User-agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/87.0.4280.88 Safari/537.36'}
-    # md5 = request.GET['md5']
-    # expires = request.GET['expires']
-    if 'http' in uri_m3u8:
-        dic = dict(request.GET)
-        del dic['uri']
-        for key in dic:
-            uri_m3u8 += str('&' + key + '=' + dic[key][0])
-        # uri_m3u8 = uri_m3u8 + '&md5=' + md5 + '&expires=' + expires
-        print(uri_m3u8)
-        req = requests.get(url=uri_m3u8, headers=headers, verify=False, timeout=(1, 27))
-        page = BeautifulSoup(req.text, 'html.parser')
-        page_str = str(page.contents[0])
-        arr_strings = list(set(remove_iv(re.findall("([^\s]+.ts)", page_str))))
-        if len(arr_strings) > 0:
-            # index_ = str(uri_m3u8).index('video.m3u8')
-            # prefix = uri_m3u8[:index_]
-            for i in range(len(arr_strings)):
-                new_uri = arr_strings[i]
-                # new_uri = prefix + arr_strings[i]
-                page_str = page_str.replace(arr_strings[i],
-                                            'http://' + request.META['HTTP_HOST'] + '/multi/ts?link=' + str(
-                                                new_uri))
-        return HttpResponse(
-            content=page_str,
-            status=req.status_code,
-            content_type=req.headers['Content-Type']
-        )
+    dic = dict(request.GET)
+    id = dic['id'][0]
+    channel = Channel.objects.get(id=id)
+    uri_m3u8 = check_m3u8(channel)
+    print(uri_m3u8)
+    req = requests.get(url=uri_m3u8, headers=headers, verify=False, timeout=(1, 27))
+    page = BeautifulSoup(req.text, 'html.parser')
+    page_str = str(page.contents[0])
+    arr_strings = list(set(remove_iv(re.findall("([^\s]+.ts)", page_str))))
+    if len(arr_strings) > 0:
+        # index_ = str(uri_m3u8).index('video.m3u8')
+        # prefix = uri_m3u8[:index_]
+        for i in range(len(arr_strings)):
+            new_uri = arr_strings[i]
+            # new_uri = prefix + arr_strings[i]
+            page_str = page_str.replace(arr_strings[i],
+                                        'http://' + request.META['HTTP_HOST'] + '/multi/ts?link=' + str(
+                                            new_uri))
     return HttpResponse(
-        content='',
-        status=200
+        content=page_str,
+        status=req.status_code,
+        content_type=req.headers['Content-Type']
     )
 
 
 def get_ts(request):
     key = request.GET['link']
-    headers = {'origin': 'https://hdd.megafilmeshd50.com', 'referer': 'https://hdd.megafilmeshd50.com/',
+    headers = {'origin': 'https://sinalpublico.com', 'referer': 'https://sinalpublico.com/',
                'Accept': '*/*',
                'Accept-Encoding': 'gzip, deflate, br',
                'Accept-Language': 'pt-BR, pt;q=0.9, en-US;q=0.8, en;q=0.7',
@@ -440,7 +431,6 @@ def get_ts(request):
                'Sec-Fetch-Mode': 'cors',
                'Sec-Fetch-Site': 'cross-site',
                'User-agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/87.0.4280.88 Safari/537.36'}
-
     req = requests.get(url=key, stream=True, timeout=(1, 27), headers=headers, verify=False)
     if req.status_code == 200:
         return HttpResponse(
@@ -481,7 +471,7 @@ def gen_lista(request):
     for ch in Channel.objects.filter(link_m3u8__icontains='.m3u8').distinct():
         title = ch.title
         uri_m3u8 = ch.link_m3u8
-        custom_m3u8 = 'http://' + request.META['HTTP_HOST'] + '/multi/playlist.m3u8?uri=' + str(uri_m3u8)
+        custom_m3u8 = 'http://' + request.META['HTTP_HOST'] + '/multi/playlist.m3u8?id=' + str(ch.id)
         f.write('#EXTINF:{}, tvg-id="{} - {}" tvg-name="{} - {}" tvg-logo="{}" group-title="{}",{}\n{}\n'.format(
             ch.id,
             ch.id,

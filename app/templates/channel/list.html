@@ -3,20 +3,20 @@
 {% load form_utils %}
 {% block content %}
     <div id="top" class="row">
-        <div class="col-sm-3">
+        <div class="col-sm-3 col-xs-12">
             <h2> {{ model_name_plural }}</h2>
         </div>
-        <div class="col-sm-9">
+        <div class="col-sm-9 col-xs-12">
 
             <button id="get_channels" type="button" class="btn btn-info pull-right h2"><i
                     class="fa fa-rocket"></i> Get Channels
             </button>
-             <button id="get_m3u8" type="button" class="btn btn-info pull-right h2"><i
-                    class="fa fa-tv"></i> Get M3U8
-            </button>
-            <a href="{% url 'CHANNEL_create' %}" class="btn btn-primary pull-right h2"><i
-                    class="fa fa-plus"></i> Add Channel
-            </a>
+{#            <button id="get_m3u8" type="button" class="btn btn-info pull-right h2"><i#}
+{#                    class="fa fa-tv"></i> Get M3U8#}
+{#            </button>#}
+{#            <a href="{% url 'CHANNEL_create' %}" class="btn btn-primary pull-right h2"><i#}
+{#                    class="fa fa-plus"></i> Add Channel#}
+{#            </a>#}
             <a href="{% url 'delete_all_channels' %}" class="btn btn-danger pull-right h2"><i
                     class="fa fa-trash"></i> Delete All
             </a>
@@ -26,15 +26,15 @@
     <form id="advancedForm" method="get" action="{% url 'CHANNEL_list' %}">
         {% csrf_token %}
         <div id="list" class="row">
-            <div class="col-md-12">
-                <table id="table" class="table table-striped" cellspacing="0" cellpadding="0">
+            <div class="col-xs-12">
+                <table id="table" class="table table-striped table-responsive" cellspacing="0" cellpadding="0">
                     <thead>
                     <tr>
                         <th>ID</th>
                         <th>TITLE</th>
                         <th>HOURS</th>
-                        <th>URL</th>
-                        <th>PROGRAM</th>
+{#                        <th>URL</th>#}
+{#                        <th>PROGRAM</th>#}
                         <th class="actions">Actions</th>
                     </tr>
                     </thead>
@@ -56,7 +56,11 @@
                     </button>
                 </div>
                 <div class="modal-body">
-                    <div id="content" class="content"></div>
+                    <div class="row">
+                        <div class="col-xs-12">
+                            <div id="content" class="content"></div>
+                        </div>
+                    </div>
                 </div>
                 <div class="modal-footer">
                     <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
@@ -106,6 +110,7 @@
             var table = $('#table').DataTable({
                 "processing": true,
                 "serverSide": true,
+                "responsive":true,
                 "ajax": {
                     "url": "{% url 'CHANNEL_list_json' %}",
                     "data": function (d) {
@@ -113,26 +118,19 @@
                     }
                 },
                 columnDefs: [
-                    {
-                        targets: 3,
-                        data: 'url',
-                        "render": function (data, type, row, meta) {
-                            return '<a href="' + row[3] + '" target="_blank">' + row[3] + '</a>';
-                        }
-                    },
-                    {
-                        targets: 4,
-                        data: 'program',
-                        "render": function (data, type, row, meta) {
-                            return '<button type="button" class="btn btn-primary mods" data-id="' + row[0] + '" data-toggle="modal" data-target="#modal"><i class="fa fa-tv"></i></button>';
-                        }
-                    },
+                   // {
+                   //     targets: 4,
+                   //     data: 'program',
+                   //     "render": function (data, type, row, meta) {
+                   //         return '<button type="button" class="btn btn-primary mods" data-id="' + row[0] + '" data-toggle="modal" data-target="#modal"><i class="fa fa-tv"></i></button>';
+                   //     }
+                   // },
                     {
                         targets: -1,
                         data: 'id',
                         "render": function (data, type, row, meta) {
                             return '<a href="/channel/' + row[0] + '/" class="btn btn-info"><i\n' +
-                                '                                    class="fa fa-eye"></i> Assistir</a>&nbsp;&nbsp;' ;
+                                '                                    class="fa fa-eye"></i> Assistir</a>&nbsp;&nbsp;';
                         }
                     }
                 ],
@@ -158,7 +156,8 @@
                         "sortAscending": ": ativar para classificar a coluna ascendente",
                         "sortDescending": ": ativar para classificar a coluna descendente"
                     }
-                }
+                },
+                "pageLength": 100
             }).on('draw.dt', function () {
                 $('.mods').click(function () {
                     var id = $(this).data('id');

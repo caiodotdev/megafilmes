@@ -62,3 +62,22 @@ class LinkAdmin(admin.ModelAdmin):
 
 
 admin.site.register(LinkChannel, LinkAdmin)
+
+
+class UrlPlaylistInline(admin.TabularInline):
+    model = UrlPlaylist
+
+
+class PlaylistAdmin(admin.ModelAdmin):
+    list_display = ['id', 'titulos', 'serie']
+    inlines = [UrlPlaylistInline, ]
+
+
+admin.site.register(Playlist, PlaylistAdmin)
+
+
+class UrlPlaylistAdmin(admin.ModelAdmin):
+    list_display = ['id', 'playlist', 'url']
+
+
+admin.site.register(UrlPlaylist, UrlPlaylistAdmin)

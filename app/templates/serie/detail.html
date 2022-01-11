@@ -44,7 +44,7 @@
     </div>
     <hr/>
     <div id="actions" class="row">
-        <div class="col-md-12">
+        <div class="col-xs-12">
             <a class="btn btn-primary" href="{% url 'SERIE_update' serie.pk %}">
                 Edit
             </a>
@@ -52,31 +52,43 @@
         </div>
     </div>
     <br/>
-    <div class="row">
-        {% for episodio in episodios %}
-            <div class="col-md-3">
-                <div class="panel panel-default">
-                    <div class="panel-title">
-                        <h3>{{ episodio.number }}: {{ episodio.title }}</h3>
-                    </div>
-                    <div class="panel-body">
-                        <img class="img-thumbnail img-responsive"
-                             src="{{ episodio.image }}"/>
-
-
-                    </div>
-                    <div class="panel-footer">
-                        <p>{{ episodio.date }}</p>
-                        <p>
-                            <a class="btn btn-primary" href="{% url 'SERIE_episode' %}?link={{ episodio.link }}">
+    <form action="{% url 'SERIE_episode' %}" method="get">
+        <input name="serie" id="serie" value="{{ object.id }}" class="hidden"/>
+        <div class="row">
+            <div class="col-xs-12">
+                <button type="submit" class="btn btn-info pull-right">Assistir Playlist</button>
+            </div>
+        </div>
+        <br/>
+        <div class="row">
+            {% for episodio in episodios %}
+                <div class="col-xs-6 col-sm-4 col-md-3 col-lg-2">
+                    <div class="panel panel-default">
+                        <div class="panel-title">
+                            <img class="img-responsive"
+                                 src="{{ episodio.image }}"/>
+                        </div>
+                        <div class="panel-body">
+                            <p class="text-center">
+                                <label>{{ episodio.number }}: {{ episodio.title|truncatechars:30 }}</label>
+                            </p>
+                            <p class="text-center">
+                                {{ episodio.date }}
+                            </p>
+                            <p class="text-center">
+                                <input type="checkbox" name="links" value="{{ episodio.link }}"/>
+                            </p>
+                        </div>
+                        <div class="panel-footer text-center">
+                            <a class="btn btn-primary" href="{% url 'SERIE_episode' %}?serie={{ object.id }}&link={{ episodio.link }}">
                                 Assistir
                             </a>
-                        </p>
+                        </div>
                     </div>
                 </div>
-            </div>
-        {% endfor %}
-    </div>
+            {% endfor %}
+        </div>
+    </form>
     <script type="text/javascript">
         $(document).ready(function () {
             $('#serie_link').addClass('active');

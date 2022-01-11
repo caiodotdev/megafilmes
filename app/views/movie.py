@@ -272,8 +272,8 @@ class Delete(LoginRequiredMixin, MovieMixin, PermissionRequiredMixin, DeleteView
 
 class MovieListJson(BaseDatatableView):
     model = Movie
-    columns = ("id", "title", "year", "rating", "image", "url")
-    order_columns = ["id", "title", "year", "rating", "image", "url"]
+    columns = ("id", "image", "title", "year", "rating")
+    order_columns = ["id", "image", "title", "year", "rating"]
     max_display_length = 500
 
     def filter_queryset(self, qs):

@@ -34,10 +34,10 @@ class Serie(TimeStamp):
     url = models.URLField(blank=True, null=True)
 
     def __str__(self):
-        return self.title
+        return "%s" % self.title
 
     def __unicode__(self):
-        return self.title
+        return "%s" % self.title
 
 
 class Program(TimeStamp):
@@ -76,3 +76,25 @@ class Channel(TimeStamp):
 
     def __unicode__(self):
         return self.title
+
+
+class Playlist(TimeStamp):
+    serie = models.ForeignKey(Serie, blank=True, null=True, on_delete=models.CASCADE)
+    titulos = models.TextField()
+
+    def __str__(self):
+        return self.serie.title
+
+    def __unicode__(self):
+        return self.serie.title
+
+
+class UrlPlaylist(TimeStamp):
+    playlist = models.ForeignKey(Playlist, blank=True, null=True, on_delete=models.CASCADE)
+    url = models.TextField()
+
+    def __str__(self):
+        return self.url
+
+    def __unicode__(self):
+        return self.url

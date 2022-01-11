@@ -23,7 +23,7 @@ try:
 except ImportError:
     from django.urls import reverse_lazy, reverse
 
-from app.models import Serie
+from app.models import Serie, Playlist, UrlPlaylist
 from app.forms import SerieForm
 from app.mixins import SerieMixin
 from app.conf import SERIE_DETAIL_URL_NAME, SERIE_LIST_URL_NAME
@@ -232,12 +232,47 @@ class Episode(LoginRequiredMixin, TemplateView):
     login_url = '/admin/login/'
     template_name = 'serie/episode.html'
 
+    def get_title(self, link: str):
+        episodios = 'episodios'
+        if episodios in link:
+            return link[link.index(episodios) + len(episodios):]
+        return link
+
     def get_context_data(self, **kwargs):
         context = super(Episode, self).get_context_data(**kwargs)
-        link = self.request.GET['link']
-        mega = MegaPack(link)
-        link = mega.get_info()
-        context['m3u8'] = link
+        if 'link' in self.request.GET:
+            url_playlist = self.request.GET['link']
+            mega = MegaPack(url_playlist)
+            url_playlist = mega.get_info()
+            context['m3u8'] = url_playlist
+            return context
+        serie = Serie.objects.get(id=self.request.GET['serie'])
+        if 'links' in self.request.GET:
+            links = self.request.GET.getlist('links')
+            playlist = Playlist()
+            playlist.serie = serie
+            playlist.save()
+            for url_playlist in links:
+                title = self.get_title(url_playlist)
+                playlist.titulos = playlist.titulos + '\n' + title
+                playlist.save()
+                urlp = UrlPlaylist()
+                urlp.url = url_playlist
+                urlp.playlist = playlist
+                urlp.save()
+        if 'playlist' in self.request.GET:
+            playlist = Playlist.objects.get(id=self.request.GET['playlist'])
+        else:
+            playlist = Playlist.objects.last()
+        url_playlist = playlist.urlplaylist_set.first()
+        mega = MegaPack(url_playlist.url)
+        new_link = mega.get_info()
+        url_playlist.playlist = None
+        url_playlist.save()
+        context['serie'] = serie
+        context['m3u8'] = new_link
+        if len(playlist.urlplaylist_set.all()) > 0:
+            context['playlist'] = playlist.id
         return context
 
 
@@ -306,8 +341,8 @@ class Delete(LoginRequiredMixin, SerieMixin, PermissionRequiredMixin, DeleteView
 
 class SerieListJson(BaseDatatableView):
     model = Serie
-    columns = ("id", "title", "year", "rating", "image", "url")
-    order_columns = ["id", "title", "year", "rating", "image", "url"]
+    columns = ("id", "image", "title", "year", "rating")
+    order_columns = ["id", "image", "title", "year", "rating"]
     max_display_length = 500
 
     def filter_queryset(self, qs):

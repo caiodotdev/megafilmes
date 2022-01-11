@@ -3,26 +3,26 @@
 {% load form_utils %}
 {% block content %}
     <div id="top" class="row">
-        <div class="col-sm-3">
+        <div class="col-sm-3 col-xs-12">
             <h2> {{ model_name_plural }}</h2>
         </div>
-        <div class="col-sm-9">
+        <div class="col-sm-9 col-xs-12">
             <button id="get_movies" type="button" class="btn btn-info pull-right h2"><i
                     class="fa fa-rocket"></i> Get Movies
             </button>
-            <a href="{% url 'MOVIE_create' %}" class="btn btn-primary pull-right h2"><i
-                    class="fa fa-plus"></i> Add Movie
-            </a>
-            <a href="{% url 'delete_all_movies' %}" class="btn btn-danger pull-right h2"><i
-                    class="fa fa-trash"></i> Delete All
-            </a>
+{#            <a href="{% url 'MOVIE_create' %}" class="btn btn-primary pull-right h2"><i#}
+{#                    class="fa fa-plus"></i> Add Movie#}
+{#            </a>#}
+{#            <a href="{% url 'delete_all_movies' %}" class="btn btn-danger pull-right h2"><i#}
+{#                    class="fa fa-trash"></i> Delete All#}
+{#            </a>#}
         </div>
     </div> <!-- /#top -->
     <hr/>
     <form id="advancedForm" method="get" action="{% url 'MOVIE_list' %}">
         {% csrf_token %}
         <div class="row">
-            <div class="col-sm-12">
+            <div class="col-xs-12">
 
                 {{ filter.form.as_p }}
                 <button type="button" class="btn btn-default" id="clear"><i class="fa fa-close"></i> Clear</button>
@@ -32,17 +32,15 @@
         </div>
         <hr/>
         <div id="list" class="row">
-            <div class="col-md-12">
+            <div class="col-xs-12">
                 <table id="table" class="table table-striped" cellspacing="0" cellpadding="0">
                     <thead>
                     <tr>
                         <th>ID</th>
+                        <th>IMAGE</th>
                         <th>TITLE</th>
                         <th>YEAR</th>
                         <th>RATING</th>
-                        <th>IMAGE</th>
-                        <th>URL</th>
-
                         <th class="actions">Actions</th>
                     </tr>
                     </thead>
@@ -82,6 +80,7 @@
             var table = $('#table').DataTable({
                 "processing": true,
                 "serverSide": true,
+                "responsive": true,
                 "ajax": {
                     "url": "{% url 'MOVIE_list_json' %}",
                     "data": function (d) {
@@ -90,17 +89,10 @@
                 },
                 columnDefs: [
                     {
-                        targets: 4,
+                        targets: 1,
                         data: 'image',
                         "render": function (data, type, row, meta) {
-                            return '<img class="img-thumbnail" src="' + row[4] + '"/>';
-                        }
-                    },
-                    {
-                        targets: 5,
-                        data: 'url',
-                        "render": function (data, type, row, meta) {
-                            return '<a href="'+row[5]+'" target="_blank">' + row[5] + '</a>';
+                            return '<img class="img-thumbnail" style="height: 80px;" src="' + row[1] + '"/>';
                         }
                     },
                     {
@@ -134,7 +126,8 @@
                         "sortAscending": ": ativar para classificar a coluna ascendente",
                         "sortDescending": ": ativar para classificar a coluna descendente"
                     }
-                }
+                },
+                "pageLength": 100
             });
 
             $('input').on('keyup', function () {
