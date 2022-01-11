@@ -486,6 +486,3 @@ def gen_lista(request):
     fsock = open("lista.m3u8", "rb")
     return HttpResponse(fsock, content_type='text')
 
-
-def loaderio(request):
-    return
