@@ -23,9 +23,9 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 SECRET_KEY = '(cc3jf%5j^bms%$=x$s12d#m#!1t)$m-v=zdgq2kh%e#h&s@aa'
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True
+DEBUG = False
 
-ALLOWED_HOSTS = ['localhost', 'localhost:8000', '10.0.0.196', '191.242.207.189']
+ALLOWED_HOSTS = ['localhost', 'localhost:8000', '10.0.0.196', '191.242.207.189', 'megafilmes.herokuapp.com']
 
 
 # Application definition
