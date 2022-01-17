@@ -163,3 +163,49 @@ http://10.0.0.196/multi/playlist.m3u8?id=436
 http://10.0.0.196/multi/playlist.m3u8?id=437
 #EXTINF:438, tvg-id="438 - Record News" tvg-name="Record News - 438" tvg-logo="https://tvhistoria.com.br/wp-content/uploads/2020/04/040420-recordnews-logo.jpg" group-title="Canais Ao Vivo",Record News
 http://10.0.0.196/multi/playlist.m3u8?id=438
+#EXTINF:440, tvg-id="440 - Canal Brasil" tvg-name="Canal Brasil - 440" tvg-logo="https://upload.wikimedia.org/wikipedia/commons/thumb/5/5f/Canal_Brasil_logo.svg/1200px-Canal_Brasil_logo.svg.png" group-title="Canais Ao Vivo",Canal Brasil
+http://10.0.0.196/multi/playlist.m3u8?id=440
+#EXTINF:441, tvg-id="441 - Baby TV" tvg-name="Baby TV - 441" tvg-logo="https://upload.wikimedia.org/wikipedia/pt/c/ca/Baby_TV.png" group-title="Canais Ao Vivo",Baby TV
+http://10.0.0.196/multi/playlist.m3u8?id=441
+#EXTINF:442, tvg-id="442 - MTV Live" tvg-name="MTV Live - 442" tvg-logo="https://upload.wikimedia.org/wikipedia/commons/thumb/f/fd/MTV_Live_HD_2017_logo.svg/614px-MTV_Live_HD_2017_logo.svg.png" group-title="Canais Ao Vivo",MTV Live
+http://10.0.0.196/multi/playlist.m3u8?id=442
+#EXTINF:443, tvg-id="443 - TBS" tvg-name="TBS - 443" tvg-logo="https://upload.wikimedia.org/wikipedia/commons/thumb/d/de/TBS_logo_2016.svg/1280px-TBS_logo_2016.svg.png" group-title="Canais Ao Vivo",TBS
+http://10.0.0.196/multi/playlist.m3u8?id=443
+#EXTINF:444, tvg-id="444 - Gloobinho" tvg-name="Gloobinho - 444" tvg-logo="https://logodownload.org/wp-content/uploads/2018/05/gloobinho-logo.png" group-title="Canais Ao Vivo",Gloobinho
+http://10.0.0.196/multi/playlist.m3u8?id=444
+#EXTINF:445, tvg-id="445 - Band / Rede Bandeirantes" tvg-name="Band / Rede Bandeirantes - 445" tvg-logo="https://logodownload.org/wp-content/uploads/2014/02/band-logo-tv-3.png" group-title="Canais Ao Vivo",Band / Rede Bandeirantes
+http://10.0.0.196/multi/playlist.m3u8?id=445
+#EXTINF:446, tvg-id="446 - Band Sports" tvg-name="Band Sports - 446" tvg-logo="https://upload.wikimedia.org/wikipedia/commons/thumb/f/f7/BandSports_logo.svg/1280px-BandSports_logo.svg.png" group-title="Canais Ao Vivo",Band Sports
+http://10.0.0.196/multi/playlist.m3u8?id=446
+#EXTINF:447, tvg-id="447 - Boomerang" tvg-name="Boomerang - 447" tvg-logo="https://upload.wikimedia.org/wikipedia/commons/thumb/4/41/Boomerang_tv_logo.png/758px-Boomerang_tv_logo.png" group-title="Canais Ao Vivo",Boomerang
+http://10.0.0.196/multi/playlist.m3u8?id=447
+#EXTINF:451, tvg-id="451 - Gloob" tvg-name="Gloob - 451" tvg-logo="https://logodownload.org/wp-content/uploads/2018/05/gloob-logo.png" group-title="Canais Ao Vivo",Gloob
+http://10.0.0.196/multi/playlist.m3u8?id=451
+#EXTINF:452, tvg-id="452 - Globo RJ" tvg-name="Globo RJ - 452" tvg-logo="https://upload.wikimedia.org/wikipedia/pt/9/9e/Logotipo_da_TV_Globo.png" group-title="Canais Ao Vivo",Globo RJ
+http://10.0.0.196/multi/playlist.m3u8?id=452
+#EXTINF:453, tvg-id="453 - Globo News" tvg-name="Globo News - 453" tvg-logo="https://upload.wikimedia.org/wikipedia/commons/thumb/8/8d/GloboNews_logo.svg/2560px-GloboNews_logo.svg.png" group-title="Canais Ao Vivo",Globo News
+http://10.0.0.196/multi/playlist.m3u8?id=453
+#EXTINF:454, tvg-id="454 - Lifetime" tvg-name="Lifetime - 454" tvg-logo="https://upload.wikimedia.org/wikipedia/commons/2/28/Lifetime_tv_logo.png" group-title="Canais Ao Vivo",Lifetime
+http://10.0.0.196/multi/playlist.m3u8?id=454
+#EXTINF:455, tvg-id="455 - Mais Globosat" tvg-name="Mais Globosat - 455" tvg-logo="https://upload.wikimedia.org/wikipedia/commons/thumb/8/86/Mais_Globosat_logo_2016.svg/2000px-Mais_Globosat_logo_2016.svg.png" group-title="Canais Ao Vivo",Mais Globosat
+http://10.0.0.196/multi/playlist.m3u8?id=455
+#EXTINF:456, tvg-id="456 - Nat Geo Kids" tvg-name="Nat Geo Kids - 456" tvg-logo="https://upload.wikimedia.org/wikipedia/commons/thumb/5/54/Natgeo_Kids_logo.svg/1280px-Natgeo_Kids_logo.svg.png" group-title="Canais Ao Vivo",Nat Geo Kids
+http://10.0.0.196/multi/playlist.m3u8?id=456
+#EXTINF:457, tvg-id="457 - Canal Off" tvg-name="Canal Off - 457" tvg-logo="https://upload.wikimedia.org/wikipedia/commons/thumb/f/f0/Canal_Off_logo.svg/1280px-Canal_Off_logo.svg.png" group-title="Canais Ao Vivo",Canal Off
+http://10.0.0.196/multi/playlist.m3u8?id=457
+#EXTINF:458, tvg-id="458 - Record TV" tvg-name="Record TV - 458" tvg-logo="https://img2.gratispng.com/20180613/byp/kisspng-brazil-recordtv-logo-rede-globo-television-record-5b210980716d36.1337312615288917764646.jpg" group-title="Canais Ao Vivo",Record TV
+http://10.0.0.196/multi/playlist.m3u8?id=458
+#EXTINF:459, tvg-id="459 - Band News" tvg-name="Band News - 459" tvg-logo="https://upload.wikimedia.org/wikipedia/commons/thumb/2/27/BandNews_TV_logo_2010.svg/2560px-BandNews_TV_logo_2010.svg.png" group-title="Canais Ao Vivo",Band News
+http://10.0.0.196/multi/playlist.m3u8?id=459
+#EXTINF:460, tvg-id="460 - Nick Jr." tvg-name="Nick Jr. - 460" tvg-logo="https://upload.wikimedia.org/wikipedia/commons/thumb/a/a1/Nick_Jr._logo_2009.svg/2560px-Nick_Jr._logo_2009.svg.png" group-title="Canais Ao Vivo",Nick Jr.
+http://10.0.0.196/multi/playlist.m3u8?id=460
+#EXTINF:462, tvg-id="462 - Disney XD" tvg-name="Disney XD - 462" tvg-logo="https://upload.wikimedia.org/wikipedia/commons/thumb/b/b9/Disney_XD_-_2015.svg/1200px-Disney_XD_-_2015.svg.png" group-title="Canais Ao Vivo",Disney XD
+http://10.0.0.196/multi/playlist.m3u8?id=462
+#EXTINF:463, tvg-id="463 - Disney Channel" tvg-name="Disney Channel - 463" tvg-logo="https://upload.wikimedia.org/wikipedia/commons/thumb/6/6c/2014_Disney_Channel_logo.svg/640px-2014_Disney_Channel_logo.svg.png" group-title="Canais Ao Vivo",Disney Channel
+http://10.0.0.196/multi/playlist.m3u8?id=463
+#EXTINF:464, tvg-id="464 - Cartoon Network" tvg-name="Cartoon Network - 464" tvg-logo="https://static.wikia.nocookie.net/cartoonnetwork/images/4/46/Cartoon_Network.png/revision/latest?cb=20131019183006&path-prefix=pt-br" group-title="Canais Ao Vivo",Cartoon Network
+http://10.0.0.196/multi/playlist.m3u8?id=464
+#EXTINF:466, tvg-id="466 - SBT" tvg-name="SBT - 466" tvg-logo="https://upload.wikimedia.org/wikipedia/commons/thumb/3/3a/SBT_logo.svg/2048px-SBT_logo.svg.png" group-title="Canais Ao Vivo",SBT
+http://10.0.0.196/multi/playlist.m3u8?id=466
+#EXTINF:467, tvg-id="467 - Globo SP" tvg-name="Globo SP - 467" tvg-logo="https://upload.wikimedia.org/wikipedia/pt/9/9e/Logotipo_da_TV_Globo.png" group-title="Canais Ao Vivo",Globo SP
+http://10.0.0.196/multi/playlist.m3u8?id=467

@@ -217,9 +217,9 @@ def get_episodes(object):
                         ep.date = li.find('div', {'class': 'episodiotitle'}).find('span').text
                         ep.save()
             except (Exception,):
-                object.delete()
                 print('-- nao foi possivel preencher os episodios desta serie:' + str(object.title))
-    return object.episodio_set.all()
+                object.delete()
+    return None
 
 
 class Detail(LoginRequiredMixin, SerieMixin, DetailView):
@@ -402,7 +402,7 @@ def get_series(request):
         serie.save()
         get_episodes(serie)
 
-    return get_articles(url_series, 48, {'id': 'archive-content'}, save_serie, title_exists)
+    return get_articles(url_series, 50, {'id': 'archive-content'}, save_serie, title_exists)
 
 
 def get_m3u8_episodio(request, episodio, search=False):
