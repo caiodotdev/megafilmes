@@ -26,8 +26,8 @@ class MegaPack(EngineModel):
         return text
 
     def get_info(self):
-        print('Start GET_INFO')
-        print('Search in: {}'.format(self.url))
+        # print('Start GET_INFO')
+        # print('Search in: {}'.format(self.url))
         self.browser.get(self.url)
         frame = self.get_frame(self.browser.find_elements(By.CLASS_NAME, "rptss"))
         if frame:
@@ -45,6 +45,8 @@ class MegaPack(EngineModel):
                 self.browser.quit()
                 return self.create_link(link_baixar)
         except (Exception,):
+            self.browser.close()
+            self.browser.quit()
             print('--- Nao encontrou div#instructions')
         return None
 

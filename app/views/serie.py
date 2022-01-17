@@ -1,11 +1,12 @@
 #!/usr/bin/env python
 # -*- coding: utf-8 -*-
-import requests
+import unidecode
 from django.contrib import messages
 from django.contrib.admin.utils import NestedObjects
 from django.contrib.auth.mixins import LoginRequiredMixin, PermissionRequiredMixin
-from django.core.exceptions import FieldDoesNotExist
 from django.db import transaction
+from django.db.models import Q
+from django.http import HttpResponse
 from django.shortcuts import redirect
 from django.views.generic import TemplateView
 from django.views.generic.detail import DetailView
@@ -14,23 +15,23 @@ from django.views.generic.edit import (
 )
 from django.views.generic.list import ListView
 
-from django.db.models import Q
-
+from app.templatetags.form_utils import calc_prazo
 from app.views.link import MegaPack
+from app.views.movie import remove_accents
 
 try:
     from django.core.urlresolvers import reverse_lazy
 except ImportError:
     from django.urls import reverse_lazy, reverse
 
-from app.models import Serie, Playlist, UrlPlaylist
+from app.models import Serie, Playlist, UrlPlaylist, Episodio
 from app.forms import SerieForm
 from app.mixins import SerieMixin
 from app.conf import SERIE_DETAIL_URL_NAME, SERIE_LIST_URL_NAME
 
 from django_datatables_view.base_datatable_view import BaseDatatableView
 
-from app.utils import upload_image, upload_file, get_articles, get_page
+from app.utils import get_articles, get_page
 
 import django_filters
 
@@ -197,6 +198,30 @@ def check_url_assistido(serie, url):
     return False
 
 
+def get_episodes(object):
+    page = get_page(object.url, {})
+    if page:
+        episodios = page.findAll('ul', {'class': 'episodios'})
+        for temp in episodios:
+            try:
+                list = temp.findAll('li')
+                if len(list) > 0:
+                    for li in temp.findAll('li'):
+                        link_url = li.find('div', {'class': 'episodiotitle'}).find('a')['href']
+                        ep = Episodio()
+                        ep.image = li.find('div', {'class': 'imagen'}).find('img')['src']
+                        ep.number = li.find('div', {'class': 'numerando'}).text
+                        ep.title = li.find('div', {'class': 'episodiotitle'}).find('a').text
+                        ep.url = link_url
+                        ep.serie = object
+                        ep.date = li.find('div', {'class': 'episodiotitle'}).find('span').text
+                        ep.save()
+            except (Exception,):
+                object.delete()
+                print('-- nao foi possivel preencher os episodios desta serie:' + str(object.title))
+    return object.episodio_set.all()
+
+
 class Detail(LoginRequiredMixin, SerieMixin, DetailView):
     """
     Detail of a Serie
@@ -206,42 +231,19 @@ class Detail(LoginRequiredMixin, SerieMixin, DetailView):
     template_name = 'serie/detail.html'
     context_object_name = 'serie'
 
-    def get_episodes(self):
-        result = []
-        object = self.get_object()
-        page = get_page(self.object.url, {})
-        if page:
-            episodios = page.findAll('ul', {'class': 'episodios'})
-            for temp in episodios:
-                try:
-                    list = temp.findAll('li')
-                    if len(list) > 0:
-                        for li in temp.findAll('li'):
-                            link_url = li.find('div', {'class': 'episodiotitle'}).find('a')['href']
-                            result.append({
-                                'image': li.find('div', {'class': 'imagen'}).find('img')['src'],
-                                'number': li.find('div', {'class': 'numerando'}).text,
-                                'title': li.find('div', {'class': 'episodiotitle'}).find('a').text,
-                                'link': link_url,
-                                'date': li.find('div', {'class': 'episodiotitle'}).find('span').text,
-                                'assistido': check_url_assistido(object, link_url)
-                            })
-                except (Exception,):
-                    print('-- nao foi possivel preencher os episodios desta serie')
-        return result
-
     def get_context_data(self, **kwargs):
         context = super(Detail, self).get_context_data(**kwargs)
-        context['episodios'] = self.get_episodes()
         return context
 
 
-class Episode(LoginRequiredMixin, TemplateView):
+class Episode(LoginRequiredMixin, DetailView):
     """
     Detail of a Serie
     """
     login_url = '/admin/login/'
     template_name = 'serie/episode.html'
+    model = Episodio
+    context_object_name = 'episodio'
 
     def get_title(self, link: str):
         episodios = 'episodios'
@@ -249,7 +251,16 @@ class Episode(LoginRequiredMixin, TemplateView):
             return link[link.index(episodios) + len(episodios):]
         return link
 
+    def get_object(self, queryset=None):
+        return Episodio.objects.get(id=self.request.GET['ep'])
+
+    def mark_assistido(self):
+        object = self.get_object()
+        object.is_assistido = True
+        object.save()
+
     def get_context_data(self, **kwargs):
+        self.mark_assistido()
         context = super(Episode, self).get_context_data(**kwargs)
         serie = Serie.objects.get(id=self.request.GET['serie'])
         if 'link' in self.request.GET:
@@ -262,8 +273,7 @@ class Episode(LoginRequiredMixin, TemplateView):
             urlp.url = url_playlist
             urlp.playlist = playlist
             urlp.save()
-            mega = MegaPack(url_playlist)
-            url_playlist = mega.get_info()
+            url_playlist = get_m3u8_episodio(self.request, self.get_object(), True)
             context['m3u8'] = url_playlist
             return context
         if 'links' in self.request.GET:
@@ -284,10 +294,8 @@ class Episode(LoginRequiredMixin, TemplateView):
         else:
             playlist = Playlist.objects.last()
         url_playlist = playlist.urlplaylist_set.first()
-        mega = MegaPack(url_playlist.url)
-        new_link = mega.get_info()
-        url_playlist.playlist = None
-        url_playlist.save()
+        new_link = get_m3u8_episodio(self.request, self.get_object(), search=True)
+        url_playlist.delete()
         context['serie'] = serie
         context['m3u8'] = new_link
         if len(playlist.urlplaylist_set.all()) > 0:
@@ -392,5 +400,72 @@ def get_series(request):
         serie.year = data_lancamento
         serie.url = url_serie
         serie.save()
+        get_episodes(serie)
 
     return get_articles(url_series, 48, {'id': 'archive-content'}, save_serie, title_exists)
+
+
+def get_m3u8_episodio(request, episodio, search=False):
+    if episodio.link_m3u8:
+        if calc_prazo(episodio.link_m3u8):
+            return episodio.link_m3u8
+    if search:
+        url_m3u8 = MegaPack(episodio.url).get_info()
+        episodio.link_m3u8 = url_m3u8
+        episodio.save()
+        return url_m3u8
+    return 'http://' + request.META['HTTP_HOST'] + '/serie/playlist.m3u8?id=' + str(episodio.id)
+
+
+def gen_lista_serie(request):
+    f = open("series.m3u8", "a")
+    f.truncate(0)
+    f.write("#EXTM3U\n")
+    f.write('#PLAYLISTV: pltv-logo="{}" pltv-name="{}" pltv-description="{}" pltv-author="CAIO MARINHO"\n\n'.format(
+        'https://logos.flamingtext.com/Word-Logos/Series-design-china-name.png',
+        'Series',
+        'Series para assistir online'
+    ))
+    for serie in Serie.objects.all().distinct():
+        title_serie = unidecode.unidecode(remove_accents(serie.title))
+        for ep in serie.episodio_set.all():
+            title_episodio = unidecode.unidecode(remove_accents(ep.title))
+            custom_m3u8 = get_m3u8_episodio(request, ep)
+            f.write('#EXTINF:{}, tvg-id="{} - {}" tvg-name="{} - {}" tvg-logo="{}" group-title="{}",{}\n{}\n'.format(
+                ep.id,
+                ep.id,
+                title_episodio,
+                title_episodio,
+                ep.id,
+                ep.image,
+                title_serie,
+                title_episodio,
+                custom_m3u8))
+    f.close()
+    fsock = open("series.m3u8", "rb")
+    return HttpResponse(fsock, content_type='text')
+
+
+def episodio_playlist_m3u8(request):
+    dic = dict(request.GET)
+    id = dic['id'][0]
+    episodio = Episodio.objects.get(id=id)
+    title = unidecode.unidecode(remove_accents(episodio.title))
+    uri_m3u8 = get_m3u8_episodio(request, episodio, search=True)
+    print(uri_m3u8)
+    f = open("epi-ac.m3u8", "a")
+    f.truncate(0)
+    f.write("#EXTM3U\n")
+    f.write('#EXTINF:{}, tvg-id="{} - {}" tvg-name="{} - {}" tvg-logo="{}" group-title="{}",{}\n{}\n'.format(
+        episodio.id,
+        episodio.id,
+        title,
+        title,
+        episodio.id,
+        episodio.image,
+        'Series',
+        title,
+        uri_m3u8))
+    f.close()
+    fsock = open("epi-ac.m3u8", "rb")
+    return HttpResponse(fsock, content_type='text')

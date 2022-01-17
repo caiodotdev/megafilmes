@@ -61,13 +61,14 @@
         </div>
         <br/>
         <div class="row">
-            {% for episodio in episodios %}
+            {% for episodio in serie.episodio_set.all %}
                 <div class="col-xs-6 col-sm-4 col-md-3 col-lg-2">
+                <input name="ep" value="{{ episodio.id }}" class="hidden"/>
                     <div class="panel panel-default">
                         <div class="panel-title">
                             <img class="img-responsive"
                                  src="{{ episodio.image }}"/>
-                            {% if episodio.assistido %}
+                            {% if episodio.is_assistido %}
                                 <span class="pull-right"> Assistido <i class="fa fa-check-circle"
                                                             style="color: greenyellow;"></i> </span>
                             {% endif %}
@@ -80,12 +81,12 @@
                                 {{ episodio.date }}
                             </p>
                             <p class="text-center">
-                                <input type="checkbox" name="links" value="{{ episodio.link }}"/>
+                                <input type="checkbox" name="links" value="{{ episodio.url }}"/>
                             </p>
                         </div>
                         <div class="panel-footer text-center">
                             <a class="btn btn-primary"
-                               href="{% url 'SERIE_episode' %}?serie={{ object.id }}&link={{ episodio.link }}">
+                               href="{% url 'SERIE_episode' %}?serie={{ object.id }}&ep={{ episodio.id }}&link={{ episodio.url }}">
                                 Assistir
                             </a>
                         </div>

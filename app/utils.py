@@ -196,7 +196,6 @@ def get_articles(url_get, pages, div_principal, method, check_article):
                     counter += 1
                     print('---- Nao conseguiu capturar este article')
                     print('---- Total nao capturados: ', str(counter))
-                    return None
         except(Exception,):
             print('---- Nao conseguiu capturar a page.')
     return JsonResponse(data={'success': 'OK'})

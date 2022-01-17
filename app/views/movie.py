@@ -1,13 +1,15 @@
 #!/usr/bin/env python
 # -*- coding: utf-8 -*-
 import requests
+import unicodedata
+import unidecode
 from bs4 import BeautifulSoup
 from django.contrib import messages
 from django.contrib.admin.utils import NestedObjects
 from django.contrib.auth.mixins import LoginRequiredMixin, PermissionRequiredMixin
 from django.core.exceptions import FieldDoesNotExist
 from django.db import transaction
-from django.http import JsonResponse
+from django.http import JsonResponse, HttpResponse, HttpResponseNotFound, StreamingHttpResponse
 from django.shortcuts import redirect
 from django.views.generic.detail import DetailView
 from django.views.generic.edit import (
@@ -17,6 +19,7 @@ from django.views.generic.list import ListView
 
 from django.db.models import Q
 
+from app.templatetags.form_utils import calc_prazo
 from app.views.link import MegaPack
 
 try:
@@ -304,16 +307,74 @@ def get_movies(request):
         movie.year = data_lancamento
         movie.url = url_movie
         movie.save()
-        # data = {
-        #     "title": title,
-        #     "year": data_lancamento,
-        #     "rating": rating,
-        #     "image": image,
-        #     "url": url_movie
-        # }
-        # req = requests.post('https://megafilmes.herokuapp.com/api/movie/', data=data)
-        # if req.status_code != 201:
-        #     print(req.status_code)
-        #     print('---- erro ao inserir movie')
 
     return get_articles(url_movies, 270, {'id': 'archive-content'}, save_movie, title_exists)
+
+
+def remove_accents(text):
+    if isinstance(text, bytes):
+        text = text.decode('ascii')
+
+    category = unicodedata.category  # this gives a small (~10%) speedup
+    return ''.join(
+        c for c in unicodedata.normalize('NFKD', text) if category(c) != 'Mn'
+    )
+
+
+def gen_lista_movie(request):
+    f = open("movie.m3u8", "a")
+    f.truncate(0)
+    f.write("#EXTM3U\n")
+    for movie in Movie.objects.all().distinct():
+        title = unidecode.unidecode(remove_accents(movie.title))
+        custom_m3u8 = get_m3u8_movie(request, movie)
+        # custom_m3u8 = 'http://' + request.META['HTTP_HOST'] + '/movie/playlist.m3u8?id=' + str(movie.id)
+        f.write('#EXTINF:{}, tvg-id="{} - {}" tvg-name="{} - {}" tvg-logo="{}" group-title="{}",{}\n{}\n'.format(
+            movie.id,
+            movie.id,
+            title,
+            title,
+            movie.id,
+            movie.image,
+            'Filmes',
+            title,
+            custom_m3u8))
+    f.close()
+    fsock = open("movie.m3u8", "rb")
+    return HttpResponse(fsock, content_type='text')
+
+
+def get_m3u8_movie(request, movie, search=False):
+    if movie.link_m3u8:
+        if calc_prazo(movie.link_m3u8):
+            return movie.link_m3u8
+    if search:
+        url_m3u8 = MegaPack(movie.url).get_info()
+        movie.link_m3u8 = url_m3u8
+        movie.save()
+        return url_m3u8
+    return 'http://' + request.META['HTTP_HOST'] + '/movie/playlist.m3u8?id=' + str(movie.id)
+
+
+def movie_playlist_m3u8(request):
+    dic = dict(request.GET)
+    id = dic['id'][0]
+    movie = Movie.objects.get(id=id)
+    title = unidecode.unidecode(remove_accents(movie.title))
+    uri_m3u8 = get_m3u8_movie(request, movie, search=True)
+    f = open("movie-ac.m3u8", "a")
+    f.truncate(0)
+    f.write("#EXTM3U\n")
+    f.write('#EXTINF:{}, tvg-id="{} - {}" tvg-name="{} - {}" tvg-logo="{}" group-title="{}",{}\n{}\n'.format(
+        movie.id,
+        movie.id,
+        title,
+        title,
+        movie.id,
+        movie.image,
+        'Filmes',
+        title,
+        uri_m3u8))
+    f.close()
+    fsock = open("movie-ac.m3u8", "rb")
+    return HttpResponse(fsock, content_type='text')

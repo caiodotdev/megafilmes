@@ -27,10 +27,14 @@ class MovieAdmin(admin.ModelAdmin):
         'id',
     )
     inlines = []
-    list_display = ("id", "title", "year", "rating", "image", "url")
+    list_display = ("id", "title", "year", "rating", "image", "url", "link_m3u8")
 
 
 admin.site.register(Movie, MovieAdmin)
+
+
+class EpisodioInline(admin.TabularInline):
+    model = Episodio
 
 
 class SerieAdmin(admin.ModelAdmin):
@@ -38,7 +42,7 @@ class SerieAdmin(admin.ModelAdmin):
     search_fields = (
         'id',
     )
-    inlines = []
+    inlines = [EpisodioInline, ]
     list_display = ("id", "title", "year", "rating", "image", "url")
 
 
@@ -51,7 +55,7 @@ class ChannelAdmin(admin.ModelAdmin):
         'id',
     )
     inlines = []
-    list_display = ("id", "title", "image", "url", "link_m3u8")
+    list_display = ("id", "title", "image", "category", "url", "link_m3u8")
 
 
 admin.site.register(Channel, ChannelAdmin)
@@ -81,3 +85,22 @@ class UrlPlaylistAdmin(admin.ModelAdmin):
 
 
 admin.site.register(UrlPlaylist, UrlPlaylistAdmin)
+
+
+class ChannelInline(admin.TabularInline):
+    model = Channel
+
+
+class CategoryAdmin(admin.ModelAdmin):
+    list_display = ['id', 'name']
+    inlines = [ChannelInline, ]
+
+
+admin.site.register(Category, CategoryAdmin)
+
+
+class EpisodioAdmin(admin.ModelAdmin):
+    list_display = ['id', 'title', 'url', 'link_m3u8']
+
+
+admin.site.register(Episodio, EpisodioAdmin)

@@ -31,3 +31,4 @@ pyimgur
 selenium
 django-crontab
 django_cron
+Unidecode

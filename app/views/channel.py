@@ -442,24 +442,26 @@ def get_ts(request):
 
 
 def gen_lista_personal(request):
-    f = open("lista-personal.m3u8", "a")
+    f = open("lista2.m3u8", "a")
     f.truncate(0)
     f.write("#EXTM3U\n")
     for ch in Channel.objects.filter(link_m3u8__icontains='.m3u8').distinct():
         title = ch.title
+        id = ch.id
         uri_m3u8 = ch.link_m3u8
+        custom_m3u8 = 'http://' + request.META['HTTP_HOST'] + '/multi/playlist.m3u8?id=' + str(ch.id)
         f.write('#EXTINF:{}, tvg-id="{} - {}" tvg-name="{} - {}" tvg-logo="{}" group-title="{}",{}\n{}\n'.format(
-            ch.id,
-            ch.id,
+            '-1',
+            id,
             title,
             title,
-            ch.id,
+            id,
             ch.image,
-            'Canais Ao Vivo',
+            str(ch.category.name),
             title,
-            uri_m3u8))
+            custom_m3u8))
     f.close()
-    fsock = open("lista-personal.m3u8", "rb")
+    fsock = open("lista2.m3u8", "rb")
     return HttpResponse(fsock, content_type='text')
 
 

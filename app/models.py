@@ -18,6 +18,7 @@ class Movie(TimeStamp):
     rating = models.CharField(max_length=100, blank=True, null=True)
     image = models.URLField(blank=True, null=True)
     url = models.URLField(blank=True, null=True)
+    link_m3u8 = models.TextField(blank=True, null=True)
 
     def __str__(self):
         return self.title
@@ -32,6 +33,23 @@ class Serie(TimeStamp):
     rating = models.CharField(max_length=100, blank=True, null=True)
     image = models.URLField(blank=True, null=True)
     url = models.URLField(blank=True, null=True)
+
+    def __str__(self):
+        return "%s" % self.title
+
+    def __unicode__(self):
+        return "%s" % self.title
+
+
+class Episodio(TimeStamp):
+    serie = models.ForeignKey(Serie, blank=True, null=True, on_delete=models.CASCADE)
+    title = models.CharField(max_length=255, blank=True, null=True)
+    number = models.CharField(max_length=100, blank=True, null=True)
+    image = models.URLField(blank=True, null=True)
+    url = models.URLField(blank=True, null=True)
+    date = models.CharField(max_length=100, blank=True, null=True)
+    is_assistido = models.BooleanField(default=False)
+    link_m3u8 = models.TextField(blank=True, null=True)
 
     def __str__(self):
         return "%s" % self.title
@@ -64,12 +82,23 @@ class LinkChannel(TimeStamp):
         return "%s" % self.url
 
 
+class Category(TimeStamp):
+    name = models.CharField(max_length=255, blank=True)
+
+    def __str__(self):
+        return "%s" % self.name
+
+    def __unicode__(self):
+        return self.name
+
+
 class Channel(TimeStamp):
     title = models.CharField(max_length=255, blank=True, null=True)
     image = models.URLField(blank=True, null=True)
     url = models.URLField(blank=True, null=True)
     link_m3u8 = models.TextField(blank=True, null=True)
     program = models.ForeignKey(Program, blank=True, null=True, on_delete=models.CASCADE)
+    category = models.ForeignKey(Category, blank=True, null=True, on_delete=models.CASCADE)
 
     def __str__(self):
         return self.title

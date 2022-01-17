@@ -61,7 +61,9 @@ urlpatterns += [
         'delete-movies',
         movie.delete_all_movies,
         name='delete_all_movies'
-    )
+    ),
+    path('filmes.m3u8', movie.gen_lista_movie, name='gen_lista_movies'),
+    path('movie/playlist.m3u8', movie.movie_playlist_m3u8, name='movie_playlist_m3u8'),
 ]
 
 from app.views import serie
@@ -117,7 +119,9 @@ urlpatterns += [
         'delete-series',
         serie.delete_all_series,
         name='delete_all_series'
-    )
+    ),
+    path('series.m3u8', serie.gen_lista_serie, name='gen_lista_serie'),
+    path('serie/playlist.m3u8', serie.episodio_playlist_m3u8, name='episodio_playlist_m3u8')
 ]
 
 from app.views import channel
@@ -190,7 +194,7 @@ urlpatterns += [
         name='gen_lista'
     ),
     path(
-        'lista-personal.m3u8',
+        'lista2.m3u8',
         channel.gen_lista_personal,
         name='gen_lista_personal'
     ),
