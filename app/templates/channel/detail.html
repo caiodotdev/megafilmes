@@ -92,7 +92,7 @@
     <script>
 
         var player = new Clappr.Player({
-            source: window.location.origin + "{% url 'playlist_m3u8' %}?id=" + "{{ object.id }}",
+            source: '{{ object.link_m3u8 }}',
             plugins: [ChromecastPlugin],
             parentId: "#Player",
             chromecast: {

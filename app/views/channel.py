@@ -338,8 +338,17 @@ def get_content_url(request):
     return JsonResponse({'content': get_program_content(channel.program.url)})
 
 
-def get_id(channel):
-    req = requests.get('https://megafilmes.herokuapp.com/api/channel/?title={}'.format(channel.title))
+def get_channel_remote(channel):
+    req = requests.get('http://megafilmes.herokuapp.com/api/channel/', data={'title': channel.title})
+    if req.status_code == 200:
+        return req.json()[0]
+    return None
+
+
+def submit_channel_m3u8(channel, m3u8):
+    channel_remote = get_channel_remote(channel)
+    req = requests.put('http://megafilmes.herokuapp.com/api/channel/{}/'.format(channel_remote['id']),
+                       data={'link_m3u8': m3u8})
     if req.status_code == 200:
         return req.json()
     return None
@@ -352,6 +361,7 @@ def get_m3u8_channels(request):
             mega = MegaPack(channel.url)
             m3u8 = mega.get_info()
             channel.link_m3u8 = m3u8
+            submit_channel_m3u8(channel, m3u8)
             channel.save()
         except (Exception,):
             channel.link_m3u8 = None
@@ -486,4 +496,3 @@ def gen_lista(request):
     f.close()
     fsock = open("lista.m3u8", "rb")
     return HttpResponse(fsock, content_type='text')
-
