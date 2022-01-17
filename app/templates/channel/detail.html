@@ -55,9 +55,9 @@
             <a class="btn btn-primary" href="{% url 'CHANNEL_update' channel.pk %}">
                 Edit
             </a>
-{#            <button type="button" class="btn btn-primary" id="get_m3u8">#}
-{#                Update M3u8#}
-{#            </button>#}
+            {#            <button type="button" class="btn btn-primary" id="get_m3u8">#}
+            {#                Update M3u8#}
+            {#            </button>#}
             <a href="{% url 'CHANNEL_list' %}" class="btn btn-default">Back</a>
         </div>
     </div>
@@ -92,7 +92,7 @@
     <script>
 
         var player = new Clappr.Player({
-            source: '{{ object.link_m3u8 }}',
+            source: window.location.origin + "{% url 'playlist_m3u8' %}?id=" + "{{ object.id }}",
             plugins: [ChromecastPlugin],
             parentId: "#Player",
             chromecast: {

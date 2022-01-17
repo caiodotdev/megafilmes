@@ -49,3 +49,10 @@ def calc_prazo(link):
             if time > now:
                 return round((time - now).seconds / 60 / 60, 2)
     return ''
+
+
+@register.filter()
+def is_remote(link):
+    if 'megafilmes' in link:
+        return True
+    return False
