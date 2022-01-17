@@ -411,6 +411,7 @@ def playlist_m3u8(request):
     print(uri_m3u8)
     req = requests.get(url=uri_m3u8, headers=headers, verify=False, timeout=(1, 27))
     print(req.status_code)
+    print(req.text)
     page = BeautifulSoup(req.text, 'html.parser')
     page_str = str(page.contents[0])
     print(page_str)
@@ -424,6 +425,7 @@ def playlist_m3u8(request):
             page_str = page_str.replace(arr_strings[i],
                                         'http://' + request.META['HTTP_HOST'] + '/multi/ts?link=' + str(
                                             new_uri))
+
     return HttpResponse(
         content=page_str,
         status=req.status_code,
