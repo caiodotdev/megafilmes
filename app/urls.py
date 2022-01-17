@@ -198,6 +198,11 @@ urlpatterns += [
         channel.gen_lista_personal,
         name='gen_lista_personal'
     ),
+    path(
+        'listaext.m3u8',
+        channel.gen_lista_externa,
+        name='gen_lista_externa'
+    ),
     path('multi/playlist.m3u8', playlist_m3u8, name='playlist_m3u8'),
     path('multi/ts', get_ts, name='get_ts'),
     path('loaderio-7366a7cb37fc04bf49ac6c48e3fdcd9f.txt',

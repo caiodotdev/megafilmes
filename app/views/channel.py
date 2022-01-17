@@ -339,7 +339,7 @@ def get_content_url(request):
 
 
 def get_channel_remote(channel):
-    req = requests.get('http://megafilmes.herokuapp.com/api/channel/', data={'title': channel.title})
+    req = requests.get('http://megafilmes.herokuapp.com/api/channel/?url={}'.format(channel.url))
     if req.status_code == 200:
         return req.json()[0]
     return None
@@ -350,18 +350,21 @@ def submit_channel_m3u8(channel, m3u8):
     req = requests.put('http://megafilmes.herokuapp.com/api/channel/{}/'.format(channel_remote['id']),
                        data={'link_m3u8': m3u8})
     if req.status_code == 200:
-        return req.json()
+        res = req.json()
+        print(res)
+        return res
     return None
 
 
 def get_m3u8_channels(request):
     channels = Channel.objects.all()
     for channel in channels:
+        print('-- ', channel.title)
         try:
             mega = MegaPack(channel.url)
             m3u8 = mega.get_info()
             channel.link_m3u8 = m3u8
-            submit_channel_m3u8(channel, m3u8)
+            # submit_channel_m3u8(channel, m3u8)
             channel.save()
         except (Exception,):
             channel.link_m3u8 = None
@@ -408,14 +411,9 @@ def playlist_m3u8(request):
     id = dic['id'][0]
     channel = Channel.objects.get(id=id)
     uri_m3u8 = check_m3u8(channel)
-    print(uri_m3u8)
     req = requests.get(url=uri_m3u8, headers=headers, verify=False, timeout=(1, 27))
-    print(req.status_code)
-    print('--- text', req.text)
-    print('--- content', req.content)
     page = BeautifulSoup(req.text, 'html.parser')
     page_str = str(page.contents[0])
-    print(page_str)
     arr_strings = list(set(remove_iv(re.findall("([^\s]+.ts)", page_str))))
     if len(arr_strings) > 0:
         # index_ = str(uri_m3u8).index('video.m3u8')
@@ -501,4 +499,26 @@ def gen_lista(request):
             custom_m3u8))
     f.close()
     fsock = open("lista.m3u8", "rb")
+    return HttpResponse(fsock, content_type='text')
+
+
+def gen_lista_externa(request):
+    f = open("lista_externa.m3u8", "a")
+    f.truncate(0)
+    f.write("#EXTM3U\n")
+    for ch in Channel.objects.filter(link_m3u8__icontains='.m3u8').distinct():
+        title = ch.title
+        uri_m3u8 = ch.link_m3u8
+        f.write('#EXTINF:{}, tvg-id="{} - {}" tvg-name="{} - {}" tvg-logo="{}" group-title="{}",{}\n{}\n'.format(
+            ch.id,
+            ch.id,
+            title,
+            title,
+            ch.id,
+            ch.image,
+            'Canais Ao Vivo',
+            title,
+            uri_m3u8))
+    f.close()
+    fsock = open("lista_externa.m3u8", "rb")
     return HttpResponse(fsock, content_type='text')
