@@ -408,9 +408,12 @@ def playlist_m3u8(request):
     id = dic['id'][0]
     channel = Channel.objects.get(id=id)
     uri_m3u8 = check_m3u8(channel)
+    print(uri_m3u8)
     req = requests.get(url=uri_m3u8, headers=headers, verify=False, timeout=(1, 27))
+    print(req.status_code)
     page = BeautifulSoup(req.text, 'html.parser')
     page_str = str(page.contents[0])
+    print(page_str)
     arr_strings = list(set(remove_iv(re.findall("([^\s]+.ts)", page_str))))
     if len(arr_strings) > 0:
         # index_ = str(uri_m3u8).index('video.m3u8')
