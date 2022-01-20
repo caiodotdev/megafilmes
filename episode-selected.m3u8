@@ -1,0 +1,7 @@
+#EXTM3U
+#EXTINF:75087, tvg-id="75087 - Piloto" tvg-name="Piloto - 75087" tvg-logo="https://image.tmdb.org/t/p/w154/rxWlBXZhGWhumbLB8gAHyyW3ITD.jpg" group-title="Episodes",Piloto
+http://utakata.cf:8080/d/RedeCanais/RedeCanais/RCServer04/ondemand/TBBTT01EP01.mp4?mu3zAQc9HC3GbwJq=GNsqXKKWo03mVhQPcmS-4Q&3U1G7qaTxrPbalZnEx=1642730539
+#EXTINF:75088, tvg-id="75088 - A Hipotese do Grande Farelo" tvg-name="A Hipotese do Grande Farelo - 75088" tvg-logo="https://image.tmdb.org/t/p/w154/5Itgr82yyAEtwegAZgMm30UqJXK.jpg" group-title="Episodes",A Hipotese do Grande Farelo
+http://tocaazul.tk:8080/d/RedeCanais/RedeCanais/RCServer04/ondemand/TBBTT01EP02.mp4?mu3zAQc9HC3GbwJq=ambyIP43D8X1dU553x2Ujw&3U1G7qaTxrPbalZnEx=1642730557
+#EXTINF:75089, tvg-id="75089 - A Disputa de Botas no Corolario" tvg-name="A Disputa de Botas no Corolario - 75089" tvg-logo="https://image.tmdb.org/t/p/w154/eDyDC7cwKz9ZTA4CX44eKuHjPgZ.jpg" group-title="Episodes",A Disputa de Botas no Corolario
+http://shikakunara.cf:8080/d/RedeCanais/RedeCanais/RCServer04/ondemand/TBBTT01EP03.mp4?mu3zAQc9HC3GbwJq=3jMDNbIUd7GtiS-SPSnvTA&3U1G7qaTxrPbalZnEx=1642730608

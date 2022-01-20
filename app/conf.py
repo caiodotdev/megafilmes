@@ -3,8 +3,8 @@
 """
 Global variables for base module
 """
-from django.utils.translation import ugettext_lazy as _
 from django.conf import LazySettings
+from django.utils.translation import ugettext_lazy as _
 
 settings = LazySettings()
 
@@ -28,7 +28,6 @@ DELETE_SUFFIX = "_delete"
 API_SUFFIX = "_api"
 style = "base_django/flexbox"
 
-
 # Messages
 OBJECT_CREATED_SUCCESSFULLY = _("Object created successfully")
 OBJECT_UPDATED_SUCCESSFULLY = _("Object updated successfully")
@@ -45,7 +44,6 @@ CONFIGURING_APPLICATION = _("Configuring application {}")
 CREATING_PERMISSION_WITH_NAME = _("Creating Permission with name {}")
 CREATING_GROUP_WITH_NAME = _("Creating Group with name {}")
 
-
 MOVIE_PREFIX = "MOVIE"
 
 MOVIE_VERBOSE_NAME = _("Movie")
@@ -57,7 +55,6 @@ MOVIE_DETAIL_URL_NAME = MOVIE_PREFIX + DETAIL_SUFFIX
 MOVIE_UPDATE_URL_NAME = MOVIE_PREFIX + UPDATE_SUFFIX
 MOVIE_DELETE_URL_NAME = MOVIE_PREFIX + DELETE_SUFFIX
 MOVIE_LIST_JSON_URL_NAME = MOVIE_PREFIX + '_list_json'
-
 
 SERIE_PREFIX = "SERIE"
 
@@ -71,7 +68,6 @@ SERIE_UPDATE_URL_NAME = SERIE_PREFIX + UPDATE_SUFFIX
 SERIE_DELETE_URL_NAME = SERIE_PREFIX + DELETE_SUFFIX
 SERIE_LIST_JSON_URL_NAME = SERIE_PREFIX + '_list_json'
 
-
 CHANNEL_PREFIX = "CHANNEL"
 
 CHANNEL_VERBOSE_NAME = _("Channel")
@@ -83,4 +79,3 @@ CHANNEL_DETAIL_URL_NAME = CHANNEL_PREFIX + DETAIL_SUFFIX
 CHANNEL_UPDATE_URL_NAME = CHANNEL_PREFIX + UPDATE_SUFFIX
 CHANNEL_DELETE_URL_NAME = CHANNEL_PREFIX + DELETE_SUFFIX
 CHANNEL_LIST_JSON_URL_NAME = CHANNEL_PREFIX + '_list_json'
-

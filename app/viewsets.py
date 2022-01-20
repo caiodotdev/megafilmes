@@ -1,13 +1,11 @@
-from rest_framework import viewsets
-
+import django_filters
 from django_filters import rest_framework as filters
+from rest_framework import viewsets
 
 from . import (
     serializers,
     models
 )
-
-import django_filters
 
 
 class MovieFilter(django_filters.FilterSet):

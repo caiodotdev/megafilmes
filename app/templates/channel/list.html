@@ -11,15 +11,12 @@
             <button id="get_channels" type="button" class="btn btn-info pull-right h2"><i
                     class="fa fa-rocket"></i> Get Channels
             </button>
-            <button id="get_m3u8" type="button" class="btn btn-info pull-right h2"><i
-                    class="fa fa-tv"></i> Get M3U8
-            </button>
-{#            <a href="{% url 'CHANNEL_create' %}" class="btn btn-primary pull-right h2"><i#}
-{#                    class="fa fa-plus"></i> Add Channel#}
+{#            <button id="get_m3u8" type="button" class="btn btn-info pull-right h2"><i#}
+{#                    class="fa fa-tv"></i> Get M3U8#}
+{#            </button>#}
+{#            <a href="{% url 'delete_all_channels' %}" class="btn btn-danger pull-right h2"><i#}
+{#                    class="fa fa-trash"></i> Delete All#}
 {#            </a>#}
-            <a href="{% url 'delete_all_channels' %}" class="btn btn-danger pull-right h2"><i
-                    class="fa fa-trash"></i> Delete All
-            </a>
         </div>
     </div> <!-- /#top -->
     <hr/>
@@ -33,8 +30,6 @@
                         <th>ID</th>
                         <th>TITLE</th>
                         <th>HOURS</th>
-{#                        <th>URL</th>#}
-{#                        <th>PROGRAM</th>#}
                         <th class="actions">Actions</th>
                     </tr>
                     </thead>
@@ -118,13 +113,6 @@
                     }
                 },
                 columnDefs: [
-                   // {
-                   //     targets: 4,
-                   //     data: 'program',
-                   //     "render": function (data, type, row, meta) {
-                   //         return '<button type="button" class="btn btn-primary mods" data-id="' + row[0] + '" data-toggle="modal" data-target="#modal"><i class="fa fa-tv"></i></button>';
-                   //     }
-                   // },
                     {
                         targets: -1,
                         data: 'id',

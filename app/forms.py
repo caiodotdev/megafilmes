@@ -1,7 +1,7 @@
 from django import forms
-from django.forms import ModelForm, inlineformset_factory
-from app.utils import generate_bootstrap_widgets_for_all_fields
+from django.forms import ModelForm
 
+from app.utils import generate_bootstrap_widgets_for_all_fields
 from . import (
     models
 )

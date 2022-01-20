@@ -1,3 +1,11 @@
+import csv
+import json
+import random
+import string
+from base64 import b64encode
+
+import pyimgur
+import requests
 from bs4 import BeautifulSoup
 from django.db.models import (
     CharField,
@@ -17,26 +25,12 @@ from django.forms.widgets import (
     Textarea,
     NumberInput,
     EmailInput,
-    Input,
     Select,
     TextInput,
-    FileInput,
-    DateTimeInput,
-    DateInput,
     HiddenInput,
     CheckboxInput,
     CheckboxSelectMultiple,
 )
-
-import random
-import string
-import csv
-import json
-
-from base64 import b64encode
-
-import pyimgur
-import requests
 from django.http import JsonResponse
 
 

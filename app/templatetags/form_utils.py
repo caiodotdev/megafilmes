@@ -41,14 +41,18 @@ def formset_js():
 
 @register.filter()
 def calc_prazo(link):
-    dic = urllib.parse.parse_qs(link)
-    for key in dic.keys():
-        if 'http' not in key:
-            time = datetime.datetime.fromtimestamp(int(dic[key][0]))
-            now = datetime.datetime.now()
-            if time > now:
-                return round((time - now).seconds / 60 / 60, 2)
-    return ''
+    try:
+        dic = urllib.parse.parse_qs(link)
+        for key in dic.keys():
+            if 'http' not in key:
+                time = datetime.datetime.fromtimestamp(int(dic[key][0]))
+                now = datetime.datetime.now()
+                if time > now:
+                    return round((time - now).seconds / 60 / 60, 2)
+        return ''
+    except (Exception,):
+        print('-- nao foi possivel calcular prazo desta url: ' + str(link))
+        return ''
 
 
 @register.filter()

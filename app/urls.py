@@ -2,7 +2,6 @@ from django.urls import path, include
 from django.views.generic import TemplateView
 
 from app import conf
-
 from app.urls_api import api_urlpatterns
 from app.views.channel import playlist_m3u8, get_ts
 
@@ -23,24 +22,9 @@ urlpatterns += [
         name=conf.MOVIE_LIST_URL_NAME
     ),
     path(
-        'movie/full/',
-        movie.ListFull.as_view(),
-        name='MOVIE_list_full'
-    ),
-    path(
-        'movie/create/',
-        movie.Create.as_view(),
-        name=conf.MOVIE_CREATE_URL_NAME
-    ),
-    path(
         'movie/<int:pk>/',
         movie.Detail.as_view(),
         name=conf.MOVIE_DETAIL_URL_NAME
-    ),
-    path(
-        'movie/<int:pk>/update/',
-        movie.Update.as_view(),
-        name=conf.MOVIE_UPDATE_URL_NAME
     ),
     path(
         'movie/<int:pk>/delete/',
@@ -62,8 +46,8 @@ urlpatterns += [
         movie.delete_all_movies,
         name='delete_all_movies'
     ),
-    path('filmes.m3u8', movie.gen_lista_movie, name='gen_lista_movies'),
-    path('movie/playlist.m3u8', movie.movie_playlist_m3u8, name='movie_playlist_m3u8'),
+    path('filmes.m3u8', movie.get_list_m3u8, name='gen_lista_movies'),
+    path('movie/generate-list', movie.generate_selected_movies, name='generate_list_movies'),
 ]
 
 from app.views import serie
@@ -76,16 +60,6 @@ urlpatterns += [
         name=conf.SERIE_LIST_URL_NAME
     ),
     path(
-        'serie/full/',
-        serie.ListFull.as_view(),
-        name='SERIE_list_full'
-    ),
-    path(
-        'serie/create/',
-        serie.Create.as_view(),
-        name=conf.SERIE_CREATE_URL_NAME
-    ),
-    path(
         'serie/<int:pk>/',
         serie.Detail.as_view(),
         name=conf.SERIE_DETAIL_URL_NAME
@@ -94,16 +68,6 @@ urlpatterns += [
         'serie/episode/',
         serie.Episode.as_view(),
         name='SERIE_episode'
-    ),
-    path(
-        'serie/<int:pk>/update/',
-        serie.Update.as_view(),
-        name=conf.SERIE_UPDATE_URL_NAME
-    ),
-    path(
-        'serie/<int:pk>/delete/',
-        serie.Delete.as_view(),
-        name=conf.SERIE_DELETE_URL_NAME
     ),
     path(
         'serie/list/json/',
@@ -120,8 +84,8 @@ urlpatterns += [
         serie.delete_all_series,
         name='delete_all_series'
     ),
-    path('series.m3u8', serie.gen_lista_serie, name='gen_lista_serie'),
-    path('serie/playlist.m3u8', serie.episodio_playlist_m3u8, name='episodio_playlist_m3u8')
+    path('series.m3u8', serie.get_episodes_m3u8, name='gen_lista_serie'),
+    path('serie/generate-list', serie.generate_selected_episodes, name='generate_list_episodes')
 ]
 
 from app.views import channel
@@ -134,29 +98,9 @@ urlpatterns += [
         name=conf.CHANNEL_LIST_URL_NAME
     ),
     path(
-        'channel/full/',
-        channel.ListFull.as_view(),
-        name='CHANNEL_list_full'
-    ),
-    path(
-        'channel/create/',
-        channel.Create.as_view(),
-        name=conf.CHANNEL_CREATE_URL_NAME
-    ),
-    path(
         'channel/<int:pk>/',
         channel.Detail.as_view(),
         name=conf.CHANNEL_DETAIL_URL_NAME
-    ),
-    path(
-        'channel/<int:pk>/update/',
-        channel.Update.as_view(),
-        name=conf.CHANNEL_UPDATE_URL_NAME
-    ),
-    path(
-        'channel/<int:pk>/delete/',
-        channel.Delete.as_view(),
-        name=conf.CHANNEL_DELETE_URL_NAME
     ),
     path(
         'channel/list/json/',
@@ -190,18 +134,13 @@ urlpatterns += [
     ),
     path(
         'lista.m3u8',
-        channel.gen_lista,
+        channel.generate_lista_default,
         name='gen_lista'
     ),
     path(
         'lista2.m3u8',
-        channel.gen_lista_personal,
+        channel.generate_lista_formatted,
         name='gen_lista_personal'
-    ),
-    path(
-        'listaext.m3u8',
-        channel.gen_lista_externa,
-        name='gen_lista_externa'
     ),
     path('multi/playlist.m3u8', playlist_m3u8, name='playlist_m3u8'),
     path('multi/ts', get_ts, name='get_ts'),

@@ -1,26 +1,21 @@
 #!/usr/bin/env python
 # -*- coding: utf-8 -*-
-import requests
 import unicodedata
 import unidecode
-from bs4 import BeautifulSoup
 from django.contrib import messages
 from django.contrib.admin.utils import NestedObjects
 from django.contrib.auth.mixins import LoginRequiredMixin, PermissionRequiredMixin
-from django.core.exceptions import FieldDoesNotExist
-from django.db import transaction
-from django.http import JsonResponse, HttpResponse, HttpResponseNotFound, StreamingHttpResponse
+from django.db.models import Q
+from django.http import HttpResponse, JsonResponse
 from django.shortcuts import redirect
 from django.views.generic.detail import DetailView
 from django.views.generic.edit import (
-    CreateView, DeleteView, UpdateView
+    DeleteView
 )
 from django.views.generic.list import ListView
 
-from django.db.models import Q
-
 from app.templatetags.form_utils import calc_prazo
-from app.views.link import MegaPack
+from app.views.megapack import MegaPack
 
 try:
     from django.core.urlresolvers import reverse_lazy
@@ -28,42 +23,14 @@ except ImportError:
     from django.urls import reverse_lazy, reverse
 
 from app.models import Movie
-from app.forms import MovieForm
 from app.mixins import MovieMixin
-from app.conf import MOVIE_DETAIL_URL_NAME, MOVIE_LIST_URL_NAME
+from app.conf import MOVIE_LIST_URL_NAME
 
 from django_datatables_view.base_datatable_view import BaseDatatableView
 
-from app.utils import upload_image, upload_file, get_articles
+from app.utils import get_articles
 
 import django_filters
-
-
-class MovieFormSetManagement(object):
-    formsets = []
-
-    def form_valid(self, form):
-        context = self.get_context_data()
-        with transaction.atomic():
-            self.object = form.save()
-
-            for Formset in self.formsets:
-                formset = context["{}set".format(str(Formset.model.__name__).lower())]
-                if formset.is_valid():
-                    formset.instance = self.object
-                    formset.save()
-        return super(MovieFormSetManagement, self).form_valid(form)
-
-    def get_context_data(self, **kwargs):
-        data = super(MovieFormSetManagement, self).get_context_data(**kwargs)
-        for Formset in self.formsets:
-            if self.request.POST:
-                data["{}set".format(str(Formset.model.__name__).lower())] = Formset(self.request.POST,
-                                                                                    self.request.FILES,
-                                                                                    instance=self.object)
-            else:
-                data["{}set".format(str(Formset.model.__name__).lower())] = Formset(instance=self.object)
-        return data
 
 
 class MovieFilter(django_filters.FilterSet):
@@ -90,109 +57,6 @@ class List(LoginRequiredMixin, MovieMixin, ListView):
         return context
 
 
-class ListFull(LoginRequiredMixin, MovieMixin, ListView):
-    """
-    List all Movies
-    """
-    login_url = '/admin/login/'
-    template_name = 'movie/list_full.html'
-    model = Movie
-    context_object_name = 'movies'
-    ordering = '-id'
-    paginate_by = 10
-    search = ''
-
-    def get_queryset(self):
-        queryset = super().get_queryset()
-        filter = MovieFilter(self.request.GET, queryset)
-        queryset = self.search_general(filter.qs)
-        queryset = self.ordering_data(queryset)
-        return queryset
-
-    def search_general(self, qs):
-        if 'search' in self.request.GET:
-            self.search = self.request.GET['search']
-            if self.search:
-                search = self.search
-                qs = qs.filter(Q(id__icontains=search) | Q(title__icontains=search) | Q(year__icontains=search) | Q(
-                    rating__icontains=search) | Q(image__icontains=search) | Q(url__icontains=search))
-        return qs
-
-    def get_ordering(self):
-        if 'ordering' in self.request.GET:
-            self.ordering = self.request.GET['ordering']
-            if self.ordering:
-                return self.ordering
-            else:
-                self.ordering = '-id'
-        return self.ordering
-
-    def ordering_data(self, qs):
-        qs = qs.order_by(self.get_ordering())
-        return qs
-
-    def get_context_data(self, **kwargs):
-        context = super(ListFull, self).get_context_data(**kwargs)
-        queryset = self.get_queryset()
-        filter = MovieFilter(self.request.GET, queryset)
-        page_size = self.get_paginate_by(queryset)
-        if page_size:
-            paginator, page, queryset, is_paginated = self.paginate_queryset(queryset, page_size)
-            context.update(**{
-                'ordering': self.ordering,
-                'search': self.search,
-                'filter': filter,
-                'paginator': paginator,
-                'page_obj': page,
-                'is_paginated': is_paginated,
-                'object_list': queryset
-            })
-        else:
-            context.update(**{
-                'search': self.search,
-                'ordering': self.ordering,
-                'filter': filter,
-                'paginator': None,
-                'page_obj': None,
-                'is_paginated': False,
-                'object_list': queryset
-            })
-        return context
-
-
-class Create(LoginRequiredMixin, MovieMixin, PermissionRequiredMixin, MovieFormSetManagement, CreateView):
-    """
-    Create a Movie
-    """
-    login_url = '/admin/login/'
-    model = Movie
-    permission_required = (
-        'app.add_movie'
-    )
-    form_class = MovieForm
-    template_name = 'movie/create.html'
-    context_object_name = 'movie'
-
-    def get_context_data(self, **kwargs):
-        context = super(Create, self).get_context_data(**kwargs)
-        return context
-
-    def get_success_url(self):
-        return reverse_lazy(MOVIE_DETAIL_URL_NAME, kwargs=self.kwargs_for_reverse_url())
-
-    def get_initial(self):
-        data = super(Create, self).get_initial()
-        return data
-
-    def form_valid(self, form):
-        messages.success(self.request, 'Movie criado com sucesso')
-        return super(Create, self).form_valid(form)
-
-    def form_invalid(self, form):
-        messages.error(self.request, 'Houve algum erro, tente novamente')
-        return super(Create, self).form_invalid(form)
-
-
 class Detail(LoginRequiredMixin, MovieMixin, DetailView):
     """
     Detail of a Movie
@@ -208,39 +72,6 @@ class Detail(LoginRequiredMixin, MovieMixin, DetailView):
         link = mega.get_info()
         context['m3u8'] = link
         return context
-
-
-class Update(LoginRequiredMixin, MovieMixin, PermissionRequiredMixin, MovieFormSetManagement, UpdateView):
-    """
-    Update a Movie
-    """
-    login_url = '/admin/login/'
-    model = Movie
-    template_name = 'movie/update.html'
-    context_object_name = 'movie'
-    form_class = MovieForm
-    permission_required = (
-        'app.change_movie'
-    )
-
-    def get_initial(self):
-        data = super(Update, self).get_initial()
-        return data
-
-    def get_success_url(self):
-        return reverse_lazy(MOVIE_DETAIL_URL_NAME, kwargs=self.kwargs_for_reverse_url())
-
-    def get_context_data(self, **kwargs):
-        data = super(Update, self).get_context_data(**kwargs)
-        return data
-
-    def form_valid(self, form):
-        messages.success(self.request, 'Movie atualizado com sucesso')
-        return super(Update, self).form_valid(form)
-
-    def form_invalid(self, form):
-        messages.error(self.request, 'Houve algum erro, tente novamente')
-        return super(Update, self).form_invalid(form)
 
 
 class Delete(LoginRequiredMixin, MovieMixin, PermissionRequiredMixin, DeleteView):
@@ -321,14 +152,22 @@ def remove_accents(text):
     )
 
 
-def gen_lista_movie(request):
-    f = open("movie.m3u8", "a")
+def get_m3u8_movie(movie):
+    url_m3u8 = MegaPack(movie.url).get_info()
+    movie.link_m3u8 = url_m3u8
+    movie.save()
+    return url_m3u8
+
+
+def generate_selected_movies(request):
+    ids = request.GET.getlist('ids')
+    f = open("movies-selected.m3u8", "a")
     f.truncate(0)
     f.write("#EXTM3U\n")
-    for movie in Movie.objects.all().distinct():
+    for id in ids:
+        movie = Movie.objects.get(id=id)
         title = unidecode.unidecode(remove_accents(movie.title))
-        custom_m3u8 = get_m3u8_movie(request, movie)
-        # custom_m3u8 = 'http://' + request.META['HTTP_HOST'] + '/movie/playlist.m3u8?id=' + str(movie.id)
+        uri_m3u8 = get_m3u8_movie(movie)
         f.write('#EXTINF:{}, tvg-id="{} - {}" tvg-name="{} - {}" tvg-logo="{}" group-title="{}",{}\n{}\n'.format(
             movie.id,
             movie.id,
@@ -338,43 +177,11 @@ def gen_lista_movie(request):
             movie.image,
             'Filmes',
             title,
-            custom_m3u8))
+            uri_m3u8))
     f.close()
-    fsock = open("movie.m3u8", "rb")
-    return HttpResponse(fsock, content_type='text')
+    return JsonResponse({'message': 'ok'})
 
 
-def get_m3u8_movie(request, movie, search=False):
-    if movie.link_m3u8:
-        if calc_prazo(movie.link_m3u8):
-            return movie.link_m3u8
-    if search:
-        url_m3u8 = MegaPack(movie.url).get_info()
-        movie.link_m3u8 = url_m3u8
-        movie.save()
-        return url_m3u8
-    return 'http://' + request.META['HTTP_HOST'] + '/movie/playlist.m3u8?id=' + str(movie.id)
-
-
-def movie_playlist_m3u8(request):
-    dic = dict(request.GET)
-    id = dic['id'][0]
-    movie = Movie.objects.get(id=id)
-    title = unidecode.unidecode(remove_accents(movie.title))
-    uri_m3u8 = get_m3u8_movie(request, movie, search=True)
-    f = open("movie-ac.m3u8", "a")
-    f.truncate(0)
-    f.write("#EXTM3U\n")
-    f.write('#EXTINF:{}, tvg-id="{} - {}" tvg-name="{} - {}" tvg-logo="{}" group-title="{}",{}\n{}\n'.format(
-        movie.id,
-        movie.id,
-        title,
-        title,
-        movie.id,
-        movie.image,
-        'Filmes',
-        title,
-        uri_m3u8))
-    f.close()
-    fsock = open("movie-ac.m3u8", "rb")
+def get_list_m3u8(request):
+    fsock = open("movies-selected.m3u8", "rb")
     return HttpResponse(fsock, content_type='text')

@@ -39,7 +39,7 @@
         </div>
         {% if playlist %}
             <div class="col-xs-6 pull-right">
-                <a href="{% url 'SERIE_episode' %}?serie={{ serie.id }}&playlist={{ playlist }}" class="btn btn-info">Próximo</a>
+                <a href="{% url 'SERIE_episode' %}?&serie={{ serie.id }}&playlist={{ playlist }}" class="btn btn-info">Próximo</a>
             </div>
         {% endif %}
     </div>

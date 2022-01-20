@@ -58,18 +58,6 @@ class Episodio(TimeStamp):
         return "%s" % self.title
 
 
-class Program(TimeStamp):
-    title = models.CharField(max_length=255, blank=True, null=True)
-    content = models.TextField(blank=True, null=True)
-    url = models.URLField(blank=True, null=True)
-
-    def __str__(self):
-        return self.title
-
-    def __unicode__(self):
-        return self.title
-
-
 class LinkChannel(TimeStamp):
     url = models.TextField(blank=True, null=True)
     m3u8 = models.TextField(blank=True, null=True)
@@ -97,7 +85,6 @@ class Channel(TimeStamp):
     image = models.URLField(blank=True, null=True)
     url = models.URLField(blank=True, null=True)
     link_m3u8 = models.TextField(blank=True, null=True)
-    program = models.ForeignKey(Program, blank=True, null=True, on_delete=models.CASCADE)
     category = models.ForeignKey(Category, blank=True, null=True, on_delete=models.CASCADE)
 
     def __str__(self):

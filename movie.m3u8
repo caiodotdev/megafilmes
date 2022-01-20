@@ -72,7 +72,7 @@ http://10.0.0.196/movie/playlist.m3u8?id=11589
 #EXTINF:11590, tvg-id="11590 - Lulli" tvg-name="Lulli - 11590" tvg-logo="https://image.tmdb.org/t/p/w185/ztJHKv6KSSgCTWAI2STrX2BeuJZ.jpg" group-title="Filmes",Lulli
 http://10.0.0.196/movie/playlist.m3u8?id=11590
 #EXTINF:11591, tvg-id="11591 - Nao Olhe para Cima" tvg-name="Nao Olhe para Cima - 11591" tvg-logo="https://image.tmdb.org/t/p/w185/6Sc7Tjt7aPsdghYK32mDMFeZkqJ.jpg" group-title="Filmes",Nao Olhe para Cima
-http://granado.tk:8080/d/RedeCanais/RedeCanais/RCFServer5/ondemand/NOLHPRCMA.mp4?mu3zAQc9HC3GbwJq=j3h3KNiHTvvwkOSrHAHJJA&3U1G7qaTxrPbalZnEx=1642122806
+http://10.0.0.196/movie/playlist.m3u8?id=11591
 #EXTINF:11592, tvg-id="11592 - Scooby-Doo e a Cacada Virtual" tvg-name="Scooby-Doo e a Cacada Virtual - 11592" tvg-logo="https://image.tmdb.org/t/p/w185/dA49IdwLQGTGjaYng9vuDV4uzL3.jpg" group-title="Filmes",Scooby-Doo e a Cacada Virtual
 http://10.0.0.196/movie/playlist.m3u8?id=11592
 #EXTINF:11593, tvg-id="11593 - Making 'Enter the Matrix'" tvg-name="Making 'Enter the Matrix' - 11593" tvg-logo="https://image.tmdb.org/t/p/w185/zQbJkJkzpB8EthEJ3r2Y6A2kkP6.jpg" group-title="Filmes",Making 'Enter the Matrix'
@@ -212,7 +212,7 @@ http://10.0.0.196/movie/playlist.m3u8?id=11659
 #EXTINF:11660, tvg-id="11660 - Luccas Neto em: O Hotel Magico 2" tvg-name="Luccas Neto em: O Hotel Magico 2 - 11660" tvg-logo="https://image.tmdb.org/t/p/w185/wEUlxyFHZ838xnjWk1MrWeumVWw.jpg" group-title="Filmes",Luccas Neto em: O Hotel Magico 2
 http://10.0.0.196/movie/playlist.m3u8?id=11660
 #EXTINF:11661, tvg-id="11661 - A Fortaleza" tvg-name="A Fortaleza - 11661" tvg-logo="https://image.tmdb.org/t/p/w185/hYi00SLc8v92h5i4MoluCvIwLG1.jpg" group-title="Filmes",A Fortaleza
-http://shikadainara.gq:8080/d/RedeCanais/RedeCanais/RCFServer5/ondemand/AFRTLZA2021.mp4?mu3zAQc9HC3GbwJq=-5flRl5DioOUU944gfdQag&3U1G7qaTxrPbalZnEx=1642123232
+http://10.0.0.196/movie/playlist.m3u8?id=11661
 #EXTINF:11662, tvg-id="11662 - O Natal Foi Cancelado" tvg-name="O Natal Foi Cancelado - 11662" tvg-logo="https://image.tmdb.org/t/p/w185/qi5vnjspWNNxmWNBjq78n07Yink.jpg" group-title="Filmes",O Natal Foi Cancelado
 http://10.0.0.196/movie/playlist.m3u8?id=11662
 #EXTINF:11663, tvg-id="11663 - A Disputa" tvg-name="A Disputa - 11663" tvg-logo="https://image.tmdb.org/t/p/w185/jYFaFJPg79ngwBrxjQw4aThzen4.jpg" group-title="Filmes",A Disputa
@@ -274,7 +274,7 @@ http://10.0.0.196/movie/playlist.m3u8?id=11690
 #EXTINF:11691, tvg-id="11691 - Snoopy Apresenta: Feliz Ano Novo, Lucy!" tvg-name="Snoopy Apresenta: Feliz Ano Novo, Lucy! - 11691" tvg-logo="https://image.tmdb.org/t/p/w185/bqx5WTWPX4H4g9LUCmnrtg9BIPZ.jpg" group-title="Filmes",Snoopy Apresenta: Feliz Ano Novo, Lucy!
 http://10.0.0.196/movie/playlist.m3u8?id=11691
 #EXTINF:11692, tvg-id="11692 - A Familia Addams 2: Pe na Estrada" tvg-name="A Familia Addams 2: Pe na Estrada - 11692" tvg-logo="https://image.tmdb.org/t/p/w185/ig0RMUyjiAw7hdCRsXYnOCKSucg.jpg" group-title="Filmes",A Familia Addams 2: Pe na Estrada
-http://gagausalgado.gq:8080/d/RedeCanais/RedeCanais/RCFServer4/ondemand/AFMLADMS2PENESTRDA.mp4?mu3zAQc9HC3GbwJq=njjTIx4nhhAxqd1yjkii2A&3U1G7qaTxrPbalZnEx=1642121211
+http://10.0.0.196/movie/playlist.m3u8?id=11692
 #EXTINF:11693, tvg-id="11693 - Esqueceram de Nos" tvg-name="Esqueceram de Nos - 11693" tvg-logo="https://image.tmdb.org/t/p/w185/h7tB1l5WcZQ3I9VmGmScniEmf3m.jpg" group-title="Filmes",Esqueceram de Nos
 http://10.0.0.196/movie/playlist.m3u8?id=11693
 #EXTINF:11694, tvg-id="11694 - Master Moley em O Convite Real" tvg-name="Master Moley em O Convite Real - 11694" tvg-logo="https://image.tmdb.org/t/p/w185/7EIqh47ItpfRdroTSxfxP7CbOdW.jpg" group-title="Filmes",Master Moley em O Convite Real
@@ -338,7 +338,7 @@ http://10.0.0.196/movie/playlist.m3u8?id=11722
 #EXTINF:11723, tvg-id="11723 - O Ninho" tvg-name="O Ninho - 11723" tvg-logo="https://image.tmdb.org/t/p/w185/4UGf5qAcMaCQUc5M0qYqF0NQpcH.jpg" group-title="Filmes",O Ninho
 http://10.0.0.196/movie/playlist.m3u8?id=11723
 #EXTINF:11724, tvg-id="11724 - Querido Natal" tvg-name="Querido Natal - 11724" tvg-logo="https://image.tmdb.org/t/p/w185/zJPQ98VPVWWQIN8WGfDXSZxJCwJ.jpg" group-title="Filmes",Querido Natal
-http://higgins.ml:8080/d/RedeCanais/RedeCanais/RCFServer4/ondemand/QRDONTL.mp4?mu3zAQc9HC3GbwJq=-ptibUcgivscNSohvMK4kA&3U1G7qaTxrPbalZnEx=1642121376
+http://10.0.0.196/movie/playlist.m3u8?id=11724
 #EXTINF:11725, tvg-id="11725 - Reacao em Cadeia" tvg-name="Reacao em Cadeia - 11725" tvg-logo="https://image.tmdb.org/t/p/w185/qfnYaV20yk9wm2Z0mJBq856zzSY.jpg" group-title="Filmes",Reacao em Cadeia
 http://10.0.0.196/movie/playlist.m3u8?id=11725
 #EXTINF:11726, tvg-id="11726 - Se Organizar Direitinho..." tvg-name="Se Organizar Direitinho... - 11726" tvg-logo="https://image.tmdb.org/t/p/w185/hxJ1wFaUqOq5TmxA751VRJastGV.jpg" group-title="Filmes",Se Organizar Direitinho...
@@ -450,7 +450,7 @@ http://10.0.0.196/movie/playlist.m3u8?id=11778
 #EXTINF:11779, tvg-id="11779 - Uma Noite de Crime 5: A Fronteira" tvg-name="Uma Noite de Crime 5: A Fronteira - 11779" tvg-logo="https://image.tmdb.org/t/p/w185/rwOKKFvB7TojwnHA2QsRxXTazhr.jpg" group-title="Filmes",Uma Noite de Crime 5: A Fronteira
 http://10.0.0.196/movie/playlist.m3u8?id=11779
 #EXTINF:11780, tvg-id="11780 - 007 - Sem Tempo Para Morrer" tvg-name="007 - Sem Tempo Para Morrer - 11780" tvg-logo="https://image.tmdb.org/t/p/w185/luE0KG1rWfUptbgNtlNtL5sihyd.jpg" group-title="Filmes",007 - Sem Tempo Para Morrer
-http://livrobolha.cf:8080/d/RedeCanais/RedeCanais/RCFServer4/ondemand/007SMTMPRMRER.mp4?mu3zAQc9HC3GbwJq=6xsX-AZS9ZN-LyDOSBc0ew&3U1G7qaTxrPbalZnEx=1642129802
+http://10.0.0.196/movie/playlist.m3u8?id=11780
 #EXTINF:11781, tvg-id="11781 - Resident Evil: Bem-vindo a Raccoon City" tvg-name="Resident Evil: Bem-vindo a Raccoon City - 11781" tvg-logo="https://image.tmdb.org/t/p/w185/82gJdwKi46QE5ml2ML6Kg91qSR9.jpg" group-title="Filmes",Resident Evil: Bem-vindo a Raccoon City
 http://10.0.0.196/movie/playlist.m3u8?id=11781
 #EXTINF:11782, tvg-id="11782 - Espantalho" tvg-name="Espantalho - 11782" tvg-logo="https://image.tmdb.org/t/p/w185/t5pUkjo4dgTR1cYzunHi99AbJ2V.jpg" group-title="Filmes",Espantalho
@@ -1070,7 +1070,7 @@ http://10.0.0.196/movie/playlist.m3u8?id=12088
 #EXTINF:12089, tvg-id="12089 - An Open Secret" tvg-name="An Open Secret - 12089" tvg-logo="https://image.tmdb.org/t/p/w185/qYaoQIfOpF6aRLfAtioPQhk4iXT.jpg" group-title="Filmes",An Open Secret
 http://10.0.0.196/movie/playlist.m3u8?id=12089
 #EXTINF:12090, tvg-id="12090 - Amor Sem Fronteiras" tvg-name="Amor Sem Fronteiras - 12090" tvg-logo="https://image.tmdb.org/t/p/w185/grMWVzXEZmm379kSybcmsLnXEUK.jpg" group-title="Filmes",Amor Sem Fronteiras
-http://tonton.ga:8080/d/RedeCanais/RedeCanais/RCFServer5/ondemand/AMRSMFRNTRA.mp4?mu3zAQc9HC3GbwJq=tcLV239UUoK3eMev5I9FBg&3U1G7qaTxrPbalZnEx=1642122106
+http://10.0.0.196/movie/playlist.m3u8?id=12090
 #EXTINF:12091, tvg-id="12091 - Amor Sem Pecado" tvg-name="Amor Sem Pecado - 12091" tvg-logo="https://image.tmdb.org/t/p/w185/hIQqIeG7Ude0QRUFntdLtsAUEBB.jpg" group-title="Filmes",Amor Sem Pecado
 http://10.0.0.196/movie/playlist.m3u8?id=12091
 #EXTINF:12092, tvg-id="12092 - Amor a Segunda Vista" tvg-name="Amor a Segunda Vista - 12092" tvg-logo="https://image.tmdb.org/t/p/w185/8ilGwKirJdmlWyzCv6P7wxgh6Za.jpg" group-title="Filmes",Amor a Segunda Vista
@@ -7908,7 +7908,7 @@ http://10.0.0.196/movie/playlist.m3u8?id=15507
 #EXTINF:15508, tvg-id="15508 - Kicks: Defendendo o Que e Seu" tvg-name="Kicks: Defendendo o Que e Seu - 15508" tvg-logo="https://image.tmdb.org/t/p/w185/xVveSY8dFaZHs44AvpfzXnytEOE.jpg" group-title="Filmes",Kicks: Defendendo o Que e Seu
 http://10.0.0.196/movie/playlist.m3u8?id=15508
 #EXTINF:15509, tvg-id="15509 - O Ultimato Bourne" tvg-name="O Ultimato Bourne - 15509" tvg-logo="https://image.tmdb.org/t/p/w185/vaP62NeQIkKk6vS6g6bG4rMvqre.jpg" group-title="Filmes",O Ultimato Bourne
-http://variavel.tk:8080/d/RedeCanais/RedeCanais/RCFServer2/ondemand/OULBOURN.mp4?mu3zAQc9HC3GbwJq=oPMbHh0HPlzb2BvJ-tkRbg&3U1G7qaTxrPbalZnEx=1642122487
+http://10.0.0.196/movie/playlist.m3u8?id=15509
 #EXTINF:15510, tvg-id="15510 - Ouija: Exorcismo" tvg-name="Ouija: Exorcismo - 15510" tvg-logo="https://image.tmdb.org/t/p/w185/3dLXxU9rgKq9HrVaNZ9Ur3afCVv.jpg" group-title="Filmes",Ouija: Exorcismo
 http://10.0.0.196/movie/playlist.m3u8?id=15510
 #EXTINF:15511, tvg-id="15511 - O Santo" tvg-name="O Santo - 15511" tvg-logo="https://image.tmdb.org/t/p/w185/5laQdUygxBxzG4Rx6dHNBJTwtXN.jpg" group-title="Filmes",O Santo
@@ -13676,7 +13676,7 @@ http://10.0.0.196/movie/playlist.m3u8?id=18391
 #EXTINF:18392, tvg-id="18392 - A Gripe" tvg-name="A Gripe - 18392" tvg-logo="https://image.tmdb.org/t/p/w185/x5RJvivnXItnJOFP3fJfuu8wt8M.jpg" group-title="Filmes",A Gripe
 http://10.0.0.196/movie/playlist.m3u8?id=18392
 #EXTINF:18393, tvg-id="18393 - Lucy" tvg-name="Lucy - 18393" tvg-logo="https://image.tmdb.org/t/p/w185/6f10Yn1vooCMhb6DrY6AvsK19Yh.jpg" group-title="Filmes",Lucy
-http://daimight.cf:8080/d/RedeCanais/RedeCanais/RCFServer5/ondemand/LCY.mp4?mu3zAQc9HC3GbwJq=o6m_CQwWNl4Ghgty4_vsmQ&3U1G7qaTxrPbalZnEx=1642135301
+http://10.0.0.196/movie/playlist.m3u8?id=18393
 #EXTINF:18394, tvg-id="18394 - Permissao" tvg-name="Permissao - 18394" tvg-logo="https://image.tmdb.org/t/p/w185/oASzoTqt8LafgPIzfuzhgxV9SbJ.jpg" group-title="Filmes",Permissao
 http://10.0.0.196/movie/playlist.m3u8?id=18394
 #EXTINF:18395, tvg-id="18395 - Agentes Duplos" tvg-name="Agentes Duplos - 18395" tvg-logo="https://image.tmdb.org/t/p/w185/xvNJfzSHv3zpmBH0Uu8pZTW3f9x.jpg" group-title="Filmes",Agentes Duplos
@@ -16101,3 +16101,115 @@ http://10.0.0.196/movie/playlist.m3u8?id=19603
 http://10.0.0.196/movie/playlist.m3u8?id=19604
 #EXTINF:19605, tvg-id="19605 - Victoria e Misterio" tvg-name="Victoria e Misterio - 19605" tvg-logo="https://image.tmdb.org/t/p/w185/dLPNyA7ijz3T3cu2tLSkSQajXwY.jpg" group-title="Filmes",Victoria e Misterio
 http://10.0.0.196/movie/playlist.m3u8?id=19605
+#EXTINF:19606, tvg-id="19606 - Contos da Escuridao: O Filme" tvg-name="Contos da Escuridao: O Filme - 19606" tvg-logo="https://image.tmdb.org/t/p/w185/gbYaHYF1p7Hj8PhXeUxUzbokkVY.jpg" group-title="Filmes",Contos da Escuridao: O Filme
+http://10.0.0.196/movie/playlist.m3u8?id=19606
+#EXTINF:19607, tvg-id="19607 - Cidade Virtual" tvg-name="Cidade Virtual - 19607" tvg-logo="https://image.tmdb.org/t/p/w185/v2TRu7tQ8LKHOwfusckYjHvXiya.jpg" group-title="Filmes",Cidade Virtual
+http://10.0.0.196/movie/playlist.m3u8?id=19607
+#EXTINF:19608, tvg-id="19608 - Missao Secreta" tvg-name="Missao Secreta - 19608" tvg-logo="https://image.tmdb.org/t/p/w185/k2G4kcp6vg5jMUaT2g4URphV4fb.jpg" group-title="Filmes",Missao Secreta
+http://10.0.0.196/movie/playlist.m3u8?id=19608
+#EXTINF:19609, tvg-id="19609 - Amarracao do Amor" tvg-name="Amarracao do Amor - 19609" tvg-logo="https://image.tmdb.org/t/p/w185/5yTpx1nE5PM8DhVxWVIq4ikKZc2.jpg" group-title="Filmes",Amarracao do Amor
+http://10.0.0.196/movie/playlist.m3u8?id=19609
+#EXTINF:19610, tvg-id="19610 - Um Lugar Secreto" tvg-name="Um Lugar Secreto - 19610" tvg-logo="https://image.tmdb.org/t/p/w185/c49uzZOOa69ZrcHR4O4k7mqwB6J.jpg" group-title="Filmes",Um Lugar Secreto
+http://10.0.0.196/movie/playlist.m3u8?id=19610
+#EXTINF:19611, tvg-id="19611 - A Ultima Viagem" tvg-name="A Ultima Viagem - 19611" tvg-logo="https://image.tmdb.org/t/p/w185/zXmlOQI92d8vfFl4ua9jTsSyOT6.jpg" group-title="Filmes",A Ultima Viagem
+http://10.0.0.196/movie/playlist.m3u8?id=19611
+#EXTINF:19612, tvg-id="19612 - Preparativos para Ficarmos Juntos por Tempo Indefinido" tvg-name="Preparativos para Ficarmos Juntos por Tempo Indefinido - 19612" tvg-logo="https://image.tmdb.org/t/p/w185/94a94Jg6ghQNvsWdH3oaqSen3Wa.jpg" group-title="Filmes",Preparativos para Ficarmos Juntos por Tempo Indefinido
+http://10.0.0.196/movie/playlist.m3u8?id=19612
+#EXTINF:19613, tvg-id="19613 - Papai Poderoso 2 - Tudo ou Nada" tvg-name="Papai Poderoso 2 - Tudo ou Nada - 19613" tvg-logo="https://image.tmdb.org/t/p/w185/mCOhpT4thaUTPbBvFKYibgpNnCy.jpg" group-title="Filmes",Papai Poderoso 2 - Tudo ou Nada
+http://10.0.0.196/movie/playlist.m3u8?id=19613
+#EXTINF:19614, tvg-id="19614 - Procurar e Destruir" tvg-name="Procurar e Destruir - 19614" tvg-logo="https://image.tmdb.org/t/p/w185/uLurpF4Ay29oTnfsJJBXwWNuCmS.jpg" group-title="Filmes",Procurar e Destruir
+http://10.0.0.196/movie/playlist.m3u8?id=19614
+#EXTINF:19615, tvg-id="19615 - As Aventuras da Familia Robinson" tvg-name="As Aventuras da Familia Robinson - 19615" tvg-logo="https://image.tmdb.org/t/p/w185/77D0ZjD8iMKKhyp5azvGnDkgGd9.jpg" group-title="Filmes",As Aventuras da Familia Robinson
+http://10.0.0.196/movie/playlist.m3u8?id=19615
+#EXTINF:19616, tvg-id="19616 - Eu Sei Que Vou Te Amar" tvg-name="Eu Sei Que Vou Te Amar - 19616" tvg-logo="https://image.tmdb.org/t/p/w185/efHSaZBXyUBtnmJnGrN8D4cuTV.jpg" group-title="Filmes",Eu Sei Que Vou Te Amar
+http://10.0.0.196/movie/playlist.m3u8?id=19616
+#EXTINF:19617, tvg-id="19617 - A Sogra Perfeita" tvg-name="A Sogra Perfeita - 19617" tvg-logo="https://image.tmdb.org/t/p/w185/31Mad8qY3gsWYd7OeOgDXqqsUlt.jpg" group-title="Filmes",A Sogra Perfeita
+http://10.0.0.196/movie/playlist.m3u8?id=19617
+#EXTINF:19618, tvg-id="19618 - A Lenda do Cavaleiro Verde" tvg-name="A Lenda do Cavaleiro Verde - 19618" tvg-logo="https://image.tmdb.org/t/p/w185/uEBz75PgdWLZ6KvVyzYn4xKJnrK.jpg" group-title="Filmes",A Lenda do Cavaleiro Verde
+http://10.0.0.196/movie/playlist.m3u8?id=19618
+#EXTINF:19619, tvg-id="19619 - Mesa para Quatro" tvg-name="Mesa para Quatro - 19619" tvg-logo="https://image.tmdb.org/t/p/w185/4iHOgjnPRUHaobosB9HIiMPSE9W.jpg" group-title="Filmes",Mesa para Quatro
+http://10.0.0.196/movie/playlist.m3u8?id=19619
+#EXTINF:19620, tvg-id="19620 - O Paramo" tvg-name="O Paramo - 19620" tvg-logo="https://image.tmdb.org/t/p/w185/dLOkvK9MtksR3riXrXG0f98092L.jpg" group-title="Filmes",O Paramo
+http://10.0.0.196/movie/playlist.m3u8?id=19620
+#EXTINF:19621, tvg-id="19621 - Virando a Mesa" tvg-name="Virando a Mesa - 19621" tvg-logo="https://image.tmdb.org/t/p/w185/pLsChLT7tuB96kBP7LrgIVz0O8T.jpg" group-title="Filmes",Virando a Mesa
+http://10.0.0.196/movie/playlist.m3u8?id=19621
+#EXTINF:19622, tvg-id="19622 - Mae x Androides" tvg-name="Mae x Androides - 19622" tvg-logo="https://image.tmdb.org/t/p/w185/hfEuG7GkU2LOiT2O32OEfynRJqV.jpg" group-title="Filmes",Mae x Androides
+http://10.0.0.196/movie/playlist.m3u8?id=19622
+#EXTINF:19623, tvg-id="19623 - O Rei da Escocia" tvg-name="O Rei da Escocia - 19623" tvg-logo="https://image.tmdb.org/t/p/w185/8KtPzJ1g9AighZMSkEzTMlte8tg.jpg" group-title="Filmes",O Rei da Escocia
+http://10.0.0.196/movie/playlist.m3u8?id=19623
+#EXTINF:19624, tvg-id="19624 - A Filha do Rei" tvg-name="A Filha do Rei - 19624" tvg-logo="https://image.tmdb.org/t/p/w185/gSmLUushIlmqFxFEB4uT6IM2ei2.jpg" group-title="Filmes",A Filha do Rei
+http://10.0.0.196/movie/playlist.m3u8?id=19624
+#EXTINF:19625, tvg-id="19625 - O Ultimo Jogo" tvg-name="O Ultimo Jogo - 19625" tvg-logo="https://image.tmdb.org/t/p/w185/xGI67Qu22wAKJQU6CqhZVB3KSmP.jpg" group-title="Filmes",O Ultimo Jogo
+http://10.0.0.196/movie/playlist.m3u8?id=19625
+#EXTINF:19626, tvg-id="19626 - Pig - A Vinganca" tvg-name="Pig - A Vinganca - 19626" tvg-logo="https://image.tmdb.org/t/p/w185/oTM03kSBfEh3269wyJviHOnvMi8.jpg" group-title="Filmes",Pig - A Vinganca
+http://10.0.0.196/movie/playlist.m3u8?id=19626
+#EXTINF:19627, tvg-id="19627 - Bar Doce Lar" tvg-name="Bar Doce Lar - 19627" tvg-logo="https://image.tmdb.org/t/p/w185/m6Ej3F4tYTOHD26fvX1zN9bcEUg.jpg" group-title="Filmes",Bar Doce Lar
+http://10.0.0.196/movie/playlist.m3u8?id=19627
+#EXTINF:19628, tvg-id="19628 - A Presepada" tvg-name="A Presepada - 19628" tvg-logo="https://image.tmdb.org/t/p/w185/5mfz3ThkyLvGeUemvjnuLFRTFn3.jpg" group-title="Filmes",A Presepada
+http://10.0.0.196/movie/playlist.m3u8?id=19628
+#EXTINF:19629, tvg-id="19629 - Sua Vida me Pertence" tvg-name="Sua Vida me Pertence - 19629" tvg-logo="https://image.tmdb.org/t/p/w185/6abgrBcS5yqWoKtPh2chkMfgts3.jpg" group-title="Filmes",Sua Vida me Pertence
+http://10.0.0.196/movie/playlist.m3u8?id=19629
+#EXTINF:19630, tvg-id="19630 - O.G." tvg-name="O.G. - 19630" tvg-logo="https://image.tmdb.org/t/p/w185/ouf0Hq3dtyryraPAuEZAHSBwtLc.jpg" group-title="Filmes",O.G.
+http://10.0.0.196/movie/playlist.m3u8?id=19630
+#EXTINF:19631, tvg-id="19631 - Adoradores do Diabo" tvg-name="Adoradores do Diabo - 19631" tvg-logo="https://image.tmdb.org/t/p/w185/dgYl4wqF60Z8reu5zgX354aFvlo.jpg" group-title="Filmes",Adoradores do Diabo
+http://10.0.0.196/movie/playlist.m3u8?id=19631
+#EXTINF:19632, tvg-id="19632 - Como Assaltar Um Banco" tvg-name="Como Assaltar Um Banco - 19632" tvg-logo="https://image.tmdb.org/t/p/w185/5qElteE5duGiTNeGZIRRjIHGY5p.jpg" group-title="Filmes",Como Assaltar Um Banco
+http://10.0.0.196/movie/playlist.m3u8?id=19632
+#EXTINF:19633, tvg-id="19633 - Como Me Apaixonei por um Gangster" tvg-name="Como Me Apaixonei por um Gangster - 19633" tvg-logo="https://image.tmdb.org/t/p/w185/y0XvEUqkLiaiwlq9XovN3p4dkKi.jpg" group-title="Filmes",Como Me Apaixonei por um Gangster
+http://10.0.0.196/movie/playlist.m3u8?id=19633
+#EXTINF:19634, tvg-id="19634 - Pixinguinha: Um Homem Carinhoso" tvg-name="Pixinguinha: Um Homem Carinhoso - 19634" tvg-logo="https://image.tmdb.org/t/p/w185/bU7NpcFWplrCB7JxLONzW3yDtEd.jpg" group-title="Filmes",Pixinguinha: Um Homem Carinhoso
+http://10.0.0.196/movie/playlist.m3u8?id=19634
+#EXTINF:19635, tvg-id="19635 - Tempos de Escuridao" tvg-name="Tempos de Escuridao - 19635" tvg-logo="https://image.tmdb.org/t/p/w185/j2gaMXecjYs1F70fmsFCcuOjl5J.jpg" group-title="Filmes",Tempos de Escuridao
+http://10.0.0.196/movie/playlist.m3u8?id=19635
+#EXTINF:19636, tvg-id="19636 - A Invasao" tvg-name="A Invasao - 19636" tvg-logo="https://image.tmdb.org/t/p/w185/6wq8H7AZRdQZcc9VE6oVjRvDkAG.jpg" group-title="Filmes",A Invasao
+http://10.0.0.196/movie/playlist.m3u8?id=19636
+#EXTINF:19637, tvg-id="19637 - Anna e o Apocalipse" tvg-name="Anna e o Apocalipse - 19637" tvg-logo="https://image.tmdb.org/t/p/w185/xNcIsTzSjWKvn9se2gcSOupzWeW.jpg" group-title="Filmes",Anna e o Apocalipse
+http://10.0.0.196/movie/playlist.m3u8?id=19637
+#EXTINF:19638, tvg-id="19638 - Ghostland: Terra Sem Lei" tvg-name="Ghostland: Terra Sem Lei - 19638" tvg-logo="https://image.tmdb.org/t/p/w185/xBNVjog86fRYEnjwl4yRbIoXUxC.jpg" group-title="Filmes",Ghostland: Terra Sem Lei
+http://10.0.0.196/movie/playlist.m3u8?id=19638
+#EXTINF:19639, tvg-id="19639 - Na Trilha da Vinganca" tvg-name="Na Trilha da Vinganca - 19639" tvg-logo="https://image.tmdb.org/t/p/w185/wUIlv31rlnOM7YJUfTSdEGuQelb.jpg" group-title="Filmes",Na Trilha da Vinganca
+http://10.0.0.196/movie/playlist.m3u8?id=19639
+#EXTINF:19640, tvg-id="19640 - O Bom Doutor" tvg-name="O Bom Doutor - 19640" tvg-logo="https://image.tmdb.org/t/p/w185/b6AJO7VKq0c63zjyS1nFJXIcfZw.jpg" group-title="Filmes",O Bom Doutor
+http://10.0.0.196/movie/playlist.m3u8?id=19640
+#EXTINF:19641, tvg-id="19641 - Os Segredos do Castelo" tvg-name="Os Segredos do Castelo - 19641" tvg-logo="https://image.tmdb.org/t/p/w185/ur3uasD8CkiNOWUu5Hti3HW2Cv3.jpg" group-title="Filmes",Os Segredos do Castelo
+http://10.0.0.196/movie/playlist.m3u8?id=19641
+#EXTINF:19642, tvg-id="19642 - STAND BY ME Doraemon 2" tvg-name="STAND BY ME Doraemon 2 - 19642" tvg-logo="https://image.tmdb.org/t/p/w185/7BYnS5w8pDrCUa801f2A0aubKk0.jpg" group-title="Filmes",STAND BY ME Doraemon 2
+http://10.0.0.196/movie/playlist.m3u8?id=19642
+#EXTINF:19643, tvg-id="19643 - A Garota Na Caixa" tvg-name="A Garota Na Caixa - 19643" tvg-logo="https://image.tmdb.org/t/p/w185/1GwGESCZ34kaulttLwSBRj7h1vY.jpg" group-title="Filmes",A Garota Na Caixa
+http://10.0.0.196/movie/playlist.m3u8?id=19643
+#EXTINF:19644, tvg-id="19644 - A Gloria e a Graca" tvg-name="A Gloria e a Graca - 19644" tvg-logo="https://image.tmdb.org/t/p/w185/bfqPB9A5vN3cAO7c0BpotzBGyvk.jpg" group-title="Filmes",A Gloria e a Graca
+http://10.0.0.196/movie/playlist.m3u8?id=19644
+#EXTINF:19645, tvg-id="19645 - A Grande Ilusao" tvg-name="A Grande Ilusao - 19645" tvg-logo="https://image.tmdb.org/t/p/w185/4evwQPW0BuBvVvp67bTvoRL8PSO.jpg" group-title="Filmes",A Grande Ilusao
+http://10.0.0.196/movie/playlist.m3u8?id=19645
+#EXTINF:19646, tvg-id="19646 - A Garota da Capa Vermelha" tvg-name="A Garota da Capa Vermelha - 19646" tvg-logo="https://image.tmdb.org/t/p/w185/aq9kdQZlUnS14exVkaVYvgxLWYl.jpg" group-title="Filmes",A Garota da Capa Vermelha
+http://10.0.0.196/movie/playlist.m3u8?id=19646
+#EXTINF:19647, tvg-id="19647 - A Furia do Justiceiro" tvg-name="A Furia do Justiceiro - 19647" tvg-logo="https://image.tmdb.org/t/p/w185/yJo74ujV0Yj07q4ilU4ojl1fJKO.jpg" group-title="Filmes",A Furia do Justiceiro
+http://10.0.0.196/movie/playlist.m3u8?id=19647
+#EXTINF:19648, tvg-id="19648 - A Filha do Patrao" tvg-name="A Filha do Patrao - 19648" tvg-logo="https://image.tmdb.org/t/p/w185/kv332xTDoaKunXac1FA7J0g2Jpz.jpg" group-title="Filmes",A Filha do Patrao
+http://10.0.0.196/movie/playlist.m3u8?id=19648
+#EXTINF:19649, tvg-id="19649 - A Flor Mortal" tvg-name="A Flor Mortal - 19649" tvg-logo="https://image.tmdb.org/t/p/w185/6BRHL9vjzDpQWDRxaefkOJliLKn.jpg" group-title="Filmes",A Flor Mortal
+http://10.0.0.196/movie/playlist.m3u8?id=19649
+#EXTINF:19650, tvg-id="19650 - A Fabrica de Nada" tvg-name="A Fabrica de Nada - 19650" tvg-logo="https://image.tmdb.org/t/p/w185/gr53Gy3i4M4udJkFZ73QoB3r97a.jpg" group-title="Filmes",A Fabrica de Nada
+http://10.0.0.196/movie/playlist.m3u8?id=19650
+#EXTINF:19651, tvg-id="19651 - A Fabulosa Gilly Hopkins" tvg-name="A Fabulosa Gilly Hopkins - 19651" tvg-logo="https://image.tmdb.org/t/p/w185/76T9xMGbXOu3Nb3BMUMmhOmFqFC.jpg" group-title="Filmes",A Fabulosa Gilly Hopkins
+http://10.0.0.196/movie/playlist.m3u8?id=19651
+#EXTINF:19652, tvg-id="19652 - A Face De Um Anjo" tvg-name="A Face De Um Anjo - 19652" tvg-logo="https://image.tmdb.org/t/p/w185/nFY7bO60ENfXRq4fqzA22snQUls.jpg" group-title="Filmes",A Face De Um Anjo
+http://10.0.0.196/movie/playlist.m3u8?id=19652
+#EXTINF:19653, tvg-id="19653 - A Face da Morte - o Demonio Veste Sorriso" tvg-name="A Face da Morte - o Demonio Veste Sorriso - 19653" tvg-logo="https://image.tmdb.org/t/p/w185/rO8jANmASmul1tWi53mudn1V9IA.jpg" group-title="Filmes",A Face da Morte - o Demonio Veste Sorriso
+http://10.0.0.196/movie/playlist.m3u8?id=19653
+#EXTINF:19654, tvg-id="19654 - A Batalha na Montanha do Tigre" tvg-name="A Batalha na Montanha do Tigre - 19654" tvg-logo="https://image.tmdb.org/t/p/w185/y4BKUU4daexpODw2m2TdXLiqp0o.jpg" group-title="Filmes",A Batalha na Montanha do Tigre
+http://10.0.0.196/movie/playlist.m3u8?id=19654
+#EXTINF:19655, tvg-id="19655 - Ana e Vitoria" tvg-name="Ana e Vitoria - 19655" tvg-logo="https://image.tmdb.org/t/p/w185/cgpI8BlXW5OWWUQc1A1zFrMRrBG.jpg" group-title="Filmes",Ana e Vitoria
+http://10.0.0.196/movie/playlist.m3u8?id=19655
+#EXTINF:19656, tvg-id="19656 - Amor.com" tvg-name="Amor.com - 19656" tvg-logo="https://image.tmdb.org/t/p/w185/d0af8u9n0BEW999ZQVEDDCHCRVV.jpg" group-title="Filmes",Amor.com
+http://10.0.0.196/movie/playlist.m3u8?id=19656
+#EXTINF:19657, tvg-id="19657 - Demolidor: O Homem Sem Medo" tvg-name="Demolidor: O Homem Sem Medo - 19657" tvg-logo="https://image.tmdb.org/t/p/w185/eG7xCJ3s3O0ihDXN4Nz5cG3mJv5.jpg" group-title="Filmes",Demolidor: O Homem Sem Medo
+http://10.0.0.196/movie/playlist.m3u8?id=19657
+#EXTINF:19658, tvg-id="19658 - O Assalto Perfeito" tvg-name="O Assalto Perfeito - 19658" tvg-logo="https://image.tmdb.org/t/p/w185/u8xNGlOQTTFw6PI6sIMsEkieyOQ.jpg" group-title="Filmes",O Assalto Perfeito
+http://10.0.0.196/movie/playlist.m3u8?id=19658
+#EXTINF:19659, tvg-id="19659 - Mente Criminosa" tvg-name="Mente Criminosa - 19659" tvg-logo="https://image.tmdb.org/t/p/w185/60QTTSHQubpl4C78N6UWmb4TgQP.jpg" group-title="Filmes",Mente Criminosa
+http://10.0.0.196/movie/playlist.m3u8?id=19659
+#EXTINF:19660, tvg-id="19660 - Hilda e o Rei da Montanha" tvg-name="Hilda e o Rei da Montanha - 19660" tvg-logo="https://image.tmdb.org/t/p/w185/3vm7LOe7DhkiA7umBhslQy9MdkY.jpg" group-title="Filmes",Hilda e o Rei da Montanha
+http://10.0.0.196/movie/playlist.m3u8?id=19660
+#EXTINF:19661, tvg-id="19661 - Intervencao, e Proibido Morrer" tvg-name="Intervencao, e Proibido Morrer - 19661" tvg-logo="https://image.tmdb.org/t/p/w185/jCqwg6DZHbQjuLtrdVVT7YX6E53.jpg" group-title="Filmes",Intervencao, e Proibido Morrer
+http://10.0.0.196/movie/playlist.m3u8?id=19661

@@ -1,7 +1,9 @@
+from django.core.exceptions import FieldDoesNotExist
+
 from app.models import (
     Movie
 )
-from django.core.exceptions import FieldDoesNotExist
+
 
 class MovieMixin(object):
 
@@ -26,6 +28,7 @@ class MovieMixin(object):
     def get_movie(self):
         return Movie.objects.get(pk=self.kwargs.get("pk_movie", 0))
 
+
 class SerieMixin(object):
 
     def kwargs_for_reverse_url(self):
@@ -49,6 +52,7 @@ class SerieMixin(object):
     def get_serie(self):
         return Serie.objects.get(pk=self.kwargs.get("pk_serie", 0))
 
+
 class ChannelMixin(object):
 
     def kwargs_for_reverse_url(self):
@@ -71,4 +75,3 @@ class ChannelMixin(object):
 
     def get_channel(self):
         return Channel.objects.get(pk=self.kwargs.get("pk_channel", 0))
-

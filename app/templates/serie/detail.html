@@ -45,9 +45,6 @@
     <hr/>
     <div id="actions" class="row">
         <div class="col-xs-12">
-            <a class="btn btn-primary" href="{% url 'SERIE_update' serie.pk %}">
-                Edit
-            </a>
             <a href="{% url 'SERIE_list' %}" class="btn btn-default">Back</a>
         </div>
     </div>
@@ -56,6 +53,9 @@
         <input name="serie" id="serie" value="{{ object.id }}" class="hidden"/>
         <div class="row">
             <div class="col-xs-12">
+                <button type="button" class="btn btn-default pull-left" id="generate_list">
+                    <i class="fa fa-rotate-left"></i> Generate List
+                </button>
                 <button type="submit" class="btn btn-info pull-right">Assistir Playlist</button>
             </div>
         </div>
@@ -63,14 +63,13 @@
         <div class="row">
             {% for episodio in serie.episodio_set.all %}
                 <div class="col-xs-6 col-sm-4 col-md-3 col-lg-2">
-                <input name="ep" value="{{ episodio.id }}" class="hidden"/>
                     <div class="panel panel-default">
                         <div class="panel-title">
                             <img class="img-responsive"
                                  src="{{ episodio.image }}"/>
                             {% if episodio.is_assistido %}
                                 <span class="pull-right"> Assistido <i class="fa fa-check-circle"
-                                                            style="color: greenyellow;"></i> </span>
+                                                                       style="color: greenyellow;"></i> </span>
                             {% endif %}
                         </div>
                         <div class="panel-body">
@@ -81,12 +80,12 @@
                                 {{ episodio.date }}
                             </p>
                             <p class="text-center">
-                                <input type="checkbox" name="links" value="{{ episodio.url }}"/>
+                                <input type="checkbox" name="ids" value="{{ episodio.id }}"/>
                             </p>
                         </div>
                         <div class="panel-footer text-center">
                             <a class="btn btn-primary"
-                               href="{% url 'SERIE_episode' %}?serie={{ object.id }}&ep={{ episodio.id }}&link={{ episodio.url }}">
+                               href="{% url 'SERIE_episode' %}?serie={{ object.id }}&ids={{ episodio.id }}">
                                 Assistir
                             </a>
                         </div>
@@ -98,6 +97,48 @@
     <script type="text/javascript">
         $(document).ready(function () {
             $('#serie_link').addClass('active');
+            var ids = [];
+
+            function arrayRemove(arr, value) {
+                return arr.filter(function (ele) {
+                    return ele != value;
+                });
+            }
+
+            $(':checkbox').change(function () {
+                var val = $(this).val();
+                if ($(this).is(':checked')) {
+                    ids.push(val);
+                    console.log(ids);
+                } else {
+                    ids = arrayRemove(ids, val);
+                    console.log(ids);
+                }
+            });
+
+            function get_form_checkboxes() {
+                var query = '';
+                ids.forEach(function (id) {
+                    query += ('&ids=' + id);
+                });
+                return query
+            }
+
+            $('#generate_list').click(function () {
+                $('#loading').show();
+                var formData = get_form_checkboxes();
+                console.log(formData);
+                $.get("{% url 'generate_list_episodes' %}", formData, function (data) {
+                    console.log('Generate List M3u8 ...');
+                }).done(function (data) {
+                    $('#loading').hide();
+                    console.log(data);
+                    swal("Sucesso", data['message'], "success");
+                }).fail(function () {
+                    $('#loading').hide();
+                    swal("Falhou", 'Tente Novamente', "error");
+                });
+            });
         });
     </script>
 {% endblock %}

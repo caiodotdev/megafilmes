@@ -1,12 +1,12 @@
 #!/usr/bin/env python
 # -*- coding: utf-8 -*-
 
-from django.apps import apps
 from django.contrib import admin
 
-# Register your models here.
-
 from app.models import *
+
+
+# Register your models here.
 
 
 def approve_selected(modeladmin, request, queryset):
