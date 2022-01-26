@@ -13,7 +13,7 @@ def my_cron_job():
 
 
 class MyCronJob(CronJobBase):
-    RUN_EVERY_MINS = 15
+    RUN_EVERY_MINS = 1
 
     schedule = Schedule(run_every_mins=RUN_EVERY_MINS)
     code = 'app.cron.MyCronJob'  # a unique code

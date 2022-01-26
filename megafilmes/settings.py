@@ -25,8 +25,7 @@ SECRET_KEY = '(cc3jf%5j^bms%$=x$s12d#m#!1t)$m-v=zdgq2kh%e#h&s@aa'
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = ['localhost', 'localhost:8000', '10.0.0.196', 'megafilmes.herokuapp.com',
-                 'tvmaster.ddns.net']
+ALLOWED_HOSTS = ['*']
 
 
 # Application definition

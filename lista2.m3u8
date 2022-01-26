@@ -17,7 +17,7 @@ http://10.0.0.196/multi/playlist.m3u8?id=335
 http://10.0.0.196/multi/playlist.m3u8?id=336
 #EXTINF:-1, tvg-id="340 - Discovery Home & Health" tvg-name="Discovery Home & Health - 340" tvg-logo="https://logodownload.org/wp-content/uploads/2020/06/discovery-home-and-health-logo.png" group-title="Variedades",Discovery Home & Health
 http://10.0.0.196/multi/playlist.m3u8?id=340
-#EXTINF:-1, tvg-id="342 - Paramount Channel" tvg-name="Paramount Channel - 342" tvg-logo="https://www.paramountplus.com/assets/pplus/PPlus_Logo_1200x630_BLUE.png" group-title="Filmes",Paramount Channel
+#EXTINF:-1, tvg-id="342 - Paramount Channel" tvg-name="Paramount Channel - 342" tvg-logo="https://upload.wikimedia.org/wikipedia/commons/thumb/a/ae/Paramount_Pics_logo.png/1200px-Paramount_Pics_logo.png" group-title="Filmes",Paramount Channel
 http://10.0.0.196/multi/playlist.m3u8?id=342
 #EXTINF:-1, tvg-id="345 - CNN Brasil" tvg-name="CNN Brasil - 345" tvg-logo="https://logosmarcas.net/wp-content/uploads/2020/11/CNN-Logo.png" group-title="Noticias",CNN Brasil
 http://10.0.0.196/multi/playlist.m3u8?id=345

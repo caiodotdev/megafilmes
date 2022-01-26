@@ -103,11 +103,6 @@ urlpatterns += [
         name=conf.CHANNEL_DETAIL_URL_NAME
     ),
     path(
-        'channel/list/json/',
-        channel.ChannelListJson.as_view(),
-        name=conf.CHANNEL_LIST_JSON_URL_NAME
-    ),
-    path(
         'get-channels',
         channel.get_channels,
         name='get_channels'

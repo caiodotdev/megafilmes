@@ -5,7 +5,6 @@ import re
 import requests
 from bs4 import BeautifulSoup
 from django.contrib.auth.mixins import LoginRequiredMixin
-from django.db.models import Q
 from django.http import JsonResponse, HttpResponse, HttpResponseNotFound
 from django.shortcuts import redirect
 from django.views.generic.detail import DetailView
@@ -21,8 +20,6 @@ except ImportError:
 
 from app.models import Channel, Category
 from app.mixins import ChannelMixin
-
-from django_datatables_view.base_datatable_view import BaseDatatableView
 
 from app.utils import get_articles, get_program_content, remove_iv
 
@@ -43,14 +40,6 @@ class List(LoginRequiredMixin, ChannelMixin, ListView):
     template_name = 'channel/list.html'
     model = Channel
     context_object_name = 'channels'
-    paginate_by = 1
-
-    def get_context_data(self, **kwargs):
-        context = super(List, self).get_context_data(**kwargs)
-        queryset = self.get_queryset()
-        filter = ChannelFilter(self.request.GET, queryset)
-        context["filter"] = filter
-        return context
 
 
 class Detail(LoginRequiredMixin, ChannelMixin, DetailView):
@@ -65,20 +54,6 @@ class Detail(LoginRequiredMixin, ChannelMixin, DetailView):
     def get_context_data(self, **kwargs):
         context = super(Detail, self).get_context_data(**kwargs)
         return context
-
-
-class ChannelListJson(BaseDatatableView):
-    model = Channel
-    columns = ("id", "title", "hours")
-    order_columns = ["id", "title"]
-    max_display_length = 500
-
-    def filter_queryset(self, qs):
-        search = self.request.GET.get('search[value]', None)
-        if search:
-            qs = qs.filter(Q(title__icontains=search) | Q(rl__icontains=search))
-        filter = ChannelFilter(self.request.GET, qs)
-        return filter.qs
 
 
 def delete_all_channels(request):
