@@ -43,14 +43,37 @@ python manage.py createsuperuser
 ```
 
 ### Step 4: How to use
-To use the tool run python command.
+To use the tool you need discover your IP local.
+P.S.: to find your local IP, open another terminal and run code below, and see your Local IPV4.
+```bash
+ipconfig
+```
+
 
 1) On terminal and run:
 ```bash
 python manage.py runserver <your_local_ip>:80
 ```
+
+
+
 2) Open other terminal, into project root, with your created enviroment and run:
 ```bash
 python manage.py runcrons
 ```
 
+After having the server running and the update CRON, to access the list, access your preferred browser (we recommend Chrome, as our application uses chromedriver to get the links from a reliable source.):
+http://<your_local_ip>/lista.m3u8
+
+or
+
+http://<your_local_ip>/lista2.m3u8
+
+CRON will update the channel list (there are 105 closed TV channels), and this process takes around 25 minutes. CRON runs the update process every 4 hours, because channels have an expiration time of 8 hours.
+
+To solve this problem I created a CRON that runs every 4 hours and updates all 105 channels. Remember to always run the server ("runserver") to access the m3u8 list and run CRON ("runcrons") with the server on. Both must be running on different terminals.
+
+any problem? send mail to me: caiomarinho8@gmail.com
+
+
+## This project is to be used for Study purposes. Remember Piracy is Crime!
