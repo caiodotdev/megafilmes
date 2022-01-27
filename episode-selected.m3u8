@@ -1,9 +1,5 @@
 #EXTM3U
-#EXTINF:75127, tvg-id="75127 - A Flutuacao do Abridor de Lata Eletrico" tvg-name="A Flutuacao do Abridor de Lata Eletrico - 75127" tvg-logo="https://image.tmdb.org/t/p/w154/4MFmDclUoXHM0se1IM9jKRhHp6n.jpg" group-title="Episodes",A Flutuacao do Abridor de Lata Eletrico
-http://hotelariadox.gq:8080/d/RedeCanais/RedeCanais/RCServer04/ondemand/TBBTT03EP01.mp4?mu3zAQc9HC3GbwJq=IqNve9-cf_GxSYKtbf0xvQ&3U1G7qaTxrPbalZnEx=1643266012
-#EXTINF:75128, tvg-id="75128 - A Conjectura Jiminy" tvg-name="A Conjectura Jiminy - 75128" tvg-logo="https://image.tmdb.org/t/p/w154/uVhcEHlKSzV29jrozrfT7Upl9CS.jpg" group-title="Episodes",A Conjectura Jiminy
-http://dahomeys.ml:8080/d/RedeCanais/RedeCanais/RCServer04/ondemand/TBBTT03EP02.mp4?mu3zAQc9HC3GbwJq=l0v0vuUTEqmp2No3hIyC2Q&3U1G7qaTxrPbalZnEx=1643266023
-#EXTINF:75129, tvg-id="75129 - O Desvio Gothowitz" tvg-name="O Desvio Gothowitz - 75129" tvg-logo="https://image.tmdb.org/t/p/w154/gVJgi08zLaHaksdlBJaBXTnRtVD.jpg" group-title="Episodes",O Desvio Gothowitz
-http://higgins.ml:8080/d/RedeCanais/RedeCanais/RCServer04/ondemand/TBBTT03EP0.mp4?mu3zAQc9HC3GbwJq=Gd0aXd5RuMII7NZ8FCfV9g&3U1G7qaTxrPbalZnEx=1643266033
-#EXTINF:75130, tvg-id="75130 - A Solucao Pirata" tvg-name="A Solucao Pirata - 75130" tvg-logo="https://image.tmdb.org/t/p/w154/ooKlhHysYeBILB1vdgOp8386ZuC.jpg" group-title="Episodes",A Solucao Pirata
-http://monstroverso.tk:8080/d/RedeCanais/RedeCanais/RCServer04/ondemand/TBBTT03EP04.mp4?mu3zAQc9HC3GbwJq=ZdizrjOfIYAWG6YiqQ7d5Q&3U1G7qaTxrPbalZnEx=1643266042
+#EXTINF:60101, tvg-id="60101 - Piloto" tvg-name="Piloto - 60101" tvg-logo="https://image.tmdb.org/t/p/w154/zaqAlAdjZGBuFMsHsLUYjDlgm9r.jpg" group-title="Episodes",Piloto
+http://tonerix.gq:8080/d/RedeCanais/RedeCanais/RCServer07/ondemand/ARROWT01EP01.mp4?mu3zAQc9HC3GbwJq=vOafwu731SxmSdf2csb0Tw&3U1G7qaTxrPbalZnEx=1643337964
+#EXTINF:60102, tvg-id="60102 - Honra Seu Pai" tvg-name="Honra Seu Pai - 60102" tvg-logo="https://image.tmdb.org/t/p/w154/vd1muBD34LjjKoHUx0J0Dnx1NGt.jpg" group-title="Episodes",Honra Seu Pai
+http://crazymonkey.ga:8080/d/RedeCanais/RedeCanais/RCServer07/ondemand/ARROWT01EP02.mp4?mu3zAQc9HC3GbwJq=n-r0XiYbwOeT7-q_D1-2YA&3U1G7qaTxrPbalZnEx=1643337981
