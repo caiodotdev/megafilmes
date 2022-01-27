@@ -36,7 +36,7 @@ import django_filters
 class MovieFilter(django_filters.FilterSet):
     class Meta:
         model = Movie
-        fields = ["id", "title", "year", "rating", "image", "url"]
+        fields = ["title", "year", "rating"]
 
 
 class List(LoginRequiredMixin, MovieMixin, ListView):

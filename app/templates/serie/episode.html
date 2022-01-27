@@ -11,8 +11,26 @@
     <script type="text/javascript"
             src="//cdn.jsdelivr.net/gh/clappr/clappr-level-selector-plugin@latest/dist/level-selector.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/@clappr/stats-plugin@latest/dist/clappr-stats.min.js"></script>
-    <h3 class="page-header">View Serie</h3>
-
+    <br/>
+    <div class="row">
+        <div class="col-xs-12">
+            <div id="Player">
+            </div>
+        </div>
+    </div>
+    <hr/>
+    <div id="actions" class="row">
+        <div class="col-xs-6 pull-left">
+            <a href="javascript:history.back()" class="btn btn-default">
+                <i class="fa fa-angle-left"></i> Back</a>
+        </div>
+        {% if playlist %}
+            <div class="col-xs-6 pull-right">
+                <a href="{% url 'SERIE_episode' %}?&serie={{ serie.id }}&playlist={{ playlist }}" class="btn btn-info">Próximo</a>
+            </div>
+        {% endif %}
+    </div>
+    <hr/>
     <div class="row">
         <div class="col-xs-12">
             <div class="form-group">
@@ -32,27 +50,6 @@
             </div>
         </div>
     </div>
-    <hr/>
-    <div id="actions" class="row">
-        <div class="col-xs-6 pull-left">
-            <a href="{% url 'SERIE_list' %}" class="btn btn-default">Back</a>
-        </div>
-        {% if playlist %}
-            <div class="col-xs-6 pull-right">
-                <a href="{% url 'SERIE_episode' %}?&serie={{ serie.id }}&playlist={{ playlist }}" class="btn btn-info">Próximo</a>
-            </div>
-        {% endif %}
-    </div>
-
-    <br/>
-    <div class="row">
-        <div class="col-xs-12">
-            <div id="Player">
-            </div>
-        </div>
-    </div>
-    <br/>
-    <br/>
     <script type="text/javascript">
         $(document).ready(function () {
             $('#serie_link').addClass('active');

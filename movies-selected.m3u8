@@ -1,11 +1,3 @@
 #EXTM3U
-#EXTINF:17057, tvg-id="17057 - O Estado das Coisas" tvg-name="O Estado das Coisas - 17057" tvg-logo="https://image.tmdb.org/t/p/w185/45OzWnoHbQA4JXiLQBwJeaotfeG.jpg" group-title="Filmes",O Estado das Coisas
-http://germed.cf:8080/d/RedeCanais/RedeCanais/RCFServer4/ondemand/OESTDDSCOS.mp4?mu3zAQc9HC3GbwJq=DMjigy0ZelhQpV8k2xtZew&3U1G7qaTxrPbalZnEx=1643235950
 #EXTINF:16941, tvg-id="16941 - Kingsman: O Circulo Dourado" tvg-name="Kingsman: O Circulo Dourado - 16941" tvg-logo="https://image.tmdb.org/t/p/w185/mMCsn4a8wEHw2eco4pulugd7N6i.jpg" group-title="Filmes",Kingsman: O Circulo Dourado
-http://paocriolo.ml:8080/d/RedeCanais/RedeCanais/RCFServer4/ondemand/KNGSMOCRVLDRDO.mp4?mu3zAQc9HC3GbwJq=Ew-8B8b624Z8sXbkxtd84g&3U1G7qaTxrPbalZnEx=1643235961
-#EXTINF:15193, tvg-id="15193 - Z: A Cidade Perdida" tvg-name="Z: A Cidade Perdida - 15193" tvg-logo="https://image.tmdb.org/t/p/w185/ms4UmEmc0cyK5AN2EGPfadkbXae.jpg" group-title="Filmes",Z: A Cidade Perdida
-http://menma.cf:8080/d/RedeCanais/RedeCanais/RCFServer4/ondemand/ZCDSPRDA.mp4?mu3zAQc9HC3GbwJq=9N0qOCNyisLI7D6L5fIe2A&3U1G7qaTxrPbalZnEx=1643235973
-#EXTINF:16939, tvg-id="16939 - O Circulo" tvg-name="O Circulo - 16939" tvg-logo="https://image.tmdb.org/t/p/w185/fHOLNgnV82ZXleXESKJoKtaWYxx.jpg" group-title="Filmes",O Circulo
-http://shikakunara.cf:8080/d/RedeCanais/RedeCanais/RCFServer4/ondemand/OCRCLO.mp4?mu3zAQc9HC3GbwJq=fIhbFIhUoPCAoBUFJuxnag&3U1G7qaTxrPbalZnEx=1643235987
-#EXTINF:18697, tvg-id="18697 - Tenet" tvg-name="Tenet - 18697" tvg-logo="https://megafilmeshdd.org/wp-content/uploads/2020/11/k68nPLbIST6NP96JmTxmZijEvCA-185x278.jpg" group-title="Filmes",Tenet
-http://higgins.ml:8080/d/RedeCanais/RedeCanais/RCFServer5/ondemand/TNET.mp4?mu3zAQc9HC3GbwJq=STpgm-F7AS_V3wtiIcrhZg&3U1G7qaTxrPbalZnEx=1643235998
+http://valvulas.ga:8080/d/RedeCanais/RedeCanais/RCFServer4/ondemand/KNGSMOCRVLDRDO.mp4?mu3zAQc9HC3GbwJq=NM1GTwEY1rrJCsRxCwosCg&3U1G7qaTxrPbalZnEx=1643266105

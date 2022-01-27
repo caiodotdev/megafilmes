@@ -30,7 +30,7 @@ import django_filters
 class SerieFilter(django_filters.FilterSet):
     class Meta:
         model = Serie
-        fields = ["id", "title", "year", "rating", "image", "url"]
+        fields = ["title", "year", "rating",]
 
 
 class List(LoginRequiredMixin, SerieMixin, ListView):
