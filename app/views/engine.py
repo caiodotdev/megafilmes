@@ -1,3 +1,5 @@
+import os
+
 from selenium import webdriver
 from selenium.webdriver.chrome.options import Options
 from webdriver_manager.chrome import ChromeDriverManager
@@ -19,11 +21,13 @@ class EngineModel(object):
         # options.add_argument("--log-level=3")
         # options.add_experimental_option("excludeSwitches", ["enable-logging"])
 
-        # gChromeOptions = webdriver.ChromeOptions()
-        # gChromeOptions.add_argument("window-size=1920x1480")
-        # gChromeOptions.add_argument("disable-dev-shm-usage")
+        chrome_options = webdriver.ChromeOptions()
+        chrome_options.binary_location = os.environ.get("GOOGLE_CHROME_BIN")
+        chrome_options.add_argument("--headless")
+        chrome_options.add_argument("--disable-dev-shm-usage")
+        chrome_options.add_argument("--no-sandbox")
         self.browser = webdriver.Chrome(options=options, executable_path=ChromeDriverManager().install(),
-                                        # chrome_options=gChromeOptions
+                                        chrome_options=chrome_options
                                         )
         self.url = ''
         self.FILENAME = ''
