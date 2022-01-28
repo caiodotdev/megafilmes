@@ -1,5 +1,7 @@
 #EXTM3U
-#EXTINF:60101, tvg-id="60101 - Piloto" tvg-name="Piloto - 60101" tvg-logo="https://image.tmdb.org/t/p/w154/zaqAlAdjZGBuFMsHsLUYjDlgm9r.jpg" group-title="Episodes",Piloto
-http://tonerix.gq:8080/d/RedeCanais/RedeCanais/RCServer07/ondemand/ARROWT01EP01.mp4?mu3zAQc9HC3GbwJq=vOafwu731SxmSdf2csb0Tw&3U1G7qaTxrPbalZnEx=1643337964
-#EXTINF:60102, tvg-id="60102 - Honra Seu Pai" tvg-name="Honra Seu Pai - 60102" tvg-logo="https://image.tmdb.org/t/p/w154/vd1muBD34LjjKoHUx0J0Dnx1NGt.jpg" group-title="Episodes",Honra Seu Pai
-http://crazymonkey.ga:8080/d/RedeCanais/RedeCanais/RCServer07/ondemand/ARROWT01EP02.mp4?mu3zAQc9HC3GbwJq=n-r0XiYbwOeT7-q_D1-2YA&3U1G7qaTxrPbalZnEx=1643337981
+#EXTINF:75132, tvg-id="75132 - O Vortice Cornhusker" tvg-name="O Vortice Cornhusker - 75132" tvg-logo="https://image.tmdb.org/t/p/w154/yLX4EAeyh3qmsTsyqbJnn5xANTJ.jpg" group-title="Episodes",O Vortice Cornhusker
+None
+#EXTINF:75133, tvg-id="75133 - A Amplificacao do Guitarrista" tvg-name="A Amplificacao do Guitarrista - 75133" tvg-logo="https://image.tmdb.org/t/p/w154/jF7zs6f8RUWm0XRFVc5mi1nvl3z.jpg" group-title="Episodes",A Amplificacao do Guitarrista
+None
+#EXTINF:75134, tvg-id="75134 - A Deficiencia de Adesivos de Pato" tvg-name="A Deficiencia de Adesivos de Pato - 75134" tvg-logo="https://image.tmdb.org/t/p/w154/5UQl8U8UfY5anCF5fvSTxUTShOp.jpg" group-title="Episodes",A Deficiencia de Adesivos de Pato
+http://origues.ml:8080/d/RedeCanais/RedeCanais/RCServer04/ondemand/TBBTT03EP08.mp4?mu3zAQc9HC3GbwJq=K7EUdurkPThLv78N-JAzQQ&3U1G7qaTxrPbalZnEx=1643358124

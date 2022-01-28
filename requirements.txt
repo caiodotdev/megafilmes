@@ -32,3 +32,4 @@ selenium
 django-crontab
 django_cron
 Unidecode
+webdriver-manager
