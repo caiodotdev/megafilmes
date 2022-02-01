@@ -202,7 +202,7 @@ def get_m3u8_episodio(request, episodio, search=False):
         if calc_prazo(episodio.link_m3u8):
             return episodio.link_m3u8
     if search:
-        url_m3u8 = MegaPack(episodio.url).get_info()
+        url_m3u8 = MegaPack().get_info(episodio.url)['m3u8']
         episodio.link_m3u8 = url_m3u8
         episodio.save()
         return url_m3u8

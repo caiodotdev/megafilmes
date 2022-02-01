@@ -1,5 +1,25 @@
 #EXTM3U
+#EXTINF:13001, tvg-id="13001 - Midsommar: O Mal Nao Espera a Noite" tvg-name="Midsommar: O Mal Nao Espera a Noite - 13001" tvg-logo="https://image.tmdb.org/t/p/w185/sZ6Bjq1VVfiTrALlev0ganz7uka.jpg" group-title="Filmes",Midsommar: O Mal Nao Espera a Noite
+http://picole.gq:8080/d/RedeCanais/RedeCanais/RCFServer3/ondemand/MDSMROMALNESPRANTE.mp4?mu3zAQc9HC3GbwJq=nSM4qZ1LoTyJeqNhhuRoXA&3U1G7qaTxrPbalZnEx=1643761176
 #EXTINF:15193, tvg-id="15193 - Z: A Cidade Perdida" tvg-name="Z: A Cidade Perdida - 15193" tvg-logo="https://image.tmdb.org/t/p/w185/ms4UmEmc0cyK5AN2EGPfadkbXae.jpg" group-title="Filmes",Z: A Cidade Perdida
-http://utakata.cf:8080/d/RedeCanais/RedeCanais/RCFServer4/ondemand/ZCDSPRDA.mp4?mu3zAQc9HC3GbwJq=YD0n-PAezDoXmPS7zI6dWg&3U1G7qaTxrPbalZnEx=1643354541
+http://odisseia.gq:8080/d/RedeCanais/RedeCanais/RCFServer4/ondemand/ZCDSPRDA.mp4?mu3zAQc9HC3GbwJq=hMJC7RoZSAhYTIUTqbFGsw&3U1G7qaTxrPbalZnEx=1643761195
 #EXTINF:16939, tvg-id="16939 - O Circulo" tvg-name="O Circulo - 16939" tvg-logo="https://image.tmdb.org/t/p/w185/fHOLNgnV82ZXleXESKJoKtaWYxx.jpg" group-title="Filmes",O Circulo
-http://gldeville.gq:8080/d/RedeCanais/RedeCanais/RCFServer4/ondemand/OCRCLO.mp4?mu3zAQc9HC3GbwJq=RmCwNnSNR5p7fnFVtjOJKQ&3U1G7qaTxrPbalZnEx=1643354552
+http://ventiladores.tk:8080/d/RedeCanais/RedeCanais/RCFServer4/ondemand/OCRCLO.mp4?mu3zAQc9HC3GbwJq=CmqNe8_rMRQVRb4heOcEqw&3U1G7qaTxrPbalZnEx=1643761208
+#EXTINF:17544, tvg-id="17544 - Entrevista com Deus" tvg-name="Entrevista com Deus - 17544" tvg-logo="https://image.tmdb.org/t/p/w185/hIE9f6mZojSGAPZIsGx6Lca3RQ3.jpg" group-title="Filmes",Entrevista com Deus
+http://shikakunara.cf:8080/d/RedeCanais/RedeCanais/RCFServer3/ondemand/ENTRVSTCMDEUS.mp4?mu3zAQc9HC3GbwJq=KFevRhmbf3nEVchuHO9IlQ&3U1G7qaTxrPbalZnEx=1643761214
+#EXTINF:17854, tvg-id="17854 - Em Defesa de Cristo" tvg-name="Em Defesa de Cristo - 17854" tvg-logo="https://image.tmdb.org/t/p/w185/pyxN3LztDtPus5JSOv1HiRHkSco.jpg" group-title="Filmes",Em Defesa de Cristo
+http://galobila.gq:8080/d/RedeCanais/RedeCanais/RCFServer4/ondemand/EMDEFDCRST.mp4?mu3zAQc9HC3GbwJq=EvF1BnHnXpLGnDficOW1Fg&3U1G7qaTxrPbalZnEx=1643761218
+#EXTINF:18577, tvg-id="18577 - Godzilla vs. Kong" tvg-name="Godzilla vs. Kong - 18577" tvg-logo="https://megafilmeshdd.org/wp-content/uploads/2021/02/klAIFewuqcyEmH1SMtR2XbMyqzM-185x278.jpg" group-title="Filmes",Godzilla vs. Kong
+http://intellapp.ga:8080/d/RedeCanais/RedeCanais/RCFServer5/ondemand/GDZLAVSKNGDBL.mp4?mu3zAQc9HC3GbwJq=1VQg20xUIM3AxiDzM0g44A&3U1G7qaTxrPbalZnEx=1643761237
+#EXTINF:18697, tvg-id="18697 - Tenet" tvg-name="Tenet - 18697" tvg-logo="https://megafilmeshdd.org/wp-content/uploads/2020/11/k68nPLbIST6NP96JmTxmZijEvCA-185x278.jpg" group-title="Filmes",Tenet
+http://sorvete.ml:8080/d/RedeCanais/RedeCanais/RCFServer5/ondemand/TNET.mp4?mu3zAQc9HC3GbwJq=JImOivO5rquoOX5d1IGDoQ&3U1G7qaTxrPbalZnEx=1643761254
+#EXTINF:18792, tvg-id="18792 - Sonic: O Filme" tvg-name="Sonic: O Filme - 18792" tvg-logo="https://megafilmeshdd.org/wp-content/uploads/2020/07/Kt9iFdTu5TbAm7tNfc876mrWU-185x278.jpg" group-title="Filmes",Sonic: O Filme
+http://petitt.tk:8080/d/RedeCanais/RedeCanais/RCFServer5/ondemand/SONCOFLM.mp4?mu3zAQc9HC3GbwJq=ad3-gYvd3GEAlqcYhsIczQ&3U1G7qaTxrPbalZnEx=1643761259
+#EXTINF:18892, tvg-id="18892 - Ad Astra - Rumo as Estrelas" tvg-name="Ad Astra - Rumo as Estrelas - 18892" tvg-logo="https://megafilmeshdd.org/wp-content/uploads/2020/07/wigZBAmNrIhxp2FNGOROUAeHvdh-185x278.jpg" group-title="Filmes",Ad Astra - Rumo as Estrelas
+http://higgins.ml:8080/d/RedeCanais/RedeCanais/RCFServer3/ondemand/ADSTRMASESTRLS.mp4?mu3zAQc9HC3GbwJq=bP5n6javci4vhezCdce6Aw&3U1G7qaTxrPbalZnEx=1643761264
+#EXTINF:18940, tvg-id="18940 - Yesterday" tvg-name="Yesterday - 18940" tvg-logo="https://megafilmeshdd.org/wp-content/uploads/2020/07/1rjaRIAqFPQNnMtqSMLtg0VEABi-185x278.jpg" group-title="Filmes",Yesterday
+http://praiadotambu.ml:8080/d/RedeCanais/RedeCanais/RCFServer3/ondemand/YESRTDY.mp4?mu3zAQc9HC3GbwJq=eM6K-p39eoCJWdU3NMCb4g&3U1G7qaTxrPbalZnEx=1643761268
+#EXTINF:19097, tvg-id="19097 - Viva - A Vida e uma Festa" tvg-name="Viva - A Vida e uma Festa - 19097" tvg-logo="https://image.tmdb.org/t/p/w185/6oNm06TPz2vGiPc2I52oXW3JwPS.jpg" group-title="Filmes",Viva - A Vida e uma Festa
+http://dahomeys.ml:8080/d/RedeCanais/RedeCanais/RCFServer4/ondemand/VIVAAVDEUMFST.mp4?mu3zAQc9HC3GbwJq=pLsJHm3fvu0iqcU0x_-t7Q&3U1G7qaTxrPbalZnEx=1643761272
+#EXTINF:19461, tvg-id="19461 - Orgulho e Preconceito" tvg-name="Orgulho e Preconceito - 19461" tvg-logo="https://image.tmdb.org/t/p/w185/dmnY0Zs8uMSHkMiol7M3xOlvvkK.jpg" group-title="Filmes",Orgulho e Preconceito
+http://odisseia.gq:8080/d/RedeCanais/RedeCanais/RCFServer4/ondemand/ORGNHDPRCNTO.mp4?mu3zAQc9HC3GbwJq=Zu7IUsDVQL2SS0ShEmwbPg&3U1G7qaTxrPbalZnEx=1643761290

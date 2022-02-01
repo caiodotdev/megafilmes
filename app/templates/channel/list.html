@@ -11,9 +11,9 @@
             <button id="get_channels" type="button" class="btn btn-info pull-right h2"><i
                     class="fa fa-rocket"></i> Get Channels
             </button>
-{#            <button id="get_m3u8" type="button" class="btn btn-info pull-right h2"><i#}
-{#                    class="fa fa-tv"></i> Get M3U8#}
-{#            </button>#}
+            <button id="get_m3u8" type="button" class="btn btn-info pull-right h2"><i
+                    class="fa fa-tv"></i> Get M3U8
+            </button>
             {#            <a href="{% url 'delete_all_channels' %}" class="btn btn-danger pull-right h2"><i#}
             {#                    class="fa fa-trash"></i> Delete All#}
             {#            </a>#}
@@ -23,7 +23,7 @@
 
     <div class="row">
         {% for channel in channels %}
-            <div class="col-xs-2">
+            <div class="col-md-2 col-sm-4 col-xs-6">
                 <div class="panel panel-default">
                     <div class="panel-body text-center">
                         <div class="row text-center">

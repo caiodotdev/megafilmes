@@ -4,17 +4,19 @@
 from django.contrib import admin
 
 from app.models import *
-
-
 # Register your models here.
+from app.views.movie import get_m3u8_movies, write_m3u8
 
 
 def approve_selected(modeladmin, request, queryset):
-    queryset.update(is_approved=True)
+    queryset.update(selected=True)
+    get_m3u8_movies({})
+    write_m3u8()
 
 
 def desapprove_selected(modeladmin, request, queryset):
-    queryset.update(is_approved=False)
+    queryset.update(selected=False)
+    write_m3u8()
 
 
 approve_selected.short_description = "Aprovar itens selecionados"
@@ -27,7 +29,8 @@ class MovieAdmin(admin.ModelAdmin):
         'id',
     )
     inlines = []
-    list_display = ("id", "title", "year", "rating", "image", "url", "link_m3u8")
+    list_display = ("id", "selected", "title", "year", "rating", "link_m3u8", "url", "image",)
+    actions = [approve_selected, desapprove_selected, ]
 
 
 admin.site.register(Movie, MovieAdmin)
@@ -55,7 +58,7 @@ class ChannelAdmin(admin.ModelAdmin):
         'id',
     )
     inlines = []
-    list_display = ("id", "title", "image", "category", "url", "link_m3u8")
+    list_display = ("id", "title", "code", "category", "link_m3u8", "url", "image",)
 
 
 admin.site.register(Channel, ChannelAdmin)

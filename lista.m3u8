@@ -13,8 +13,6 @@ http://10.0.0.196/multi/playlist.m3u8?id=333
 http://10.0.0.196/multi/playlist.m3u8?id=334
 #EXTINF:335, tvg-id="335 - HBO" tvg-name="HBO - 335" tvg-logo="https://upload.wikimedia.org/wikipedia/commons/thumb/d/de/HBO_logo.svg/1200px-HBO_logo.svg.png" group-title="Canais Ao Vivo",HBO
 http://10.0.0.196/multi/playlist.m3u8?id=335
-#EXTINF:336, tvg-id="336 - TCM" tvg-name="TCM - 336" tvg-logo="https://upload.wikimedia.org/wikipedia/commons/e/ef/Turner_Classic_Movies_%28TCM%2C_Latin_America%29_-_2015_logo.png" group-title="Canais Ao Vivo",TCM
-http://10.0.0.196/multi/playlist.m3u8?id=336
 #EXTINF:340, tvg-id="340 - Discovery Home & Health" tvg-name="Discovery Home & Health - 340" tvg-logo="https://logodownload.org/wp-content/uploads/2020/06/discovery-home-and-health-logo.png" group-title="Canais Ao Vivo",Discovery Home & Health
 http://10.0.0.196/multi/playlist.m3u8?id=340
 #EXTINF:342, tvg-id="342 - Paramount Channel" tvg-name="Paramount Channel - 342" tvg-logo="https://upload.wikimedia.org/wikipedia/commons/thumb/a/ae/Paramount_Pics_logo.png/1200px-Paramount_Pics_logo.png" group-title="Canais Ao Vivo",Paramount Channel
@@ -195,8 +193,6 @@ http://10.0.0.196/multi/playlist.m3u8?id=456
 http://10.0.0.196/multi/playlist.m3u8?id=457
 #EXTINF:458, tvg-id="458 - Record TV" tvg-name="Record TV - 458" tvg-logo="https://img2.gratispng.com/20180613/byp/kisspng-brazil-recordtv-logo-rede-globo-television-record-5b210980716d36.1337312615288917764646.jpg" group-title="Canais Ao Vivo",Record TV
 http://10.0.0.196/multi/playlist.m3u8?id=458
-#EXTINF:459, tvg-id="459 - Band News" tvg-name="Band News - 459" tvg-logo="https://upload.wikimedia.org/wikipedia/commons/thumb/2/27/BandNews_TV_logo_2010.svg/2560px-BandNews_TV_logo_2010.svg.png" group-title="Canais Ao Vivo",Band News
-http://10.0.0.196/multi/playlist.m3u8?id=459
 #EXTINF:460, tvg-id="460 - Nick Jr." tvg-name="Nick Jr. - 460" tvg-logo="https://upload.wikimedia.org/wikipedia/commons/thumb/a/a1/Nick_Jr._logo_2009.svg/2560px-Nick_Jr._logo_2009.svg.png" group-title="Canais Ao Vivo",Nick Jr.
 http://10.0.0.196/multi/playlist.m3u8?id=460
 #EXTINF:462, tvg-id="462 - Disney XD" tvg-name="Disney XD - 462" tvg-logo="https://upload.wikimedia.org/wikipedia/commons/thumb/b/b9/Disney_XD_-_2015.svg/1200px-Disney_XD_-_2015.svg.png" group-title="Canais Ao Vivo",Disney XD
@@ -209,5 +205,3 @@ http://10.0.0.196/multi/playlist.m3u8?id=464
 http://10.0.0.196/multi/playlist.m3u8?id=466
 #EXTINF:467, tvg-id="467 - Globo SP" tvg-name="Globo SP - 467" tvg-logo="https://upload.wikimedia.org/wikipedia/pt/9/9e/Logotipo_da_TV_Globo.png" group-title="Canais Ao Vivo",Globo SP
 http://10.0.0.196/multi/playlist.m3u8?id=467
-#EXTINF:468, tvg-id="468 - BBB 22 AO VIVO / BBB AO VIVO" tvg-name="BBB 22 AO VIVO / BBB AO VIVO - 468" tvg-logo="https://i.imgur.com/r44OOhF.png" group-title="Canais Ao Vivo",BBB 22 AO VIVO / BBB AO VIVO
-http://10.0.0.196/multi/playlist.m3u8?id=468

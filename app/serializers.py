@@ -6,7 +6,7 @@ from app.models import Movie
 class MovieSerializer(serializers.ModelSerializer):
     class Meta:
         model = Movie
-        fields = ("id", "title", "year", "rating", "image", "url")
+        fields = ("id", "title", "year", "rating", "image", "url", "selected", "link_m3u8")
 
 
 from app.models import Serie
@@ -24,4 +24,4 @@ from app.models import Channel
 class ChannelSerializer(serializers.ModelSerializer):
     class Meta:
         model = Channel
-        fields = ("id", "title", "image", "url", "link_m3u8")
+        fields = ("id", "title", "image",  "code", "url", "link_m3u8", "custom_m3u8", "category")

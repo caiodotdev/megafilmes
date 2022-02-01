@@ -15,7 +15,6 @@ from pathlib import Path
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
 
-
 # Quick-start development settings - unsuitable for production
 # See https://docs.djangoproject.com/en/3.1/howto/deployment/checklist/
 
@@ -26,7 +25,6 @@ SECRET_KEY = '(cc3jf%5j^bms%$=x$s12d#m#!1t)$m-v=zdgq2kh%e#h&s@aa'
 DEBUG = True
 
 ALLOWED_HOSTS = ['*']
-
 
 # Application definition
 
@@ -69,7 +67,6 @@ TEMPLATES = [
 
 WSGI_APPLICATION = 'megafilmes.wsgi.application'
 
-
 # Database
 # https://docs.djangoproject.com/en/3.1/ref/settings/#databases
 
@@ -79,7 +76,6 @@ DATABASES = {
         'NAME': BASE_DIR / 'db.sqlite3',
     }
 }
-
 
 # Password validation
 # https://docs.djangoproject.com/en/3.1/ref/settings/#auth-password-validators
@@ -99,7 +95,6 @@ AUTH_PASSWORD_VALIDATORS = [
     },
 ]
 
-
 # Internationalization
 # https://docs.djangoproject.com/en/3.1/topics/i18n/
 
@@ -113,47 +108,48 @@ USE_L10N = True
 
 USE_TZ = True
 
-
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/3.1/howto/static-files/
 
 STATIC_URL = '/static/'
 
- 
 import os
- 
+
 INSTALLED_APPS += ['rest_framework', 'rest_framework.authtoken',
                    'django.contrib.sites', 'allauth', 'allauth.account',
                    'allauth.socialaccount', 'rest_auth', 'rest_auth.registration',
                    'corsheaders', 'app', 'django_filters',
-                   'django_cron',]
- 
+                   'django_cron', ]
+
 SITE_ID = 1
- 
+
 PROJECT_ROOT = os.path.dirname(os.path.abspath(__file__))
- 
+
 MIDDLEWARE += ['corsheaders.middleware.CorsMiddleware']
- 
+
 STATIC_ROOT = os.path.join(PROJECT_ROOT, 'staticfiles')
- 
-STATICFILES_DIRS = [os.path.join(BASE_DIR, 'static'),]
- 
+
+STATICFILES_DIRS = [os.path.join(BASE_DIR, 'static'), ]
+
 import dj_database_url
- 
+
 db_from_env = dj_database_url.config(conn_max_age=500)
 DATABASES['default'].update(db_from_env)
- 
+
 FILE_CHARSET = 'UTF-8'
- 
+
 CORS_ORIGIN_ALLOW_ALL = True
- 
+
 LOGOUT_REDIRECT_URL = '/'
- 
+
 LOGIN_REDIRECT_URL = '/'
- 
+
 FILTERS_DEFAULT_LOOKUP_EXPR = 'icontains'
- 
-REST_FRAMEWORK = {'DEFAULT_FILTER_BACKENDS': ('django_filters.rest_framework.DjangoFilterBackend',),}
+
+REST_FRAMEWORK = {'DEFAULT_FILTER_BACKENDS': ('django_filters.rest_framework.DjangoFilterBackend',),
+                  # 'DEFAULT_PAGINATION_CLASS': 'rest_framework.pagination.PageNumberPagination',
+                  # 'PAGE_SIZE': 10,
+                  }
 
 CRON_CLASSES = [
     "app.cron.MyCronJob",

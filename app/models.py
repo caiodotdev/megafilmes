@@ -19,6 +19,7 @@ class Movie(TimeStamp):
     image = models.URLField(blank=True, null=True)
     url = models.URLField(blank=True, null=True)
     link_m3u8 = models.TextField(blank=True, null=True)
+    selected = models.BooleanField(default=False)
 
     def __str__(self):
         return self.title
@@ -82,10 +83,12 @@ class Category(TimeStamp):
 
 class Channel(TimeStamp):
     title = models.CharField(max_length=255, blank=True, null=True)
+    code = models.CharField(max_length=255, blank=True, null=True)
     image = models.URLField(blank=True, null=True)
     url = models.URLField(blank=True, null=True)
     link_m3u8 = models.TextField(blank=True, null=True)
     category = models.ForeignKey(Category, blank=True, null=True, on_delete=models.CASCADE)
+    custom_m3u8 = models.TextField(blank=True, null=True)
 
     def __str__(self):
         return self.title

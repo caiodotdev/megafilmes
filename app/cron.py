@@ -3,6 +3,7 @@ import time
 from django_cron import CronJobBase, Schedule
 
 from app.views.channel import get_m3u8_channels
+from app.views.movie import get_m3u8_movies
 
 
 def my_cron_job():
@@ -25,7 +26,8 @@ class MyCronJob(CronJobBase):
             print('---- Starting: ' + str(i))
             print(time.asctime())
             get_m3u8_channels({})
+            get_m3u8_movies({})
             print(time.asctime())
             print('---- Finish CRON JOB: ' + str(i))
-            time.sleep(60 * 60 * 4)
+            time.sleep(60 * 60 * 2)
             i = i + 1

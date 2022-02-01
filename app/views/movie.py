@@ -68,9 +68,10 @@ class Detail(LoginRequiredMixin, MovieMixin, DetailView):
 
     def get_context_data(self, **kwargs):
         context = super(Detail, self).get_context_data(**kwargs)
-        mega = MegaPack(self.object.url)
-        link = mega.get_info()
-        context['m3u8'] = link
+        mega = MegaPack()
+        dic_m3u8 = mega.get_info(self.object.url)
+        context['m3u8'] = dic_m3u8['m3u8']
+        mega.close()
         return context
 
 
@@ -152,22 +153,24 @@ def remove_accents(text):
     )
 
 
-def get_m3u8_movie(movie):
-    url_m3u8 = MegaPack(movie.url).get_info()
-    movie.link_m3u8 = url_m3u8
-    movie.save()
-    return url_m3u8
-
-
 def generate_selected_movies(request):
-    ids = request.GET.getlist('ids')
+    if 'ids' in request.GET:
+        ids = request.GET.getlist('ids')
+        for id in ids:
+            movie = Movie.objects.get(id=id)
+            movie.selected = True
+            movie.link_m3u8 = MegaPack().get_info(movie.url)['m3u8']
+            movie.save()
+    write_m3u8()
+    return JsonResponse({'message': 'ok'})
+
+
+def write_m3u8():
     f = open("movies-selected.m3u8", "a")
     f.truncate(0)
     f.write("#EXTM3U\n")
-    for id in ids:
-        movie = Movie.objects.get(id=id)
+    for movie in Movie.objects.filter(selected=True):
         title = unidecode.unidecode(remove_accents(movie.title))
-        uri_m3u8 = get_m3u8_movie(movie)
         f.write('#EXTINF:{}, tvg-id="{} - {}" tvg-name="{} - {}" tvg-logo="{}" group-title="{}",{}\n{}\n'.format(
             movie.id,
             movie.id,
@@ -177,11 +180,27 @@ def generate_selected_movies(request):
             movie.image,
             'Filmes',
             title,
-            uri_m3u8))
+            movie.link_m3u8))
     f.close()
-    return JsonResponse({'message': 'ok'})
 
 
 def get_list_m3u8(request):
+    write_m3u8()
     fsock = open("movies-selected.m3u8", "rb")
     return HttpResponse(fsock, content_type='text')
+
+
+def get_m3u8_movies(request):
+    movies = Movie.objects.filter(selected=True)
+    mega = MegaPack()
+    for movie in movies:
+        print('-- ', movie.title)
+        try:
+            movie.link_m3u8 = mega.get_info(movie.url)['m3u8']
+            movie.save()
+        except (Exception,):
+            movie.link_m3u8 = None
+            movie.save()
+            print('--- err ao coletar link m3u8: ' + str(movie.title))
+    mega.close()
+    return JsonResponse({'message': 'ok'})
