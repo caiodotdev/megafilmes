@@ -161,11 +161,11 @@ def generate_selected_movies(request):
             movie.selected = True
             movie.link_m3u8 = MegaPack().get_info(movie.url)['m3u8']
             movie.save()
-    write_m3u8()
+    write_m3u8_movies()
     return JsonResponse({'message': 'ok'})
 
 
-def write_m3u8():
+def write_m3u8_movies():
     f = open("movies-selected.m3u8", "a")
     f.truncate(0)
     f.write("#EXTM3U\n")
@@ -185,14 +185,15 @@ def write_m3u8():
 
 
 def get_list_m3u8(request):
-    write_m3u8()
+    write_m3u8_movies()
     fsock = open("movies-selected.m3u8", "rb")
     return HttpResponse(fsock, content_type='text')
 
 
-def get_m3u8_movies(request):
+def get_m3u8_movies(request, mega: MegaPack = None):
+    if not mega:
+        mega = MegaPack()
     movies = Movie.objects.filter(selected=True)
-    mega = MegaPack()
     for movie in movies:
         print('-- ', movie.title)
         try:
@@ -202,5 +203,4 @@ def get_m3u8_movies(request):
             movie.link_m3u8 = None
             movie.save()
             print('--- err ao coletar link m3u8: ' + str(movie.title))
-    mega.close()
     return JsonResponse({'message': 'ok'})

@@ -5,22 +5,38 @@ from django.contrib import admin
 
 from app.models import *
 # Register your models here.
-from app.views.movie import get_m3u8_movies, write_m3u8
+from app.views.movie import get_m3u8_movies, write_m3u8_movies
+from app.views.serie import write_m3u8_series
 
 
-def approve_selected(modeladmin, request, queryset):
+def approve_selected_movies(modeladmin, request, queryset):
     queryset.update(selected=True)
     get_m3u8_movies({})
-    write_m3u8()
+    write_m3u8_movies()
 
 
-def desapprove_selected(modeladmin, request, queryset):
+def desapprove_selected_movies(modeladmin, request, queryset):
     queryset.update(selected=False)
-    write_m3u8()
+    write_m3u8_movies()
 
 
-approve_selected.short_description = "Aprovar itens selecionados"
-desapprove_selected.short_description = "Desaprovar itens selecionados"
+approve_selected_movies.short_description = "Selecionar FILMES selecionados"
+desapprove_selected_movies.short_description = "Remover FILMES selecionados"
+
+
+def approve_selected_series(modeladmin, request, queryset):
+    queryset.update(selected=True)
+    get_m3u8_movies({})
+    write_m3u8_series()
+
+
+def desapprove_selected_series(modeladmin, request, queryset):
+    queryset.update(selected=False)
+    write_m3u8_series()
+
+
+approve_selected_series.short_description = "Selecionar EPISODIOS selecionados"
+desapprove_selected_series.short_description = "Remover EPISODIOS selecionados"
 
 
 class MovieAdmin(admin.ModelAdmin):
@@ -30,7 +46,7 @@ class MovieAdmin(admin.ModelAdmin):
     )
     inlines = []
     list_display = ("id", "selected", "title", "year", "rating", "link_m3u8", "url", "image",)
-    actions = [approve_selected, desapprove_selected, ]
+    actions = [approve_selected_movies, desapprove_selected_movies, ]
 
 
 admin.site.register(Movie, MovieAdmin)
@@ -38,6 +54,13 @@ admin.site.register(Movie, MovieAdmin)
 
 class EpisodioInline(admin.TabularInline):
     model = Episodio
+
+
+class EpisodioAdmin(admin.ModelAdmin):
+    list_display = ['id', 'title', "selected", 'url', 'link_m3u8']
+
+
+admin.site.register(Episodio, EpisodioAdmin)
 
 
 class SerieAdmin(admin.ModelAdmin):
@@ -100,10 +123,3 @@ class CategoryAdmin(admin.ModelAdmin):
 
 
 admin.site.register(Category, CategoryAdmin)
-
-
-class EpisodioAdmin(admin.ModelAdmin):
-    list_display = ['id', 'title', 'url', 'link_m3u8']
-
-
-admin.site.register(Episodio, EpisodioAdmin)

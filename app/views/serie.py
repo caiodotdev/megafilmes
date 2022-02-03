@@ -30,7 +30,7 @@ import django_filters
 class SerieFilter(django_filters.FilterSet):
     class Meta:
         model = Serie
-        fields = ["title", "year", "rating",]
+        fields = ["title", "year", "rating", ]
 
 
 class List(LoginRequiredMixin, SerieMixin, ListView):
@@ -120,7 +120,6 @@ class Episode(LoginRequiredMixin, DetailView):
         ids = self.request.GET.getlist('ids')
         return Episodio.objects.get(id=ids[0])
 
-
     def mark_assistido(self):
         object = self.get_object()
         object.is_assistido = True
@@ -149,7 +148,7 @@ class Episode(LoginRequiredMixin, DetailView):
         else:
             playlist = Playlist.objects.last()
         url_playlist = playlist.urlplaylist_set.first()
-        new_link = get_m3u8_episodio(self.request, self.get_object(), search=True)
+        new_link = get_m3u8_episodio(self.request, self.get_object())
         url_playlist.delete()
         context['serie'] = serie
         context['m3u8'] = new_link
@@ -197,27 +196,28 @@ def get_series(request):
     return get_articles(url_series, 50, {'id': 'archive-content'}, save_serie, title_exists)
 
 
-def get_m3u8_episodio(request, episodio, search=False):
+def get_m3u8_episodio(request, episodio):
     if episodio.link_m3u8:
         if calc_prazo(episodio.link_m3u8):
             return episodio.link_m3u8
-    if search:
-        url_m3u8 = MegaPack().get_info(episodio.url)['m3u8']
-        episodio.link_m3u8 = url_m3u8
-        episodio.save()
-        return url_m3u8
-    return 'http://' + request.META['HTTP_HOST'] + '/serie/playlist.m3u8?id=' + str(episodio.id)
+    url_m3u8 = MegaPack().get_info(episodio.url)['m3u8']
+    episodio.link_m3u8 = url_m3u8
+    episodio.save()
+    return url_m3u8
 
 
 def generate_selected_episodes(request):
     ids = request.GET.getlist('ids')
+    Episodio.objects.filter(selected=True).update(selected=False)
     f = open("episode-selected.m3u8", "a")
     f.truncate(0)
     f.write("#EXTM3U\n")
     for id in ids:
         episode = Episodio.objects.get(id=id)
+        episode.selected = True
+        episode.save()
         title = unidecode.unidecode(remove_accents(episode.title))
-        uri_m3u8 = get_m3u8_episodio(request, episode, search=True)
+        uri_m3u8 = get_m3u8_episodio(request, episode)
         f.write('#EXTINF:{}, tvg-id="{} - {}" tvg-name="{} - {}" tvg-logo="{}" group-title="{}",{}\n{}\n'.format(
             episode.id,
             episode.id,
@@ -232,6 +232,42 @@ def generate_selected_episodes(request):
     return JsonResponse({'message': 'ok'})
 
 
-def get_episodes_m3u8(request):
+def write_m3u8_series():
+    f = open("episode-selected.m3u8", "a")
+    f.truncate(0)
+    f.write("#EXTM3U\n")
+    for episodio in Episodio.objects.filter(selected=True):
+        title = unidecode.unidecode(remove_accents(episodio.title))
+        f.write('#EXTINF:{}, tvg-id="{} - {}" tvg-name="{} - {}" tvg-logo="{}" group-title="{}",{}\n{}\n'.format(
+            episodio.id,
+            episodio.id,
+            title,
+            title,
+            episodio.id,
+            episodio.image,
+            'Episodes',
+            title,
+            episodio.link_m3u8))
+    f.close()
+
+
+def get_list_episodes_m3u8(request):
+    write_m3u8_series()
     fsock = open("episode-selected.m3u8", "rb")
     return HttpResponse(fsock, content_type='text')
+
+
+def get_m3u8_episodes(request, mega: MegaPack = None):
+    if not mega:
+        mega = MegaPack()
+    episodes = Episodio.objects.filter(selected=True)
+    for episode in episodes:
+        print('-- ', episode.title)
+        try:
+            episode.link_m3u8 = mega.get_info(episode.url)['m3u8']
+            episode.save()
+        except (Exception,):
+            episode.link_m3u8 = None
+            episode.save()
+            print('--- err ao coletar link m3u8: ' + str(episode.title))
+    return JsonResponse({'message': 'ok'})

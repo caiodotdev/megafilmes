@@ -95,15 +95,18 @@ def get_content_url(request):
     return JsonResponse({'content': get_program_content(channel.program.url)})
 
 
-def get_m3u8_channels(request):
-    return get_m3u8_sinal_publico(request)
-    # return get_m3u8_megahdd_default(request)
+def get_m3u8_channels(request, mega=None):
+    if not mega:
+        mega = MegaPack()
+    return get_m3u8_sinal_publico(request, mega)
+    # return get_m3u8_megahdd_default(request, mega)
 
 
-def get_m3u8_megahdd_default(request):
+def get_m3u8_megahdd_default(request, mega: MegaPack = None):
+    if not mega:
+        mega = MegaPack()
     print(time.asctime())
     channels = Channel.objects.all()
-    mega = MegaPack()
     for channel in channels:
         print('-- ', channel.title)
         try:
@@ -116,15 +119,15 @@ def get_m3u8_megahdd_default(request):
             channel.link_m3u8 = None
             channel.save()
             print('--- err ao coletar link m3u8: ' + str(channel.title))
-    mega.close()
     print(time.asctime())
     return JsonResponse({'message': str(Channel.objects.filter(link_m3u8__isnull=False))})
 
 
-def get_m3u8_sinal_publico(request):
+def get_m3u8_sinal_publico(request, mega: MegaPack = None):
+    if not mega:
+        mega = MegaPack()
     print(time.asctime())
     channels = Channel.objects.all()
-    mega = MegaPack()
     for channel in channels:
         if channel.code:
             url = 'http://sinalpublico.com/player3/ch.php?canal={}&rl2=rl2'
@@ -139,7 +142,6 @@ def get_m3u8_sinal_publico(request):
                 channel.link_m3u8 = None
                 channel.save()
                 print('--- err ao coletar link m3u8: ' + str(channel.title))
-    mega.close()
     print(time.asctime())
     return JsonResponse({'message': str(Channel.objects.filter(link_m3u8__isnull=False))})
 

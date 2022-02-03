@@ -51,6 +51,7 @@ class Episodio(TimeStamp):
     date = models.CharField(max_length=100, blank=True, null=True)
     is_assistido = models.BooleanField(default=False)
     link_m3u8 = models.TextField(blank=True, null=True)
+    selected = models.BooleanField(default=False)
 
     def __str__(self):
         return "%s" % self.title

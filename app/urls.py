@@ -84,7 +84,7 @@ urlpatterns += [
         serie.delete_all_series,
         name='delete_all_series'
     ),
-    path('series.m3u8', serie.get_episodes_m3u8, name='gen_lista_serie'),
+    path('series.m3u8', serie.get_list_episodes_m3u8, name='gen_lista_serie'),
     path('serie/generate-list', serie.generate_selected_episodes, name='generate_list_episodes')
 ]
 
