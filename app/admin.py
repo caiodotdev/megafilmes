@@ -21,7 +21,7 @@ def desapprove_selected_movies(modeladmin, request, queryset):
 
 
 approve_selected_movies.short_description = "Selecionar FILMES selecionados"
-desapprove_selected_movies.short_description = "Remover FILMES selecionados"
+desapprove_selected_movies.short_description = "Remover Selected dos FILMES"
 
 
 def approve_selected_series(modeladmin, request, queryset):
@@ -36,13 +36,13 @@ def desapprove_selected_series(modeladmin, request, queryset):
 
 
 approve_selected_series.short_description = "Selecionar EPISODIOS selecionados"
-desapprove_selected_series.short_description = "Remover EPISODIOS selecionados"
+desapprove_selected_series.short_description = "Remover Selected dos EPISODIOS"
 
 
 class MovieAdmin(admin.ModelAdmin):
     list_filter = []
     search_fields = (
-        'id',
+        'title',
     )
     inlines = []
     list_display = ("id", "selected", "title", "year", "rating", "link_m3u8", "url", "image",)
@@ -66,7 +66,7 @@ admin.site.register(Episodio, EpisodioAdmin)
 class SerieAdmin(admin.ModelAdmin):
     list_filter = []
     search_fields = (
-        'id',
+        'title',
     )
     inlines = [EpisodioInline, ]
     list_display = ("id", "title", "year", "rating", "image", "url")
@@ -78,7 +78,7 @@ admin.site.register(Serie, SerieAdmin)
 class ChannelAdmin(admin.ModelAdmin):
     list_filter = []
     search_fields = (
-        'id',
+        'title',
     )
     inlines = []
     list_display = ("id", "title", "code", "category", "link_m3u8", "url", "image",)

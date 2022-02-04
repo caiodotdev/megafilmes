@@ -1,9 +1,5 @@
 #EXTM3U
-#EXTINF:75141, tvg-id="75141 - A Grande Colisao de Hadrons" tvg-name="A Grande Colisao de Hadrons - 75141" tvg-logo="https://image.tmdb.org/t/p/w154/3S2CGr8IrP5u7TPttsSnVs1upTe.jpg" group-title="Episodes",A Grande Colisao de Hadrons
-http://intellapp.ga:8080/d/RedeCanais/RedeCanais/RCServer04/ondemand/TBBTT03EP15.mp4?mu3zAQc9HC3GbwJq=RHMGsC7hb4NCPthh-6sWCw&3U1G7qaTxrPbalZnEx=1643947017
-#EXTINF:75142, tvg-id="75142 - A Aquisicao Excelsior" tvg-name="A Aquisicao Excelsior - 75142" tvg-logo="https://image.tmdb.org/t/p/w154/dhAZ1dKdbxhQAs2FmQzA9rbUtlA.jpg" group-title="Episodes",A Aquisicao Excelsior
-http://ventiladores.tk:8080/d/RedeCanais/RedeCanais/RCServer04/ondemand/TBBTT03EP16.mp4?mu3zAQc9HC3GbwJq=9yhFlWCC0EWxCoRk7KCYLg&3U1G7qaTxrPbalZnEx=1643947026
-#EXTINF:75143, tvg-id="75143 - A Fragmentacao do Precioso" tvg-name="A Fragmentacao do Precioso - 75143" tvg-logo="https://image.tmdb.org/t/p/w154/qwBvS3JV40nWZQOBhxTMhWoSk0Q.jpg" group-title="Episodes",A Fragmentacao do Precioso
-http://chicotuita.ga:8080/d/RedeCanais/RedeCanais/RCServer04/ondemand/TBBTT03EP17.mp4?mu3zAQc9HC3GbwJq=bUZu2Ad0fmf1s3_gg4cV3A&3U1G7qaTxrPbalZnEx=1643947039
-#EXTINF:75144, tvg-id="75144 - A Alternativa das Calcas" tvg-name="A Alternativa das Calcas - 75144" tvg-logo="https://image.tmdb.org/t/p/w154/xwAZ3Yh8Goq6URZees94Yyy3Mhz.jpg" group-title="Episodes",A Alternativa das Calcas
-http://utakata.cf:8080/d/RedeCanais/RedeCanais/RCServer04/ondemand/TBBTT03EP18.mp4?mu3zAQc9HC3GbwJq=ROyy6azxtZdYcW_bsa3u9g&3U1G7qaTxrPbalZnEx=1643947921
+#EXTINF:13825, tvg-id="13825 - 1 - 2: Episodio 2" tvg-name="1 - 2: Episodio 2 - 13825" tvg-logo="https://megafilmeshdd.org/wp-content/themes/dooplay/assets/img/no/dt_backdrop.png" group-title="Episodes",1 - 2: Episodio 2
+http://tupuganameses.gq:8080/d/RedeCanais/RedeCanais/RCServer14/ondemand/PRAMRT01EP02.mp4?mu3zAQc9HC3GbwJq=6y8M3JMPa1dtoy61NRPSGg&3U1G7qaTxrPbalZnEx=1644009544
+#EXTINF:13826, tvg-id="13826 - 1 - 3: Episodio 3" tvg-name="1 - 3: Episodio 3 - 13826" tvg-logo="https://megafilmeshdd.org/wp-content/themes/dooplay/assets/img/no/dt_backdrop.png" group-title="Episodes",1 - 3: Episodio 3
+http://livrobolha.cf:8080/d/RedeCanais/RedeCanais/RCServer14/ondemand/PRAMRT01EP03.mp4?mu3zAQc9HC3GbwJq=-v_KrQsTsFy3Q89dROsViw&3U1G7qaTxrPbalZnEx=1644009559

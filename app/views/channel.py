@@ -40,6 +40,7 @@ class List(LoginRequiredMixin, ChannelMixin, ListView):
     login_url = '/admin/login/'
     template_name = 'channel/list.html'
     model = Channel
+    ordering = 'title'
     context_object_name = 'channels'
 
 
@@ -52,8 +53,23 @@ class Detail(LoginRequiredMixin, ChannelMixin, DetailView):
     template_name = 'channel/detail.html'
     context_object_name = 'channel'
 
+    def is_in(self, a_list, index):
+        if index >= 0:
+            return index < len(a_list)
+        return False
+
     def get_context_data(self, **kwargs):
         context = super(Detail, self).get_context_data(**kwargs)
+        channel = self.get_object()
+        context['list_category'] = Channel.objects.filter(category=channel.category).order_by('title')
+        channels_list = [channel_obj.id for channel_obj in Channel.objects.all().order_by('title')]
+        index_channel = channels_list.index(channel.id)
+        next_index = index_channel + 1
+        previous_index = index_channel - 1
+        if self.is_in(channels_list, next_index):
+            context['next_channel'] = Channel.objects.get(id=channels_list[next_index])
+        if self.is_in(channels_list, previous_index):
+            context['previous_channel'] = Channel.objects.get(id=channels_list[previous_index])
         return context
 
 
@@ -106,7 +122,7 @@ def get_m3u8_megahdd_default(request, mega: MegaPack = None):
     if not mega:
         mega = MegaPack()
     print(time.asctime())
-    channels = Channel.objects.all()
+    channels = Channel.objects.all().order_by('title')
     for channel in channels:
         print('-- ', channel.title)
         try:
@@ -120,14 +136,14 @@ def get_m3u8_megahdd_default(request, mega: MegaPack = None):
             channel.save()
             print('--- err ao coletar link m3u8: ' + str(channel.title))
     print(time.asctime())
-    return JsonResponse({'message': str(Channel.objects.filter(link_m3u8__isnull=False))})
+    return JsonResponse({'message': 'ok'})
 
 
 def get_m3u8_sinal_publico(request, mega: MegaPack = None):
     if not mega:
         mega = MegaPack()
     print(time.asctime())
-    channels = Channel.objects.all()
+    channels = Channel.objects.all().order_by('title')
     for channel in channels:
         if channel.code:
             url = 'http://sinalpublico.com/player3/ch.php?canal={}&rl2=rl2'
@@ -143,7 +159,7 @@ def get_m3u8_sinal_publico(request, mega: MegaPack = None):
                 channel.save()
                 print('--- err ao coletar link m3u8: ' + str(channel.title))
     print(time.asctime())
-    return JsonResponse({'message': str(Channel.objects.filter(link_m3u8__isnull=False))})
+    return JsonResponse({'message': 'ok'})
 
 
 def get_custom_m3u8_local(channel):
@@ -227,7 +243,7 @@ def generate_lista_formatted(request):
     f = open("lista2.m3u8", "a")
     f.truncate(0)
     f.write("#EXTM3U\n")
-    for ch in Channel.objects.filter(link_m3u8__icontains='.m3u8').distinct():
+    for ch in Channel.objects.filter(link_m3u8__icontains='.m3u8').distinct().order_by('title'):
         title = ch.title
         id = ch.id
         custom_m3u8 = 'http://' + request.META['HTTP_HOST'] + '/multi/playlist.m3u8?id=' + str(ch.id)
@@ -250,7 +266,7 @@ def generate_lista_default(request):
     f = open("lista.m3u8", "a")
     f.truncate(0)
     f.write("#EXTM3U\n")
-    for ch in Channel.objects.filter(link_m3u8__icontains='.m3u8').distinct():
+    for ch in Channel.objects.filter(link_m3u8__icontains='.m3u8').distinct().order_by('title'):
         title = ch.title
         custom_m3u8 = 'http://' + request.META['HTTP_HOST'] + '/multi/playlist.m3u8?id=' + str(ch.id)
         f.write('#EXTINF:{}, tvg-id="{} - {}" tvg-name="{} - {}" tvg-logo="{}" group-title="{}",{}\n{}\n'.format(

@@ -216,19 +216,8 @@ def generate_selected_episodes(request):
         episode = Episodio.objects.get(id=id)
         episode.selected = True
         episode.save()
-        title = unidecode.unidecode(remove_accents(episode.title))
-        uri_m3u8 = get_m3u8_episodio(request, episode)
-        f.write('#EXTINF:{}, tvg-id="{} - {}" tvg-name="{} - {}" tvg-logo="{}" group-title="{}",{}\n{}\n'.format(
-            episode.id,
-            episode.id,
-            title,
-            title,
-            episode.id,
-            episode.image,
-            'Episodes',
-            title,
-            uri_m3u8))
-    f.close()
+        get_m3u8_episodio(request, episode)
+    write_m3u8_series()
     return JsonResponse({'message': 'ok'})
 
 
@@ -237,7 +226,7 @@ def write_m3u8_series():
     f.truncate(0)
     f.write("#EXTM3U\n")
     for episodio in Episodio.objects.filter(selected=True):
-        title = unidecode.unidecode(remove_accents(episodio.title))
+        title = unidecode.unidecode(remove_accents(str(episodio.number + ': ' + episodio.title)))
         f.write('#EXTINF:{}, tvg-id="{} - {}" tvg-name="{} - {}" tvg-logo="{}" group-title="{}",{}\n{}\n'.format(
             episodio.id,
             episodio.id,

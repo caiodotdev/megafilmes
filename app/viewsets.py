@@ -47,7 +47,7 @@ class ChannelFilter(django_filters.FilterSet):
 
 class ChannelViewSet(viewsets.ModelViewSet):
     serializer_class = serializers.ChannelSerializer
-    queryset = models.Channel.objects.all()
+    queryset = models.Channel.objects.all().order_by('title')
     filterset_class = ChannelFilter
     filter_backends = (filters.DjangoFilterBackend, rest_framework.filters.SearchFilter,)
     search_fields = ['title', ]

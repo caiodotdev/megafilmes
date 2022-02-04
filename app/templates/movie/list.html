@@ -133,7 +133,7 @@
                         targets: 1,
                         data: 'image',
                         "render": function (data, type, row, meta) {
-                            return '<img class="img-thumbnail" src="' + row[1] + '"/>';
+                            return '<a href="/movie/' + row[0] + '/"><img class="img-thumbnail" src="' + row[1] + '"/></a>';
                         }
                     },
                     {

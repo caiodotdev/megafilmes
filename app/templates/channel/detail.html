@@ -10,11 +10,21 @@
     <br/>
 
     <div id="actions" class="row">
-        <div class="col-xs-12">
+        <div class="col-sm-6 col-xs-12">
             <button type="button" class="btn btn-primary" id="get_m3u8">
                 Update M3u8
             </button>
             <a href="{% url 'CHANNEL_list' %}" class="btn btn-default">Back</a>
+        </div>
+        <div class="col-sm-6 col-xs-12">
+            <a href="{% url 'CHANNEL_detail' previous_channel.id %}" class="btn btn-default">
+                <i class="fa fa-arrow-circle-left"></i>
+                Previous: {{ previous_channel.title }}
+            </a>
+            <a href="{% url 'CHANNEL_detail' next_channel.id %}" class="btn btn-default">
+                <i class="fa fa-arrow-circle-right"></i>
+                Next: {{ next_channel.title }}
+            </a>
         </div>
     </div>
     <br/><br/>
@@ -24,6 +34,25 @@
             <div id="Player">
             </div>
         </div>
+    </div>
+    <hr/>
+    <div class="row">
+        {% for channel_obj in list_category %}
+            <div class="col-xs-6 col-sm-3 col-md-2">
+                <div class="panel panel-default">
+                    <div class="panel-body text-center">
+                        <div class="row text-center">
+                            <div class="col-xs-12">
+                                <a href="{% url 'CHANNEL_detail' channel_obj.pk %}"><img src="{{ channel_obj.image }}"
+                                                                                         class="img-responsive"
+                                                                                         style="height: 100px;"/>
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        {% endfor %}
     </div>
     <hr/>
     <div class="row">
