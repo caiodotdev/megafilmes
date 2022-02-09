@@ -17,10 +17,11 @@ class MovieFilter(django_filters.FilterSet):
 
 class MovieViewSet(viewsets.ModelViewSet):
     serializer_class = serializers.MovieSerializer
-    queryset = models.Movie.objects.all()
+    queryset = models.Movie.objects.filter(selected=True)
     filterset_class = MovieFilter
     filter_backends = (filters.DjangoFilterBackend, rest_framework.filters.SearchFilter,)
-    search_fields = ['title',]
+    search_fields = ['title', 'selected']
+    filterset_fields = ['title', 'selected']
     ordering_fields = '__all__'
 
 
@@ -42,7 +43,7 @@ class SerieViewSet(viewsets.ModelViewSet):
 class ChannelFilter(django_filters.FilterSet):
     class Meta:
         model = models.Channel
-        fields = ["id", "title", "image", "url", "link_m3u8",  "code", "custom_m3u8"]
+        fields = ["id", "title", "image", "url", "link_m3u8", "code", "custom_m3u8"]
 
 
 class ChannelViewSet(viewsets.ModelViewSet):
@@ -51,4 +52,19 @@ class ChannelViewSet(viewsets.ModelViewSet):
     filterset_class = ChannelFilter
     filter_backends = (filters.DjangoFilterBackend, rest_framework.filters.SearchFilter,)
     search_fields = ['title', ]
+    ordering_fields = '__all__'
+
+
+class EpisodioFilter(django_filters.FilterSet):
+    class Meta:
+        model = models.Episodio
+        fields = ["id", "title", "image", "url", "link_m3u8", "selected"]
+
+
+class EpisodioViewSet(viewsets.ModelViewSet):
+    serializer_class = serializers.EpisodioSerializer
+    queryset = models.Episodio.objects.filter(selected=True)
+    filterset_class = EpisodioFilter
+    filter_backends = (filters.DjangoFilterBackend, rest_framework.filters.SearchFilter,)
+    search_fields = ['title', 'selected']
     ordering_fields = '__all__'

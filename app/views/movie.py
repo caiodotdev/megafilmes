@@ -1,10 +1,14 @@
 #!/usr/bin/env python
 # -*- coding: utf-8 -*-
+from http import HTTPStatus
+
+import requests
 import unicodedata
 import unidecode
 from django.contrib import messages
 from django.contrib.admin.utils import NestedObjects
 from django.contrib.auth.mixins import LoginRequiredMixin, PermissionRequiredMixin
+from django.db import transaction
 from django.db.models import Q
 from django.http import HttpResponse, JsonResponse
 from django.shortcuts import redirect
@@ -33,6 +37,33 @@ from app.utils import get_articles
 import django_filters
 
 
+class MovieFormSetManagement(object):
+    formsets = []
+
+    def form_valid(self, form):
+        context = self.get_context_data()
+        with transaction.atomic():
+            self.object = form.save()
+
+            for Formset in self.formsets:
+                formset = context["{}set".format(str(Formset.model.__name__).lower())]
+                if formset.is_valid():
+                    formset.instance = self.object
+                    formset.save()
+        return super(MovieFormSetManagement, self).form_valid(form)
+
+    def get_context_data(self, **kwargs):
+        data = super(MovieFormSetManagement, self).get_context_data(**kwargs)
+        for Formset in self.formsets:
+            if self.request.POST:
+                data["{}set".format(str(Formset.model.__name__).lower())] = Formset(self.request.POST,
+                                                                                    self.request.FILES,
+                                                                                    instance=self.object)
+            else:
+                data["{}set".format(str(Formset.model.__name__).lower())] = Formset(instance=self.object)
+        return data
+
+
 class MovieFilter(django_filters.FilterSet):
     class Meta:
         model = Movie
@@ -54,6 +85,77 @@ class List(LoginRequiredMixin, MovieMixin, ListView):
         queryset = self.get_queryset()
         filter = MovieFilter(self.request.GET, queryset)
         context["filter"] = filter
+        return context
+
+
+class ListSelected(LoginRequiredMixin, MovieMixin, ListView):
+    """
+    List all Movies
+    """
+    login_url = '/admin/login/'
+    template_name = 'movie/list_selected.html'
+    model = Movie
+    queryset = Movie.objects.filter(selected=True)
+    context_object_name = 'movies'
+    ordering = '-id'
+    paginate_by = 10
+    search = ''
+
+    def get_queryset(self):
+        queryset = Movie.objects.filter(selected=True)
+        filter = MovieFilter(self.request.GET, queryset)
+        queryset = self.search_general(filter.qs)
+        queryset = self.ordering_data(queryset)
+        return queryset
+
+    def search_general(self, qs):
+        if 'search' in self.request.GET:
+            self.search = self.request.GET['search']
+            if self.search:
+                search = self.search
+                qs = qs.filter(Q(id__icontains=search) | Q(title__icontains=search) | Q(year__icontains=search) | Q(
+                    rating__icontains=search) | Q(image__icontains=search) | Q(url__icontains=search))
+        return qs
+
+    def get_ordering(self):
+        if 'ordering' in self.request.GET:
+            self.ordering = self.request.GET['ordering']
+            if self.ordering:
+                return self.ordering
+            else:
+                self.ordering = '-id'
+        return self.ordering
+
+    def ordering_data(self, qs):
+        qs = qs.order_by(self.get_ordering())
+        return qs
+
+    def get_context_data(self, **kwargs):
+        context = super(ListSelected, self).get_context_data(**kwargs)
+        queryset = self.get_queryset()
+        filter = MovieFilter(self.request.GET, queryset)
+        page_size = self.get_paginate_by(queryset)
+        if page_size:
+            paginator, page, queryset, is_paginated = self.paginate_queryset(queryset, page_size)
+            context.update(**{
+                'ordering': self.ordering,
+                'search': self.search,
+                'filter': filter,
+                'paginator': paginator,
+                'page_obj': page,
+                'is_paginated': is_paginated,
+                'object_list': queryset
+            })
+        else:
+            context.update(**{
+                'search': self.search,
+                'ordering': self.ordering,
+                'filter': filter,
+                'paginator': None,
+                'page_obj': None,
+                'is_paginated': False,
+                'object_list': queryset
+            })
         return context
 
 
@@ -204,3 +306,66 @@ def get_m3u8_movies(request, mega: MegaPack = None):
             movie.save()
             print('--- err ao coletar link m3u8: ' + str(movie.title))
     return JsonResponse({'message': 'ok'})
+
+
+def delete_all_movies_server():
+    list_movies_server = requests.get(URL_ENDPOINT_MOVIE).json()
+    if list_movies_server:
+        for movie_server in list_movies_server:
+            requests.delete(URL_ENDPOINT_MOVIE + movie_server['id'] + '/')
+
+
+def updator():
+    delete_all_movies_server()
+    for movie in Movie.objects.filter(selected=True):
+        movie_server = has_movie(movie)
+        if movie_server:
+            data = {
+                "id": str(movie.id),
+                "image": str(movie.image),
+                "url": str(movie.url),
+                "link_m3u8": str(movie.link_m3u8),
+                "selected": True
+            }
+            obj_updated = update_movie_remote(movie_server, data)
+            if not obj_updated:
+                print('Not Updated: ' + str(movie.title))
+            else:
+                print('Updated: ' + str(movie.title))
+        else:
+            obj_created = create_movie_remote(movie)
+            if obj_created:
+                print('Created new movie: ' + str(movie.title))
+
+
+URL_ENDPOINT_MOVIE = 'https://megafilmes.herokuapp.com/api/movie/'
+
+
+def has_movie(movie):
+    req = requests.get(URL_ENDPOINT_MOVIE + '?title=' + movie.title).json()
+    if req:
+        return req[0]
+    return None
+
+
+def update_movie_remote(olddata, newdata):
+    req = requests.patch(URL_ENDPOINT_MOVIE + str(olddata['id']) + '/', data=newdata)
+    if req.status_code == 200:
+        return req.json()
+    return None
+
+
+def create_movie_remote(movie):
+    data = {
+        "id": str(movie.id),
+        "title": str(movie.title),
+        "image": str(movie.image),
+        "year": str(movie.year),
+        "url": str(movie.url),
+        "link_m3u8": str(movie.link_m3u8),
+        "selected": True
+    }
+    req = requests.post(URL_ENDPOINT_MOVIE, data=data)
+    if req.status_code == HTTPStatus.CREATED:
+        return req.json()
+    return None

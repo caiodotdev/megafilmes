@@ -2,6 +2,7 @@
 # -*- coding: utf-8 -*-
 import re
 import time
+from http import HTTPStatus
 
 import requests
 from bs4 import BeautifulSoup
@@ -293,3 +294,55 @@ def generate_lista_default(request):
 def get_epg(request):
     fsock = open("epg.xml", "rb")
     return HttpResponse(fsock, content_type='application/xml')
+
+
+def updator():
+    for channel in Channel.objects.all().order_by('title'):
+        ch_server = has_channel(channel)
+        if ch_server:
+            data = {
+                'id': str(channel.id),
+                'image': str(channel.image),
+            }
+            obj_updated = update_channel_remote(ch_server, data)
+            if not obj_updated:
+                print('Not Updated: ' + str(channel.title))
+            else:
+                print('Updated: ' + str(channel.title))
+        else:
+            obj_created = create_channel_remote(channel)
+            if obj_created:
+                print('Created new channel: ' + str(channel.title))
+
+
+URL_ENDPOINT = 'https://megafilmes.herokuapp.com/api/channel/'
+
+
+def has_channel(channel):
+    req = requests.get(URL_ENDPOINT + '?title=' + channel.title).json()
+    if req:
+        return req[0]
+    return None
+
+
+def update_channel_remote(olddata, newdata):
+    req = requests.patch(URL_ENDPOINT + str(olddata['id']) + '/', data=newdata)
+    if req.status_code == 200:
+        return req.json()
+    return None
+
+
+def create_channel_remote(channel):
+    data = {
+        "id": str(channel.id),
+        "title": str(channel.title),
+        "image": str(channel.image),
+        "code": str(channel.code),
+        "url": str(channel.url),
+        "link_m3u8": str(channel.link_m3u8),
+        "custom_m3u8": str(channel.custom_m3u8)
+    }
+    req = requests.post(URL_ENDPOINT, data=data)
+    if req.status_code == HTTPStatus.CREATED:
+        return req.json()
+    return None

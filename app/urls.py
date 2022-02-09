@@ -22,6 +22,11 @@ urlpatterns += [
         name=conf.MOVIE_LIST_URL_NAME
     ),
     path(
+        'movie/selected/',
+        movie.ListSelected.as_view(),
+        name='MOVIE_list_selected'
+    ),
+    path(
         'movie/<int:pk>/',
         movie.Detail.as_view(),
         name=conf.MOVIE_DETAIL_URL_NAME

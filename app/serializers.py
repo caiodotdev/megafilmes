@@ -1,6 +1,6 @@
 from rest_framework import serializers
 
-from app.models import Movie, Serie, Channel
+from app.models import Movie, Serie, Channel, Episodio
 
 
 class MovieSerializer(serializers.ModelSerializer):
@@ -25,3 +25,11 @@ class ChannelSerializer(serializers.ModelSerializer):
     class Meta:
         model = Channel
         fields = ("id", "title", "image", "code", "url", "link_m3u8", "custom_m3u8", "category")
+
+
+class EpisodioSerializer(serializers.ModelSerializer):
+    id = serializers.CharField()
+
+    class Meta:
+        model = Episodio
+        fields = ("id", "title", "image", "url", "selected", "link_m3u8")

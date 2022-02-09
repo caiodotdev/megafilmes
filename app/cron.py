@@ -4,7 +4,7 @@ from django_cron import CronJobBase, Schedule
 
 from app.views.channel import get_m3u8_channels
 from app.views.megapack import MegaPack
-from app.views.movie import get_m3u8_movies
+from app.views.movie import get_m3u8_movies, updator
 from app.views.serie import get_m3u8_episodes
 
 
@@ -28,9 +28,10 @@ class MyCronJob(CronJobBase):
             mega = MegaPack()
             print('---- Starting: ' + str(i))
             print(time.asctime())
-            get_m3u8_channels({}, mega)
-            get_m3u8_movies({}, mega)
-            get_m3u8_episodes({}, mega)
+            # updator()
+            # get_m3u8_channels({}, mega)
+            # get_m3u8_movies({}, mega)
+            # get_m3u8_episodes({}, mega)
             print(time.asctime())
             print('---- Finish CRON JOB: ' + str(i))
             time.sleep(60 * 60 * 2)

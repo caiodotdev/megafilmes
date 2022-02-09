@@ -15,6 +15,7 @@ movie_router.register(
 )
 
 api_urlpatterns += movie_router.urls
+
 serie_router = DefaultRouter()
 
 serie_router.register(
@@ -24,6 +25,7 @@ serie_router.register(
 )
 
 api_urlpatterns += serie_router.urls
+
 channel_router = DefaultRouter()
 
 channel_router.register(
@@ -33,3 +35,13 @@ channel_router.register(
 )
 
 api_urlpatterns += channel_router.urls
+
+episodio_router = DefaultRouter()
+
+episodio_router.register(
+    r'^api/episodio',
+    viewsets.EpisodioViewSet,
+    basename="episodio"
+)
+
+api_urlpatterns += episodio_router.urls

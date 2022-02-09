@@ -1,5 +1,8 @@
 #!/usr/bin/env python
 # -*- coding: utf-8 -*-
+from http import HTTPStatus
+
+import requests
 import unidecode
 from django.contrib.auth.mixins import LoginRequiredMixin
 from django.db.models import Q
@@ -260,3 +263,65 @@ def get_m3u8_episodes(request, mega: MegaPack = None):
             episode.save()
             print('--- err ao coletar link m3u8: ' + str(episode.title))
     return JsonResponse({'message': 'ok'})
+
+
+def delete_all_episodes_server():
+    list_movies_server = requests.get(URL_ENDPOINT_EPISODE + '?selected=true').json()
+    if list_movies_server:
+        for movie_server in list_movies_server:
+            requests.delete(URL_ENDPOINT_EPISODE + movie_server['id'] + '/')
+
+
+def updator():
+    delete_all_episodes_server()
+    for episodio in Episodio.objects.filter(selected=True):
+        episodio_server = has_episodio(episodio)
+        if episodio_server:
+            data = {
+                "id": str(episodio.id),
+                "image": str(episodio.image),
+                "url": str(episodio.url),
+                "link_m3u8": str(episodio.link_m3u8),
+                "selected": True
+            }
+            obj_updated = update_episodio_remote(episodio_server, data)
+            if not obj_updated:
+                print('Not Updated: ' + str(episodio.title))
+            else:
+                print('Updated: ' + str(episodio.title))
+        else:
+            obj_created = create_episodio_remote(episodio)
+            if obj_created:
+                print('Created new channel: ' + str(episodio.title))
+
+
+URL_ENDPOINT_EPISODE = 'https://megafilmes.herokuapp.com/api/episodio/'
+
+
+def has_episodio(episodio):
+    req = requests.get(URL_ENDPOINT_EPISODE + '?title=' + episodio.title).json()
+    if req:
+        return req[0]
+    return None
+
+
+def update_episodio_remote(olddata, newdata):
+    req = requests.patch(URL_ENDPOINT_EPISODE + str(olddata['id']) + '/', data=newdata)
+    if req.status_code == 200:
+        return req.json()
+    return None
+
+
+def create_episodio_remote(episodio):
+    data = {
+        "id": str(episodio.id),
+        "title": str(episodio.title),
+        "image": str(episodio.image),
+        "url": str(episodio.url),
+        "link_m3u8": str(episodio.link_m3u8),
+        "selected": True
+    }
+    req = requests.post(URL_ENDPOINT_EPISODE, data=data)
+    if req.status_code == HTTPStatus.CREATED:
+        return req.json()
+    return None
