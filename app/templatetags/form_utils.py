@@ -4,6 +4,8 @@ import urllib
 from django import template
 from django.template.loader import get_template
 
+from app.utils import get_program_content
+
 register = template.Library()
 
 
@@ -60,3 +62,11 @@ def is_remote(link):
     if 'megafilmes' in link:
         return True
     return False
+
+
+@register.filter()
+def get_program_channel(url):
+    try:
+        return get_program_content(url)
+    except (Exception,):
+        return ''

@@ -81,7 +81,7 @@ class ChannelAdmin(admin.ModelAdmin):
         'title',
     )
     inlines = []
-    list_display = ("id", "title", "code", "category", "link_m3u8", "url", "image",)
+    list_display = ("id", "title", "code", "category", "program_url", "link_m3u8", "url", "image",)
 
 
 admin.site.register(Channel, ChannelAdmin)
@@ -123,3 +123,20 @@ class CategoryAdmin(admin.ModelAdmin):
 
 
 admin.site.register(Category, CategoryAdmin)
+
+
+class ProgramItemInline(admin.TabularInline):
+    model = ProgramItem
+
+
+class ProgramDayAdmin(admin.ModelAdmin):
+    list_display = ['id', 'title', 'channel']
+    inlines = [ProgramItemInline, ]
+
+
+class ProgramItemAdmin(admin.ModelAdmin):
+    list_display = ['id', 'title', 'subtitle', 'program_day', 'hour', 'hour_formatted', 'start', 'stop', ]
+
+
+admin.site.register(ProgramDay, ProgramDayAdmin)
+admin.site.register(ProgramItem, ProgramItemAdmin)

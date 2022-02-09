@@ -33,6 +33,8 @@ from django.forms.widgets import (
 )
 from django.http import JsonResponse
 
+from app.models import Channel
+
 
 def generate_random_string(n):
     """
@@ -195,21 +197,25 @@ def get_articles(url_get, pages, div_principal, method, check_article):
     return JsonResponse(data={'success': 'OK'})
 
 
-def find_program(channel_title):
+def find_program():
     URL_BASE = 'https://meuguia.tv'
     page = get_page(URL_BASE, {})
-    for category in page.findAll('li'):
-        url_category = URL_BASE + str(category.find('a')['href'])
-        page_category = get_page(url_category, {})
-        for channel in page_category.findAll('li'):
-            h2_title = channel.find('h2')
-            if h2_title:
-                title = str(h2_title.text)
-                if title.lower() == str(channel_title).lower():
-                    url_channel = URL_BASE + str(channel.find('a')['href'])
-                    logo = str(channel.find('div', {'class': 'logo'})['class'][-1])
-                    return url_channel, logo
-    return None, None
+    i = 0
+    for channel_obj in Channel.objects.all().order_by('title'):
+        for category in page.findAll('li'):
+            url_category = URL_BASE + str(category.find('a')['href'])
+            page_category = get_page(url_category, {})
+            for channel in page_category.findAll('li'):
+                h2_title = channel.find('h2')
+                if h2_title:
+                    title = str(h2_title.text)
+                    if title.lower() == str(channel_obj.title).lower():
+                        print('-- encontrou: ' + str(channel_obj.title))
+                        i += 1
+                        url_channel = URL_BASE + str(channel.find('a')['href'])
+                        channel_obj.program_url = url_channel
+                        channel_obj.save()
+    print('total>: ', str(i))
 
 
 def get_program_content(url):

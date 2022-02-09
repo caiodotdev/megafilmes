@@ -128,6 +128,11 @@ urlpatterns += [
         name='get_m3u8_channel'
     ),
     path(
+        'epg.xml',
+        channel.get_epg,
+        name='get_epg'
+    ),
+    path(
         'lista.m3u8',
         channel.generate_lista_default,
         name='gen_lista'

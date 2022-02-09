@@ -7,6 +7,9 @@ In this application you have: Movies, Series and Closed TV Channels.
 
 ![List IPTV m3u8](https://i.imgur.com/YIxP9fZ.png)
 
+For any devices, install your preferred:
+[https://github.com/iptv-org/awesome-iptv](https://github.com/iptv-org/awesome-iptv)
+
 ## Requirements
 ### -- To install this project, you need to have Python (>= 3.6) installed on your machine, GIT, Google Chrome and  and the Anaconda tool.
 

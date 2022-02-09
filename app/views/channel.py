@@ -11,6 +11,8 @@ from django.shortcuts import redirect
 from django.views.generic.detail import DetailView
 from django.views.generic.list import ListView
 
+from app.epg.builder import builder_file
+from app.epg.core import collect_program_by_channel, collect_all, remove_older_program_day
 from app.templatetags.form_utils import calc_prazo
 from app.views.megapack import MegaPack
 
@@ -59,6 +61,7 @@ class Detail(LoginRequiredMixin, ChannelMixin, DetailView):
         return False
 
     def get_context_data(self, **kwargs):
+        # builder_file()
         context = super(Detail, self).get_context_data(**kwargs)
         channel = self.get_object()
         context['list_category'] = Channel.objects.filter(category=channel.category).order_by('title')
@@ -112,6 +115,9 @@ def get_content_url(request):
 
 
 def get_m3u8_channels(request, mega=None):
+    # remove_older_program_day()
+    # collect_all()
+    # builder_file()
     if not mega:
         mega = MegaPack()
     return get_m3u8_sinal_publico(request, mega)
@@ -282,3 +288,8 @@ def generate_lista_default(request):
     f.close()
     fsock = open("lista.m3u8", "rb")
     return HttpResponse(fsock, content_type='text')
+
+
+def get_epg(request):
+    fsock = open("epg.xml", "rb")
+    return HttpResponse(fsock, content_type='application/xml')

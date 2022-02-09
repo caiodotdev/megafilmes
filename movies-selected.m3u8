@@ -1,17 +1,21 @@
 #EXTM3U
+#EXTINF:13302, tvg-id="13302 - Independence Day: O Ressurgimento" tvg-name="Independence Day: O Ressurgimento - 13302" tvg-logo="https://image.tmdb.org/t/p/w185/uh7dnhLboTzjNfPVTsqr8sBo6wh.jpg" group-title="Filmes",Independence Day: O Ressurgimento
+http://crazymonkey.ga:8080/d/RedeCanais/RedeCanais/RCFServer3/ondemand/INDPNDAYORSGMNT.mp4?mu3zAQc9HC3GbwJq=Z2aqGJhIYcOfafdGADK6Rg&3U1G7qaTxrPbalZnEx=1644299831
+#EXTINF:13303, tvg-id="13303 - Independence Day" tvg-name="Independence Day - 13303" tvg-logo="https://image.tmdb.org/t/p/w185/uXznnHJJ9sPSGkD1mtEZtblb9Nd.jpg" group-title="Filmes",Independence Day
+http://garrafa.tk:8080/d/RedeCanais/RedeCanais/RCFServer2/ondemand/INDPNDAY.mp4?mu3zAQc9HC3GbwJq=KaWQlmkbGQdz_hT8tfL3UQ&3U1G7qaTxrPbalZnEx=1644299816
 #EXTINF:15193, tvg-id="15193 - Z: A Cidade Perdida" tvg-name="Z: A Cidade Perdida - 15193" tvg-logo="https://image.tmdb.org/t/p/w185/ms4UmEmc0cyK5AN2EGPfadkbXae.jpg" group-title="Filmes",Z: A Cidade Perdida
-http://yagura.gq:8080/d/RedeCanais/RedeCanais/RCFServer4/ondemand/ZCDSPRDA.mp4?mu3zAQc9HC3GbwJq=0GeVIle_U45Lm3NJaELtTQ&3U1G7qaTxrPbalZnEx=1644002373
+http://arrozdoce.tk:8080/d/RedeCanais/RedeCanais/RCFServer4/ondemand/ZCDSPRDA.mp4?mu3zAQc9HC3GbwJq=62NIUhehl1r0HG_CYRcgzQ&3U1G7qaTxrPbalZnEx=1644298449
+#EXTINF:16766, tvg-id="16766 - O Homem Que Viu o Infinito" tvg-name="O Homem Que Viu o Infinito - 16766" tvg-logo="https://image.tmdb.org/t/p/w185/70GdZPmwI0l0cjPUEbN5b826hz7.jpg" group-title="Filmes",O Homem Que Viu o Infinito
+None
 #EXTINF:17854, tvg-id="17854 - Em Defesa de Cristo" tvg-name="Em Defesa de Cristo - 17854" tvg-logo="https://image.tmdb.org/t/p/w185/pyxN3LztDtPus5JSOv1HiRHkSco.jpg" group-title="Filmes",Em Defesa de Cristo
-http://guren.ml:8080/d/RedeCanais/RedeCanais/RCFServer4/ondemand/EMDEFDCRST.mp4?mu3zAQc9HC3GbwJq=YIStwZzb8mdxymprXuSQMQ&3U1G7qaTxrPbalZnEx=1644002386
+http://cracha.ml:8080/d/RedeCanais/RedeCanais/RCFServer4/ondemand/EMDEFDCRST.mp4?mu3zAQc9HC3GbwJq=_SyeRyrjOqjmI9JJ_F7vRQ&3U1G7qaTxrPbalZnEx=1644298465
 #EXTINF:18577, tvg-id="18577 - Godzilla vs. Kong" tvg-name="Godzilla vs. Kong - 18577" tvg-logo="https://megafilmeshdd.org/wp-content/uploads/2021/02/klAIFewuqcyEmH1SMtR2XbMyqzM-185x278.jpg" group-title="Filmes",Godzilla vs. Kong
-http://variavel.tk:8080/d/RedeCanais/RedeCanais/RCFServer5/ondemand/GDZLAVSKNGDBL.mp4?mu3zAQc9HC3GbwJq=0lvjzpErpb7Pghd1pstW0w&3U1G7qaTxrPbalZnEx=1644002390
+http://monstroverso.tk:8080/d/RedeCanais/RedeCanais/RCFServer5/ondemand/GDZLAVSKNGDBL.mp4?mu3zAQc9HC3GbwJq=3K6oxcLYG9b34an2yAUftA&3U1G7qaTxrPbalZnEx=1644298472
 #EXTINF:18792, tvg-id="18792 - Sonic: O Filme" tvg-name="Sonic: O Filme - 18792" tvg-logo="https://megafilmeshdd.org/wp-content/uploads/2020/07/Kt9iFdTu5TbAm7tNfc876mrWU-185x278.jpg" group-title="Filmes",Sonic: O Filme
-http://objetos.ml:8080/d/RedeCanais/RedeCanais/RCFServer5/ondemand/SONCOFLM.mp4?mu3zAQc9HC3GbwJq=jgNieYJvf41RPkeHex-lRQ&3U1G7qaTxrPbalZnEx=1644002403
+http://carburadores.tk:8080/d/RedeCanais/RedeCanais/RCFServer5/ondemand/SONCOFLM.mp4?mu3zAQc9HC3GbwJq=bcMmssAHQDVnD7APwfUuBw&3U1G7qaTxrPbalZnEx=1644298478
 #EXTINF:18892, tvg-id="18892 - Ad Astra - Rumo as Estrelas" tvg-name="Ad Astra - Rumo as Estrelas - 18892" tvg-logo="https://megafilmeshdd.org/wp-content/uploads/2020/07/wigZBAmNrIhxp2FNGOROUAeHvdh-185x278.jpg" group-title="Filmes",Ad Astra - Rumo as Estrelas
-http://compressores.ml:8080/d/RedeCanais/RedeCanais/RCFServer3/ondemand/ADSTRMASESTRLS.mp4?mu3zAQc9HC3GbwJq=8a0VoebwHMipPsZpuJUdCA&3U1G7qaTxrPbalZnEx=1644002409
-#EXTINF:18940, tvg-id="18940 - Yesterday" tvg-name="Yesterday - 18940" tvg-logo="https://megafilmeshdd.org/wp-content/uploads/2020/07/1rjaRIAqFPQNnMtqSMLtg0VEABi-185x278.jpg" group-title="Filmes",Yesterday
-http://gabigol.ga:8080/d/RedeCanais/RedeCanais/RCFServer3/ondemand/YESRTDY.mp4?mu3zAQc9HC3GbwJq=9ZBeWo1Jq5WmCiChVLncVQ&3U1G7qaTxrPbalZnEx=1644002413
+http://evaporador.ml:8080/d/RedeCanais/RedeCanais/RCFServer3/ondemand/ADSTRMASESTRLS.mp4?mu3zAQc9HC3GbwJq=mftP3bTreo1eHGyDl-rvhQ&3U1G7qaTxrPbalZnEx=1644298486
 #EXTINF:19097, tvg-id="19097 - Viva - A Vida e uma Festa" tvg-name="Viva - A Vida e uma Festa - 19097" tvg-logo="https://image.tmdb.org/t/p/w185/6oNm06TPz2vGiPc2I52oXW3JwPS.jpg" group-title="Filmes",Viva - A Vida e uma Festa
-http://genmashiranui.ga:8080/d/RedeCanais/RedeCanais/RCFServer4/ondemand/VIVAAVDEUMFST.mp4?mu3zAQc9HC3GbwJq=3ICikVMb7SnjIw2MoG-yCg&3U1G7qaTxrPbalZnEx=1644002417
+http://orcalo.gq:8080/d/RedeCanais/RedeCanais/RCFServer4/ondemand/VIVAAVDEUMFST.mp4?mu3zAQc9HC3GbwJq=GPG4DUEO4Mh3_ucdRODdcA&3U1G7qaTxrPbalZnEx=1644298490
 #EXTINF:19461, tvg-id="19461 - Orgulho e Preconceito" tvg-name="Orgulho e Preconceito - 19461" tvg-logo="https://image.tmdb.org/t/p/w185/dmnY0Zs8uMSHkMiol7M3xOlvvkK.jpg" group-title="Filmes",Orgulho e Preconceito
-http://xeep.ml:8080/d/RedeCanais/RedeCanais/RCFServer4/ondemand/ORGNHDPRCNTO.mp4?mu3zAQc9HC3GbwJq=mqmbIgkP7myuraAkCQfWrA&3U1G7qaTxrPbalZnEx=1644002422
+http://yugitox.tk:8080/d/RedeCanais/RedeCanais/RCFServer4/ondemand/ORGNHDPRCNTO.mp4?mu3zAQc9HC3GbwJq=Jr62gBMfy-fAugf_711Ipg&3U1G7qaTxrPbalZnEx=1644298497
