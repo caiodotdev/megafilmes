@@ -22,6 +22,8 @@ from app.models import Channel
 
 
 class ChannelSerializer(serializers.ModelSerializer):
+    id = serializers.CharField()
+
     class Meta:
         model = Channel
-        fields = ("id", "title", "image",  "code", "url", "link_m3u8", "custom_m3u8", "category")
+        fields = ("id", "title", "image", "code", "url", "link_m3u8", "custom_m3u8", "category")
