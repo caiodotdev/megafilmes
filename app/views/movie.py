@@ -172,8 +172,9 @@ class Detail(LoginRequiredMixin, MovieMixin, DetailView):
         context = super(Detail, self).get_context_data(**kwargs)
         movie = self.get_object()
         if not calc_prazo(movie.link_m3u8):
-            mega = MegaPack().get_info(movie.url)
-            movie.link_m3u8 = mega['m3u8']
+            mega = MegaPack()
+            result = mega.get_info(movie.url)
+            movie.link_m3u8 = result['m3u8']
             movie.save()
             mega.close()
         return context
@@ -258,13 +259,15 @@ def remove_accents(text):
 
 
 def generate_selected_movies(request):
+    mega = MegaPack()
     if 'ids' in request.GET:
         ids = request.GET.getlist('ids')
         for id in ids:
             movie = Movie.objects.get(id=id)
             movie.selected = True
-            movie.link_m3u8 = MegaPack().get_info(movie.url)['m3u8']
+            movie.link_m3u8 = mega.get_info(movie.url)['m3u8']
             movie.save()
+    mega.close()
     write_m3u8_movies()
     updator_movies_server()
     return JsonResponse({'message': 'ok'})

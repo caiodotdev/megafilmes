@@ -276,12 +276,14 @@ def get_series(request):
 
 
 def get_m3u8_episodio(request, episodio):
+    mega = MegaPack()
     if episodio.link_m3u8:
         if calc_prazo(episodio.link_m3u8):
             return episodio.link_m3u8
-    url_m3u8 = MegaPack().get_info(episodio.url)['m3u8']
+    url_m3u8 = mega.get_info(episodio.url)['m3u8']
     episodio.link_m3u8 = url_m3u8
     episodio.save()
+    mega.close()
     return url_m3u8
 
 

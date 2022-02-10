@@ -5,19 +5,24 @@ from django.contrib import admin
 
 from app.models import *
 # Register your models here.
-from app.views.movie import get_m3u8_movies, write_m3u8_movies
-from app.views.serie import write_m3u8_series
+from app.views.megapack import MegaPack
+from app.views.movie import get_m3u8_movies, write_m3u8_movies, updator_movies_server
+from app.views.serie import write_m3u8_series, get_m3u8_episodes, updator_series_server
 
 
 def approve_selected_movies(modeladmin, request, queryset):
     queryset.update(selected=True)
-    get_m3u8_movies({})
+    mega = MegaPack()
+    get_m3u8_movies({}, mega=mega)
+    mega.close()
     write_m3u8_movies()
+    updator_movies_server()
 
 
 def desapprove_selected_movies(modeladmin, request, queryset):
     queryset.update(selected=False)
     write_m3u8_movies()
+    updator_movies_server()
 
 
 approve_selected_movies.short_description = "Selecionar FILMES selecionados"
@@ -26,13 +31,17 @@ desapprove_selected_movies.short_description = "Remover Selected dos FILMES"
 
 def approve_selected_series(modeladmin, request, queryset):
     queryset.update(selected=True)
-    get_m3u8_movies({})
+    mega = MegaPack()
+    get_m3u8_episodes({}, mega=mega)
+    mega.close()
     write_m3u8_series()
+    updator_series_server()
 
 
 def desapprove_selected_series(modeladmin, request, queryset):
     queryset.update(selected=False)
     write_m3u8_series()
+    updator_series_server()
 
 
 approve_selected_series.short_description = "Selecionar EPISODIOS selecionados"
