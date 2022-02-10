@@ -69,7 +69,7 @@ class ListSelected(LoginRequiredMixin, SerieMixin, ListView):
     model = Episodio
     queryset = Episodio.objects.filter(selected=True)
     context_object_name = 'episodios'
-    ordering = 'title'
+    ordering = 'id'
     paginate_by = 10
     search = ''
 
