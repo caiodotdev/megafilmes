@@ -32,4 +32,4 @@ class EpisodioSerializer(serializers.ModelSerializer):
 
     class Meta:
         model = Episodio
-        fields = ("id", "title", "image", "url", "selected", "link_m3u8")
+        fields = ("id", "title", "image", "url", "selected", "serie", "link_m3u8")
