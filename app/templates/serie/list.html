@@ -7,16 +7,16 @@
             <h2> {{ model_name_plural }}</h2>
         </div>
         <div class="col-sm-9 col-xs-12">
-
+            <a href="{% url 'EPISODIO_list_selected' %}" class="btn btn-default">Episodios Selecionados</a>
             <button id="get_series" type="button" class="btn btn-info pull-right h2"><i
                     class="fa fa-rocket"></i> Get Series
             </button>
-{#            <a href="{% url 'SERIE_create' %}" class="btn btn-primary pull-right h2"><i#}
-{#                    class="fa fa-plus"></i> Add Serie#}
-{#            </a>#}
-{#            <a href="{% url 'delete_all_series' %}" class="btn btn-danger pull-right h2"><i#}
-{#                    class="fa fa-trash"></i> Delete All#}
-{#            </a>#}
+            {#            <a href="{% url 'SERIE_create' %}" class="btn btn-primary pull-right h2"><i#}
+            {#                    class="fa fa-plus"></i> Add Serie#}
+            {#            </a>#}
+            {#            <a href="{% url 'delete_all_series' %}" class="btn btn-danger pull-right h2"><i#}
+            {#                    class="fa fa-trash"></i> Delete All#}
+            {#            </a>#}
         </div>
     </div> <!-- /#top -->
     <hr/>
@@ -64,7 +64,7 @@
                 return formData;
             }
 
-             $('#get_series').click(function () {
+            $('#get_series').click(function () {
                 $('#loading').show();
                 $.get("{% url 'get_series' %}", function (data) {
                     console.log('Getting series ...');
@@ -101,7 +101,7 @@
                         data: 'id',
                         "render": function (data, type, row, meta) {
                             return '<a href="/serie/' + row[0] + '/" class="btn btn-info"><i\n' +
-                                '                                    class="fa fa-eye"></i> Assistir</a>&nbsp;&nbsp;' ;
+                                '                                    class="fa fa-eye"></i> Assistir</a>&nbsp;&nbsp;';
                         }
                     }
                 ],

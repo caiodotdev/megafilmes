@@ -75,6 +75,11 @@ urlpatterns += [
         name='SERIE_episode'
     ),
     path(
+        'serie/selected/',
+        serie.ListSelected.as_view(),
+        name='EPISODIO_list_selected'
+    ),
+    path(
         'serie/list/json/',
         serie.SerieListJson.as_view(),
         name=conf.SERIE_LIST_JSON_URL_NAME

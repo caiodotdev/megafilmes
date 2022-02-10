@@ -54,6 +54,82 @@ class List(LoginRequiredMixin, SerieMixin, ListView):
         return context
 
 
+class EpisodioFilter(django_filters.FilterSet):
+    class Meta:
+        model = Episodio
+        fields = ["title", ]
+
+
+class ListSelected(LoginRequiredMixin, SerieMixin, ListView):
+    """
+    List all Series
+    """
+    login_url = '/admin/login/'
+    template_name = 'serie/list_selected.html'
+    model = Episodio
+    queryset = Episodio.objects.filter(selected=True)
+    context_object_name = 'episodios'
+    ordering = 'title'
+    paginate_by = 10
+    search = ''
+
+    def get_queryset(self):
+        queryset = Episodio.objects.filter(selected=True)
+        filter = EpisodioFilter(self.request.GET, queryset)
+        queryset = self.search_general(filter.qs)
+        queryset = self.ordering_data(queryset)
+        return queryset
+
+    def search_general(self, qs):
+        if 'search' in self.request.GET:
+            self.search = self.request.GET['search']
+            if self.search:
+                search = self.search
+                qs = qs.filter(Q(id__icontains=search) | Q(title__icontains=search))
+        return qs
+
+    def get_ordering(self):
+        if 'ordering' in self.request.GET:
+            self.ordering = self.request.GET['ordering']
+            if self.ordering:
+                return self.ordering
+            else:
+                self.ordering = '-id'
+        return self.ordering
+
+    def ordering_data(self, qs):
+        qs = qs.order_by(self.get_ordering())
+        return qs
+
+    def get_context_data(self, **kwargs):
+        context = super(ListSelected, self).get_context_data(**kwargs)
+        queryset = self.get_queryset()
+        filter = EpisodioFilter(self.request.GET, queryset)
+        page_size = self.get_paginate_by(queryset)
+        if page_size:
+            paginator, page, queryset, is_paginated = self.paginate_queryset(queryset, page_size)
+            context.update(**{
+                'ordering': self.ordering,
+                'search': self.search,
+                'filter': filter,
+                'paginator': paginator,
+                'page_obj': page,
+                'is_paginated': is_paginated,
+                'object_list': queryset
+            })
+        else:
+            context.update(**{
+                'search': self.search,
+                'ordering': self.ordering,
+                'filter': filter,
+                'paginator': None,
+                'page_obj': None,
+                'is_paginated': False,
+                'object_list': queryset
+            })
+        return context
+
+
 def check_url_assistido(serie, url):
     for p in serie.playlist_set.all():
         for u in p.urlplaylist_set.all():
@@ -266,13 +342,13 @@ def get_m3u8_episodes(request, mega: MegaPack = None):
 
 
 def delete_all_episodes_server():
-    list_movies_server = requests.get(URL_ENDPOINT_EPISODE + '?selected=true').json()
+    list_movies_server = requests.get(URL_ENDPOINT_EPISODE).json()
     if list_movies_server:
         for movie_server in list_movies_server:
             requests.delete(URL_ENDPOINT_EPISODE + movie_server['id'] + '/')
 
 
-def updator():
+def updator_series_server():
     delete_all_episodes_server()
     for episodio in Episodio.objects.filter(selected=True):
         episodio_server = has_episodio(episodio)
@@ -292,14 +368,14 @@ def updator():
         else:
             obj_created = create_episodio_remote(episodio)
             if obj_created:
-                print('Created new channel: ' + str(episodio.title))
+                print('Created new episode: ' + str(episodio.title))
 
 
 URL_ENDPOINT_EPISODE = 'https://megafilmes.herokuapp.com/api/episodio/'
 
 
 def has_episodio(episodio):
-    req = requests.get(URL_ENDPOINT_EPISODE + '?title=' + episodio.title).json()
+    req = requests.get(URL_ENDPOINT_EPISODE + '?id=' + str(episodio.id)).json()
     if req:
         return req[0]
     return None

@@ -315,7 +315,7 @@ def delete_all_movies_server():
             requests.delete(URL_ENDPOINT_MOVIE + movie_server['id'] + '/')
 
 
-def updator():
+def updator_movies_server():
     delete_all_movies_server()
     for movie in Movie.objects.filter(selected=True):
         movie_server = has_movie(movie)
@@ -342,7 +342,7 @@ URL_ENDPOINT_MOVIE = 'https://megafilmes.herokuapp.com/api/movie/'
 
 
 def has_movie(movie):
-    req = requests.get(URL_ENDPOINT_MOVIE + '?title=' + movie.title).json()
+    req = requests.get(URL_ENDPOINT_MOVIE + '?id=' + str(movie.id)).json()
     if req:
         return req[0]
     return None
