@@ -167,3 +167,12 @@ class ProgramItem(TimeStamp):
         self.hour_formatted = self.get_hour_formatted()
         self.start = self.hour_formatted.strftime("%Y%m%d%H%M%S %Z") + "-0300"
         return super(ProgramItem, self).save(force_insert, force_update, using, update_fields)
+
+
+class Source(TimeStamp):
+    source = models.TextField(blank=True, null=True)
+    title = models.CharField(max_length=255, blank=True, null=True)
+    image = models.URLField(blank=True, null=True)
+
+    def __str__(self):
+        return "%s" % self.title

@@ -66,7 +66,9 @@ class EpisodioInline(admin.TabularInline):
 
 
 class EpisodioAdmin(admin.ModelAdmin):
-    list_display = ['id', 'title', "selected", 'url', 'link_m3u8']
+    search_fields = ['serie__title', ]
+    list_display = ['id', 'title', "serie", "selected", 'url', 'link_m3u8']
+    actions = [approve_selected_series, desapprove_selected_series, ]
 
 
 admin.site.register(Episodio, EpisodioAdmin)
@@ -147,5 +149,10 @@ class ProgramItemAdmin(admin.ModelAdmin):
     list_display = ['id', 'title', 'subtitle', 'program_day', 'hour', 'hour_formatted', 'start', 'stop', ]
 
 
+class SourceAdmin(admin.ModelAdmin):
+    list_display = ['id', 'title', 'source', 'image']
+
+
 admin.site.register(ProgramDay, ProgramDayAdmin)
 admin.site.register(ProgramItem, ProgramItemAdmin)
+admin.site.register(Source, SourceAdmin)

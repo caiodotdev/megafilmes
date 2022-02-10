@@ -1,0 +1,119 @@
+{% extends 'base.html' %}
+{% load static %}
+{% load form_utils %}
+{% block content %}
+    <script src="//cdn.jsdelivr.net/npm/hls.js@latest"></script>
+
+    <script src="https://cdn.jsdelivr.net/npm/clappr@latest/dist/clappr.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/clappr-chromecast-plugin@latest/dist/clappr-chromecast-plugin.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@joaopaulo.vieira/clappr-media-control-plugin@latest/dist/clappr-media-control-plugin.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/clappr-queue-plugin@latest/dist/clappr-queue-plugin.min.js"></script>
+    <script type="text/javascript"
+            src="//cdn.jsdelivr.net/gh/clappr/clappr-level-selector-plugin@latest/dist/level-selector.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@clappr/stats-plugin@latest/dist/clappr-stats.min.js"></script>
+
+    <h3 class="page-header">View Source</h3>
+
+    <div class="row">
+        <div class="col-xs-4">
+            <div class="form-group">
+                <label>Title:</label>
+
+                {{ object.title }}
+            </div>
+        </div>
+        <div class="col-xs-4">
+            <div class="form-group">
+                <label>Image:</label>
+
+                {{ object.image }}
+            </div>
+        </div>
+        <div class="col-xs-4">
+            <div class="form-group">
+                <label>Source:</label>
+
+                {{ object.source }}
+            </div>
+        </div>
+        <div class="col-xs-4">
+            <div class="form-group">
+                <label>duration:</label>
+                <span class="dur"></span>
+            </div>
+        </div>
+        <div class="col-xs-4">
+            <div class="form-group">
+                <label>size:</label>
+                <span class="size"></span>
+            </div>
+        </div>
+    </div>
+    <hr/>
+    <div id="actions" class="row">
+        <div class="col-xs-12">
+            <a href="{% url 'SOURCE_list' %}" class="btn btn-default">Back</a>
+        </div>
+    </div>
+    <br/>
+    <div class="row">
+        <div class="col-xs-12">
+            <div id="Player">
+            </div>
+        </div>
+    </div>
+    <br/>
+    <script type="text/javascript">
+        $(document).ready(function () {
+            $('#movie_link').addClass('active');
+        });
+    </script>
+    <script>
+
+        var player = new Clappr.Player({
+            source: "{{ source.source|safe }}",
+            plugins: [ChromecastPlugin, QueuePlugin, LevelSelector, ClapprStats],
+            parentId: "#Player",
+            chromecast: {
+                appId: '9DFB77C0',
+                media: {
+                    type: ChromecastPlugin.None,
+                }
+            },
+            levelSelectorConfig: {
+                title: 'Quality',
+                labels: {
+                    2: 'High', // 500kbps
+                    1: 'Med', // 240kbps
+                    0: 'Low', // 120kbps
+                },
+                levelSelectorConfig: {
+                    onLevelsAvailable: function (levels) {
+                        return levels.reverse(); // For example, reverse levels order
+                    },
+                },
+                labelCallback: function (playbackLevel, customLabel) {
+                    return customLabel + playbackLevel.level.height + 'p'; // High 720p
+                }
+            },
+            width: '100%',
+            height: "360px",
+            mediacontrol: {seekbar: "#900", buttons: "#FFFFFF"},
+            queue: {nextVideos: [''], autoPlayNextVideo: true,},
+            clapprStats: {
+                // optional: time in miliseconds for each report.
+                // default: 5000
+                runEach: 5000,
+                onReport: (metrics) => {
+                    $('.dur').text((metrics['extra']['duration'] / 1000 / 60).toFixed(1) + ' minutes');
+                    $('.size').text(((metrics['extra']['duration'] / 1000 / 60) * 14).toFixed(2) + 'MB');
+                },
+                onCompletion: [10, 20, 55, 100],
+                runBandwidthTestEvery: 10
+            }
+        });
+        player.setVolume(100);
+        player.play();
+
+    </script>
+{% endblock %}

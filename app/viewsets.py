@@ -68,3 +68,18 @@ class EpisodioViewSet(viewsets.ModelViewSet):
     filter_backends = (filters.DjangoFilterBackend, rest_framework.filters.SearchFilter,)
     search_fields = ['title', 'selected']
     ordering_fields = '__all__'
+
+
+class SourceFilter(django_filters.FilterSet):
+    class Meta:
+        model = models.Source
+        fields = ["id", "title", "image", "source"]
+
+
+class SourceViewSet(viewsets.ModelViewSet):
+    serializer_class = serializers.SourceSerializer
+    queryset = models.Source.objects.all()
+    filterset_class = SourceFilter
+    filter_backends = (filters.DjangoFilterBackend, rest_framework.filters.SearchFilter,)
+    search_fields = ['title', 'source']
+    ordering_fields = '__all__'

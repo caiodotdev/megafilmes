@@ -45,3 +45,13 @@ episodio_router.register(
 )
 
 api_urlpatterns += episodio_router.urls
+
+source_router = DefaultRouter()
+
+source_router.register(
+    r'^api/source',
+    viewsets.SourceViewSet,
+    basename="source"
+)
+
+api_urlpatterns += source_router.urls

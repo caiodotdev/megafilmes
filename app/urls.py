@@ -162,4 +162,25 @@ urlpatterns += [
                               content_type='text/plain')),
 ]
 
+from app.views import source
+
+urlpatterns += [
+    # source
+    path(
+        'source/',
+        source.List.as_view(),
+        name='SOURCE_list'
+    ),
+    path(
+        'source/<int:pk>/',
+        source.Detail.as_view(),
+        name='SOURCE_detail'
+    ),
+    path(
+        'source/list/json/',
+        source.SourceListJson.as_view(),
+        name='SOURCE_list_json'
+    ),
+]
+
 urlpatterns += api_urlpatterns

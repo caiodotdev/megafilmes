@@ -6,6 +6,7 @@ from app.views.channel import get_m3u8_channels
 from app.views.megapack import MegaPack
 from app.views.movie import get_m3u8_movies, updator_movies_server
 from app.views.serie import get_m3u8_episodes, updator_series_server
+from app.views.source import updator_sources_server
 
 
 def my_cron_job():
@@ -33,6 +34,7 @@ class MyCronJob(CronJobBase):
             get_m3u8_episodes({}, mega)
             updator_movies_server()
             updator_series_server()
+            updator_sources_server()
             print(time.asctime())
             print('---- Finish CRON JOB: ' + str(i))
             time.sleep(60 * 60 * 2)
