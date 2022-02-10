@@ -297,6 +297,7 @@ def generate_selected_episodes(request):
         episode.save()
         get_m3u8_episodio(request, episode)
     write_m3u8_series()
+    updator_series_server()
     return JsonResponse({'message': 'ok'})
 
 
@@ -342,16 +343,16 @@ def get_m3u8_episodes(request, mega: MegaPack = None):
 
 
 def delete_all_episodes_server():
-    list_movies_server = requests.get(URL_ENDPOINT_EPISODE).json()
-    if list_movies_server:
-        for movie_server in list_movies_server:
-            requests.delete(URL_ENDPOINT_EPISODE + movie_server['id'] + '/')
+    list_episodes_server = requests.get(URL_ENDPOINT_EPISODE).json()
+    if list_episodes_server:
+        for episode_server in list_episodes_server:
+            requests.delete(URL_ENDPOINT_EPISODE + episode_server['id'] + '/')
 
 
 def updator_series_server():
     delete_all_episodes_server()
     for episodio in Episodio.objects.filter(selected=True):
-        episodio_server = has_episodio(episodio)
+        episodio_server = has_object(episodio, URL_ENDPOINT_EPISODE)
         if episodio_server:
             data = {
                 "id": str(episodio.id),
@@ -372,10 +373,11 @@ def updator_series_server():
 
 
 URL_ENDPOINT_EPISODE = 'https://megafilmes.herokuapp.com/api/episodio/'
+URL_ENDPOINT_SERIE = 'https://megafilmes.herokuapp.com/api/serie/'
 
 
-def has_episodio(episodio):
-    req = requests.get(URL_ENDPOINT_EPISODE + '?id=' + str(episodio.id)).json()
+def has_object(object, endpoint):
+    req = requests.get(endpoint + '?id=' + str(object.id)).json()
     if req:
         return req[0]
     return None
@@ -389,15 +391,38 @@ def update_episodio_remote(olddata, newdata):
 
 
 def create_episodio_remote(episodio):
+    serie = create_serie_remote(episodio.serie)
     data = {
         "id": str(episodio.id),
         "title": str(episodio.title),
         "image": str(episodio.image),
         "url": str(episodio.url),
         "link_m3u8": str(episodio.link_m3u8),
+        "serie": str(serie['id']),
         "selected": True
     }
     req = requests.post(URL_ENDPOINT_EPISODE, data=data)
     if req.status_code == HTTPStatus.CREATED:
         return req.json()
     return None
+
+
+def create_serie_remote(serie):
+    serie_remote = has_object(serie, URL_ENDPOINT_SERIE)
+    if not serie_remote:
+        data = {
+            "id": str(serie.id),
+            "title": str(serie.title),
+            "image": str(serie.image),
+            "year": str(serie.year),
+            "rating": str(serie.rating),
+            "url": str(serie.url)
+        }
+        req = requests.post(URL_ENDPOINT_SERIE, data=data)
+        if req.status_code == HTTPStatus.CREATED:
+            return req.json()
+        else:
+            print('Err ao criar serie no Server')
+            return None
+    else:
+        return serie_remote

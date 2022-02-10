@@ -55,7 +55,7 @@
             <div class="form-group">
                 <label>m3u8:</label>
 
-                {{ m3u8 }}
+                {{ object.link_m3u8 }}
             </div>
         </div>
         <div class="col-xs-4">
@@ -93,7 +93,7 @@
     <script>
 
         var player = new Clappr.Player({
-            source: "{{ m3u8|safe }}",
+            source: "{{ movie.link_m3u8|safe }}",
             plugins: [ChromecastPlugin, QueuePlugin, LevelSelector, ClapprStats],
             parentId: "#Player",
             chromecast: {

@@ -170,10 +170,12 @@ class Detail(LoginRequiredMixin, MovieMixin, DetailView):
 
     def get_context_data(self, **kwargs):
         context = super(Detail, self).get_context_data(**kwargs)
-        mega = MegaPack()
-        dic_m3u8 = mega.get_info(self.object.url)
-        context['m3u8'] = dic_m3u8['m3u8']
-        mega.close()
+        movie = self.get_object()
+        if not calc_prazo(movie.link_m3u8):
+            mega = MegaPack().get_info(movie.url)
+            movie.link_m3u8 = mega['m3u8']
+            movie.save()
+            mega.close()
         return context
 
 
@@ -264,6 +266,7 @@ def generate_selected_movies(request):
             movie.link_m3u8 = MegaPack().get_info(movie.url)['m3u8']
             movie.save()
     write_m3u8_movies()
+    updator_movies_server()
     return JsonResponse({'message': 'ok'})
 
 
