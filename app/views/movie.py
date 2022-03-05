@@ -170,13 +170,6 @@ class Detail(LoginRequiredMixin, MovieMixin, DetailView):
 
     def get_context_data(self, **kwargs):
         context = super(Detail, self).get_context_data(**kwargs)
-        movie = self.get_object()
-        if not calc_prazo(movie.link_m3u8):
-            mega = MegaPack()
-            result = mega.get_info(movie.url)
-            movie.link_m3u8 = result['m3u8']
-            movie.save()
-            mega.close()
         return context
 
 
@@ -234,7 +227,13 @@ def get_movies(request):
     url_movies = 'https://megafilmeshdd.org/filmes/page/{}'
 
     def title_exists(title):
-        return Movie.objects.filter(title=title).exists()
+        qs = Movie.objects.filter(title=title)
+        if qs.exists():
+            return qs.first()
+        return None
+
+    def updator():
+        print('-')
 
     def save_movie(title, rating, image, data_lancamento, url_movie):
         movie = Movie()
@@ -245,7 +244,7 @@ def get_movies(request):
         movie.url = url_movie
         movie.save()
 
-    return get_articles(url_movies, 270, {'id': 'archive-content'}, save_movie, title_exists)
+    return get_articles(url_movies, 270, {'id': 'archive-content'}, save_movie, title_exists, updator)
 
 
 def remove_accents(text):
@@ -311,6 +310,17 @@ def get_m3u8_movies(request, mega: MegaPack = None):
             movie.link_m3u8 = None
             movie.save()
             print('--- err ao coletar link m3u8: ' + str(movie.title))
+    return JsonResponse({'message': 'ok'})
+
+
+def update_movie_m3u8(request):
+    movie = Movie.objects.get(id=request.GET['id'])
+    try:
+        mega = MegaPack()
+        movie.link_m3u8 = mega.get_info(movie.url)['m3u8']
+        movie.save()
+    except (Exception,):
+        print('--- err ao coletar link m3u8: ' + str(movie.title))
     return JsonResponse({'message': 'ok'})
 
 

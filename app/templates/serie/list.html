@@ -11,12 +11,6 @@
             <button id="get_series" type="button" class="btn btn-info pull-right h2"><i
                     class="fa fa-rocket"></i> Get Series
             </button>
-            {#            <a href="{% url 'SERIE_create' %}" class="btn btn-primary pull-right h2"><i#}
-            {#                    class="fa fa-plus"></i> Add Serie#}
-            {#            </a>#}
-            {#            <a href="{% url 'delete_all_series' %}" class="btn btn-danger pull-right h2"><i#}
-            {#                    class="fa fa-trash"></i> Delete All#}
-            {#            </a>#}
         </div>
     </div> <!-- /#top -->
     <hr/>
@@ -93,7 +87,7 @@
                         targets: 1,
                         data: 'image',
                         "render": function (data, type, row, meta) {
-                            return '<img class="img-thumbnail" src="' + row[1] + '"/>';
+                            return '<a href="/serie/' + row[0] + '/"><img class="img-thumbnail" src="' + row[1] + '"/></a>';
                         }
                     },
                     {

@@ -12,8 +12,6 @@ from django.shortcuts import redirect
 from django.views.generic.detail import DetailView
 from django.views.generic.list import ListView
 
-from app.epg.builder import builder_file
-from app.epg.core import collect_program_by_channel, collect_all, remove_older_program_day
 from app.templatetags.form_utils import calc_prazo
 from app.views.megapack import MegaPack
 
@@ -62,7 +60,9 @@ class Detail(LoginRequiredMixin, ChannelMixin, DetailView):
         return False
 
     def get_context_data(self, **kwargs):
-        # builder_file()
+        # print('---- Run CRON JOB my_cron_job')
+        # req = get_m3u8_channels({})
+        # print(req)
         context = super(Detail, self).get_context_data(**kwargs)
         channel = self.get_object()
         context['list_category'] = Channel.objects.filter(category=channel.category).order_by('title')
@@ -86,7 +86,13 @@ def get_channels(request):
     url_channels = 'https://megafilmeshdd.org/categoria/canais/page/{}'
 
     def title_exists(title):
-        return Channel.objects.filter(title=title).exists()
+        qs = Channel.objects.filter(title=title)
+        if qs.exists():
+            return qs.first()
+        return None
+
+    def updator():
+        print('-')
 
     def save_channel(title, rating, image, data_lancamento, url_channel):
         channel = Channel()
@@ -106,7 +112,7 @@ def get_channels(request):
             channel.save()
             print('--- err ao coletar link m3u8: ' + str(channel.title))
 
-    return get_articles(url_channels, 5, {'class': 'items'}, save_channel, title_exists)
+    return get_articles(url_channels, 5, {'class': 'items'}, save_channel, title_exists, updator)
 
 
 def get_content_url(request):
@@ -153,7 +159,7 @@ def get_m3u8_sinal_publico(request, mega: MegaPack = None):
     channels = Channel.objects.all().order_by('title')
     for channel in channels:
         if channel.code:
-            url = 'http://sinalpublico.com/player3/ch.php?canal={}&rl2=rl2'
+            url = 'view-source:http://sinalpublico.com/player3/ch.php?canal={}'
             print('-- ', channel.title)
             try:
                 dic_m3u8 = mega.get_info_sinal_publico(url.format(channel.code))
@@ -175,9 +181,10 @@ def get_custom_m3u8_local(channel):
 
 def update_m3u8_channel(request, id):
     channel = Channel.objects.get(id=id)
+    url = 'view-source:http://sinalpublico.com/player3/ch.php?canal={}'
     mega = MegaPack()
     try:
-        dic_m3u8 = mega.get_info(channel.url)
+        dic_m3u8 = mega.get_info_sinal_publico(url.format(channel.code))
         channel.link_m3u8 = dic_m3u8['m3u8']
         channel.code = dic_m3u8['code']
         channel.custom_m3u8 = get_custom_m3u8_local(channel)

@@ -12,7 +12,7 @@ urlpatterns += [
     path('registration/', include('rest_auth.registration.urls'))
 ]
 
-from app.views import movie
+from app.views import movie, futemax
 
 urlpatterns += [
     # movie
@@ -51,6 +51,11 @@ urlpatterns += [
         movie.delete_all_movies,
         name='delete_all_movies'
     ),
+    path(
+        'update-movie',
+        movie.update_movie_m3u8,
+        name='MOVIE_update_m3u8'
+    ),
     path('filmes.m3u8', movie.get_list_m3u8, name='gen_lista_movies'),
     path('movie/generate-list', movie.generate_selected_movies, name='generate_list_movies'),
 ]
@@ -88,6 +93,11 @@ urlpatterns += [
         'get-series',
         serie.get_series,
         name='get_series'
+    ),
+    path(
+        'update-serie/<int:pk>/',
+        serie.update_serie,
+        name='update_serie'
     ),
     path(
         'delete-series',
@@ -181,6 +191,16 @@ urlpatterns += [
         source.SourceListJson.as_view(),
         name='SOURCE_list_json'
     ),
+    path(
+        'futemax/',
+        futemax.FutemaxView.as_view(),
+        name='FUTEMAX_list'
+    ),
+    path(
+        'futemax/view/',
+        futemax.ViewChannelFutemax.as_view(),
+        name='FUTEMAX_detail'
+    )
 ]
 
 urlpatterns += api_urlpatterns

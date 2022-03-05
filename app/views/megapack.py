@@ -31,14 +31,25 @@ class MegaPack(EngineModel):
         html = self.browser.page_source
         soup = BeautifulSoup(html, 'html.parser')
         try:
-            player = soup.find('div', {'id': 'instructions'}).find('div', {'id': 'RedeCanaisPlayer'})
-            if player.has_attr('baixar'):
-                link_baixar = player['baixar']
+            # player = soup.find('div', {'id': 'instructions'}).find('div', {'id': 'RedeCanaisPlayer'})
+            # if player.has_attr('baixar'):
+            #     link_baixar = player['baixar']
+            #     link_baixar = self.cut_url(link_baixar)
+            #     return {'m3u8': self.create_link(link_baixar), 'code': self.get_code(link_baixar)}
+            links = [link for link in soup.find_all('a') if 'm3u9' in link['href']]
+            if links:
+                link_baixar = links[0]['href']
                 link_baixar = self.cut_url(link_baixar)
                 return {'m3u8': self.create_link(link_baixar), 'code': self.get_code(link_baixar)}
         except (Exception,):
             print('--- Nao encontrou div#instructions')
         return None
+
+    def get_info_impl(self, url, extract_m3u8):
+        if url:
+            self.url = url
+        self.browser.get(self.url)
+        return extract_m3u8()
 
     def get_info_sinal_publico(self, url=None):
         if url:
@@ -63,6 +74,20 @@ class MegaPack(EngineModel):
 
     def cut_url(self, url: str):
         word = 'download.php?vid='
-        index = url.index(word) + len(word)
-        url = str(url[index:])
+        if word in url:
+            index = url.index(word) + len(word)
+            url = str(url[index:])
         return url
+
+    def get_info_futemax(self, url):
+        if url:
+            self.url = url
+        self.browser.get(self.url)
+        soup = BeautifulSoup(self.browser.page_source, 'html.parser')
+
+        frame = self.get_frame(self.browser.find_elements(By.CLASS_NAME, "rptss"))
+        if frame:
+            self.browser.switch_to.frame(frame)
+        else:
+            print('Nao encontrou o frame de video.')
+        return self.extract_m3u8()

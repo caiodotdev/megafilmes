@@ -162,15 +162,18 @@ def get_page(url, headers):
     return None
 
 
-def get_articles(url_get, pages, div_principal, method, check_article):
-    headers = {
-        "sec-ch-ua": '"Google Chrome";v="89", "Chromium";v="89", ";Not A Brand";v="99"',
-        'user-agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/89.0.4389.90 Safari/537.36',
-        "accept": "text/html,application/xhtml+xml,application/xml;q=0.9,image/avif,image/webp,image/apng,*/*;q=0.8,application/signed-exchange;v=b3;q=0.9",
-        "cache-control": "no-cache",
-        "origin": "https://megafilmeshdd.org",
-        "referer": 'https://megafilmeshdd.org/',
-    }
+HEADERS_MEGA = {
+    "sec-ch-ua": '"Google Chrome";v="89", "Chromium";v="89", ";Not A Brand";v="99"',
+    'user-agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/89.0.4389.90 Safari/537.36',
+    "accept": "text/html,application/xhtml+xml,application/xml;q=0.9,image/avif,image/webp,image/apng,*/*;q=0.8,application/signed-exchange;v=b3;q=0.9",
+    "cache-control": "no-cache",
+    "origin": "https://megafilmeshdd.org",
+    "referer": 'https://megafilmeshdd.org/',
+}
+
+
+def get_articles(url_get, pages, div_principal, method, check_article, updator):
+    headers = HEADERS_MEGA
     counter = 0
     for i in range(1, int(pages)):
         print('---- page ', str(i))
@@ -181,13 +184,16 @@ def get_articles(url_get, pages, div_principal, method, check_article):
                 try:
                     data = article.find('div', {'class': 'data'})
                     title = str(data.find('h3').text)
-                    if not check_article(title):
+                    object = check_article(title)
+                    if not object:
                         data_lancamento = str(data.find('span').text)
                         poster = article.find('div', {'class': 'poster'})
                         image = str(poster.find('img')['src'])
                         rating = str(poster.find('div', {'class': 'rating'}).text)
                         url_movie = str(poster.find('a')['href'])
                         method(title, rating, image, data_lancamento, url_movie)
+                    else:
+                        updator(object)
                 except(Exception,):
                     counter += 1
                     print('---- Nao conseguiu capturar este article')
@@ -230,3 +236,48 @@ def remove_iv(array_uri):
             if index_iv >= 0:
                 array_uri[i] = str(array_uri[i])[:index_iv]
     return array_uri
+
+
+def check_m3u8_req(uri, headers):
+    try:
+        req = requests.get(uri, headers=headers, timeout=2, verify=False)
+        if req.status_code == 200:
+            return True
+        return False
+    except (Exception,):
+        print('BREAK m3u8')
+        return False
+
+
+def get_img_url(img_tag):
+    if img_tag.has_attr('src'):
+        img_url = img_tag['src']
+    elif img_tag.has_attr('data-src'):
+        img_url = img_tag['data-src']
+    else:
+        img_url = ''
+    return img_url
+
+
+def get_text_type(link):
+    uri = str(link.m3u8)
+    if 'sd/' in uri:
+        return 'SD'
+    elif 'hd/' in uri:
+        return 'HD'
+    else:
+        return None
+
+
+def clean_title(channel):
+    title = str(channel.title)
+    if 'assistir ' in title.lower():
+        if ' ao ' in title.lower():
+            title = title[(title.lower().index('assistir ') + len('assistir ')):title.lower().index(' ao ')]
+        else:
+            title = title[(title.lower().index('assistir ') + len('assistir ')):]
+    if ' ao' in title.lower():
+        title = title[:title.lower().index(' ao ')]
+    if ' online' in title.lower():
+        title = title[:title.lower().index(' online')]
+    return title

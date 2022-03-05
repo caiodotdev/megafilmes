@@ -11,7 +11,6 @@ from django.shortcuts import redirect
 from django.views.generic.detail import DetailView
 from django.views.generic.list import ListView
 
-from app.templatetags.form_utils import calc_prazo
 from app.views.megapack import MegaPack
 from app.views.movie import remove_accents
 
@@ -25,7 +24,7 @@ from app.mixins import SerieMixin
 
 from django_datatables_view.base_datatable_view import BaseDatatableView
 
-from app.utils import get_articles, get_page
+from app.utils import get_articles, get_page, HEADERS_MEGA
 
 import django_filters
 
@@ -47,6 +46,7 @@ class List(LoginRequiredMixin, SerieMixin, ListView):
     paginate_by = 1
 
     def get_context_data(self, **kwargs):
+        get_m3u8_episodes({}, mega=MegaPack())
         context = super(List, self).get_context_data(**kwargs)
         queryset = self.get_queryset()
         filter = SerieFilter(self.request.GET, queryset)
@@ -139,7 +139,7 @@ def check_url_assistido(serie, url):
 
 
 def get_episodes(object):
-    page = get_page(object.url, {})
+    page = get_page(object.url, HEADERS_MEGA)
     if page:
         episodios = page.findAll('ul', {'class': 'episodios'})
         for temp in episodios:
@@ -256,11 +256,24 @@ def delete_all_series(request):
     return redirect('SERIE_list')
 
 
+def update_serie(request, pk):
+    serie = Serie.objects.get(id=pk)
+    serie.episodio_set.all().delete()
+    get_episodes(serie)
+    return redirect('SERIE_detail', **{'pk': serie.pk})
+
+
 def get_series(request):
     url_series = 'https://megafilmeshdd.org/series/page/{}'
 
     def title_exists(title):
-        return Serie.objects.filter(title=title).exists()
+        qs = Serie.objects.filter(title=title)
+        if qs.exists():
+            return qs.first()
+        return None
+
+    def updator(serie):
+        get_episodes(serie)
 
     def save_serie(title, rating, image, data_lancamento, url_serie):
         serie = Serie()
@@ -272,14 +285,11 @@ def get_series(request):
         serie.save()
         get_episodes(serie)
 
-    return get_articles(url_series, 50, {'id': 'archive-content'}, save_serie, title_exists)
+    return get_articles(url_series, 50, {'id': 'archive-content'}, save_serie, title_exists, updator)
 
 
 def get_m3u8_episodio(request, episodio):
     mega = MegaPack()
-    if episodio.link_m3u8:
-        if calc_prazo(episodio.link_m3u8):
-            return episodio.link_m3u8
     url_m3u8 = mega.get_info(episodio.url)['m3u8']
     episodio.link_m3u8 = url_m3u8
     episodio.save()

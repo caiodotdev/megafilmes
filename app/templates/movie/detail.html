@@ -70,6 +70,11 @@
                 <span class="size"></span>
             </div>
         </div>
+        <div class="col-xs-4">
+            <div class="form-group">
+                <button type="button" class="btn btn-default" id="atualizar">Atualizar</button>
+            </div>
+        </div>
     </div>
     <hr/>
     <div id="actions" class="row">
@@ -88,6 +93,20 @@
     <script type="text/javascript">
         $(document).ready(function () {
             $('#movie_link').addClass('active');
+            $('#atualizar').click(function () {
+                $('#loading').show();
+                $.ajax({
+                    dataType: "json",
+                    url: '{% url 'MOVIE_update_m3u8' %}',
+                    data: {'id': '{{ movie.id }}'},
+                }).done(function () {
+                    alert("success");
+                    window.location.href = '';
+                }).fail(function () {
+                    $('#loading').hide();
+                    alert("error");
+                });
+            });
         });
     </script>
     <script>

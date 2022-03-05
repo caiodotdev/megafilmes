@@ -1,4 +1,6 @@
 #EXTM3U
+#EXTINF:-1, tvg-id="469 - A Fazenda 13 AO VIVO" tvg-name="A Fazenda 13 AO VIVO - 469" tvg-logo="https://i.imgur.com/3rMZx8d.png" group-title="Esportes",A Fazenda 13 AO VIVO
+http://10.0.0.196/multi/playlist.m3u8?id=469
 #EXTINF:-1, tvg-id="417 - A&E / AeE" tvg-name="A&E / AeE - 417" tvg-logo="https://upload.wikimedia.org/wikipedia/commons/thumb/0/04/A%26E-Network-Logo.svg/1280px-A%26E-Network-Logo.svg.png" group-title="Variedades",A&E / AeE
 http://10.0.0.196/multi/playlist.m3u8?id=417
 #EXTINF:-1, tvg-id="419 - AMC" tvg-name="AMC - 419" tvg-logo="https://upload.wikimedia.org/wikipedia/commons/0/01/AMC_logo_2016.png" group-title="Filmes",AMC
@@ -61,14 +63,16 @@ http://10.0.0.196/multi/playlist.m3u8?id=432
 http://10.0.0.196/multi/playlist.m3u8?id=462
 #EXTINF:-1, tvg-id="360 - E! Entertainment" tvg-name="E! Entertainment - 360" tvg-logo="https://i.pinimg.com/originals/6e/c1/a4/6ec1a4fa0de54eab32777165fdd8b8bc.jpg" group-title="Variedades",E! Entertainment
 http://10.0.0.196/multi/playlist.m3u8?id=360
-#EXTINF:-1, tvg-id="361 - ESPN" tvg-name="ESPN - 361" tvg-logo="https://img2.gratispng.com/20180504/soq/kisspng-espn-inc-sport-logo-television-come-on-5aec070a083196.2218208615254177380336.jpg" group-title="Esportes",ESPN
-http://10.0.0.196/multi/playlist.m3u8?id=361
-#EXTINF:-1, tvg-id="362 - ESPN 2" tvg-name="ESPN 2 - 362" tvg-logo="https://espnpressroom.com/brazil/files/2018/08/RS2652_ESPN2_CLR_Pos-scr.jpg" group-title="Esportes",ESPN 2
+#EXTINF:-1, tvg-id="362 - ESPN" tvg-name="ESPN - 362" tvg-logo="https://logosmarcas.net/wp-content/uploads/2020/12/ESPN-Logo.png" group-title="Esportes",ESPN
 http://10.0.0.196/multi/playlist.m3u8?id=362
-#EXTINF:-1, tvg-id="326 - ESPN 3" tvg-name="ESPN 3 - 326" tvg-logo="https://upload.wikimedia.org/wikipedia/commons/5/51/ESPN3_Logo.png" group-title="Esportes",ESPN 3
+#EXTINF:-1, tvg-id="326 - ESPN 2" tvg-name="ESPN 2 - 326" tvg-logo="https://www.tvmagazine.com.br/imagens/icones/600/espn2.png" group-title="Esportes",ESPN 2
 http://10.0.0.196/multi/playlist.m3u8?id=326
+#EXTINF:-1, tvg-id="477 - ESPN 3" tvg-name="ESPN 3 - 477" tvg-logo="https://img2.gratispng.com/20180628/tce/kisspng-espn3-watchespn-espn-com-streaming-media-espn-3-5b350bd9611c16.8686168115302030973978.jpg" group-title="Esportes",ESPN 3
+http://10.0.0.196/multi/playlist.m3u8?id=477
 #EXTINF:-1, tvg-id="354 - ESPN 4" tvg-name="ESPN 4 - 354" tvg-logo="https://www.thesportsdb.com/images/media/channel/tvlogo/ik76mi1618056996.png" group-title="Esportes",ESPN 4
 http://10.0.0.196/multi/playlist.m3u8?id=354
+#EXTINF:-1, tvg-id="361 - ESPN Brasil" tvg-name="ESPN Brasil - 361" tvg-logo="https://img2.gratispng.com/20180504/soq/kisspng-espn-inc-sport-logo-television-come-on-5aec070a083196.2218208615254177380336.jpg" group-title="Esportes",ESPN Brasil
+http://10.0.0.196/multi/playlist.m3u8?id=361
 #EXTINF:-1, tvg-id="327 - ESPN Extra" tvg-name="ESPN Extra - 327" tvg-logo="https://espnpressroom.com/brazil/files/2018/07/RS3682_ESPN_EXTRA_Brasil_CLR_Pos-scr.jpg" group-title="Esportes",ESPN Extra
 http://10.0.0.196/multi/playlist.m3u8?id=327
 #EXTINF:-1, tvg-id="408 - FX" tvg-name="FX - 408" tvg-logo="https://naoseinadadotcomdotbr.files.wordpress.com/2017/09/fx-logo.jpg" group-title="Filmes",FX
@@ -77,6 +81,16 @@ http://10.0.0.196/multi/playlist.m3u8?id=408
 http://10.0.0.196/multi/playlist.m3u8?id=437
 #EXTINF:-1, tvg-id="363 - Food Network" tvg-name="Food Network - 363" tvg-logo="https://image.pngaaa.com/986/1245986-middle.png" group-title="Variedades",Food Network
 http://10.0.0.196/multi/playlist.m3u8?id=363
+#EXTINF:-1, tvg-id="476 - Fox Channel" tvg-name="Fox Channel - 476" tvg-logo="https://megafilmeshd50.com/wp-content/uploads/2017/10/khWqFgm-214x300.jpg" group-title="Esportes",Fox Channel
+http://10.0.0.196/multi/playlist.m3u8?id=476
+#EXTINF:-1, tvg-id="472 - Fox Life" tvg-name="Fox Life - 472" tvg-logo="https://yt3.ggpht.com/ytc/AKedOLREQmwdQRm01m4cltiqVu-IIRWon7RYDFFcTdHI=s900-c-k-c0x00ffffff-no-rj" group-title="Esportes",Fox Life
+http://10.0.0.196/multi/playlist.m3u8?id=472
+#EXTINF:-1, tvg-id="473 - Fox Premium 1" tvg-name="Fox Premium 1 - 473" tvg-logo="https://megafilmeshd50.com/wp-content/uploads/2018/04/PhFoVsJ-214x300.jpg" group-title="Esportes",Fox Premium 1
+http://10.0.0.196/multi/playlist.m3u8?id=473
+#EXTINF:-1, tvg-id="474 - Fox Premium 2" tvg-name="Fox Premium 2 - 474" tvg-logo="https://megafilmeshd50.com/wp-content/uploads/2018/04/tVrlvCv-214x300.jpg" group-title="Esportes",Fox Premium 2
+http://10.0.0.196/multi/playlist.m3u8?id=474
+#EXTINF:-1, tvg-id="470 - Fox Sports" tvg-name="Fox Sports - 470" tvg-logo="https://megafilmeshdd.org/wp-content/uploads/2021/05/5b86de45173e2-185x278.png" group-title="Esportes",Fox Sports
+http://10.0.0.196/multi/playlist.m3u8?id=470
 #EXTINF:-1, tvg-id="353 - Fox Sports 2" tvg-name="Fox Sports 2 - 353" tvg-logo="https://3.bp.blogspot.com/-H5oQ5OEpJ2w/WEicufS1h8I/AAAAAAAAy38/S_ouZUlzl1Y7qjzJy3vVy_aEP205oEmiACLcB/s1600/foxsports2.jpg" group-title="Esportes",Fox Sports 2
 http://10.0.0.196/multi/playlist.m3u8?id=353
 #EXTINF:-1, tvg-id="370 - GNT" tvg-name="GNT - 370" tvg-logo="https://upload.wikimedia.org/wikipedia/commons/thumb/a/a4/GNT_logo-roxo.svg/1200px-GNT_logo-roxo.svg.png" group-title="Variedades",GNT
@@ -163,6 +177,8 @@ http://10.0.0.196/multi/playlist.m3u8?id=438
 http://10.0.0.196/multi/playlist.m3u8?id=458
 #EXTINF:-1, tvg-id="466 - SBT" tvg-name="SBT - 466" tvg-logo="https://upload.wikimedia.org/wikipedia/commons/thumb/3/3a/SBT_logo.svg/2048px-SBT_logo.svg.png" group-title="Variedades",SBT
 http://10.0.0.196/multi/playlist.m3u8?id=466
+#EXTINF:-1, tvg-id="475 - Sexy Hot" tvg-name="Sexy Hot - 475" tvg-logo="https://megafilmeshd50.com/wp-content/uploads/2018/04/RQc2j7T-185x278-1.jpg" group-title="Esportes",Sexy Hot
+http://10.0.0.196/multi/playlist.m3u8?id=475
 #EXTINF:-1, tvg-id="386 - Space" tvg-name="Space - 386" tvg-logo="https://img.favpng.com/17/5/17/space-logo-television-channel-esporte-interativo-png-favpng-VVxR657Qh8Nb2bcMZqQ3QEru0.jpg" group-title="Filmes",Space
 http://10.0.0.196/multi/playlist.m3u8?id=386
 #EXTINF:-1, tvg-id="400 - SporTV" tvg-name="SporTV - 400" tvg-logo="https://observatoriodatv.uol.com.br/wp-content/uploads/2021/11/sportv-logo-1.jpg" group-title="Esportes",SporTV
