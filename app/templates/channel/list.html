@@ -15,6 +15,9 @@
             <button id="get_m3u8" type="button" class="btn btn-info pull-right h2"><i
                     class="fa fa-tv"></i> Get M3U8
             </button>
+            <button id="get_program" type="button" class="btn btn-info pull-right h2"><i
+                    class="fa fa-tv"></i> Get EPG
+            </button>
             {#            <a href="{% url 'delete_all_channels' %}" class="btn btn-danger pull-right h2"><i#}
             {#                    class="fa fa-trash"></i> Delete All#}
             {#            </a>#}
@@ -135,6 +138,17 @@
                     $('#loading').hide();
                     window.location.href = '';
                     console.log(data);
+                }).fail(function () {
+                    $('#loading').hide();
+                });
+            });
+            $('#get_program').click(function () {
+                $('#loading').show();
+                $.get("{% url 'generate_epg' %}", function (data) {
+                    console.log('Getting EPG ...');
+                }).done(function (data) {
+                    $('#loading').hide();
+                    window.location.href = '';
                 }).fail(function () {
                     $('#loading').hide();
                 });

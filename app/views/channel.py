@@ -12,6 +12,8 @@ from django.shortcuts import redirect
 from django.views.generic.detail import DetailView
 from django.views.generic.list import ListView
 
+from app.epg.builder import builder_file
+from app.epg.core import collect_all
 from app.templatetags.form_utils import calc_prazo
 from app.views.megapack import MegaPack
 
@@ -296,6 +298,12 @@ def generate_lista_default(request):
     f.close()
     fsock = open("lista.m3u8", "rb")
     return HttpResponse(fsock, content_type='text')
+
+
+def generate_epg(request):
+    collect_all()
+    builder_file()
+    return JsonResponse({'message': 'ok'})
 
 
 def get_epg(request):

@@ -123,6 +123,11 @@ urlpatterns += [
         name=conf.CHANNEL_DETAIL_URL_NAME
     ),
     path(
+        'get-epg/',
+        channel.generate_epg,
+        name='generate_epg'
+    ),
+    path(
         'get-channels',
         channel.get_channels,
         name='get_channels'

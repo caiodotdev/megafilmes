@@ -25,7 +25,7 @@ def remove_older_program_day():
     qs = ProgramDay.objects.filter(date_formatted__lte=datetime.datetime.now().date())
     if qs.exists():
         print('--removendo Programação antiga')
-        # qs.delete()
+        qs.delete()
     else:
         print('--Nao existe programação antiga')
 
