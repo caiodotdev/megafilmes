@@ -33,3 +33,4 @@ django-crontab
 django_cron
 Unidecode
 webdriver-manager
+jsbeautifier
