@@ -1,6 +1,4 @@
 #EXTM3U
-#EXTINF:-1, tvg-id="469 - A Fazenda 13 AO VIVO" tvg-name="A Fazenda 13 AO VIVO - 469" tvg-logo="https://i.imgur.com/3rMZx8d.png" group-title="Esportes",A Fazenda 13 AO VIVO
-http://10.0.0.196/multi/playlist.m3u8?id=469
 #EXTINF:-1, tvg-id="417 - A&E / AeE" tvg-name="A&E / AeE - 417" tvg-logo="https://upload.wikimedia.org/wikipedia/commons/thumb/0/04/A%26E-Network-Logo.svg/1280px-A%26E-Network-Logo.svg.png" group-title="Variedades",A&E / AeE
 http://10.0.0.196/multi/playlist.m3u8?id=417
 #EXTINF:-1, tvg-id="419 - AMC" tvg-name="AMC - 419" tvg-logo="https://upload.wikimedia.org/wikipedia/commons/0/01/AMC_logo_2016.png" group-title="Filmes",AMC
@@ -13,16 +11,12 @@ http://10.0.0.196/multi/playlist.m3u8?id=418
 http://10.0.0.196/multi/playlist.m3u8?id=435
 #EXTINF:-1, tvg-id="468 - BBB 22 AO VIVO / BBB AO VIVO" tvg-name="BBB 22 AO VIVO / BBB AO VIVO - 468" tvg-logo="https://i.imgur.com/r44OOhF.png" group-title="Variedades",BBB 22 AO VIVO / BBB AO VIVO
 http://10.0.0.196/multi/playlist.m3u8?id=468
-#EXTINF:-1, tvg-id="441 - Baby TV" tvg-name="Baby TV - 441" tvg-logo="https://upload.wikimedia.org/wikipedia/pt/c/ca/Baby_TV.png" group-title="Infantil",Baby TV
-http://10.0.0.196/multi/playlist.m3u8?id=441
 #EXTINF:-1, tvg-id="445 - Band / Rede Bandeirantes" tvg-name="Band / Rede Bandeirantes - 445" tvg-logo="https://logodownload.org/wp-content/uploads/2014/02/band-logo-tv-3.png" group-title="Variedades",Band / Rede Bandeirantes
 http://10.0.0.196/multi/playlist.m3u8?id=445
 #EXTINF:-1, tvg-id="459 - Band News" tvg-name="Band News - 459" tvg-logo="https://upload.wikimedia.org/wikipedia/commons/thumb/2/27/BandNews_TV_logo_2010.svg/2560px-BandNews_TV_logo_2010.svg.png" group-title="Noticias",Band News
 http://10.0.0.196/multi/playlist.m3u8?id=459
 #EXTINF:-1, tvg-id="446 - Band Sports" tvg-name="Band Sports - 446" tvg-logo="https://upload.wikimedia.org/wikipedia/commons/thumb/f/f7/BandSports_logo.svg/1280px-BandSports_logo.svg.png" group-title="Esportes",Band Sports
 http://10.0.0.196/multi/playlist.m3u8?id=446
-#EXTINF:-1, tvg-id="447 - Boomerang" tvg-name="Boomerang - 447" tvg-logo="https://upload.wikimedia.org/wikipedia/commons/thumb/4/41/Boomerang_tv_logo.png/758px-Boomerang_tv_logo.png" group-title="Infantil",Boomerang
-http://10.0.0.196/multi/playlist.m3u8?id=447
 #EXTINF:-1, tvg-id="345 - CNN Brasil" tvg-name="CNN Brasil - 345" tvg-logo="https://logosmarcas.net/wp-content/uploads/2020/11/CNN-Logo.png" group-title="Noticias",CNN Brasil
 http://10.0.0.196/multi/playlist.m3u8?id=345
 #EXTINF:-1, tvg-id="436 - Canal Bis" tvg-name="Canal Bis - 436" tvg-logo="https://pbs.twimg.com/profile_images/1080522229492998144/Eckl0Y2H_400x400.jpg" group-title="Variedades",Canal Bis
@@ -81,16 +75,6 @@ http://10.0.0.196/multi/playlist.m3u8?id=408
 http://10.0.0.196/multi/playlist.m3u8?id=437
 #EXTINF:-1, tvg-id="363 - Food Network" tvg-name="Food Network - 363" tvg-logo="https://image.pngaaa.com/986/1245986-middle.png" group-title="Variedades",Food Network
 http://10.0.0.196/multi/playlist.m3u8?id=363
-#EXTINF:-1, tvg-id="476 - Fox Channel" tvg-name="Fox Channel - 476" tvg-logo="https://megafilmeshd50.com/wp-content/uploads/2017/10/khWqFgm-214x300.jpg" group-title="Esportes",Fox Channel
-http://10.0.0.196/multi/playlist.m3u8?id=476
-#EXTINF:-1, tvg-id="472 - Fox Life" tvg-name="Fox Life - 472" tvg-logo="https://yt3.ggpht.com/ytc/AKedOLREQmwdQRm01m4cltiqVu-IIRWon7RYDFFcTdHI=s900-c-k-c0x00ffffff-no-rj" group-title="Esportes",Fox Life
-http://10.0.0.196/multi/playlist.m3u8?id=472
-#EXTINF:-1, tvg-id="473 - Fox Premium 1" tvg-name="Fox Premium 1 - 473" tvg-logo="https://megafilmeshd50.com/wp-content/uploads/2018/04/PhFoVsJ-214x300.jpg" group-title="Esportes",Fox Premium 1
-http://10.0.0.196/multi/playlist.m3u8?id=473
-#EXTINF:-1, tvg-id="474 - Fox Premium 2" tvg-name="Fox Premium 2 - 474" tvg-logo="https://megafilmeshd50.com/wp-content/uploads/2018/04/tVrlvCv-214x300.jpg" group-title="Esportes",Fox Premium 2
-http://10.0.0.196/multi/playlist.m3u8?id=474
-#EXTINF:-1, tvg-id="470 - Fox Sports" tvg-name="Fox Sports - 470" tvg-logo="https://megafilmeshdd.org/wp-content/uploads/2021/05/5b86de45173e2-185x278.png" group-title="Esportes",Fox Sports
-http://10.0.0.196/multi/playlist.m3u8?id=470
 #EXTINF:-1, tvg-id="353 - Fox Sports 2" tvg-name="Fox Sports 2 - 353" tvg-logo="https://3.bp.blogspot.com/-H5oQ5OEpJ2w/WEicufS1h8I/AAAAAAAAy38/S_ouZUlzl1Y7qjzJy3vVy_aEP205oEmiACLcB/s1600/foxsports2.jpg" group-title="Esportes",Fox Sports 2
 http://10.0.0.196/multi/playlist.m3u8?id=353
 #EXTINF:-1, tvg-id="370 - GNT" tvg-name="GNT - 370" tvg-logo="https://upload.wikimedia.org/wikipedia/commons/thumb/a/a4/GNT_logo-roxo.svg/1200px-GNT_logo-roxo.svg.png" group-title="Variedades",GNT
@@ -101,8 +85,6 @@ http://10.0.0.196/multi/playlist.m3u8?id=453
 http://10.0.0.196/multi/playlist.m3u8?id=434
 #EXTINF:-1, tvg-id="452 - Globo RJ" tvg-name="Globo RJ - 452" tvg-logo="https://upload.wikimedia.org/wikipedia/pt/9/9e/Logotipo_da_TV_Globo.png" group-title="Variedades",Globo RJ
 http://10.0.0.196/multi/playlist.m3u8?id=452
-#EXTINF:-1, tvg-id="467 - Globo SP" tvg-name="Globo SP - 467" tvg-logo="https://upload.wikimedia.org/wikipedia/pt/9/9e/Logotipo_da_TV_Globo.png" group-title="Variedades",Globo SP
-http://10.0.0.196/multi/playlist.m3u8?id=467
 #EXTINF:-1, tvg-id="451 - Gloob" tvg-name="Gloob - 451" tvg-logo="https://logodownload.org/wp-content/uploads/2018/05/gloob-logo.png" group-title="Infantil",Gloob
 http://10.0.0.196/multi/playlist.m3u8?id=451
 #EXTINF:-1, tvg-id="444 - Gloobinho" tvg-name="Gloobinho - 444" tvg-logo="https://logodownload.org/wp-content/uploads/2018/05/gloobinho-logo.png" group-title="Infantil",Gloobinho
@@ -177,8 +159,6 @@ http://10.0.0.196/multi/playlist.m3u8?id=438
 http://10.0.0.196/multi/playlist.m3u8?id=458
 #EXTINF:-1, tvg-id="466 - SBT" tvg-name="SBT - 466" tvg-logo="https://upload.wikimedia.org/wikipedia/commons/thumb/3/3a/SBT_logo.svg/2048px-SBT_logo.svg.png" group-title="Variedades",SBT
 http://10.0.0.196/multi/playlist.m3u8?id=466
-#EXTINF:-1, tvg-id="475 - Sexy Hot" tvg-name="Sexy Hot - 475" tvg-logo="https://megafilmeshd50.com/wp-content/uploads/2018/04/RQc2j7T-185x278-1.jpg" group-title="Esportes",Sexy Hot
-http://10.0.0.196/multi/playlist.m3u8?id=475
 #EXTINF:-1, tvg-id="386 - Space" tvg-name="Space - 386" tvg-logo="https://img.favpng.com/17/5/17/space-logo-television-channel-esporte-interativo-png-favpng-VVxR657Qh8Nb2bcMZqQ3QEru0.jpg" group-title="Filmes",Space
 http://10.0.0.196/multi/playlist.m3u8?id=386
 #EXTINF:-1, tvg-id="400 - SporTV" tvg-name="SporTV - 400" tvg-logo="https://observatoriodatv.uol.com.br/wp-content/uploads/2021/11/sportv-logo-1.jpg" group-title="Esportes",SporTV

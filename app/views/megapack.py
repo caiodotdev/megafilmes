@@ -22,9 +22,13 @@ class MegaPack(EngineModel):
             return 'http://' + text
         return text
 
+    def remove_unnecessary(self, text):
+        # return str(text).replace('-bk', '')
+        return text
+
     def get_code(self, link_baixar):
         if 'hls1' in link_baixar and 'm3u8' in link_baixar:
-            return str(link_baixar.split('hls1/')[1].split('.m3u8')[0])
+            return str(link_baixar.split('hls1/')[1].split('.m3u8')[0]).replace('-bk', '')
         return None
 
     def extract_m3u8(self):

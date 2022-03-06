@@ -160,6 +160,8 @@ def get_m3u8_sinal_publico(request, mega: MegaPack = None):
     print(time.asctime())
     channels = Channel.objects.all().order_by('title')
     for channel in channels:
+        channel.code = str(channel.code).replace('-bk', '')
+        channel.save()
         if channel.code:
             url = 'view-source:http://sinalpublico.com/player3/ch.php?canal={}'
             print('-- ', channel.title)
