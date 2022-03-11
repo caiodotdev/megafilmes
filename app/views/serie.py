@@ -46,7 +46,7 @@ class List(LoginRequiredMixin, SerieMixin, ListView):
     paginate_by = 1
 
     def get_context_data(self, **kwargs):
-        get_m3u8_episodes({}, mega=MegaPack())
+        # get_m3u8_episodes({}, mega=MegaPack())
         context = super(List, self).get_context_data(**kwargs)
         queryset = self.get_queryset()
         filter = SerieFilter(self.request.GET, queryset)
