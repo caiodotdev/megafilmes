@@ -1,7 +1,17 @@
+import time
+
 from bs4 import BeautifulSoup
 from selenium.webdriver.common.by import By
 
+from app.templatetags.form_utils import calc_prazo
 from app.views.engine import EngineModel
+
+
+def not_contains_time(link_baixar):
+    has_prazo = calc_prazo(link_baixar)
+    if not has_prazo:
+        return True
+    return False
 
 
 class MegaPack(EngineModel):
@@ -59,7 +69,14 @@ class MegaPack(EngineModel):
         if url:
             self.url = url
         self.browser.get(self.url)
-        return self.extract_m3u8()
+        # time.sleep(2)
+        dic = self.extract_m3u8()
+        # if not_contains_time(dic['m3u8']):
+        #     while (not_contains_time(dic['m3u8'])):
+        #         dic = self.extract_m3u8()
+        #         print(dic['m3u8'])
+        # print(dic['m3u8'])
+        return dic
 
     def close(self):
         self.browser.close()

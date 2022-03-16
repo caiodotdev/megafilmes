@@ -106,7 +106,7 @@ def get_channels(request):
         try:
             dic_m3u8 = mega.get_info(url_channel)
             channel.link_m3u8 = dic_m3u8['m3u8']
-            channel.code = dic_m3u8['code']
+            # channel.code = dic_m3u8['code']
             channel.save()
             print('--- canal salvo: ' + str(channel.title))
         except (Exception,):
@@ -143,7 +143,7 @@ def get_m3u8_megahdd_default(request, mega: MegaPack = None):
         try:
             dic_m3u8 = mega.get_info(channel.url)
             channel.link_m3u8 = dic_m3u8['m3u8']
-            channel.code = dic_m3u8['code']
+            # channel.code = dic_m3u8['code']
             channel.custom_m3u8 = get_custom_m3u8_local(channel)
             channel.save()
         except (Exception,):
@@ -160,21 +160,22 @@ def get_m3u8_sinal_publico(request, mega: MegaPack = None):
     print(time.asctime())
     channels = Channel.objects.all().order_by('title')
     for channel in channels:
-        channel.code = str(channel.code).replace('-bk', '')
-        channel.save()
-        if channel.code:
-            url = 'view-source:http://sinalpublico.com/player3/ch.php?canal={}'
-            print('-- ', channel.title)
-            try:
+        url = 'view-source:http://sinalpublico.com/player3/ch.php?canal={}'
+        print('-- ', channel.title)
+        try:
+            dic_m3u8 = mega.get_info_sinal_publico(url.format(channel.code))
+            channel.link_m3u8 = dic_m3u8['m3u8']
+            while(not calc_prazo(channel.link_m3u8)):
                 dic_m3u8 = mega.get_info_sinal_publico(url.format(channel.code))
                 channel.link_m3u8 = dic_m3u8['m3u8']
-                channel.code = dic_m3u8['code']
-                channel.custom_m3u8 = get_custom_m3u8_local(channel)
-                channel.save()
-            except (Exception,):
-                channel.link_m3u8 = None
-                channel.save()
-                print('--- err ao coletar link m3u8: ' + str(channel.title))
+                print(dic_m3u8['m3u8'])
+                # channel.code = dic_m3u8['code']
+            channel.custom_m3u8 = get_custom_m3u8_local(channel)
+            channel.save()
+        except (Exception,):
+            channel.link_m3u8 = None
+            channel.save()
+            print('--- err ao coletar link m3u8: ' + str(channel.title))
     print(time.asctime())
     return JsonResponse({'message': 'ok'})
 
@@ -185,12 +186,13 @@ def get_custom_m3u8_local(channel):
 
 def update_m3u8_channel(request, id):
     channel = Channel.objects.get(id=id)
+
     url = 'view-source:http://sinalpublico.com/player3/ch.php?canal={}'
     mega = MegaPack()
     try:
         dic_m3u8 = mega.get_info_sinal_publico(url.format(channel.code))
         channel.link_m3u8 = dic_m3u8['m3u8']
-        channel.code = dic_m3u8['code']
+        # channel.code = dic_m3u8['code']
         channel.custom_m3u8 = get_custom_m3u8_local(channel)
         channel.save()
     except (Exception,):
