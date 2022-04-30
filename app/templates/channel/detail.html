@@ -30,16 +30,6 @@
             </button>
             <a href="{% url 'CHANNEL_list' %}" class="btn btn-default">Back</a>
         </div>
-        <div class="col-sm-6 col-xs-12">
-            <a href="{% url 'CHANNEL_detail' previous_channel.id %}" class="btn btn-default">
-                <i class="fa fa-arrow-circle-left"></i>
-                Previous: {{ previous_channel.title }}
-            </a>
-            <a href="{% url 'CHANNEL_detail' next_channel.id %}" class="btn btn-default">
-                <i class="fa fa-arrow-circle-right"></i>
-                Next: {{ next_channel.title }}
-            </a>
-        </div>
     </div>
     <br/><br/>
 

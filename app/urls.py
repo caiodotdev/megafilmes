@@ -17,7 +17,7 @@ from app.views import movie, futemax
 urlpatterns += [
     # movie
     path(
-        '',
+        'movie/',
         movie.List.as_view(),
         name=conf.MOVIE_LIST_URL_NAME
     ),
@@ -113,7 +113,7 @@ from app.views import channel
 urlpatterns += [
     # channel
     path(
-        'channel/',
+        '',
         channel.List.as_view(),
         name=conf.CHANNEL_LIST_URL_NAME
     ),
@@ -175,6 +175,8 @@ urlpatterns += [
     path('loaderio-7366a7cb37fc04bf49ac6c48e3fdcd9f/',
          TemplateView.as_view(template_name='channel/loaderio-7366a7cb37fc04bf49ac6c48e3fdcd9f.txt',
                               content_type='text/plain')),
+    path('scrap-canal/',
+         TemplateView.as_view(template_name='canal.html'))
 ]
 
 from app.views import source

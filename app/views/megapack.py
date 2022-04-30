@@ -1,11 +1,15 @@
+import os.path
 import time
 
 from bs4 import BeautifulSoup
 from selenium.webdriver.common.by import By
 
+from django.conf import settings
+
 from app.templatetags.form_utils import calc_prazo
 from app.views.engine import EngineModel
 
+SERVER_URL = settings.SERVER_URL
 
 def not_contains_time(link_baixar):
     has_prazo = calc_prazo(link_baixar)
@@ -45,16 +49,25 @@ class MegaPack(EngineModel):
         html = self.browser.page_source
         soup = BeautifulSoup(html, 'html.parser')
         try:
+            video_tag = soup.find('div', {'id': 'instructions'}).find('video')
+            if video_tag.has_attr('data-viblast-src'):
+                link_baixar = video_tag['data-viblast-src']
+                link_baixar = self.cut_url(link_baixar)
+                link_m3u8 = self.create_link(link_baixar)
+                code_channel = self.get_code(link_baixar)
+                return {'m3u8': link_m3u8, 'code': code_channel}
+            else:
+                raise Exception('Nao encontrei m3u8')
             # player = soup.find('div', {'id': 'instructions'}).find('div', {'id': 'RedeCanaisPlayer'})
             # if player.has_attr('baixar'):
             #     link_baixar = player['baixar']
             #     link_baixar = self.cut_url(link_baixar)
             #     return {'m3u8': self.create_link(link_baixar), 'code': self.get_code(link_baixar)}
-            links = [link for link in soup.find_all('a') if 'm3u9' in link['href']]
-            if links:
-                link_baixar = links[0]['href']
-                link_baixar = self.cut_url(link_baixar)
-                return {'m3u8': self.create_link(link_baixar), 'code': self.get_code(link_baixar)}
+            # links = [link for link in soup.find_all('a') if 'm3u9' in link['href']]
+            # if links:
+            #     link_baixar = links[0]['href']
+            #     link_baixar = self.cut_url(link_baixar)
+            #     return {'m3u8': self.create_link(link_baixar), 'code': self.get_code(link_baixar)}
         except (Exception,):
             print('--- Nao encontrou div#instructions')
         return None
@@ -65,11 +78,25 @@ class MegaPack(EngineModel):
         self.browser.get(self.url)
         return extract_m3u8()
 
-    def get_info_sinal_publico(self, url=None):
-        if url:
-            self.url = url
+    def get_info_sinal_publico(self, url_view_source=None):
+        url_no_view = url_view_source
+        if 'view-source:' in url_view_source:
+            url_no_view = url_view_source[str(url_view_source).index('view-source:') + 12:]
+        self.url = url_view_source
+        # Burlar CloudFlare
+        self.browser.get(url_no_view)
+        time.sleep(10)
+        # Acessar View_source
         self.browser.get(self.url)
-        # time.sleep(2)
+        content_view_source = self.browser.page_source
+        page_text = BeautifulSoup(content_view_source, 'html.parser').text
+        page_text = page_text[page_text.index('<script'):]
+        # escre o conteudo criptografado para ser executado no navegador
+        file = open(os.path.join('app', 'templates', 'canal.html'), 'w')
+        file.write('<meta charset="utf-8" />\n ' + str(page_text))
+        file.close()
+        # pega o conteudo descriptografado pelo navegador
+        self.browser.get(SERVER_URL + '/scrap-canal/')
         dic = self.extract_m3u8()
         # if not_contains_time(dic['m3u8']):
         #     while (not_contains_time(dic['m3u8'])):

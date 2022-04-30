@@ -11,6 +11,7 @@ https://docs.djangoproject.com/en/3.1/ref/settings/
 """
 
 from pathlib import Path
+from celery.schedules import crontab
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
@@ -39,6 +40,7 @@ INSTALLED_APPS = [
 
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
+    "whitenoise.middleware.WhiteNoiseMiddleware",
     'django.contrib.sessions.middleware.SessionMiddleware',
     'django.middleware.common.CommonMiddleware',
     'django.middleware.csrf.CsrfViewMiddleware',
@@ -118,14 +120,18 @@ import os
 INSTALLED_APPS += ['rest_framework', 'rest_framework.authtoken',
                    'django.contrib.sites', 'allauth', 'allauth.account',
                    'allauth.socialaccount', 'rest_auth', 'rest_auth.registration',
-                   'corsheaders', 'app', 'django_filters',
-                   'django_cron', ]
+                   'corsheaders', 'django_filters',
+                   'django_celery_beat',
+                   'django_celery_results',
+                   'django_cron', 'app.apps.AppConfig']
 
 SITE_ID = 1
 
 PROJECT_ROOT = os.path.dirname(os.path.abspath(__file__))
 
 MIDDLEWARE += ['corsheaders.middleware.CorsMiddleware']
+
+STATICFILES_STORAGE = 'whitenoise.storage.CompressedManifestStaticFilesStorage'
 
 STATIC_ROOT = os.path.join(PROJECT_ROOT, 'staticfiles')
 
@@ -154,3 +160,14 @@ REST_FRAMEWORK = {'DEFAULT_FILTER_BACKENDS': ('django_filters.rest_framework.Dja
 CRON_CLASSES = [
     "app.cron.MyCronJob",
 ]
+
+CELERY_BROKER_URL = os.getenv('REDIS_URL', 'redis://127.0.0.1:6379')
+CELERY_RESULT_BACKEND = 'django-db'
+CELERY_ACCEPT_CONTENT = ['application/json']
+CELERY_RESULT_SERIALIZER = 'json'
+CELERY_TASK_SELERLIZER = 'json'
+CELERY_BEAT_SCHEDULER = 'django_celery_beat.schedulers:DatabaseScheduler'
+
+
+# SERVER_URL = 'http://localhost:8000'
+SERVER_URL = 'http://10.0.0.196'
