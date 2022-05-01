@@ -171,3 +171,11 @@ CELERY_BEAT_SCHEDULER = 'django_celery_beat.schedulers:DatabaseScheduler'
 
 # SERVER_URL = 'http://localhost:8000'
 SERVER_URL = 'http://10.0.0.196'
+
+# BROWSERSTACK_LOCAL_IDENTIFIER = os.getenv("BROWSERSTACK_LOCAL_IDENTIFIER")
+BROWSERSTACK_USERNAME = os.getenv('BROWSERSTACK_USERNAME', 'caiodotdev_irwadE')
+BROWSERSTACK_ACCESSKEY = os.getenv('BROWSERSTACK_ACCESSKEY', 'Ke15XkyiQ6qp9XryA26w')
+
+LT_USERNAME = os.getenv('LT_USERNAME', 'caio.barbosa')
+LT_ACCESS_KEY = os.getenv('LT_ACCESS_KEY', 'NaNNdBDJGhzbKMsigjJ2213wRT75vQDYqxtc9m7miNzzvMqV4P')
+LT_ACCESS_TOKEN = os.getenv('LT_ACCESS_TOKEN', 'NaNNdBDJGhzbKMsigjJ2213wRT75vQDYqxtc9m7miNzzvMqV4P')
