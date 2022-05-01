@@ -30,7 +30,7 @@ class EngineModel(object):
         # self.browser = webdriver.Remote(
             # command_executor='https://caiodotdev_irwadE:Ke15XkyiQ6qp9XryA26w@hub-cloud.browserstack.com/wd/hub',
             # desired_capabilities=desired_cap)
-        self.browser = webdriver.Chrome(driver_executable_path=ChromeDriverManager().install(), options=options)
+        self.browser = webdriver.Chrome(executable_path=ChromeDriverManager().install(), options=options)
         self.url = ''
         self.FILENAME = ''
 

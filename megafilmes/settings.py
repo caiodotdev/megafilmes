@@ -169,8 +169,8 @@ CELERY_TASK_SELERLIZER = 'json'
 CELERY_BEAT_SCHEDULER = 'django_celery_beat.schedulers:DatabaseScheduler'
 
 
-# SERVER_URL = 'http://localhost:8000'
-SERVER_URL = 'http://10.0.0.196'
+SERVER_URL = 'http://localhost:8000'
+# SERVER_URL = 'http://10.0.0.196'
 
 # BROWSERSTACK_LOCAL_IDENTIFIER = os.getenv("BROWSERSTACK_LOCAL_IDENTIFIER")
 BROWSERSTACK_USERNAME = os.getenv('BROWSERSTACK_USERNAME', 'caiodotdev_irwadE')
