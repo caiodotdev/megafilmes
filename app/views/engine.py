@@ -27,10 +27,10 @@ class EngineModel(object):
         #  'name': 'BStack-[Python] Sample Test', # test name
         #  'build': 'BStack Build Number 1' # CI/CD job or build name
         }
-        # self.browser = webdriver.Remote(
-            # command_executor='https://caiodotdev_irwadE:Ke15XkyiQ6qp9XryA26w@hub-cloud.browserstack.com/wd/hub',
-            # desired_capabilities=desired_cap)
-        self.browser = webdriver.Chrome(executable_path=ChromeDriverManager().install(), options=options)
+        self.browser = webdriver.Remote(
+            command_executor='https://caiodotdev_irwadE:Ke15XkyiQ6qp9XryA26w@hub-cloud.browserstack.com/wd/hub',
+            desired_capabilities=desired_cap)
+        # self.browser = webdriver.Chrome(executable_path=ChromeDriverManager().install(), options=options)
         self.url = ''
         self.FILENAME = ''
 
